@@ -53,14 +53,15 @@ namespace LearningTrack
 				if ((username == password) && (username.Length != 0) && (password.Length != 0)){
 					//if verified, stop animating loading indicator
 					this.LoginLoadingIndicator.StopAnimating();
-					if (isInstructor){
+					this.PerformSegue("ToPickClass", this);
+					/*if (isInstructor){
 						//perform seque to Instructor Interface
-						this.PerformSegue("LoginToInstructorHome",this);
+						this.PerformSegue("ToInstructorInterface",this);
 					}
 					else if (isStudent){
 						//perform seque to Student Interface
-						this.PerformSegue("LoginToStudentHome",this);
-					}
+						this.PerformSegue("ToStudentHomeInterface",this);
+					}*/
 				}
 				else{
 					//stop animating loading indicator

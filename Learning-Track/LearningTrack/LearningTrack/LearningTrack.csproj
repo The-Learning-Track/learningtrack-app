@@ -96,6 +96,10 @@
     <Compile Include="LearningTrackViewController.designer.cs">
       <DependentUpon>LearningTrackViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PickClassViewController.cs" />
+    <Compile Include="PickClassViewController.designer.cs">
+      <DependentUpon>PickClassViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
