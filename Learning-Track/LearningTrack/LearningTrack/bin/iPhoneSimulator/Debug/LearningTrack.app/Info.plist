@@ -12,8 +12,8 @@
 	<string>LearningTrack</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Learning Track_72x72.png</string>
-		<string>Learning Track_144x144.png</string>
+		<string>launchicon.png</string>
+		<string>retinalaunchicon.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.yourcompany.learningtrack</string>
@@ -45,6 +45,8 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv6</string>

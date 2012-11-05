@@ -100,6 +100,15 @@
     <Compile Include="PickClassViewController.designer.cs">
       <DependentUpon>PickClassViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PickClassTableView.cs" />
+    <Compile Include="PickClassTableView.designer.cs">
+      <DependentUpon>PickClassTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableSource.cs" />
+    <Compile Include="StudentTabController.cs" />
+    <Compile Include="StudentTabController.designer.cs">
+      <DependentUpon>StudentTabController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -116,5 +125,19 @@
     <BundleResource Include="Resources\Learning Track_57x57.png" />
     <BundleResource Include="Resources\Learning Track_72x72.png" />
     <BundleResource Include="Resources\Learning Track_144x144.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\retinalaunchicon.png" />
+    <BundleResource Include="Resources\launchicon.png" />
+    <BundleResource Include="Resources\chairicon.png" />
+    <BundleResource Include="Resources\pencil%402x.png" />
+    <BundleResource Include="Resources\graph_bar_trend%402x.png" />
+    <BundleResource Include="Resources\repeat%402x.png" />
+    <BundleResource Include="Resources\graph_bar_trend.png" />
+    <BundleResource Include="Resources\pencil.png" />
+    <BundleResource Include="Resources\refresh_straight_arrows.png" />
+    <BundleResource Include="Resources\glyphicons_043_group.png" />
+    <BundleResource Include="Resources\glyphicons_114_list.png" />
+    <BundleResource Include="Resources\glyphicons_137_cogwheels.png" />
+    <BundleResource Include="Resources\glyphicons_151_new_window.png" />
   </ItemGroup>
 </Project>

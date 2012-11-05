@@ -1,19 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/PickClassViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/Info.plist">
     <Files>
       <File FileName="LearningTrack/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="LearningTrack/Main.cs" Line="1" Column="1" />
-      <File FileName="LearningTrack/LearningTrackViewController.cs" Line="43" Column="1" />
-      <File FileName="LearningTrack/PickClassViewController.cs" Line="1" Column="1" />
+      <File FileName="LearningTrack/LearningTrackViewController.cs" Line="67" Column="5" />
+      <File FileName="LearningTrack/PickClassViewController.cs" Line="21" Column="43" />
+      <File FileName="LearningTrack/PickClassTableView.cs" Line="5" Column="1" />
+      <File FileName="LearningTrack/TableSource.cs" Line="12" Column="39" />
+      <File FileName="LearningTrack/StudentTabController.cs" Line="13" Column="4" />
+      <File FileName="LearningTrack/Info.plist" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Option id="ShowAllFiles" value="True" />
           <Node name="LearningTrack" expanded="True">
+            <Node name="Info.plist" selected="True" />
             <Node name="LearningTrackViewController.cs" expanded="True" />
-            <Node name="MainStoryboard.storyboard" selected="True" />
+            <Node name="PickClassTableView.cs" expanded="True" />
             <Node name="PickClassViewController.cs" expanded="True" />
+            <Node name="StudentTabController.cs" expanded="True" />
           </Node>
         </State>
       </Pad>
