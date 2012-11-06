@@ -45,10 +45,6 @@ namespace LearningTrack
 				var username = UsernameField.Text;
 				var password = PasswordField.Text;
 
-				//Set Status - Instructor/Student
-				bool isInstructor = true;
-				bool isStudent = false;
-
 				//Should pass on to Blackboard for verification
 				if ((username == password) && (username.Length != 0) && (password.Length != 0)){
 					//if verified, stop animating loading indicator
@@ -65,18 +61,6 @@ namespace LearningTrack
 				}
 
 			};
-		}
-		
-		public override void ViewDidUnload ()
-		{
-			base.ViewDidUnload ();
-			
-			// Clear any references to subviews of the main view in order to
-			// allow the Garbage Collector to collect them sooner.
-			//
-			// e.g. myOutlet.Dispose (); myOutlet = null;
-			
-			ReleaseDesignerOutlets ();
 		}
 		
 		public override void ViewWillAppear (bool animated)

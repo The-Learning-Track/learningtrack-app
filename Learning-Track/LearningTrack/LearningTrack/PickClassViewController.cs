@@ -28,8 +28,7 @@ namespace LearningTrack
 			Add (table);
 
 			//Transition to interface depending on user privileges
-			bool isProfessor = true;
-			bool isStudent = false;
+			bool isProfessor = false;
 
 			ContinueButton.Clicked += (sender, e) => 
 			{	
@@ -37,7 +36,7 @@ namespace LearningTrack
 				{
 					this.PerformSegue("ToInstructorInterface", this);
 				}
-				else if (isStudent)
+				else
 				{
 					this.PerformSegue("ToStudentInterface", this);
 				}

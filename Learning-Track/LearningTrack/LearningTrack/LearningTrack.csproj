@@ -109,6 +109,10 @@
     <Compile Include="StudentTabController.designer.cs">
       <DependentUpon>StudentTabController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Student_StatisticsTabController.cs" />
+    <Compile Include="Student_StatisticsTabController.designer.cs">
+      <DependentUpon>Student_StatisticsTabController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
