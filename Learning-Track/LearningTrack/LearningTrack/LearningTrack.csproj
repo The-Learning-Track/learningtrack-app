@@ -120,6 +120,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="charts\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -143,5 +144,10 @@
     <BundleResource Include="Resources\glyphicons_114_list.png" />
     <BundleResource Include="Resources\glyphicons_137_cogwheels.png" />
     <BundleResource Include="Resources\glyphicons_151_new_window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="charts\exporting.js" />
+    <Content Include="charts\highcharts.js" />
+    <Content Include="charts\index.htm" />
   </ItemGroup>
 </Project>
