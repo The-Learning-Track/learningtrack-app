@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/Info.plist">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/Main.cs">
     <Files>
       <File FileName="LearningTrack/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="LearningTrack/Main.cs" Line="1" Column="1" />
@@ -15,13 +15,6 @@
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
-          <Node name="LearningTrack" expanded="True">
-            <Node name="Info.plist" selected="True" />
-            <Node name="LearningTrackViewController.cs" expanded="True" />
-            <Node name="PickClassTableView.cs" expanded="True" />
-            <Node name="PickClassViewController.cs" expanded="True" />
-            <Node name="StudentTabController.cs" expanded="True" />
-          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">

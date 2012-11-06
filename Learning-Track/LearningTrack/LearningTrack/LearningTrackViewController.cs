@@ -54,14 +54,6 @@ namespace LearningTrack
 					//if verified, stop animating loading indicator
 					this.LoginLoadingIndicator.StopAnimating();
 					this.PerformSegue("ToPickClass", this);
-					/*if (isInstructor){
-						//perform seque to Instructor Interface
-						this.PerformSegue("ToInstructorInterface",this);
-					}
-					else if (isStudent){
-						//perform seque to Student Interface
-						this.PerformSegue("ToStudentHomeInterface",this);
-					}*/
 				}
 				else{
 					//stop animating loading indicator

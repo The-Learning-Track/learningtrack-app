@@ -16,6 +16,8 @@ namespace LearningTrack
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad ();
+
+			//Defining table properties and implementing it
 			table = new UITableView(View.Bounds);
 			table.AlwaysBounceVertical = true;
 			Rectangle rect = new Rectangle(0, 0, 750, 900);
@@ -25,24 +27,27 @@ namespace LearningTrack
 			CreateTableItems();
 			Add (table);
 
-			bool isprofessor = true;
-			bool isstudent = false;
+			//Transition to interface depending on user privileges
+			bool isProfessor = true;
+			bool isStudent = false;
 
-			ContinueButton.Clicked += (sender, e) => {
-
-				if(isprofessor)
+			ContinueButton.Clicked += (sender, e) => 
+			{	
+				if(isProfessor)
 				{
 					this.PerformSegue("ToInstructorInterface", this);
 				}
-				else if (isstudent)
+				else if (isStudent)
 				{
 					this.PerformSegue("ToStudentInterface", this);
 				}
 			};
 
 		}
+
 		protected void CreateTableItems ()
 		{
+			//Create list of table items
 			List<string> tableItems = new List<string> ();
 			tableItems.Add ("EK 100");
 			tableItems.Add ("PY 212");
@@ -50,9 +55,8 @@ namespace LearningTrack
 			tableItems.Add ("EC 450");
 			tableItems.Add ("EC 327");
 			tableItems.Add ("EC 310");
-
+			//Add table items from list to table
 			table.Source = new TableSource(tableItems.ToArray());
 		}
-
 	}
 }

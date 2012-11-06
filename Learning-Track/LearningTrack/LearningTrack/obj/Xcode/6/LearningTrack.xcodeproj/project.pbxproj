@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1619BB800000000000000000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D694000000000000000000 /* UIKit.framework */; };
+		DEA00A800000000000000000 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5CE3000000000000000000 /* MapKit.framework */; };
+		A72659800000000000000000 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2E332000000000000000000 /* Foundation.framework */; };
+		6FACA8800000000000000000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6981000000000000000000 /* CoreGraphics.framework */; };
+		A6D7D4000000000000000000 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C294AC800000000000000000 /* MainStoryboard.storyboard */; };
+		6F5E23000000000000000000 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B1AFB800000000000000000 /* Default-568h@2x.png */; };
+		37E472000000000000000000 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A14A800000000000000000 /* Default.png */; };
+		6AC100000000000000000000 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C2799800000000000000000 /* Default@2x.png */; };
+		C8F110000000000000000000 /* Learning Track_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ADE8800000000000000000 /* Learning Track_114x114.png */; };
+		91775F000000000000000000 /* Learning Track_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = AD3437800000000000000000 /* Learning Track_57x57.png */; };
+		59FDAE000000000000000000 /* Learning Track_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 75BA86800000000000000000 /* Learning Track_72x72.png */; };
+		2283FD000000000000000000 /* Learning Track_144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E40D5800000000000000000 /* Learning Track_144x144.png */; };
+		EB0A4C000000000000000000 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C7248000000000000000000 /* Default-Landscape.png */; };
+		B3909B000000000000000000 /* retinalaunchicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4D73800000000000000000 /* retinalaunchicon.png */; };
+		7C16EA000000000000000000 /* launchicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97D3C2800000000000000000 /* launchicon.png */; };
+		449D39000000000000000000 /* chairicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 605A11800000000000000000 /* chairicon.png */; };
+		D23880000000000000000000 /* pencil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E060800000000000000000 /* pencil@2x.png */; };
+		D5A9D7000000000000000000 /* graph_bar_trend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F166AF800000000000000000 /* graph_bar_trend@2x.png */; };
+		9E3026000000000000000000 /* repeat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B9ECFE800000000000000000 /* repeat@2x.png */; };
+		66B675000000000000000000 /* graph_bar_trend.png in Resources */ = {isa = PBXBuildFile; fileRef = 82734D800000000000000000 /* graph_bar_trend.png */; };
+		2F3CC4000000000000000000 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF99C800000000000000000 /* pencil.png */; };
+		F7C313000000000000000000 /* refresh_straight_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 137FEB800000000000000000 /* refresh_straight_arrows.png */; };
+		C04962000000000000000000 /* glyphicons_043_group.png in Resources */ = {isa = PBXBuildFile; fileRef = DC063A800000000000000000 /* glyphicons_043_group.png */; };
+		88CFB1000000000000000000 /* glyphicons_114_list.png in Resources */ = {isa = PBXBuildFile; fileRef = A48C89800000000000000000 /* glyphicons_114_list.png */; };
+		515600000000000000000000 /* glyphicons_137_cogwheels.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D12D8800000000000000000 /* glyphicons_137_cogwheels.png */; };
+		60ABCF000000000000000000 /* glyphicons_151_new_window.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C68A7800000000000000000 /* glyphicons_151_new_window.png */; };
+		29321E000000000000000000 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 44EEF6800000000000000000 /* AppDelegate.h */; };
+		9E81E3800000000000000000 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3EBC000000000000000000 /* AppDelegate.m */; };
+		670832800000000000000000 /* LearningTrackViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 82C50B000000000000000000 /* LearningTrackViewController.h */; };
+		13D1A9000000000000000000 /* LearningTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8E81800000000000000000 /* LearningTrackViewController.m */; };
+		DC57F8000000000000000000 /* PickClassViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = F814D0800000000000000000 /* PickClassViewController.h */; };
+		89216E800000000000000000 /* PickClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4DE47000000000000000000 /* PickClassViewController.m */; };
+		35EAE5000000000000000000 /* PickClassTableView.h in Sources */ = {isa = PBXBuildFile; fileRef = 6D6496000000000000000000 /* PickClassTableView.h */; };
+		AB3AAA800000000000000000 /* PickClassTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6F783000000000000000000 /* PickClassTableView.m */; };
+		73C0F9800000000000000000 /* StudentTabController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DD2000000000000000000 /* StudentTabController.h */; };
+		E910BF000000000000000000 /* StudentTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD978000000000000000000 /* StudentTabController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D843A7000000000000000000 /* LearningTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "LearningTrack.app"; path = "LearningTrack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31D694000000000000000000 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; };
+		FA5CE3000000000000000000 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; name = "MapKit.framework"; path = "System/Library/Frameworks/MapKit.framework"; sourceTree = SDKROOT; };
+		C2E332000000000000000000 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; };
+		8B6981000000000000000000 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; };
+		C294AC800000000000000000 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "MainStoryboard.storyboard"; path = "MainStoryboard.storyboard"; sourceTree = "<group>"; };
+		8B1AFB800000000000000000 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		53A14A800000000000000000 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default.png"; path = "Default.png"; sourceTree = "<group>"; };
+		1C2799800000000000000000 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E4ADE8800000000000000000 /* Learning Track_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Learning Track_114x114.png"; path = "Learning Track_114x114.png"; sourceTree = "<group>"; };
+		AD3437800000000000000000 /* Learning Track_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Learning Track_57x57.png"; path = "Learning Track_57x57.png"; sourceTree = "<group>"; };
+		75BA86800000000000000000 /* Learning Track_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Learning Track_72x72.png"; path = "Learning Track_72x72.png"; sourceTree = "<group>"; };
+		3E40D5800000000000000000 /* Learning Track_144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Learning Track_144x144.png"; path = "Learning Track_144x144.png"; sourceTree = "<group>"; };
+		6C7248000000000000000000 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		CF4D73800000000000000000 /* retinalaunchicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "retinalaunchicon.png"; path = "retinalaunchicon.png"; sourceTree = "<group>"; };
+		97D3C2800000000000000000 /* launchicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launchicon.png"; path = "launchicon.png"; sourceTree = "<group>"; };
+		605A11800000000000000000 /* chairicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chairicon.png"; path = "chairicon.png"; sourceTree = "<group>"; };
+		28E060800000000000000000 /* pencil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil@2x.png"; path = "pencil@2x.png"; sourceTree = "<group>"; };
+		F166AF800000000000000000 /* graph_bar_trend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "graph_bar_trend@2x.png"; path = "graph_bar_trend@2x.png"; sourceTree = "<group>"; };
+		B9ECFE800000000000000000 /* repeat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "repeat@2x.png"; path = "repeat@2x.png"; sourceTree = "<group>"; };
+		82734D800000000000000000 /* graph_bar_trend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "graph_bar_trend.png"; path = "graph_bar_trend.png"; sourceTree = "<group>"; };
+		4AF99C800000000000000000 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pencil.png"; path = "pencil.png"; sourceTree = "<group>"; };
+		137FEB800000000000000000 /* refresh_straight_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "refresh_straight_arrows.png"; path = "refresh_straight_arrows.png"; sourceTree = "<group>"; };
+		DC063A800000000000000000 /* glyphicons_043_group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glyphicons_043_group.png"; path = "glyphicons_043_group.png"; sourceTree = "<group>"; };
+		A48C89800000000000000000 /* glyphicons_114_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glyphicons_114_list.png"; path = "glyphicons_114_list.png"; sourceTree = "<group>"; };
+		6D12D8800000000000000000 /* glyphicons_137_cogwheels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glyphicons_137_cogwheels.png"; path = "glyphicons_137_cogwheels.png"; sourceTree = "<group>"; };
+		7C68A7800000000000000000 /* glyphicons_151_new_window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "glyphicons_151_new_window.png"; path = "glyphicons_151_new_window.png"; sourceTree = "<group>"; };
+		44EEF6800000000000000000 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate.h"; path = "AppDelegate.h"; sourceTree = "<group>"; };
+		BA3EBC000000000000000000 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate.m"; path = "AppDelegate.m"; sourceTree = "<group>"; };
+		82C50B000000000000000000 /* LearningTrackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LearningTrackViewController.h"; path = "LearningTrackViewController.h"; sourceTree = "<group>"; };
+		2F8E81800000000000000000 /* LearningTrackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LearningTrackViewController.m"; path = "LearningTrackViewController.m"; sourceTree = "<group>"; };
+		F814D0800000000000000000 /* PickClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PickClassViewController.h"; path = "PickClassViewController.h"; sourceTree = "<group>"; };
+		A4DE47000000000000000000 /* PickClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PickClassViewController.m"; path = "PickClassViewController.m"; sourceTree = "<group>"; };
+		6D6496000000000000000000 /* PickClassTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PickClassTableView.h"; path = "PickClassTableView.h"; sourceTree = "<group>"; };
+		C6F783000000000000000000 /* PickClassTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PickClassTableView.m"; path = "PickClassTableView.m"; sourceTree = "<group>"; };
+		8F7DD2000000000000000000 /* StudentTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "StudentTabController.h"; path = "StudentTabController.h"; sourceTree = "<group>"; };
+		4CD978000000000000000000 /* StudentTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "StudentTabController.m"; path = "StudentTabController.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7EB0BA000000000000000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1619BB800000000000000000 /* UIKit.framework in Frameworks */,
+				DEA00A800000000000000000 /* MapKit.framework in Frameworks */,
+				A72659800000000000000000 /* Foundation.framework in Frameworks */,
+				6FACA8800000000000000000 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		373741400000000000000000 = {
+			isa = PBXGroup;
+			children = (
+				E72EE9800000000000000000 /* LearningTrack */,
+				34090F800000000000000000 /* Frameworks */,
+				3A6573000000000000000000 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3A6573000000000000000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D843A7000000000000000000 /* LearningTrack.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+		34090F800000000000000000 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31D694000000000000000000 /* UIKit.framework */,
+				FA5CE3000000000000000000 /* MapKit.framework */,
+				C2E332000000000000000000 /* Foundation.framework */,
+				8B6981000000000000000000 /* CoreGraphics.framework */,
+			);
+			name = "Frameworks";
+			sourceTree = "<group>";
+		};
+		E72EE9800000000000000000 /* LearningTrack */ = {
+			isa = PBXGroup;
+			children = (
+				44EEF6800000000000000000 /* AppDelegate.h */,
+				605A11800000000000000000 /* chairicon.png */,
+				53A14A800000000000000000 /* Default.png */,
+				1C2799800000000000000000 /* Default@2x.png */,
+				8B1AFB800000000000000000 /* Default-568h@2x.png */,
+				6C7248000000000000000000 /* Default-Landscape.png */,
+				DC063A800000000000000000 /* glyphicons_043_group.png */,
+				A48C89800000000000000000 /* glyphicons_114_list.png */,
+				6D12D8800000000000000000 /* glyphicons_137_cogwheels.png */,
+				7C68A7800000000000000000 /* glyphicons_151_new_window.png */,
+				82734D800000000000000000 /* graph_bar_trend.png */,
+				F166AF800000000000000000 /* graph_bar_trend@2x.png */,
+				97D3C2800000000000000000 /* launchicon.png */,
+				E4ADE8800000000000000000 /* Learning Track_114x114.png */,
+				3E40D5800000000000000000 /* Learning Track_144x144.png */,
+				AD3437800000000000000000 /* Learning Track_57x57.png */,
+				75BA86800000000000000000 /* Learning Track_72x72.png */,
+				82C50B000000000000000000 /* LearningTrackViewController.h */,
+				C294AC800000000000000000 /* MainStoryboard.storyboard */,
+				4AF99C800000000000000000 /* pencil.png */,
+				28E060800000000000000000 /* pencil@2x.png */,
+				6D6496000000000000000000 /* PickClassTableView.h */,
+				F814D0800000000000000000 /* PickClassViewController.h */,
+				137FEB800000000000000000 /* refresh_straight_arrows.png */,
+				B9ECFE800000000000000000 /* repeat@2x.png */,
+				CF4D73800000000000000000 /* retinalaunchicon.png */,
+				8F7DD2000000000000000000 /* StudentTabController.h */,
+				BE41B2400000000000000000 /* Supporting Files */,
+			);
+			name = "LearningTrack";
+			sourceTree = "<group>";
+		};
+		BE41B2400000000000000000 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA3EBC000000000000000000 /* AppDelegate.m */,
+				2F8E81800000000000000000 /* LearningTrackViewController.m */,
+				C6F783000000000000000000 /* PickClassTableView.m */,
+				A4DE47000000000000000000 /* PickClassViewController.m */,
+				4CD978000000000000000000 /* StudentTabController.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A3DF58C00000000000000000 /* LearningTrack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 471E3A000000000000000000 /* Build configuration list for PBXNativeTarget "LearningTrack" */;
+			buildPhases = (
+				2B7A30800000000000000000 /* Sources */,
+				7EB0BA000000000000000000 /* Frameworks */,
+				473709000000000000000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LearningTrack";
+			productName = "LearningTrack";
+			productReference = D843A7000000000000000000 /* LearningTrack.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D8F43000000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = { };
+			buildConfigurationList = A0B127000000000000000000 /* Build configuration list for PBXProject "LearningTrack" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 373741400000000000000000;
+			productRefGroup = 3A6573000000000000000000 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A3DF58C00000000000000000 /* LearningTrack */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		473709000000000000000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6D7D4000000000000000000 /* MainStoryboard.storyboard in Resources */,
+				6F5E23000000000000000000 /* Default-568h@2x.png in Resources */,
+				37E472000000000000000000 /* Default.png in Resources */,
+				6AC100000000000000000000 /* Default@2x.png in Resources */,
+				C8F110000000000000000000 /* Learning Track_114x114.png in Resources */,
+				91775F000000000000000000 /* Learning Track_57x57.png in Resources */,
+				59FDAE000000000000000000 /* Learning Track_72x72.png in Resources */,
+				2283FD000000000000000000 /* Learning Track_144x144.png in Resources */,
+				EB0A4C000000000000000000 /* Default-Landscape.png in Resources */,
+				B3909B000000000000000000 /* retinalaunchicon.png in Resources */,
+				7C16EA000000000000000000 /* launchicon.png in Resources */,
+				449D39000000000000000000 /* chairicon.png in Resources */,
+				D23880000000000000000000 /* pencil@2x.png in Resources */,
+				D5A9D7000000000000000000 /* graph_bar_trend@2x.png in Resources */,
+				9E3026000000000000000000 /* repeat@2x.png in Resources */,
+				66B675000000000000000000 /* graph_bar_trend.png in Resources */,
+				2F3CC4000000000000000000 /* pencil.png in Resources */,
+				F7C313000000000000000000 /* refresh_straight_arrows.png in Resources */,
+				C04962000000000000000000 /* glyphicons_043_group.png in Resources */,
+				88CFB1000000000000000000 /* glyphicons_114_list.png in Resources */,
+				515600000000000000000000 /* glyphicons_137_cogwheels.png in Resources */,
+				60ABCF000000000000000000 /* glyphicons_151_new_window.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B7A30800000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29321E000000000000000000 /* AppDelegate.h in Sources */,
+				9E81E3800000000000000000 /* AppDelegate.m in Sources */,
+				670832800000000000000000 /* LearningTrackViewController.h in Sources */,
+				13D1A9000000000000000000 /* LearningTrackViewController.m in Sources */,
+				DC57F8000000000000000000 /* PickClassViewController.h in Sources */,
+				89216E800000000000000000 /* PickClassViewController.m in Sources */,
+				35EAE5000000000000000000 /* PickClassTableView.h in Sources */,
+				AB3AAA800000000000000000 /* PickClassTableView.m in Sources */,
+				73C0F9800000000000000000 /* StudentTabController.h in Sources */,
+				E910BF000000000000000000 /* StudentTabController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		850D1D800000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+			};
+			name = MonoTouch;
+		};
+		A0C9F6000000000000000000 /* MonoTouch */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				PRODUCT_NAME = "LearningTrack";
+				WRAPPER_EXTENSION = app;
+			};
+			name = MonoTouch;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0B127000000000000000000 /* Build configuration list for PBXProject "LearningTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				850D1D800000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+		471E3A000000000000000000 /* Build configuration list for PBXNativeTarget "LearningTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0C9F6000000000000000000 /* MonoTouch */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = MonoTouch;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D8F43000000000000000000 /* Project object */;
+}
