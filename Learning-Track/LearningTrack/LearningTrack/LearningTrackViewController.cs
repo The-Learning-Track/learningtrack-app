@@ -16,7 +16,6 @@ namespace LearningTrack
 		{
 			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning ();
-			
 			// Release any cached data, images, etc that aren't in use.
 		}
 		
@@ -84,12 +83,6 @@ namespace LearningTrack
 		}
 		
 		#endregion
-		
-		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
-		{
-			// Return true for supported orientations - LANDSCAPE ONLY
-				return true;
-		}
 	}
 }
 

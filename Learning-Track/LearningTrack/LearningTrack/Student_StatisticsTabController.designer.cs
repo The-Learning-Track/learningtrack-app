@@ -18,12 +18,6 @@ namespace LearningTrack
 		MonoTouch.UIKit.UITextField urlTextField { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton backButton { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIButton forwardButton { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIButton refreshButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -36,16 +30,6 @@ namespace LearningTrack
 			if (urlTextField != null) {
 				urlTextField.Dispose ();
 				urlTextField = null;
-			}
-
-			if (backButton != null) {
-				backButton.Dispose ();
-				backButton = null;
-			}
-
-			if (forwardButton != null) {
-				forwardButton.Dispose ();
-				forwardButton = null;
 			}
 
 			if (refreshButton != null) {
