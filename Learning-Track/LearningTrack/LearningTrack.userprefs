@@ -7,16 +7,14 @@
       <File FileName="LearningTrack/LearningTrackViewController.cs" Line="66" Column="1" />
       <File FileName="LearningTrack/PickClassViewController.cs" Line="39" Column="9" />
       <File FileName="LearningTrack/StudentTabController.cs" Line="13" Column="4" />
-      <File FileName="LearningTrack/Student_StatisticsTabController.cs" Line="37" Column="4" />
+      <File FileName="LearningTrack/Student_StatisticsTabController.cs" Line="99" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
           <Node name="LearningTrack" expanded="True">
-            <Node name="charts" expanded="True">
-              <Node name="index.htm" selected="True" />
-            </Node>
+            <Node name="charts" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>

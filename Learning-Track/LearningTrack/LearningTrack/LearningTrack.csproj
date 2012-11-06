@@ -146,7 +146,6 @@
     <BundleResource Include="Resources\glyphicons_151_new_window.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="charts\exporting.js" />
     <Content Include="charts\highcharts.js" />
     <Content Include="charts\index.htm" />
   </ItemGroup>
