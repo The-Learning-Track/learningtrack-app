@@ -38,7 +38,7 @@ namespace LearningTrack
 		void MakeFirstRequest ()
 		{
 			//link local filename to become a local HTML URL
-			string fileName = "charts/index.htm"; // remember case-sensitive
+			string fileName = "charts/gradeChart.htm"; // remember case-sensitive
 			string localHtmlUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);
 			//load the appropriate file to the webView
 			webView.LoadRequest(new NSUrlRequest(new NSUrl(localHtmlUrl, false)));

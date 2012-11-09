@@ -147,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="charts\highcharts.js" />
-    <Content Include="charts\index.htm" />
+    <Content Include="charts\barChart.htm" />
+    <Content Include="charts\gradeChart.htm" />
+    <Content Include="charts\AttendanceChart.htm" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Highcharts Example</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(function () {
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'container',
+			type: 'bar'
+		},
+		title: {
+			text: 'Current Student Grades'
+		},
+		subtitle: {
+			text: 'Source: MADE UP'
+		},
+		xAxis: {
+			categories: ['Alex', 'Barack', 'Christina', 'Dillon', 'Egor'],
+			title: {text: 'Student Names'}
+		},
+		yAxis: {
+			min: 0,
+			title: {text: 'Grades',
+			align: 'high'},
+		labels: {
+			overflow: 'justify'}
+		},
+	tooltip: {
+		formatter: function() {
+		return '' + this.series.name + ': '+ this.y + ' Out of 100';}},
+	plotOptions: {
+		bar: {
+			dataLabels: {
+				enabled: true
+			}
+		}
+	},
+	legend: {
+		layout: 'vertical',
+		align: 'right',
+		verticalAlign: 'top',
+		x: 0,
+		y: -10,
+		floating: true,
+		borderWidth: 1,
+		backgroundColor: '#FFFFFF',
+		shadow: true
+	},
+	credits: {
+		enabled: false
+	},	
+	series: [{
+		name: 'Homework Average',
+		data: [77, 88, 99, 55, 89] //student1,2,3...
+		}, {
+		name: 'Midterm Exam',
+		data: [88, 100, 77, 66, 78]
+		}, {
+		name: 'Final Exam',
+		data: [85, 91, 83, 70, 95]
+		}, {
+		name: 'Project',
+		data: [75, 96, 85, 72, 83]
+		}, {
+		name: 'Attendance',
+		data: [85, 80, 100, 30, 95]
+		}]
+	});
+});
+});
+</script>
+</head>
+<body>
+<script src="highcharts.js"></script>
+<div id="container" style="min-width: 400px; height: 800px; margin: 0 auto"></div>
+</body>
+</html>
