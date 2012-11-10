@@ -1,15 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/PickClassViewController.cs">
+    <Files>
+      <File FileName="LearningTrack/charts/barChart.htm" Line="71" Column="29" />
+      <File FileName="LearningTrack/AppDelegate.cs" Line="18" Column="26" />
+      <File FileName="LearningTrack/LearningTrackViewController.cs" Line="1" Column="1" />
+      <File FileName="LearningTrack/PickClassViewController.cs" Line="6" Column="23" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
           <Node name="LearningTrack" expanded="True">
-            <Node name="charts" expanded="True">
-              <Node name="barChart" expanded="True" />
-              <Node name="barChart.htm" selected="True" />
-            </Node>
+            <Node name="charts" expanded="True" />
+            <Node name="Instructor View Controllers" selected="True" />
           </Node>
         </State>
       </Pad>

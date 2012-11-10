@@ -28,7 +28,7 @@ namespace LearningTrack
 			Add (table);
 
 			//Transition to interface depending on user privileges
-			bool isProfessor = false;
+			bool isProfessor = true;
 
 			ContinueButton.Clicked += (sender, e) => 
 			{	

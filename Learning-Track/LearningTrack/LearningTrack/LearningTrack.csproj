@@ -109,9 +109,13 @@
     <Compile Include="StudentTabController.designer.cs">
       <DependentUpon>StudentTabController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Student_StatisticsTabController.cs" />
-    <Compile Include="Student_StatisticsTabController.designer.cs">
-      <DependentUpon>Student_StatisticsTabController.cs</DependentUpon>
+    <Compile Include="InstructorStatisticsViewController.cs" />
+    <Compile Include="InstructorStatisticsViewController.designer.cs">
+      <DependentUpon>InstructorStatisticsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentStatisticsViewController.cs" />
+    <Compile Include="StudentStatisticsViewController.designer.cs">
+      <DependentUpon>StudentStatisticsViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
