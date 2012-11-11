@@ -100,6 +100,23 @@
     <Compile Include="PickClassViewController.designer.cs">
       <DependentUpon>PickClassViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PickClassTableView.cs" />
+    <Compile Include="PickClassTableView.designer.cs">
+      <DependentUpon>PickClassTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableSource.cs" />
+    <Compile Include="StudentTabController.cs" />
+    <Compile Include="StudentTabController.designer.cs">
+      <DependentUpon>StudentTabController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstructorStatisticsViewController.cs" />
+    <Compile Include="InstructorStatisticsViewController.designer.cs">
+      <DependentUpon>InstructorStatisticsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentStatisticsViewController.cs" />
+    <Compile Include="StudentStatisticsViewController.designer.cs">
+      <DependentUpon>StudentStatisticsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -107,6 +124,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="charts\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -116,5 +134,25 @@
     <BundleResource Include="Resources\Learning Track_57x57.png" />
     <BundleResource Include="Resources\Learning Track_72x72.png" />
     <BundleResource Include="Resources\Learning Track_144x144.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\retinalaunchicon.png" />
+    <BundleResource Include="Resources\launchicon.png" />
+    <BundleResource Include="Resources\chairicon.png" />
+    <BundleResource Include="Resources\pencil%402x.png" />
+    <BundleResource Include="Resources\graph_bar_trend%402x.png" />
+    <BundleResource Include="Resources\repeat%402x.png" />
+    <BundleResource Include="Resources\graph_bar_trend.png" />
+    <BundleResource Include="Resources\pencil.png" />
+    <BundleResource Include="Resources\refresh_straight_arrows.png" />
+    <BundleResource Include="Resources\glyphicons_043_group.png" />
+    <BundleResource Include="Resources\glyphicons_114_list.png" />
+    <BundleResource Include="Resources\glyphicons_137_cogwheels.png" />
+    <BundleResource Include="Resources\glyphicons_151_new_window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="charts\highcharts.js" />
+    <Content Include="charts\barChart.htm" />
+    <Content Include="charts\gradeChart.htm" />
+    <Content Include="charts\AttendanceChart.htm" />
   </ItemGroup>
 </Project>
