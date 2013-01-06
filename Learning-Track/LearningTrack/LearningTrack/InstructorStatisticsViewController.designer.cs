@@ -15,16 +15,7 @@ namespace LearningTrack
 		MonoTouch.UIKit.UIWebView webView { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIToolbar searchBarInput { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIBarButtonItem refreshButton { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIBarButtonItem selectStudentButton { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIBarButtonItem selectPlotButton { get; set; }
+		MonoTouch.UIKit.UITableView plotTable { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -33,24 +24,9 @@ namespace LearningTrack
 				webView = null;
 			}
 
-			if (searchBarInput != null) {
-				searchBarInput.Dispose ();
-				searchBarInput = null;
-			}
-
-			if (refreshButton != null) {
-				refreshButton.Dispose ();
-				refreshButton = null;
-			}
-
-			if (selectStudentButton != null) {
-				selectStudentButton.Dispose ();
-				selectStudentButton = null;
-			}
-
-			if (selectPlotButton != null) {
-				selectPlotButton.Dispose ();
-				selectPlotButton = null;
+			if (plotTable != null) {
+				plotTable.Dispose ();
+				plotTable = null;
 			}
 		}
 	}

@@ -8,6 +8,8 @@ namespace LearningTrack
 {
 	public partial class LearningTrackViewController : UIViewController
 	{
+		public bool _isProfessor;
+
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -45,7 +47,16 @@ namespace LearningTrack
 				var password = PasswordField.Text;
 
 				//Should pass on to Blackboard for verification
-				if ((username == password) && (username.Length != 0) && (password.Length != 0)){
+				if ((username == "student") && (username.Length != 0) && (password.Length != 0)){
+					//flag for privileges later
+					_isProfessor = false;
+					//if verified, stop animating loading indicator
+					this.LoginLoadingIndicator.StopAnimating();
+					this.PerformSegue("ToPickClass", this);
+				}
+				else if ((username == "instructor") && (username.Length != 0) && (password.Length != 0)){
+					//flag for privileges later
+					_isProfessor = true;
 					//if verified, stop animating loading indicator
 					this.LoginLoadingIndicator.StopAnimating();
 					this.PerformSegue("ToPickClass", this);
@@ -58,8 +69,19 @@ namespace LearningTrack
 						alert.Show();
 					}
 				}
-
 			};
+		}
+
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+			//Make sure we are dealing with the appropriate segue
+			if (segue.Identifier == "ToPickClass") {
+				// Get reference to the destination view controller
+				var nextViewController = (PickClassViewController) segue.DestinationViewController;
+				//Pass bool _isProfessor to the next view controller
+				nextViewController.isProfessor = _isProfessor;
+			}
 		}
 		
 		public override void ViewWillAppear (bool animated)

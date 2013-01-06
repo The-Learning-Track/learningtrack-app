@@ -9,6 +9,7 @@ namespace LearningTrack
 {
 	public partial class PickClassViewController : UIViewController
 	{
+		public bool isProfessor;
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -28,8 +29,6 @@ namespace LearningTrack
 			Add (table);
 
 			//Transition to interface depending on user privileges
-			bool isProfessor = true;
-
 			ContinueButton.Clicked += (sender, e) => 
 			{	
 				if(isProfessor)

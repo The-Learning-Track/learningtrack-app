@@ -117,6 +117,15 @@
     <Compile Include="StudentStatisticsViewController.designer.cs">
       <DependentUpon>StudentStatisticsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlotSelectTableSource.cs" />
+    <Compile Include="InstructorOptionsViewController.cs" />
+    <Compile Include="InstructorOptionsViewController.designer.cs">
+      <DependentUpon>InstructorOptionsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentOptionsViewController.cs" />
+    <Compile Include="StudentOptionsViewController.designer.cs">
+      <DependentUpon>StudentOptionsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

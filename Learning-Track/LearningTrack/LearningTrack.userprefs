@@ -1,20 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/StudentSelectTableSource.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/PlotSelectTableSource.cs">
     <Files>
-      <File FileName="LearningTrack/InstructorStatisticsViewController.cs" Line="69" Column="31" />
-      <File FileName="LearningTrack/PlotSelectTableSource.cs" Line="14" Column="3" />
-      <File FileName="LearningTrack/PickClassTableSource.cs" Line="19" Column="4" />
-      <File FileName="LearningTrack/StudentSelectTableSource.cs" Line="18" Column="5" />
+      <File FileName="LearningTrack/InstructorStatisticsViewController.cs" Line="44" Column="27" />
+      <File FileName="LearningTrack/LearningTrackViewController.cs" Line="78" Column="57" />
+      <File FileName="LearningTrack/TableSource.cs" Line="66" Column="1" />
+      <File FileName="LearningTrack/PickClassViewController.cs" Line="31" Column="58" />
+      <File FileName="LearningTrack/PlotSelectTableSource.cs" Line="59" Column="56" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
-          <Node name="LearningTrack" expanded="True">
+          <Node name="LearningTrack" expanded="True" selected="True">
             <Node name="charts" expanded="True" />
-            <Node name="InstructorStatisticsViewController.cs" expanded="True" />
-            <Node name="StudentSelectTableSource.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -26,10 +25,18 @@
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="LearningTrack/LearningTrackViewController.cs" line="109" offsetX="782" offsetY="1825" expression="soapResult" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>
