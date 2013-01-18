@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+	
+	
+	var chart;
+    //store grades in array
+    var studentGrades = new Array();
+    
+$(function () {
+    //initialize grades
+    //FICTITIOUS DATASETS
+    for (var count = 0; count < 6; count++){
+    	if (count < 3){
+    		studentGrades[count] = 80 + (count*5);}
+    	else{
+    		studentGrades[count] = 60 + (count*5);
+    	}
+    }
+    
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container'
+            },
+            xAxis: {
+                min: 0,
+                max: 5.5
+            },
+            yAxis: {
+                min: 0,
+                title: {text: 'Grades'}
+            },
+            title: {
+                text: 'Predicting Grade Trend'
+            },
+            series: [{
+                type: 'line',
+                name: 'Grade Trend',
+                data: [[0,Start(studentGrades)], [5,End(studentGrades)]],
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            }, {
+                type: 'scatter',
+                name: 'Grade Average',
+                data: [studentGrades[0],studentGrades[1],studentGrades[2],studentGrades[3],studentGrades[4],studentGrades[5]],
+                marker: {
+                    radius: 4
+                }
+            }]
+        });
+    });
+    
+});
+
+function Start(studentGrades)
+{	
+	var sum = 0;
+	for (var ii = 0; ii < studentGrades.length; ii++){
+		sum += studentGrades[ii];
+	}
+	var average = sum/studentGrades.length;
+	return average;
+}
+
+function End(studentGrades)
+{
+	//y = mx+ b, m is slope, x is studentGrades.length, b is initial value, return y	
+	var slope = (studentGrades[studentGrades.length-1] - studentGrades[0])/(studentGrades.length - 0);
+	
+	return (slope*(studentGrades.length-1)) + studentGrades[0];
+}
+
+		</script>
+	</head>
+	<body>
+<script src="highcharts.js"></script>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+	</body>
+</html>

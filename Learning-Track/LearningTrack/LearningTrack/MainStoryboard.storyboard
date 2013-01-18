@@ -229,7 +229,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="vWC-H5-eCW">
+                                    <navigationItem title="Options" id="vWC-H5-eCW">
                                         <barButtonItem key="rightBarButtonItem" title="Logout" id="SAp-MM-dn1">
                                             <connections>
                                                 <segue destination="2" kind="modal" identifier="StudentLogout" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Nsr-O5-lZ8"/>

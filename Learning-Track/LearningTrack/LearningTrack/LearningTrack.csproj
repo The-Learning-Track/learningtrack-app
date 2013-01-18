@@ -85,6 +85,8 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="MonoTouch.Dialog-1" />
+    <Reference Include="System.Data" />
+    <Reference Include="Mono.Data.Sqlite" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -126,6 +128,8 @@
     <Compile Include="StudentOptionsViewController.designer.cs">
       <DependentUpon>StudentOptionsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="SQLite.cs" />
+    <Compile Include="Person.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -163,5 +167,8 @@
     <Content Include="charts\barChart.htm" />
     <Content Include="charts\gradeChart.htm" />
     <Content Include="charts\AttendanceChart.htm" />
+    <Content Include="charts\gradeTrend.htm" />
+    <Content Include="charts\VsClassAverage.htm" />
+    <Content Include="charts\highcharts-more.js" />
   </ItemGroup>
 </Project>

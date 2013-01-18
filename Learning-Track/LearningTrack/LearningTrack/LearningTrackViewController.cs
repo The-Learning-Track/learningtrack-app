@@ -1,6 +1,9 @@
 using System;
+using System.IO;
 using System.Drawing;
-
+using System.Data;
+using Mono.Data.Sqlite;
+using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
@@ -9,6 +12,8 @@ namespace LearningTrack
 	public partial class LearningTrackViewController : UIViewController
 	{
 		public bool _isProfessor;
+
+		private string _pathToDatabase;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -81,6 +86,26 @@ namespace LearningTrack
 				var nextViewController = (PickClassViewController) segue.DestinationViewController;
 				//Pass bool _isProfessor to the next view controller
 				nextViewController.isProfessor = _isProfessor;
+
+				// Figure out where the SQLite database will be.
+				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
+
+				//create a table to hold a Person object
+				using (var conn = new SQLite.SQLiteConnection(_pathToDatabase)){
+					conn.CreateTable<Person>();
+				}
+
+				//Insert a person into a new row in the table
+				var johnDoe  = new Person { firstName = "John", lastName = "Doe"};
+				var katsutoshiKawakami  = new Person { firstName = "Katsutoshi", lastName = "Kawakami"};
+				var dicksonPun  = new Person { firstName = "Dickson", lastName = "Pun"};
+
+				using (var database = new SQLite.SQLiteConnection(_pathToDatabase)){
+					database.Insert(johnDoe);
+					database.Insert(katsutoshiKawakami);
+					database.Insert(dicksonPun);
+				}
 			}
 		}
 		
