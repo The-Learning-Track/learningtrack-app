@@ -170,5 +170,6 @@
     <Content Include="charts\gradeTrend.htm" />
     <Content Include="charts\VsClassAverage.htm" />
     <Content Include="charts\highcharts-more.js" />
+    <Content Include="charts\gradeDistribution.htm" />
   </ItemGroup>
 </Project>
