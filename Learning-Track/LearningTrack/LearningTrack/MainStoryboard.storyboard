@@ -337,6 +337,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oMZ-Zt-45B">
+                                <rect key="frame" x="186" y="200" width="478" height="349"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -346,6 +353,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="logoutButton" destination="xsy-q9-pxF" id="X6v-aq-wCm"/>
+                        <outlet property="test" destination="oMZ-Zt-45B" id="oii-yY-gxb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXa-oU-cO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -713,6 +721,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InstructorOptionsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="test" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="InstructorStatisticsViewController" superclassName="UIViewController">
@@ -760,6 +769,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Nsr-O5-lZ8"/>
+        <segue reference="6Kw-1z-wvQ"/>
     </inferredMetricsTieBreakers>
 </document>

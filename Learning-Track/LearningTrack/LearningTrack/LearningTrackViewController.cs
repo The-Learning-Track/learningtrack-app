@@ -92,20 +92,28 @@ namespace LearningTrack
 				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
 				//create a table to hold a Person object
-				using (var conn = new SQLite.SQLiteConnection(_pathToDatabase)){
+				/*using (var conn = new SQLite.SQLiteConnection(_pathToDatabase)){
 					conn.CreateTable<Person>();
-				}
+				}*/
+				Database myDB = new Database(_pathToDatabase);// Automatically creates table or 'Person' objects
 
 				//Insert a person into a new row in the table
 				var johnDoe  = new Person { firstName = "John", lastName = "Doe"};
 				var katsutoshiKawakami  = new Person { firstName = "Katsutoshi", lastName = "Kawakami"};
 				var dicksonPun  = new Person { firstName = "Dickson", lastName = "Pun"};
 
-				using (var database = new SQLite.SQLiteConnection(_pathToDatabase)){
+				/*using (var database = new SQLite.SQLiteConnection(_pathToDatabase)){
 					database.Insert(johnDoe);
 					database.Insert(katsutoshiKawakami);
 					database.Insert(dicksonPun);
-				}
+				}*/
+
+				//CLEAR EVERYTHING
+				myDB.DeleteAll<Person>();
+				//INSERT NEW ENTRIES
+				myDB.Insert(johnDoe);
+				myDB.Insert(katsutoshiKawakami);
+				myDB.Insert(dicksonPun);
 			}
 		}
 		

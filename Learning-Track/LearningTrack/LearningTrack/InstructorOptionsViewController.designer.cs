@@ -13,12 +13,20 @@ namespace LearningTrack
 	{
 		[Outlet]
 		MonoTouch.UIKit.UIBarButtonItem logoutButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel test { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (logoutButton != null) {
 				logoutButton.Dispose ();
 				logoutButton = null;
+			}
+
+			if (test != null) {
+				test.Dispose ();
+				test = null;
 			}
 		}
 	}
