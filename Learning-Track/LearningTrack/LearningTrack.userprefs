@@ -1,17 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/SQLite.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/StudentStatisticsViewController.cs">
     <Files>
       <File FileName="LearningTrack/LearningTrackViewController.cs" Line="97" Column="6" />
-      <File FileName="LearningTrack/InstructorOptionsViewController.cs" Line="58" Column="17" />
+      <File FileName="LearningTrack/InstructorOptionsViewController.cs" Line="49" Column="1" />
       <File FileName="LearningTrack/SQLite.cs" Line="2245" Column="16" />
+      <File FileName="LearningTrack/StudentStatisticsViewController.cs" Line="68" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Option id="ShowAllFiles" value="True" />
           <Node name="LearningTrack" expanded="True">
             <Node name="charts" expanded="True" />
+            <Node name="MainStoryboard.storyboard" selected="True" />
+            <Node name="StudentStatisticsViewController.cs" expanded="True" />
           </Node>
         </State>
       </Pad>

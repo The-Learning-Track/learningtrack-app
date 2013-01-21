@@ -1,0 +1,131 @@
+/*
+------------ AUTHOR ------------
+
+Grid system by Rob Johnson http://robkellas.com
+Twitter @robkellas
+*/
+
+body {
+  min-width: 980px;
+}
+
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 {
+  margin: 0 auto;
+  width: 966px;
+  height: auto;
+  overflow: hidden; /* detect height of this container - enables margin bottom to be applied if needed */
+  padding: 0 10px; /* you can change this to 7px padding to equal width to be 980px */
+}
+
+/* `Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16 {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+}
+
+.blank {
+    visibility: hidden;
+    height:1px; /* fix to make blank columns have width when no content exists */ 
+}
+
+.row {
+    clear: both; /* because of this rule you technically don't need any columns to the right of your last visible column in your rows */
+    height: auto;
+    overflow: hidden; /* enable inherited height */
+    margin-bottom: 10px; /* spacing for between rows */
+}
+
+/* `Grid >> Children (Omega ~ Last) Apply to each end column of the row to remove the right-margin
+----------------------------------------------------------------------------------------------------*/
+
+.omega {
+  margin-right: 0;
+}
+
+/* `Grid >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .grid_1 {
+  width: 51px;
+}
+
+.container_16 .grid_2 {
+  width: 112px;
+}
+
+.container_16 .grid_3 {
+  width: 173px;
+}
+
+.container_16 .grid_4 {
+  width: 234px;
+}
+
+.container_16 .grid_5 {
+  width: 295px;
+}
+
+.container_16 .grid_6 {
+  width: 356px;
+}
+
+.container_16 .grid_7 {
+  width: 417px;
+}
+
+.container_16 .grid_8 {
+  width: 478px;
+}
+
+.container_16 .grid_9 {
+  width: 539px;
+}
+
+.container_16 .grid_10 {
+  width: 600px;
+}
+
+.container_16 .grid_11 {
+  width: 661px;
+}
+
+.container_16 .grid_12 {
+  width: 722px;
+}
+
+.container_16 .grid_13 {
+  width: 783px;
+}
+
+.container_16 .grid_14 {
+  width: 844px;
+}
+
+.container_16 .grid_15 {
+  width: 905px;
+}
+
+.container_16 .grid_16 {
+  width: 966px;
+}

@@ -1,0 +1,335 @@
+
+/*
+K5=new studentSeat("Johnny","bad","false","false");
+K6=new studentSeat("Jimmy","good","false","false");
+K7=new studentSeat("Jilly","ok","false","false");
+
+var StudentArray=[K5, K6, K7];
+*/
+//var myCars=["Saab","Volvo","BMW"];
+
+/*
+Create an array ie ['A1', 'A2', 'A3', 'A4', 'A5'];
+then you can just get the index of that object
+arr.indexOf(obj)
+*/
+
+function studentSeat(firstname,overallaverage,attendanceflag,missingassignmentFlag, studentseat) //this function creates the JavaScript object
+{
+this.name=firstname;
+this.overallaverage=overallaverage;
+this.attendanceflag=attendanceflag;
+this.missingassignmentFlag=missingassignmentFlag;
+this.seatnumber=student
+}
+
+A1=new studentSeat("Johnny","bad","false","false", "A1");
+A2=new studentSeat("Jimmy","good","false","false", "A2" );
+A3=new studentSeat("NULL","NULL","false","false", "A3");
+A4=new studentSeat("Johnny","bad","false","false", "A4");
+A5=new studentSeat("Jimmy","good","false","false", "A5");
+A6=new studentSeat("NULL","NULL","false","false", "A6");
+A7=new studentSeat("Johnny","bad","false","false", "A7");
+A8=new studentSeat("Jimmy","good","false","false", "A8");
+A9=new studentSeat("Jilly","ok","false","false", "A9");
+A10=new studentSeat("Johnny","bad","false","false", "A10");
+A11=new studentSeat("Jimmy","good","false","false", "A11");
+A12=new studentSeat("NULL","NULL","false","false", "A12");
+A13=new studentSeat("Johnny","bad","false","false", "A13");
+A14=new studentSeat("Jimmy","good","false","false", "A14");
+
+B1=new studentSeat("Johnny","bad","false","false", "B1");
+B2=new studentSeat("Jimmy","good","false","false", "B2");
+B3=new studentSeat("Jilly","ok","false","false", "B3");
+B4=new studentSeat("Johnny","bad","false","false", "B4");
+B5=new studentSeat("Jimmy","good","false","false", "B5");
+B6=new studentSeat("Jilly","ok","false","false", "B6");
+B7=new studentSeat("Johnny","bad","false","false", "B7");
+B8=new studentSeat("Jimmy","good","false","false", "B8");
+B9=new studentSeat("Jilly","ok","false","false", "B9");
+B10=new studentSeat("Johnny","bad","false","false", "B10");
+B11=new studentSeat("Jimmy","good","false","false", "B11");
+B12=new studentSeat("Jilly","ok","false","false", "B12");
+B13=new studentSeat("NULL","NULL","false","false", "B13");
+B14=new studentSeat("NULL","NULL","false","false", "B14");
+
+C1=new studentSeat("Johnny","bad","false","false", "C1");
+C2=new studentSeat("Jimmy","good","false","false", "C2");
+C3=new studentSeat("Jilly","ok","false","false", "C3");
+C4=new studentSeat("Johnny","bad","false","false", "C4");
+C5=new studentSeat("Jimmy","good","false","false", "C5");
+C6=new studentSeat("Jilly","ok","false","false", "C6");
+C7=new studentSeat("Johnny","bad","false","false", "C7");
+C8=new studentSeat("Jimmy","good","false","false", "C8");
+C9=new studentSeat("Jilly","ok","false","false", "C9");
+C10=new studentSeat("Johnny","bad","false","false", "C10");
+C11=new studentSeat("Jimmy","good","false","false", "C11");
+C12=new studentSeat("Jilly","ok","false","false", "C12");
+C13=new studentSeat("Johnny","bad","false","false", "C13");
+C14=new studentSeat("NULL","NULL","false","false", "C14");
+
+D1=new studentSeat("Johnny","bad","false","false", "D1");
+D2=new studentSeat("Jimmy","good","false","false", "D2");
+D3=new studentSeat("Jilly","ok","false","false", "D3");
+D4=new studentSeat("Johnny","bad","false","false", "D4");
+D5=new studentSeat("Jimmy","good","false","false", "D5");
+D6=new studentSeat("Jilly","ok","false","false", "D6");
+D7=new studentSeat("Johnny","bad","false","false", "D7");
+D8=new studentSeat("Jimmy","good","false","false", "D8");
+D9=new studentSeat("Jilly","ok","false","false", "D9");
+D10=new studentSeat("NULL","NULL","false","false", "D10");
+D11=new studentSeat("Jimmy","good","false","false", "D11");
+D12=new studentSeat("Jilly","ok","false","false", "D12");
+D13=new studentSeat("Johnny","bad","false","false", "D13");
+D14=new studentSeat("Jimmy","good","false","false", "D14");
+
+E1=new studentSeat("NULL","NULL","false","false", "E1");
+E2=new studentSeat("Jimmy","good","false","false", "E2");
+E3=new studentSeat("Jilly","ok","false","false", "E3");
+E4=new studentSeat("Johnny","bad","false","false", "E4");
+E5=new studentSeat("Jimmy","good","false","false", "E5");
+E6=new studentSeat("Jilly","ok","false","false", "E6");
+E7=new studentSeat("Johnny","bad","false","false", "E7");
+E8=new studentSeat("NULL","NULL","false","false", "E8");
+E9=new studentSeat("Jilly","ok","false","false", "E9");
+E10=new studentSeat("Johnny","bad","false","false", "E10");
+E11=new studentSeat("Jimmy","good","false","false", "E11");
+E12=new studentSeat("Jilly","ok","false","false", "E12");
+E13=new studentSeat("Johnny","bad","false","false", "E13");
+E14=new studentSeat("Jimmy","good","false","false", "E14");
+
+F1=new studentSeat("Johnny","bad","false","false", "F1");
+F2=new studentSeat("Jimmy","good","false","false", "F2");
+F3=new studentSeat("Jilly","ok","false","false", "F3");
+F4=new studentSeat("Johnny","bad","false","false", "F4");
+F5=new studentSeat("Jimmy","good","false","false", "F5");
+F6=new studentSeat("Jilly","ok","false","false", "F6");
+F7=new studentSeat("Johnny","bad","false","false", "F7");
+F8=new studentSeat("Jimmy","good","false","false", "F8");
+F9=new studentSeat("Jilly","ok","false","false", "F9");
+F10=new studentSeat("Johnny","bad","false","false", "F10");
+F11=new studentSeat("Jimmy","good","false","false", "F11");
+F12=new studentSeat("Jilly","ok","false","false", "F12");
+F13=new studentSeat("Johnny","bad","false","false", "F13");
+F14=new studentSeat("Jimmy","good","false","false", "F14");
+
+G1=new studentSeat("Johnny","bad","false","false", "G1");
+G2=new studentSeat("Jimmy","good","false","false", "G2");
+G3=new studentSeat("Jilly","ok","false","false", "G3");
+G4=new studentSeat("Johnny","bad","false","false", "G4");
+G5=new studentSeat("Jimmy","good","false","false", "G5");
+G6=new studentSeat("Jilly","ok","false","false", "G6");
+G7=new studentSeat("Johnny","bad","false","false", "G7");
+G8=new studentSeat("Jimmy","good","false","false", "G8");
+G9=new studentSeat("Jilly","ok","false","false", "G9");
+G10=new studentSeat("Johnny","bad","false","false", "G10");
+G11=new studentSeat("Jimmy","good","false","false", "G11");
+G12=new studentSeat("Jilly","ok","false","false", "G12");
+G13=new studentSeat("Johnny","bad","false","false", "G13");
+G14=new studentSeat("Jimmy","good","false","false", "G14");
+
+H1=new studentSeat("Johnny","bad","false","false", "H1");
+H2=new studentSeat("Jimmy","good","false","false", "H2");
+H3=new studentSeat("Jilly","ok","false","false", "H3");
+H4=new studentSeat("Johnny","bad","false","false", "H4");
+H5=new studentSeat("Jimmy","good","false","false", "H5");
+H6=new studentSeat("Jilly","ok","false","false", "H6");
+H7=new studentSeat("Johnny","bad","false","false", "H7");
+H8=new studentSeat("Jimmy","good","false","false", "H8");
+H9=new studentSeat("Jilly","ok","false","false", "H9");
+H10=new studentSeat("Johnny","bad","false","false", "H10");
+H11=new studentSeat("Jimmy","good","false","false", "H11");
+H12=new studentSeat("Jilly","ok","false","false", "H12");
+H13=new studentSeat("Johnny","bad","false","false", "H13");
+H14=new studentSeat("Jimmy","good","false","false", "H14");
+
+I1=new studentSeat("NULL","NULL","false","false", "I1");
+I2=new studentSeat("Jimmy","good","false","false", "I2");
+I3=new studentSeat("Jilly","ok","false","false", "I3");
+I4=new studentSeat("Johnny","bad","false","false", "I4");
+I5=new studentSeat("Jimmy","good","false","false", "I5");
+I6=new studentSeat("NULL","NULL","false","false", "I6");
+I7=new studentSeat("Johnny","bad","false","false", "I7");
+I8=new studentSeat("Jimmy","good","false","false", "I8");
+I9=new studentSeat("Jilly","ok","false","false", "I9");
+I10=new studentSeat("Johnny","bad","false","false", "I10");
+I11=new studentSeat("Jimmy","good","false","false", "I11");
+I12=new studentSeat("Jilly","ok","false","false", "I12");
+I13=new studentSeat("Johnny","bad","false","false", "I13");
+I14=new studentSeat("Jimmy","good","false","false", "I14");
+
+J1=new studentSeat("Johnny","bad","false","false", "J1");
+J2=new studentSeat("Jimmy","good","false","false", "J2");
+J3=new studentSeat("Jilly","ok","false","false", "J3");
+J4=new studentSeat("Johnny","bad","false","false", "J4");
+J5=new studentSeat("NULL","NULL","false","false", "J5");
+J6=new studentSeat("Jilly","ok","false","false", "J6");
+J7=new studentSeat("Johnny","bad","false","false", "J7");
+J8=new studentSeat("Jimmy","good","false","false", "J8");
+J9=new studentSeat("Jilly","ok","false","false", "J9");
+J10=new studentSeat("Johnny","bad","false","false", "J10");
+J11=new studentSeat("Jimmy","good","false","false", "J11");
+J12=new studentSeat("Jilly","ok","false","false", "J12");
+J13=new studentSeat("Johnny","bad","false","false", "J13");
+J14=new studentSeat("Jimmy","good","false","false", "J14");
+
+K1=new studentSeat("Johnny","bad","false","false", "K1");
+K2=new studentSeat("Jimmy","good","false","false", "K2");
+K3=new studentSeat("Jilly","ok","false","false", "K3");
+K4=new studentSeat("Johnny","bad","false","false", "K4");
+K5=new studentSeat("Jimmy","good","false","false", "K5");
+K6=new studentSeat("Jilly","ok","false","false", "K6");
+K7=new studentSeat("Johnny","bad","false","false", "K7");
+K8=new studentSeat("NULL","NULL","false","false", "K8");
+K9=new studentSeat("NULL","NULL","false","false", "K9");
+K10=new studentSeat("Johnny","bad","false","false", "K10");
+K11=new studentSeat("Jimmy","good","false","false", "K11");
+K12=new studentSeat("Jilly","ok","false","false", "K12");
+K13=new studentSeat("Johnny","bad","false","false", "K13");
+K14=new studentSeat("Jimmy","good","false","false", "K14");
+
+var studentArray = new Array(
+A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14,
+B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14,
+C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14,
+D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14,
+E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12, E13, E14,
+F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14,
+G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13, G14,
+H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12, H13, H14,
+I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13, I14,
+J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11, J12, J13, J14,
+K1, K2, K3, K4, K5, K6, K7, K8, K9, K10, K11, K12, K13, K14);
+//this array stores the array of student objects for each classroom
+
+function seatcolor(id, student) {
+x=document.getElementById(id)  //Find the element 
+//x.style.background="green";           //Change the style
+//x.style.color="white";
+//value = StudentArray.indexOf(id);
+//this function creates the proper seat color
+//dependent on how a student has performed
+if (student.overallaverage == "bad")
+{
+	x.style.background="#E42121";
+	x.style.color="white";
+	
+}
+else if (student.overallaverage=="ok")
+{
+	x.style.background="#EAF11C";
+	x.style.color="black";
+}
+else if (student.overallaverage=="good")
+{
+	x.style.background="#006600";
+	x.style.color="white";
+}
+else
+{
+	x.style.background="#C8C8C8";
+	x.style.color="null";
+}
+
+}         //Change the style
+
+//var test = K5.name;
+
+//create function that opens up the popup if the seat isn't empty
+function seatPopup(id, student)
+{
+//this function creates the proper page with the correct index of student
+//when a student seat is clicked
+	if (student.name != "NULL")
+	{
+	preurl = 'student_stats.html?id=';
+	url = preurl + id;
+	window.open(url,'popUpWindow','height=500,width=800,left=300,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=0, directories=no, status=no');
+	}
+
+}
+
+function seatName(id, student)
+{
+//this function is used on the actual seating chart
+//this will be used to write the student name
+//or add in the blank space if the student name is null
+//in order to make the seat the proper size
+	if(student.name != "NULL")
+	{
+		document.write(student.name);
+	}
+	else
+	{
+		document.write("<br>");
+	}
+}
+/*
+function studentSeatfromURL()
+{
+//this function takes the path name which was generated when a seat was clicked
+//and splits it to get the correct value of the seat number
+	var pathArray = window.location.pathname.split( '=' );
+	var studentSeatNumber = pathArray[1];
+	return studentSeatNumber;
+}
+*/
+/*
+
+function getStudentObject(id) 
+{
+//this function will get the proper student based on what seat the professor clicked on
+//it will get the input array of student objects
+//and based on that, it will determine which student's information to display
+for(i=0; i<studentArray.length; i++) {
+	if(studentArray[i].seatnumber == id)
+	{
+		currentstudent=new studentSeat(studentArray[i].name, studentArray[i].overallaverage, studentArray[i].attendanceflag, studentArray[i].missingassignmentFlag, studentArray[i].seatnumber);
+	}
+	
+	}
+	return currentstudent;
+	
+}
+*/
+
+function testArray(array)
+{
+	for (ii=0; ii < array.length; ii++)
+	{
+		if (array[ii].seatnumber == "A1")
+		{
+			index = ii;
+		}
+	}
+	return index;
+}
+
+function studentSeatfromURL()
+{
+//this function takes the path name which was generated when a seat was clicked
+//and splits it to get the correct value of the seat number
+	//var pathArray = window.location.pathname;
+	var pathArray = document.URL;
+	var studentSeat_pre = pathArray.split('=');
+	var seatnumber = studentSeat_pre[1];
+	//var studentSeatNumber = pathArray[1];
+	return seatnumber;
+}
+function getStudentObject(id, studentArray) 
+{
+//this function will get the proper student based on what seat the professor clicked on
+//it will get the input array of student objects
+//and based on that, it will determine which student's information to display
+/*for(i=0; i<studentArray.length; i++) {
+	if(studentArray[i].seatnumber == id)
+	{
+		return studentArray[i];
+	}
+	
+	}
+	*/
+	var index = studentArray.indexOf(id);
+	return index;
+	
+}

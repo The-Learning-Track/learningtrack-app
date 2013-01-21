@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Morse</title>
+<link rel="stylesheet" href="Totoro-V1/reset.css" />
+<link rel="stylesheet" href="Totoro-V1/text.css" />
+<link rel="stylesheet" href="Totoro-V1/16_980grid.css" />
+<link rel="stylesheet" href="Totoro-V1/demo.css" />
+<script type="text/javascript" src="seatfunctions.js"></script>
+
+<script type="text/javascript">
+
+
+function seatcolor(id) {
+x=document.getElementById(id)  //Find the element 
+x.style.background="green";           //Change the style
+x.style.color="white";
+}         //Change the style
+
+
+
+function studentSeat(firstname,overallaverage,attendanceflag,missingassignmentFlag) //this function creates the JavaScript object
+{
+this.name=firstname;
+this.overallaverage=overallaverage;
+this.attendanceflag=attendanceflag;
+this.missingassignmentFlag=missingassignmentFlag;
+}
+
+K5=new studentSeat("Johnny","bad","false","false");
+K6=new studentSeat("Jimmy","good","false","false");
+K7=new studentSeat("Jilly","ok","false","false");
+
+var StudentArray=[K5, K6, K7];
+
+var test = K5.name;
+</script>
+</head>
+
+<body>
+<div class="container_16">
+  
+  
+  <div class="row">
+  
+    <div id="K1" class="grid_1"><style onload="seatcolor('K2');"></style>
+      <p>K1</p>
+    </div>
+    <div id="K2" class="grid_1"><style onload="seatcolor('K2');"></style>
+      <p>K2</p>
+    </div>
+    <div id="K3" class="grid_1"><style onload="seatcolor('K3');"></style>
+      <p>K3</p>
+    </div>
+    <div id="K4" class="grid_1"><style onload="seatcolor('K4');"></style>
+      <p>K4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="K5" class="grid_1"><style onload="seatcolor('K5');"></style>
+      <p>K5</p>
+    </div>
+    <div id="K6" class="grid_1"><style onload="seatcolor('K6');"></style>
+      <p>K6</p>
+    </div>
+    <div id="K7" class="grid_1"><style onload="seatcolor('K7');"></style>
+      <p>K7</p>
+    </div>
+    <div id="K8" class="grid_1"><style onload="seatcolor('K8');"></style>
+      <p>K8</p>
+    </div>
+    <div id="K9" class="grid_1"><style onload="seatcolor('K9');"></style>
+      <p>K9</p>
+    </div>
+    <div id="K10" class="grid_1"><style onload="seatcolor('K10');"></style>
+      <p>K10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="K11" class="grid_1"><style onload="seatcolor('K11');"></style>
+      <p>K11</p>
+    </div>
+    <div id="K12" class="grid_1"><style onload="seatcolor('K12');"></style>
+      <p>K12</p>
+    </div>
+    <div id="K13" class="grid_1"><style onload="seatcolor('K13');"></style>
+      <p>K13</p>
+    </div>
+    <div id="K14"class="grid_1 omega"><style onload="seatcolor('K14');"></style>
+      <p>K14</p>
+    </div>
+    
+  </div><!-- end .row -->
+   <div class="row">
+  
+    <div id="J1" class="grid_1"><style onload="seatcolor('J1');"></style>
+      <p>J1</p>
+    </div>
+    <div id="J2" class="grid_1"><style onload="seatcolor('J2');"></style>
+      <p>J2</p>
+    </div>
+    <div id="J3" class="grid_1"><style onload="seatcolor('J3');"></style>
+      <p>J3</p>
+    </div>
+    <div id="J4" class="grid_1"><style onload="seatcolor('J4');"></style>
+      <p>J4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="J5" class="grid_1"><style onload="seatcolor('J5');"></style>
+      <p>J5</p>
+    </div>
+    <div id="J6" class="grid_1"><style onload="seatcolor('J6');"></style>
+      <p>J6</p>
+    </div>
+    <div id="J7" class="grid_1"><style onload="seatcolor('J7');"></style>
+      <p>J7</p>
+    </div>
+    <div id="J8"class="grid_1"><style onload="seatcolor('J8');"></style>
+      <p>J8</p>
+    </div>
+    <div id="J9" class="grid_1"><style onload="seatcolor('J9');"></style>
+      <p>J9</p>
+    </div>
+    <div id="J10" class="grid_1"><style onload="seatcolor('J10');"></style>
+      <p>J10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="J11" class="grid_1"><style onload="seatcolor('J11');"></style>
+      <p>J11</p>
+    </div>
+    <div id="J12" class="grid_1"><style onload="seatcolor('J12');"></style>
+      <p>J12</p>
+    </div>
+    <div id="J13" class="grid_1"><style onload="seatcolor('J13');"></style>
+      <p>J13</p>
+    </div>
+    <div id="J14" class="grid_1 omega"><style onload="seatcolor('J14');"></style>
+      <p>J14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="I1" class="grid_1"><style onload="seatcolor('I1');"></style>
+      <p>I1</p>
+    </div>
+    <div id="I2" class="grid_1"><style onload="seatcolor('I2');"></style>
+      <p>I2</p>
+    </div>
+    <div id="I3" class="grid_1"><style onload="seatcolor('I3');"></style>
+      <p>I3</p>
+    </div>
+    <div id="I4" class="grid_1"><style onload="seatcolor('I4');"></style>
+      <p>I4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="I5" class="grid_1"><style onload="seatcolor('I5');"></style>
+      <p>I5</p>
+    </div>
+    <div id="I6" class="grid_1"><style onload="seatcolor('I6');"></style>
+      <p>I6</p>
+    </div>
+    <div id= "I7" class="grid_1"><style onload="seatcolor('I7');"></style>
+      <p>I7</p>
+    </div>
+    <div id="I8" class="grid_1"><style onload="seatcolor('I8');"></style>
+      <p>I8</p>
+    </div>
+    <div id="I9" class="grid_1"><style onload="seatcolor('I9');"></style>
+      <p>I9</p>
+    </div>
+    <div id="I10" class="grid_1"><style onload="seatcolor('I10');"></style>
+      <p>I10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="I11" class="grid_1"><style onload="seatcolor('I11');"></style>
+      <p>I11</p>
+    </div>
+    <div id="I12" class="grid_1"><style onload="seatcolor('I12');"></style>
+      <p>I12</p>
+    </div>
+    <div id="I13" class="grid_1"><style onload="seatcolor('I13');"></style>
+      <p>I13</p>
+    </div>
+    <div id="I14" class="grid_1 omega"><style onload="seatcolor('I14');"></style>
+      <p>I14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="H1" class="grid_1"><style onload="seatcolor('H1');"></style>
+      <p>H1</p>
+    </div>
+    <div id="H2" class="grid_1"><style onload="seatcolor('H2');"></style>
+      <p>H2</p>
+    </div>
+    <div id="H3" class="grid_1"><style onload="seatcolor('H3');"></style>
+      <p>H3</p>
+    </div>
+    <div id="H4" class="grid_1"><style onload="seatcolor('H4');"></style>
+      <p>H4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="H5" class="grid_1"><style onload="seatcolor('H5');"></style>
+      <p>H5</p>
+    </div>
+    <div id="H6" class="grid_1"><style onload="seatcolor('H6');"></style>
+      <p>H6</p>
+    </div>
+    <div id="H7" class="grid_1"><style onload="seatcolor('H7');"></style>
+      <p>H7</p>
+    </div>
+    <div id="H8" class="grid_1"><style onload="seatcolor('H8');"></style>
+      <p>H8</p>
+    </div>
+    <div id="H9" class="grid_1"><style onload="seatcolor('H9');"></style>
+      <p>H9</p>
+    </div>
+    <div id="H10" class="grid_1"><style onload="seatcolor('H10');"></style>
+      <p>H10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="H11" class="grid_1"><style onload="seatcolor('H11');"></style>
+      <p>H11</p>
+    </div>
+    <div id="H12" class="grid_1"><style onload="seatcolor('H12');"></style>
+      <p>H12</p>
+    </div>
+    <div id="H13" class="grid_1"><style onload="seatcolor('H13');"></style>
+      <p>H13</p>
+    </div>
+    <div id="H14" class="grid_1 omega"><style onload="seatcolor('H14');"></style>
+      <p>H14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="G1" class="grid_1"><style onload="seatcolor('G1');"></style>
+      <p>G1</p>
+    </div>
+    <div id="G2" class="grid_1"><style onload="seatcolor('G2');"></style>
+      <p>G2</p>
+    </div>
+    <div id="G3" class="grid_1"><style onload="seatcolor('G3');"></style>
+      <p>G3</p>
+    </div>
+    <div id="G4" class="grid_1"><style onload="seatcolor('G4');"></style>
+      <p>G4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="G5" class="grid_1"><style onload="seatcolor('G5');"></style>
+      <p>G5</p>
+    </div>
+    <div id="G6" class="grid_1"><style onload="seatcolor('G6');"></style>
+      <p>G6</p>
+    </div>
+    <div id="G7" class="grid_1"><style onload="seatcolor('G7');"></style>
+      <p>G7</p>
+    </div>
+    <div id="G8" class="grid_1"><style onload="seatcolor('G8');"></style>
+      <p>G8</p>
+    </div>
+    <div id="G9" class="grid_1"><style onload="seatcolor('G9');"></style>
+      <p>G9</p>
+    </div>
+    <div id="G10" class="grid_1"><style onload="seatcolor('G10');"></style>
+      <p>G10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="G11" class="grid_1"><style onload="seatcolor('G11');"></style>
+      <p>G11</p>
+    </div>
+    <div id="G12" class="grid_1"><style onload="seatcolor('G12');"></style>
+      <p>G12</p>
+    </div>
+    <div id="G13" class="grid_1"><style onload="seatcolor('G13');"></style>
+      <p>G13</p>
+    </div>
+    <div id="G14" class="grid_1 omega"><style onload="seatcolor('G14');"></style>
+      <p>G14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="F1" class="grid_1"><style onload="seatcolor('F1');"></style>
+      <p>F1</p>
+    </div>
+    <div id="F2" class="grid_1"><style onload="seatcolor('F2');"></style>
+      <p>F2</p>
+    </div>
+    <div id="F3" class="grid_1"><style onload="seatcolor('F3');"></style>
+      <p>F3</p>
+    </div>
+    <div id="F4" class="grid_1"><style onload="seatcolor('F4');"></style>
+      <p>F4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="F5" class="grid_1"><style onload="seatcolor('F5');"></style>
+      <p>F5</p>
+    </div>
+    <div id="F6" class="grid_1"><style onload="seatcolor('F6');"></style>
+      <p>F6</p>
+    </div>
+    <div id="F7" class="grid_1"><style onload="seatcolor('F7');"></style>
+      <p>F7</p>
+    </div>
+    <div id="F8" class="grid_1"><style onload="seatcolor('F8');"></style>
+      <p>F8</p>
+    </div>
+    <div id="F9" class="grid_1"><style onload="seatcolor('F9');"></style>
+      <p>F9</p>
+    </div>
+    <div id="F10" class="grid_1"><style onload="seatcolor('F10');"></style>
+      <p>F10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="F11" class="grid_1"><style onload="seatcolor('F11');"></style>
+      <p>F11</p>
+    </div>
+    <div id="F12" class="grid_1"><style onload="seatcolor('F12');"></style>
+      <p>F12</p>
+    </div>
+    <div id="F13" class="grid_1"><style onload="seatcolor('F13');"></style>
+      <p>F13</p>
+    </div>
+    <div id="F14" class="grid_1 omega"> <style onload="seatcolor('F14');"></style>
+      <p>F14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id='E1' class="grid_1"><style onload="seatcolor('E1');"></style>
+      <p>E1</p>
+    </div>
+    <div id='E2' class="grid_1"><style onload="seatcolor('E2');"></style>
+      <p>E2</p>
+    </div>
+    <div id="E3" class="grid_1"><style onload="seatcolor('E3');"></style>
+      <p>E3</p>
+    </div>
+    <div id="E4" class="grid_1"><style onload="seatcolor('E4');"></style>
+      <p>E4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="E5" class="grid_1"><style onload="seatcolor('E5');"></style>
+      <p>E5</p>
+    </div>
+    <div id="E6" class="grid_1"><style onload="seatcolor('E6');"></style>
+      <p>E6</p>
+    </div>
+    <div id="E7" class="grid_1"><style onload="seatcolor('E7');"></style>
+      <p>E7</p>
+    </div>
+    <div id="E8" class="grid_1"><style onload="seatcolor('E8');"></style>
+      <p>E8</p>
+    </div>
+    <div id="E9" class="grid_1"><style onload="seatcolor('E9');"></style>
+      <p>E9</p>
+    </div>
+    <div id="E10" class="grid_1"><style onload="seatcolor('E10');"></style>
+      <p>E10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="E11" class="grid_1"><style onload="seatcolor('E11');"></style>
+      <p>E11</p>
+    </div>
+    <div id="E12" class="grid_1"><style onload="seatcolor('E12');"></style>
+      <p>E12</p>
+    </div>
+    <div id="E13" class="grid_1"><style onload="seatcolor('E13');"></style>
+      <p>E13</p>
+    </div>
+    <div id="E14" class="grid_1 omega"><style onload="seatcolor('E14');"></style>
+      <p>E14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="D1" class="grid_1"><style onload="seatcolor('D1');"></style>
+      <p>D1</p>
+    </div>
+    <div id="D2" class="grid_1"><style onload="seatcolor('D2');"></style>
+      <p>D2</p>
+    </div>
+    <div id="D3" class="grid_1"><style onload="seatcolor('D3');"></style>
+      <p>D3</p>
+    </div>
+    <div id="D4" class="grid_1"><style onload="seatcolor('D4');"></style>
+      <p>D4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="D5" class="grid_1"><style onload="seatcolor('D5');"></style>
+      <p>D5</p>
+    </div>
+    <div id="D6" class="grid_1"><style onload="seatcolor('D6');"></style>
+      <p>D6</p>
+    </div>
+    <div id="D7" class="grid_1"><style onload="seatcolor('D7');"></style>
+      <p>D7</p>
+    </div>
+    <div id="D8" class="grid_1"><style onload="seatcolor('D8');"></style>
+      <p>D8</p>
+    </div>
+    <div id="D9" class="grid_1"><style onload="seatcolor('D9');"></style>
+      <p>D9</p>
+    </div>
+    <div id="D10" class="grid_1"><style onload="seatcolor('D10');"></style>
+      <p>D10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="D11" class="grid_1"><style onload="seatcolor('D11');"></style>
+      <p>D11</p>
+    </div>
+    <div id="D12" class="grid_1"><style onload="seatcolor('D12');"></style>
+      <p>D12</p>
+    </div>
+    <div id="D13" class="grid_1"><style onload="seatcolor('D13');"></style>
+      <p>D13</p>
+    </div>
+    <div id="D14" class="grid_1 omega"><style onload="seatcolor('D14');"></style>
+      <p>D14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="C1" class="grid_1"><style onload="seatcolor('C1');"></style>
+      <p>C1</p>
+    </div>
+    <div id="C2" class="grid_1"><style onload="seatcolor('C2');"></style>
+      <p>C2</p>
+    </div>
+    <div id="C3" class="grid_1"><style onload="seatcolor('C3');"></style>
+      <p>C3</p>
+    </div>
+    <div id="C4" class="grid_1"><style onload="seatcolor('C4');"></style>
+      <p>C4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="C5" class="grid_1"><style onload="seatcolor('C5');"></style>
+      <p>C5</p>
+    </div>
+    <div id="C6" class="grid_1"><style onload="seatcolor('C6');"></style>
+      <p>C6</p>
+    </div>
+    <div id="C7" class="grid_1"><style onload="seatcolor('C7');"></style>
+      <p>C7</p>
+    </div>
+    <div id="C8" class="grid_1"><style onload="seatcolor('C8');"></style>
+      <p>C8</p>
+    </div>
+    <div id="C9" class="grid_1"><style onload="seatcolor('C9');"></style>
+      <p>C9</p>
+    </div>
+    <div id="C10" class="grid_1"><style onload="seatcolor('C10');"></style>
+      <p>C10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="C11" class="grid_1"><style onload="seatcolor('C11');"></style>
+      <p>C11</p>
+    </div>
+    <div id="C12" class="grid_1"><style onload="seatcolor('C12');"></style>
+      <p>C12</p>
+    </div>
+    <div id="C13" class="grid_1"><style onload="seatcolor('C13');"></style>
+      <p>C13</p>
+    </div>
+    <div id="C14" class="grid_1 omega"><style onload="seatcolor('C14');"></style>
+      <p>C14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="B1" class="grid_1"><style onload="seatcolor('B1');"></style>
+      <p>B1</p>
+    </div>
+    <div id="B2" class="grid_1"><style onload="seatcolor('B2');"></style>
+      <p>B2</p>
+    </div>
+    <div id="B3" class="grid_1"><style onload="seatcolor('B3');"></style>
+      <p>B3</p>
+    </div>
+    <div id="B4" class="grid_1"><style onload="seatcolor('B4');"></style>
+      <p>B4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="B5" class="grid_1"><style onload="seatcolor('B5');"></style>
+      <p>B5</p>
+    </div>
+    <div id="B6" class="grid_1"><style onload="seatcolor('B6');"></style>
+      <p>B6</p>
+    </div>
+    <div id="B7" class="grid_1"><style onload="seatcolor('B7');"></style>
+      <p>B7</p>
+    </div>
+    <div id="B8" class="grid_1"><style onload="seatcolor('B8');"></style>
+      <p>B8</p>
+    </div>
+    <div id="B9" class="grid_1"><style onload="seatcolor('B9');"></style>
+      <p>B9</p>
+    </div>
+    <div id="B10" class="grid_1"><style onload="seatcolor('B10');"></style>
+      <p>B10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="B11" class="grid_1"><style onload="seatcolor('B11');"></style>
+      <p>B11</p>
+    </div>
+    <div id="B12" class="grid_1"><style onload="seatcolor('B12');"></style>
+      <p>B12</p>
+    </div>
+    <div id="B13" class="grid_1"><style onload="seatcolor('B13');"></style>
+      <p>B13</p>
+    </div>
+    <div id="B14" class="grid_1 omega"><style onload="seatcolor('B14');"></style>
+      <p>B14</p>
+    </div>
+    
+  </div><!-- end .row -->
+ <div class="row">
+  
+    <div id="A1" class="grid_1"><style onload="seatcolor('A1');"></style>
+      <p>A1</p>
+    </div>
+    <div id="A2" class="grid_1"><style onload="seatcolor('A2');"></style>
+      <p>A2</p>
+    </div>
+    <div id="A3" class="grid_1"><style onload="seatcolor('A3');"></style>
+      <p>A3</p>
+    </div>
+    <div id="A4" class="grid_1"><style onload="seatcolor('A4');"></style>
+      <p>A4</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="A5" class="grid_1"><style onload="seatcolor('A5');"></style>
+      <p>A5</p>
+    </div>
+    <div id="A6" class="grid_1"><style onload="seatcolor('A6');"></style>
+      <p>A6</p>
+    </div>
+    <div id="A7" class="grid_1"><style onload="seatcolor('A7');"></style>
+      <p>A7</p>
+    </div>
+    <div id="A8" class="grid_1"><style onload="seatcolor('A8');"></style>
+      <p>A8</p>
+    </div>
+    <div id="A9" class="grid_1"><style onload="seatcolor('A9');"></style>
+      <p>A9</p>
+    </div>
+    <div id="A10" class="grid_1"><style onload="seatcolor('A10');"></style>
+      <p>A10</p>
+    </div>
+    <div class="grid_1 blank">
+      <p>BLANK</p>
+    </div>
+    <div id="A11" class="grid_1"><style onload="seatcolor('A11');"></style>
+      <p>A11</p>
+    </div>
+    <div id="A12" class="grid_1"><style onload="seatcolor('A12');"></style>
+      <p>A12</p>
+    </div>
+    <div id="A13" class="grid_1"><style onload="seatcolor('A13');"></style>
+      <p>A13</p>
+    </div>
+    <div id="A14" class="grid_1 omega"><style onload="seatcolor('A14');"></style>
+      <p>A14</p>
+    </div>
+    
+  </div><!-- end .row -->
+
+    <!-- START INTRO -->
+  <div class="row">
+    <div class="grid_16 intro">
+        <h1>Front of room</h1>
+    </div>
+  </div>
+  <!-- END INTRO -->
+
+</div><!-- end .container_16 -->
+</body>
+</html>
