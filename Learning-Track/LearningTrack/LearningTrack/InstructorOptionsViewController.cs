@@ -15,8 +15,6 @@ namespace LearningTrack
 		{
 		}
 
-		//Store data in a list of 'Person' objects
-		public List<Person> listData;
 		//Destination directory of database
 		private string _pathToDatabase;
 
@@ -34,15 +32,24 @@ namespace LearningTrack
 			var documents = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
 			_pathToDatabase = Path.Combine (documents, "db_sqlite-net.db");
 
-			Database myDB = new Database(_pathToDatabase);// Automatically creates table or 'Person' objects
+			// Automatically creates table of 'Student' objects
+			Database myDB = new Database(_pathToDatabase);
 
-			//Query from database and recreate list
-			List<Person> myPeoples = new List<Person>();
-			foreach (var person in myDB.QueryAllStudents()) {
-				myPeoples.Add(person);
+			//Query from database and recreate list of grades
+			List<Grade> studentGrades = new List<Grade>();
+			foreach (var grade in myDB.QueryAllGrades()) {
+				studentGrades.Add(grade);
 			}
 
-			int derp = 0;
-		}		
+			//Query from database and recreate list of students
+			List<StudentINFO> studentINFO = new List<StudentINFO>();
+			foreach (var student in myDB.QueryAllStudents()) {
+				studentINFO.Add(student);
+			}
+
+			//Extracted and combined grades and studentINFO under a list of 'Student' objects
+			List<Student> COMPLETEINFO = myDB.getCompleteStudentINFO(studentINFO, studentGrades);
+
+		}	
 	}
 }

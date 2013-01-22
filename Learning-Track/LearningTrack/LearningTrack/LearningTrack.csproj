@@ -129,7 +129,6 @@
       <DependentUpon>StudentOptionsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLite.cs" />
-    <Compile Include="Person.cs" />
     <Compile Include="InstructorSeatingChartViewController.cs" />
     <Compile Include="InstructorSeatingChartViewController.designer.cs">
       <DependentUpon>InstructorSeatingChartViewController.cs</DependentUpon>
@@ -138,6 +137,7 @@
     <Compile Include="SeatingChartWebView.designer.cs">
       <DependentUpon>SeatingChartWebView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Database.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -185,7 +185,6 @@
     </Content>
     <Content Include="charts\SeatingCharts\seatfunctions.js" />
     <Content Include="charts\SeatingCharts\student_stats.html" />
-    <Content Include="charts\SeatingCharts\.DS_Store" />
     <Content Include="charts\SeatingCharts\backup_v1.html" />
     <Content Include="charts\SeatingCharts\backupjs" />
     <Content Include="charts\SeatingCharts\Totoro-V1\16_980grid.css" />

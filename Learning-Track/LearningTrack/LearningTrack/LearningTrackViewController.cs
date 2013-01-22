@@ -87,33 +87,31 @@ namespace LearningTrack
 				//Pass bool _isProfessor to the next view controller
 				nextViewController.isProfessor = _isProfessor;
 
+				//---------------------------------------------------------------------------------------
 				// Figure out where the SQLite database will be.
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
-				//create a table to hold a Person object
-				/*using (var conn = new SQLite.SQLiteConnection(_pathToDatabase)){
-					conn.CreateTable<Person>();
-				}*/
-				Database myDB = new Database(_pathToDatabase);// Automatically creates table or 'Person' objects
-
-				//Insert a person into a new row in the table
-				var johnDoe  = new Person { firstName = "John", lastName = "Doe"};
-				var katsutoshiKawakami  = new Person { firstName = "Katsutoshi", lastName = "Kawakami"};
-				var dicksonPun  = new Person { firstName = "Dickson", lastName = "Pun"};
-
-				/*using (var database = new SQLite.SQLiteConnection(_pathToDatabase)){
-					database.Insert(johnDoe);
-					database.Insert(katsutoshiKawakami);
-					database.Insert(dicksonPun);
-				}*/
+				// Automatically creates table of 'Student' and 'Grade' objects
+				Database myDB = new Database(_pathToDatabase);
 
 				//CLEAR EVERYTHING
-				myDB.DeleteAll<Person>();
-				//INSERT NEW ENTRIES
-				myDB.Insert(johnDoe);
-				myDB.Insert(katsutoshiKawakami);
-				myDB.Insert(dicksonPun);
+				myDB.clearDB ();
+
+				//INSERT NEW STUDENTS
+				myDB.Insert(new StudentINFO { firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1"});
+				myDB.Insert(new StudentINFO { firstName = "Katsutoshi", lastName = "Kawakami", studentID = "001", seatLocation = "A3"});
+				myDB.Insert(new StudentINFO { firstName = "Dickson", lastName = "Pun", studentID = "002", seatLocation = "B1"});
+				//INSERT CORRESPONDING GRADES
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 7, totalPoints = 10, studentID = "000"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 7, totalPoints = 10, studentID = "001"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 8, totalPoints = 10, studentID = "001"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 8, totalPoints = 10, studentID = "001"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
+				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
 			}
 		}
 		
