@@ -138,6 +138,7 @@
       <DependentUpon>SeatingChartWebView.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="XML.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

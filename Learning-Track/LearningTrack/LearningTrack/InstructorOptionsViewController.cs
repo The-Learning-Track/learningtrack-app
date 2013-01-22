@@ -50,6 +50,37 @@ namespace LearningTrack
 			//Extracted and combined grades and studentINFO under a list of 'Student' objects
 			List<Student> COMPLETEINFO = myDB.getCompleteStudentINFO(studentINFO, studentGrades);
 
+			//TEST XML
+			SEAT dicksonSeat = new SEAT{SEAT_NUMBER = "A1",
+								NAME = "Dickson",
+								OVERALL_AVERAGE = "good",
+								ATTENDANCE_FLAG = "false",
+								MISSING_ASSIGNMENT_FLAG = "false",
+								HOMEWORK_AVERAGE = "ok",
+								EXAM_AVERAGE = "good",
+								LAB_AVERAGE = "good",
+								PREDICT_GRADE = "A"};
+
+			SEAT katsuSeat = new SEAT{SEAT_NUMBER = "C5",
+								NAME = "Katsu",
+								OVERALL_AVERAGE = "bad",
+								ATTENDANCE_FLAG = "false",
+								MISSING_ASSIGNMENT_FLAG = "true",
+								HOMEWORK_AVERAGE = "ok",
+								EXAM_AVERAGE = "bad",
+								LAB_AVERAGE = "bad",
+								PREDICT_GRADE = "C"};
+			//Add seats to list of seats
+			List<SEAT> classSeats = new List<SEAT>();
+			classSeats.Add(dicksonSeat);
+			classSeats.Add(katsuSeat);
+			//Make seatingChart
+			SEATINGCHART mySeatingChart = new SEATINGCHART {SEATING_CHART = classSeats};
+			//Store seatingChart in COURSE
+			//COURSE myCourse = new COURSE {seatingChart = mySeatingChart};
+			//Serialize to XML
+			mySeatingChart.serializeToXML();
+			//myCourse.serializeToXML();
 		}	
 	}
 }

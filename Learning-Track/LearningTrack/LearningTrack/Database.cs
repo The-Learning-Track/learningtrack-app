@@ -46,8 +46,6 @@ namespace LearningTrack
 		public List<Grade> grades { get; set; }
 	}
 
-
-
 	public class Database : SQLiteConnection
 	{
 		public Database (string path) : base(path)
