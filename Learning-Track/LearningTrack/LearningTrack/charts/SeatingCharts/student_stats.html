@@ -213,49 +213,13 @@ function saveNote(index, array)
 }
 
 
-//var id = studentSeatfromURL();
-//student = getStudentObject(id);
-function studentSeatfromURL()
-{
-//this function takes the path name which was generated when a seat was clicked
-//and splits it to get the correct value of the seat number
-	//var pathArray = window.location.pathname;
-	var pathArray = document.URL;
-	var studentSeat_pre = pathArray.split('=');
-	var seatnumber = studentSeat_pre[1];
-	//var studentSeatNumber = pathArray[1];
-	return seatnumber;
-}//end of function
-
-function getStudentObject(id, studentArray) 
-{
-//this function will get the proper student based on what seat the professor clicked on
-//it will get the input array of student objects
-//and based on that, it will determine which student's information to display
-for(i=0; i<studentArray.length; i++) {
-	if(studentArray[i].seat == id)
-	{
-		return i;
-		break;
-	}
-	
-}
-}//end of function 
 
 function addText(index, array) {
     document.getElementById("note").value += array[index].note;
 }
 
-function goBack()
-  {
-  window.history.back()
-  }
-
-var seatid = studentSeatfromURL();
-var index = getStudentObject(seatid, studArray);
-
-addText(index, studArray);
-
+var studentsArray = queryXML();
+var index=studentSeatfromURL();
 
 </script>
 
@@ -269,20 +233,19 @@ addText(index, studArray);
 			<a href="morse.html" class="NoteButton">Back</a>
 		</div>
 		<div id="middlesection">
-			<script> document.write(studArray[index].name); </script>
+			<script> seatName(index, studentsArray); </script>
 		</div>
 		<div id="endsection">
-			don't know
 		</div>
 		
 	</div>
 	
 	<div id="sidebar">
-		<h1> total possible points </h1>
-			<p> tables and stuffs</p>
+		<h1> Side Example 1 </h1>
+			<p> Student Information Here</p>
 			<div id="projectedgrade">
 				<h1> Projected Grade </h1>
-					<h2> <script> document.write(studArray[index].predictedGrade); </script> </h2>
+					<h2> <script> document.write(studentsArray[index].predictedGrade); </script> </h2>
 			</div>
 			<div id="examresults">
 			<h1> Exam Results </h1>

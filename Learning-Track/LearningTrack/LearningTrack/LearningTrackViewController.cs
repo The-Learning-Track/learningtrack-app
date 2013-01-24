@@ -92,6 +92,9 @@ namespace LearningTrack
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
+				string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
+
+
 				// Automatically creates table of 'Student' and 'Grade' objects
 				Database myDB = new Database(_pathToDatabase);
 

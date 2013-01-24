@@ -196,5 +196,6 @@
     <Content Include="charts\SeatingCharts\Totoro-V1\text.css" />
     <Content Include="charts\SeatingCharts\highcharts.js" />
     <Content Include="charts\SeatingCharts\highcharts-more.js" />
+    <Content Include="charts\SeatingCharts\seatingchart.xml" />
   </ItemGroup>
 </Project>
