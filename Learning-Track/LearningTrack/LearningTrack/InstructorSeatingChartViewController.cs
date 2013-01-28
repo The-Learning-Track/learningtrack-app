@@ -11,6 +11,8 @@ namespace LearningTrack
 {
 	public partial class InstructorSeatingChartViewController : UIViewController
 	{
+		public int chartType;
+
 		public InstructorSeatingChartViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -20,33 +22,26 @@ namespace LearningTrack
 			base.ViewDidLoad ();
 			
 			//Load the first plot, for now
-			LoadPlot();
-			
-			//Populate tableviews for plot selection
-			//PopulateTableList();
+			LoadSeatingChart(chartType);
 		}
 
-		public void LoadPlot (int plot = 0)
+		public void LoadSeatingChart (int chart)
 		{
 			//link local filename to become a local HTML URL
 			string  fileName;
-			switch (plot) {
-				//Remember case-sensitive
+
+			switch (chart) {
+			//Remember case-sensitive
 			case 0: fileName = "charts/SeatingCharts/morse.html"; break;
-			case 1: fileName = "charts/barChart.htm"; break;
-			case 2: fileName = "charts/gradeChart.htm"; break;
-			case 3: fileName = "charts/gradeTrend.htm"; break;
-			case 4: fileName = "charts/VsClassAverage.htm"; break;
-			case 5: fileName = "charts/gradeDistribution.htm"; break;
-			default: fileName = "charts/AttendanceChart.htm"; break;
+			case 1: fileName = "charts/SeatingCharts/studio.html"; break;
+			default: fileName = "charts/SeatingCharts/morse.html"; break;
 			}
+
 			string localHtmlUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);
 
 			//load the appropriate file to the webView
 			SeatWebView.LoadRequest(new NSUrlRequest(new NSUrl(localHtmlUrl, false)));
 			SeatWebView.ScalesPageToFit = false;
-			
 		}
-
 	}
 }

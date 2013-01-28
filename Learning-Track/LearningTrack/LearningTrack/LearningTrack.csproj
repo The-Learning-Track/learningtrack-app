@@ -102,15 +102,7 @@
     <Compile Include="PickClassViewController.designer.cs">
       <DependentUpon>PickClassViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PickClassTableView.cs" />
-    <Compile Include="PickClassTableView.designer.cs">
-      <DependentUpon>PickClassTableView.cs</DependentUpon>
-    </Compile>
     <Compile Include="TableSource.cs" />
-    <Compile Include="StudentTabController.cs" />
-    <Compile Include="StudentTabController.designer.cs">
-      <DependentUpon>StudentTabController.cs</DependentUpon>
-    </Compile>
     <Compile Include="InstructorStatisticsViewController.cs" />
     <Compile Include="InstructorStatisticsViewController.designer.cs">
       <DependentUpon>InstructorStatisticsViewController.cs</DependentUpon>
@@ -139,6 +131,19 @@
     </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="XML.cs" />
+    <Compile Include="PickClassTableSource.cs" />
+    <Compile Include="StudentSeatingChartViewController.cs" />
+    <Compile Include="StudentSeatingChartViewController.designer.cs">
+      <DependentUpon>StudentSeatingChartViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstructorTabBarController.cs" />
+    <Compile Include="InstructorTabBarController.designer.cs">
+      <DependentUpon>InstructorTabBarController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentTabBarController.cs" />
+    <Compile Include="StudentTabBarController.designer.cs">
+      <DependentUpon>StudentTabBarController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

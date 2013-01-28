@@ -13,12 +13,20 @@ namespace LearningTrack
 	{
 		[Outlet]
 		MonoTouch.UIKit.UIBarButtonItem ContinueButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UITableView classTable { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (ContinueButton != null) {
 				ContinueButton.Dispose ();
 				ContinueButton = null;
+			}
+
+			if (classTable != null) {
+				classTable.Dispose ();
+				classTable = null;
 			}
 		}
 	}
