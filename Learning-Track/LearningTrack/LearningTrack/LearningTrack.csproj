@@ -202,5 +202,6 @@
     <Content Include="charts\SeatingCharts\highcharts.js" />
     <Content Include="charts\SeatingCharts\highcharts-more.js" />
     <Content Include="charts\SeatingCharts\seatingchart.xml" />
+    <Content Include="charts\standardDev.htm" />
   </ItemGroup>
 </Project>

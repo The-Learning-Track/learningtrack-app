@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+    var chart;
+    
+    function scoreCount(myScore)
+    {
+        //get index
+        var index = Math.ceil((myScore/10)-1);
+        //increment count at that index
+        (count[index])++;
+        //[index of score, count]
+        return [index,count[index]];
+    }
+    
+    // sigma σ
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'column'
+            },
+            title: {
+                text: 'Performance in'
+            },
+            subtitle: {
+                text: 'TEST 1'
+            },
+            xAxis: {
+                min: 0,
+                categories: [
+                    '0-10',
+                    '11-20',
+                    '21-30',
+                    '31-40',
+                    '41-50',
+                    '51-60',
+                    '61-70',
+                    '71-80',
+                    '81-90',
+                    '91-100'
+                ],                
+                title: {
+                    text: 'Score Ranges'
+                }
+            },
+            yAxis: {
+                categories: ['0'],                
+                title: {
+                    text: ''
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                        this.series.name + ' Range: '+ this.x;
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+                series: [{
+                    name: '-σ',
+                    data: [[2,1]]//[scoreCount(25)]     
+                },{
+                    name: 'Student Score',
+                    data: [[7,1]]//[scoreCount(65)]     
+                },{
+                    name: '+σ',
+                    data: [[9,1]]//[scoreCount(95)]     
+            }]
+        });
+    });
+    
+});
+		</script>
+	</head>
+	<body>
+<script src="highcharts.js"></script>
+<script src="highcharts-more.js"></script>
+
+<div id="container" style="width: 700px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

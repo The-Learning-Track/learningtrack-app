@@ -43,6 +43,7 @@ namespace LearningTrack
 			plotList.Add ("Grade Trend");
 			plotList.Add ("Vs Class Average");
 			plotList.Add ("Grade Distribution");
+			plotList.Add ("Standard Deviation");
 
 			//Add table items from list
 			plotTable.Source = new PlotSelectTableSource (plotList.ToArray(), this);
@@ -60,6 +61,7 @@ namespace LearningTrack
 				case 3: fileName = "charts/gradeTrend.htm"; break;
 				case 4: fileName = "charts/VsClassAverage.htm"; break;
 				case 5: fileName = "charts/gradeDistribution.htm"; break;
+				case 6: fileName = "charts/standardDev.htm"; break;
 				default: fileName = "charts/AttendanceChart.htm"; break;
 			}
 			string localHtmlUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);
