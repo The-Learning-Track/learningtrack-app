@@ -24,6 +24,17 @@ namespace LearningTrack
 
 			logoutButton.Clicked += (sender, e) => 
 			{	
+				// Figure out where the SQLite database will be.
+				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+				_pathToDatabase = Path.Combine(path, "db_sqlite-net.db");
+
+				// Automatically creates table of 'Student' and 'Grade' objects
+				Database accessDB = new Database(_pathToDatabase);
+				
+				//CLEAR EVERYTHING
+				accessDB.clearDB ();
+				//---------------------------------------------------------------------------------------
+				//Clear THEN logout
 				this.PerformSegue ("InstructorLogout", this);
 			};
 
@@ -50,7 +61,11 @@ namespace LearningTrack
 			//Extracted and combined grades and studentINFO under a list of 'Student' objects
 			List<Student> COMPLETEINFO = myDB.getCompleteStudentINFO(studentINFO, studentGrades);
 
-			//TEST XML
+			//TEST XML - STUDENT GRADES
+			COURSEGRADES myCourseGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
+			myCourseGrades.serializeToXML();
+
+			//TEST XML - SEATING MAP
 			SEAT dicksonSeat = new SEAT{SEAT_NUMBER = "A1",
 								NAME = "Dickson",
 								OVERALL_AVERAGE = "good",
@@ -80,7 +95,6 @@ namespace LearningTrack
 			//COURSE myCourse = new COURSE {seatingChart = mySeatingChart};
 			//Serialize to XML
 			mySeatingChart.serializeToXML();
-			//myCourse.serializeToXML();
 		}	
 	}
 }

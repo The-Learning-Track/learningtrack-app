@@ -78,12 +78,28 @@ namespace LearningTrack
 		public string PREDICT_GRADE{ get; set; }
 	}
 
-	public class COURSE
+	public class COURSEGRADES
 	{
-		//
-		//public SEATING_CHART seatingChart { get; set; }
+		//List of 'SEAT' objects
+		public List<Student> COURSE_GRADES{ get; set; }
 		
-
+		//Method to serialize 'Student' objects to XML
+		public void serializeToXML()
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(List<Student>));
+			string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseGrades.xml");      
+			
+			//Creates new file, overwrites old file atuomatically
+			Stream myStream = new FileStream(path, FileMode.Create);
+			
+			XmlWriter myXMLWriter = XmlWriter.Create(myStream);
+			
+			serializer.Serialize(myXMLWriter, COURSE_GRADES);   
+			
+			myStream.Flush(); 
+			
+			myStream.Close();  
+		}
 	}
 
 }
