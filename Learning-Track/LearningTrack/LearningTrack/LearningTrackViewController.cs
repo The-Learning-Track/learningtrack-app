@@ -3,9 +3,13 @@ using System.IO;
 using System.Drawing;
 using System.Data;
 using Mono.Data.Sqlite;
+using System.Collections.Generic;
 using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using RestSharp;
+//testing puroses only
+using MonoTouch.Dialog;
 
 namespace LearningTrack
 {
@@ -88,13 +92,36 @@ namespace LearningTrack
 				nextViewController.isProfessor = _isProfessor;
 
 				//---------------------------------------------------------------------------------------
+
+				//http://dl.dropbox.com/u/66448605/JSONexample.json
+				// PARSE JSON 
+				var client = new RestClient();
+				client.BaseUrl = "http://dl.dropbox.com";
+				//client.Authenticator = new HttpBasicAuthenticator("username", "password");
+
+				var request = new RestRequest();
+				request.Resource = "u/66448605/JSONexample.json";
+				// set format to JSON
+				request.RequestFormat = DataFormat.Json;
+
+				// execute the request
+				var response = client.Execute(request);
+				var content = response.Content; // raw content as string
+
+				// or automatically deserialize result
+				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+				var responseDeserialized = client.Execute<List<personJSON>>(request);
+
+				List<personJSON> TEST = responseDeserialized.Data;
+				//List<Student> BBSTUDENTINFO = responseDeserialized.Data;
+				int derp = 0;
+				//---------------------------------------------------------------------------------------
 				// Figure out where the SQLite database will be.
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
 
 				//GET DB path to test for iOS directory path
 				//string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
-
 
 				// Automatically creates table of 'Student' and 'Grade' objects
 				Database myDB = new Database(_pathToDatabase);

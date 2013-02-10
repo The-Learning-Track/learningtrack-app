@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/InstructorSeatingChartViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LearningTrack/LearningTrackViewController.cs">
     <Files>
-      <File FileName="LearningTrack/LearningTrackViewController.cs" Line="109" Column="22" />
-      <File FileName="LearningTrack/InstructorStatisticsViewController.cs" Line="53" Column="1" />
-      <File FileName="LearningTrack/InstructorSeatingChartViewController.cs" Line="19" Column="3" />
-      <File FileName="LearningTrack/StudentSeatingChartViewController.cs" Line="29" Column="4" />
+      <File FileName="LearningTrack/LearningTrackViewController.cs" Line="123" Column="4" />
+      <File FileName="LearningTrack/Database.cs" Line="1" Column="1" />
+      <File FileName="LearningTrack/InstructorOptionsViewController.cs" Line="34" Column="23" />
+      <File FileName="LearningTrack/XML.cs" Line="68" Column="1" />
+      <File FileName="LearningTrack/StudentOptionsViewController.cs" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +14,7 @@
           <Option id="ShowAllFiles" value="True" />
           <Node name="LearningTrack" expanded="True">
             <Node name="charts" expanded="True" />
-            <Node name="InstructorSeatingChartViewController.cs" selected="True" />
+            <Node name="LearningTrackViewController.cs" selected="True" />
           </Node>
         </State>
       </Pad>

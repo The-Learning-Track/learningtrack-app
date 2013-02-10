@@ -87,6 +87,9 @@
     <Reference Include="MonoTouch.Dialog-1" />
     <Reference Include="System.Data" />
     <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="RestSharp.MonoTouch">
+      <HintPath>RestSharp.MonoTouch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -144,6 +147,7 @@
     <Compile Include="StudentTabBarController.designer.cs">
       <DependentUpon>StudentTabBarController.cs</DependentUpon>
     </Compile>
+    <Compile Include="JSONtestClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -203,5 +207,6 @@
     <Content Include="charts\SeatingCharts\highcharts-more.js" />
     <Content Include="charts\SeatingCharts\seatingchart.xml" />
     <Content Include="charts\standardDev.htm" />
+    <Content Include="JSONexample.txt" />
   </ItemGroup>
 </Project>
