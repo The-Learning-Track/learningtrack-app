@@ -221,6 +221,11 @@ function addText(index, array) {
 var studentsArray = queryXML();
 var index=studentSeatfromURL();
 
+function goBack()
+{
+	window.history.back();
+}
+
 </script>
 
 </head>
@@ -230,7 +235,7 @@ var index=studentSeatfromURL();
 <div id="container" >
 	<div id="header">
 		<div id="backbuttonsection">
-			<a href="morse.html" class="NoteButton">Back</a>
+			<a class="NoteButton" onclick="goBack();">Back</a>
 		</div>
 		<div id="middlesection">
 			<script> seatName(index, studentsArray); </script>

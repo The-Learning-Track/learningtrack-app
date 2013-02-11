@@ -32,9 +32,9 @@ namespace LearningTrack
 			
 			switch (chart) {
 			//Remember case-sensitive
-			case 0: fileName = "charts/SeatingCharts/morse.html"; break;
-			case 1: fileName = "charts/SeatingCharts/studio.html"; break;
-			default: fileName = "charts/SeatingCharts/morse.html"; break;
+			case 0: fileName = "charts/SeatingCharts/morse_student.html"; break;
+			case 1: fileName = "charts/SeatingCharts/studio_student.html"; break;
+			default: fileName = "charts/SeatingCharts/morse_student.html"; break;
 			}
 			
 			string localHtmlUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);

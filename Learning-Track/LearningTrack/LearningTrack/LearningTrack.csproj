@@ -208,5 +208,10 @@
     <Content Include="charts\SeatingCharts\seatingchart.xml" />
     <Content Include="charts\standardDev.htm" />
     <Content Include="JSONexample.txt" />
+    <Content Include="charts\SeatingCharts\studio.html" />
+    <Content Include="charts\SeatingCharts\studio_student.html" />
+    <Content Include="charts\SeatingCharts\morse_student.html" />
+    <Content Include="charts\SeatingCharts\loginfunctions.js" />
+    <Content Include="charts\SeatingCharts\login_xml.xml" />
   </ItemGroup>
 </Project>
