@@ -12,10 +12,18 @@ namespace LearningTrack
 	partial class StudentOptionsViewController
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIBarButtonItem logoutButton { get; set; }
+		MonoTouch.UIKit.UIButton changeClassButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton logoutButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (changeClassButton != null) {
+				changeClassButton.Dispose ();
+				changeClassButton = null;
+			}
+
 			if (logoutButton != null) {
 				logoutButton.Dispose ();
 				logoutButton = null;

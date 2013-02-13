@@ -8,14 +8,16 @@ using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
-//testing puroses only
-using MonoTouch.Dialog;
+using RestSharp.Deserializers;
 
 namespace LearningTrack
 {
 	public partial class LearningTrackViewController : UIViewController
 	{
+		// get values to transfer to next controller
 		public bool _isProfessor;
+		public string username;
+		public ClassList courses;
 
 		private string _pathToDatabase;
 
@@ -48,12 +50,22 @@ namespace LearningTrack
 
 			// When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
+				this.LoginLoadingIndicator.StopAnimating();
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
 
 				//Get Username and Password
-				var username = UsernameField.Text;
+				username = UsernameField.Text;
 				var password = PasswordField.Text;
+
+				//DUMMY TESTS -- ASSUME 1 to 1 match up
+				List<string> testCourseNames = new List<string> ();
+				testCourseNames.Add ("[Lecture Hall]");
+				testCourseNames.Add ("[Studio Classroom]");
+				List<string> testCourseIDs = new List<string> ();
+				testCourseIDs.Add ("[LECTURE ID]");
+				testCourseIDs.Add ("[STUDIO ID]");
+				courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
 
 				//Should pass on to Blackboard for verification
 				if ((username == "student") && (username.Length != 0) && (password.Length != 0)){
@@ -78,6 +90,49 @@ namespace LearningTrack
 						alert.Show();
 					}
 				}
+
+				/* CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
+				if ((username.Length != 0) && (password.Length != 0)){
+					//flag for privileges later
+					_isProfessor = true;
+
+					try{
+						// http://155.41.48.20:8080/theLearningTrack/rest/getCourses/dicksonp
+						// PARSE JSON 
+						var client = new RestClient();
+						client.BaseUrl = "http://155.41.48.20:8080/theLearningTrack/rest/getCourses";
+						//client.Authenticator = new HttpBasicAuthenticator("username", "password");
+						
+						var request = new RestRequest();
+						request.Resource = username;
+						// set format to JSON
+						request.RequestFormat = DataFormat.Json;
+						
+						// automatically deserialize result
+						// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+						var responseDeserialized = client.Execute<ClassList>(request);
+						
+						ClassList RESPONSE = responseDeserialized.Data;
+						courses = RESPONSE;
+					}
+					catch(NullReferenceException ex){					
+						//display error alert message
+						using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
+							alert.Show();
+							this.LoginLoadingIndicator.StopAnimating();
+						}
+					}
+
+					this.PerformSegue("ToPickClass", this);
+				}
+				else{
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
+						alert.Show();
+						this.LoginLoadingIndicator.StopAnimating();
+					}
+				}
+				*/
 			};
 		}
 
@@ -90,9 +145,10 @@ namespace LearningTrack
 				var nextViewController = (PickClassViewController) segue.DestinationViewController;
 				//Pass bool _isProfessor to the next view controller
 				nextViewController.isProfessor = _isProfessor;
+				nextViewController.myCourses = courses;
 
+				this.LoginLoadingIndicator.StopAnimating();
 				//---------------------------------------------------------------------------------------
-
 				//http://dl.dropbox.com/u/66448605/JSONexample.json
 				// PARSE JSON 
 				var client = new RestClient();
@@ -110,11 +166,14 @@ namespace LearningTrack
 
 				// or automatically deserialize result
 				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized = client.Execute<List<personJSON>>(request);
+				var responseDeserialized = client.Execute<personJSONLIST>(request);
 
-				List<personJSON> TEST = responseDeserialized.Data;
+
+				personJSONLIST TEST = responseDeserialized.Data;
 				//List<Student> BBSTUDENTINFO = responseDeserialized.Data;
 				int derp = 0;
+
+
 				//---------------------------------------------------------------------------------------
 				// Figure out where the SQLite database will be.
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);

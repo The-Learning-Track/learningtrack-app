@@ -10,6 +10,10 @@ using System.Collections.Generic;
 
 namespace LearningTrack
 {
+	public class personJSONLIST{
+		public List <personJSON> PEOPLE { get; set; }
+	}
+
 	public class personJSON
 	{
 		[PrimaryKey, AutoIncrement]

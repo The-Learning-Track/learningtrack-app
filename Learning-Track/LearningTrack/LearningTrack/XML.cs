@@ -65,7 +65,7 @@ namespace LearningTrack
 		}
 	}
 
-	public class SEAT
+   	public class SEAT
 	{
 		public string SEAT_NUMBER{ get; set; }
 		public string NAME{ get; set; }

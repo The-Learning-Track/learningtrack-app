@@ -52,8 +52,8 @@ namespace LearningTrack
 			UITableViewCell cell = tableView.CellAt (indexPath);
 			cell.Accessory = UITableViewCellAccessory.Checkmark;
 
-			//set value to appropriate classroom layout
-			viewC.setChart(indexPath.Row);
+			//set selected row on viewcontroller for the appropriate seating chart
+			viewC.setSelectedRow(indexPath.Row);
 
 			//Replace current select to become next selection's previous select
 			previous = indexPath;
@@ -81,7 +81,7 @@ namespace LearningTrack
 			
 			return cell;
 		}
-		
+
 	}
 	
 }

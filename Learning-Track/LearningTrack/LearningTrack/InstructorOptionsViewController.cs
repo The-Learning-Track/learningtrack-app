@@ -1,11 +1,13 @@
 using System;
+using System.IO;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Linq;
+using System.Data;
+using Mono.Data.Sqlite;
 using System.Collections.Generic;
 using SQLite;
-using System.IO;
+using MonoTouch.Foundation;
+using MonoTouch.UIKit;
+using RestSharp;
 
 namespace LearningTrack
 {
@@ -18,11 +20,14 @@ namespace LearningTrack
 		//Destination directory of database
 		private string _pathToDatabase;
 
+		public ClassList myCourses;
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 
-			logoutButton.Clicked += (sender, e) => 
+			// if logout is pressed
+			logoutButton.TouchUpInside += (sender, e) =>
 			{	
 				// Figure out where the SQLite database will be.
 				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -37,6 +42,25 @@ namespace LearningTrack
 				//Clear THEN logout
 				this.PerformSegue ("InstructorLogout", this);
 			};
+
+			// if change class is pressed
+			changeClassButton.TouchUpInside += (sender, e) =>
+			{	
+				// Figure out where the SQLite database will be.
+				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+				_pathToDatabase = Path.Combine(path, "db_sqlite-net.db");
+				
+				// Automatically creates table of 'Student' and 'Grade' objects
+				Database accessDB = new Database(_pathToDatabase);
+				
+				//CLEAR EVERYTHING
+				accessDB.clearDB ();
+				//---------------------------------------------------------------------------------------
+				//Clear THEN change class
+				this.PerformSegue ("InstructorChangeClass", this);
+			};
+
+			// SHOULD BE IN PICK CLASS SEGUE
 
 			// TEST DATABASE
 			// Figure out where the SQLite database will be.
@@ -95,6 +119,20 @@ namespace LearningTrack
 			//COURSE myCourse = new COURSE {seatingChart = mySeatingChart};
 			//Serialize to XML
 			mySeatingChart.serializeToXML();
-		}	
+		}
+
+		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
+		{
+			base.PrepareForSegue (segue, sender);
+			//Make sure we are dealing with the appropriate segue
+			if (segue.Identifier == "InstructorChangeClass") {
+				// Get reference to the destination view controller
+				var nextViewController = (PickClassViewController) segue.DestinationViewController;
+				//Pass values to the next view controller
+				nextViewController.myCourses = myCourses;
+				nextViewController.isProfessor = true;
+			}
+		}
+
 	}
 }

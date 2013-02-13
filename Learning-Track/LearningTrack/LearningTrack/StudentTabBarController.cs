@@ -10,7 +10,8 @@ namespace LearningTrack
 	public partial class StudentTabBarController : UITabBarController
 	{
 		public int chartType;
-		
+		public ClassList myCOURSES;
+
 		public StudentTabBarController (IntPtr handle) : base (handle)
 		{
 		}
@@ -21,7 +22,12 @@ namespace LearningTrack
 			
 			//Create UIViewController for Seating Chart reference
 			StudentSeatingChartViewController seatingTab = (StudentSeatingChartViewController)this.ViewControllers[0];
+			//StudentStatisticsViewController statTab = (StudentStatisticsViewController)this.ViewControllers[1];
+			StudentOptionsViewController optionTab = (StudentOptionsViewController)this.ViewControllers[2];
+			
+			// pass values to their appropriate tabs
 			seatingTab.chartType = chartType;
+			optionTab.myCourses = myCOURSES;
 		}
 	}
 }
