@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="JSONtestClass.cs" />
     <Compile Include="BackendCommunication.cs" />
+    <Compile Include="CalculatingFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />

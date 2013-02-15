@@ -17,7 +17,7 @@ namespace LearningTrack
 		public List<string> courseNames { get; set; }
 		public List<string> courseIDs { get; set; }
 		public string username { get; set; }
-		//NEED BOOLEAN FLAG FOR USER-EXISTENCE
+		public bool Registered { get; set; }
 	}
 
 	public class userINFO

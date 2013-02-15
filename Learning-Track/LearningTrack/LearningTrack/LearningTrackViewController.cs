@@ -8,7 +8,6 @@ using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
-using RestSharp.Deserializers;
 
 namespace LearningTrack
 {
@@ -58,6 +57,7 @@ namespace LearningTrack
 				username = UsernameField.Text;
 				var password = PasswordField.Text;
 
+				/*-------------------------------------------------------------------
 				//DUMMY TESTS -- ASSUME 1 to 1 match up
 				List<string> testCourseNames = new List<string> ();
 				testCourseNames.Add ("[Lecture Hall]");
@@ -90,40 +90,41 @@ namespace LearningTrack
 						alert.Show();
 					}
 				}
+				*/
 
-				/* CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
+				// CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
 				if ((username.Length != 0) && (password.Length != 0)){
 					//flag for privileges later
 					_isProfessor = true;
 
-					try{
-						// http://155.41.48.20:8080/theLearningTrack/rest/getCourses/dicksonp
-						// PARSE JSON 
-						var client = new RestClient();
-						client.BaseUrl = "http://155.41.48.20:8080/theLearningTrack/rest/getCourses";
-						//client.Authenticator = new HttpBasicAuthenticator("username", "password");
-						
-						var request = new RestRequest();
-						request.Resource = username;
-						// set format to JSON
-						request.RequestFormat = DataFormat.Json;
-						
-						// automatically deserialize result
-						// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-						var responseDeserialized = client.Execute<ClassList>(request);
-						
-						ClassList RESPONSE = responseDeserialized.Data;
-						courses = RESPONSE;
+					// http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getCourses/dicksonp
+					// PARSE JSON 
+					var client = new RestClient();
+					client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getCourses/";
+					//client.Authenticator = new HttpBasicAuthenticator("username", "password");
+					
+					var request = new RestRequest();
+					request.Resource = username;
+					// set format to JSON
+					request.RequestFormat = DataFormat.Json;
+					
+					// automatically deserialize result
+					// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+					var responseDeserialized = client.Execute<ClassList>(request);
+					
+					ClassList RESPONSE = responseDeserialized.Data;
+					courses = RESPONSE;
+
+					//Check if user exists
+					if (courses.Registered == true){
+						this.PerformSegue("ToPickClass", this);
 					}
-					catch(NullReferenceException ex){					
-						//display error alert message
+					else{
 						using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
 							alert.Show();
 							this.LoginLoadingIndicator.StopAnimating();
 						}
 					}
-
-					this.PerformSegue("ToPickClass", this);
 				}
 				else{
 					//display error alert message
@@ -132,7 +133,7 @@ namespace LearningTrack
 						this.LoginLoadingIndicator.StopAnimating();
 					}
 				}
-				*/
+
 			};
 		}
 
