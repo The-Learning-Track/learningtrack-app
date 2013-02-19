@@ -57,7 +57,7 @@ namespace LearningTrack
 				username = UsernameField.Text;
 				var password = PasswordField.Text;
 
-				/*-------------------------------------------------------------------
+				//-------------------------------------------------------------------
 				//DUMMY TESTS -- ASSUME 1 to 1 match up
 				List<string> testCourseNames = new List<string> ();
 				testCourseNames.Add ("[Lecture Hall]");
@@ -90,10 +90,10 @@ namespace LearningTrack
 						alert.Show();
 					}
 				}
-				*/
+
 
 				// CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
-				if ((username.Length != 0) && (password.Length != 0)){
+				/*if ((username.Length != 0) && (password.Length != 0)){
 					//flag for privileges later
 					_isProfessor = true;
 
@@ -105,6 +105,10 @@ namespace LearningTrack
 					
 					var request = new RestRequest();
 					request.Resource = username;
+
+					if(username=="realpxy") // For Testing Purposes only
+						_isProfessor=false;
+
 					// set format to JSON
 					request.RequestFormat = DataFormat.Json;
 					
@@ -116,7 +120,13 @@ namespace LearningTrack
 					courses = RESPONSE;
 
 					//Check if user exists
-					if (courses.Registered == true){
+					if (courses == null){
+						using (var alert = new UIAlertView("Login Error Message", "Cannot Connect To Server. Please try again.", null, "OK", null)){
+							alert.Show();
+							this.LoginLoadingIndicator.StopAnimating();
+						}
+					}
+					else if (courses.Registered == true){
 						this.PerformSegue("ToPickClass", this);
 					}
 					else{
@@ -132,7 +142,7 @@ namespace LearningTrack
 						alert.Show();
 						this.LoginLoadingIndicator.StopAnimating();
 					}
-				}
+				}*/
 
 			};
 		}
@@ -149,33 +159,7 @@ namespace LearningTrack
 				nextViewController.myCourses = courses;
 
 				this.LoginLoadingIndicator.StopAnimating();
-				//---------------------------------------------------------------------------------------
-				//http://dl.dropbox.com/u/66448605/JSONexample.json
-				// PARSE JSON 
-				var client = new RestClient();
-				client.BaseUrl = "http://dl.dropbox.com";
-				//client.Authenticator = new HttpBasicAuthenticator("username", "password");
 
-				var request = new RestRequest();
-				request.Resource = "u/66448605/JSONexample.json";
-				// set format to JSON
-				request.RequestFormat = DataFormat.Json;
-
-				// execute the request
-				var response = client.Execute(request);
-				var content = response.Content; // raw content as string
-
-				// or automatically deserialize result
-				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized = client.Execute<personJSONLIST>(request);
-
-
-				personJSONLIST TEST = responseDeserialized.Data;
-				//List<Student> BBSTUDENTINFO = responseDeserialized.Data;
-				int derp = 0;
-
-
-				//---------------------------------------------------------------------------------------
 				// Figure out where the SQLite database will be.
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
@@ -203,6 +187,17 @@ namespace LearningTrack
 				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
 				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
 				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
+
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam1", score = 29, totalPoints = 100, studentID = "000"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam2", score = 55, totalPoints = 100, studentID = "000"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam3", score = 74, totalPoints = 100, studentID = "000"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam2", score = 86, totalPoints = 100, studentID = "001"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam3", score = 83, totalPoints = 100, studentID = "001"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam1", score = 94, totalPoints = 100, studentID = "002"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam2", score = 70, totalPoints = 100, studentID = "002"});
+				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam3", score = 97, totalPoints = 100, studentID = "002"});
+
 			}
 		}
 		

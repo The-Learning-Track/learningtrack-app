@@ -133,7 +133,6 @@
       <DependentUpon>SeatingChartWebView.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
-    <Compile Include="XML.cs" />
     <Compile Include="PickClassTableSource.cs" />
     <Compile Include="StudentSeatingChartViewController.cs" />
     <Compile Include="StudentSeatingChartViewController.designer.cs">
@@ -149,7 +148,8 @@
     </Compile>
     <Compile Include="JSONtestClass.cs" />
     <Compile Include="BackendCommunication.cs" />
-    <Compile Include="CalculatingFunctions.cs" />
+    <Compile Include="XML_SeatingChart.cs" />
+    <Compile Include="XML_Averages.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
