@@ -2,3 +2,16 @@
 Learning-Track/LearningTrack/LearningTrack/bin/iPhoneSimulator/*
 __MACOSX
 
+#User Specific
+*.userprefs
+*.usertasks
+
+#Mono Project Files
+*.pidb
+*.resources
+test-results/
+
+#Object Files and Simulation Files
+obj
+bin
+
