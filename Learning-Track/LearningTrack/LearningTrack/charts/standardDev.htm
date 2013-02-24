@@ -33,32 +33,32 @@ $(function () {
 	    
 	    yAxis: {
 	        title: {
-	            text: 'Score'
-	        },
+	            text: 'Scores'
+	        }/*,
 	        plotLines: [{
-	            value: 932, // MEAN
+	            value: 93, // CATEGORY AVERAGE
 	            color: 'red',
 	            width: 1,
 	            label: {
-	                text: 'Theoretical mean: 932',
+	                text: 'Category Average: 93',
 	                align: 'center',
 	                style: {
 	                    color: 'gray'
 	                }
 	            }
-	        }]  
+	        }] */ 
 	    },
 	
 	    series: [{
 	        name: 'Scores',
 	        data: [
-                //MIN,-σ,MEAN,+σ,MAX
-	            [76, 80, 84, 89, 96],
-	            [73, 85, 93, 98, 100],
-	            [71, 76, 81, 87, 91]
+                //MIN,-σ,MEAN,+σ,MAX,StudentScore
+	            [76, 80, 84, 89, 96, 88],
+	            [73, 85, 93, 98, 100, 88],
+	            [71, 76, 81, 87, 91, 72]
 	        ],
 	        tooltip: {
-	            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+	            headerFormat: ''
 	        }
 	    }]
 	

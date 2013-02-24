@@ -1098,12 +1098,12 @@ defaultPlotOptions.boxplot = merge(defaultPlotOptions.column, {
 	//stemWidth: null,
 	threshold: null,
 	tooltip: {
-		pointFormat: '<span style="color:{series.color};font-weight:bold">{series.name}</span><br/>' +
-			'Minimum: {point.low}<br/>' +
-			'Lower quartile: {point.q1}<br/>' +
-			'Median: {point.median}<br/>' +
+		pointFormat: '<span style="color:{series.color};font-weight:bold">Student Score: {point.studentScore}</span><br/>' +
+			'Maximum: {point.high}<br/>' +
 			'Higher quartile: {point.q3}<br/>' +
-			'Maximum: {point.high}<br/>'
+			'Median: {point.median}<br/>' +
+			'Lower quartile: {point.q1}<br/>' +
+			'Minimum: {point.low}<br/>'
 	},
 	//whiskerColor: null,
 	whiskerLength: '50%',
@@ -1113,9 +1113,9 @@ defaultPlotOptions.boxplot = merge(defaultPlotOptions.column, {
 // Create the series object
 seriesTypes.boxplot = extendClass(seriesTypes.column, {
 	type: 'boxplot',
-	pointArrayMap: ['low', 'q1', 'median', 'q3', 'high'], // array point configs are mapped to this
+	pointArrayMap: ['low', 'q1', 'median', 'q3', 'high', 'studentScore'], // array point configs are mapped to this
 	toYData: function (point) { // return a plain array for speedy calculation
-		return [point.low, point.q1, point.median, point.q3, point.high];
+		return [point.low, point.q1, point.median, point.q3, point.high, point.studentScore];
 	},
 	pointValKey: 'high', // defines the top of the tracker
 	
@@ -1225,6 +1225,9 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 				medianAttr.stroke = point.medianColor || options.medianColor || color;
 				medianAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
 				
+				// Student Score attributes
+				medianAttr.stroke = point.medianColor || options.medianColor || color;
+				medianAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
 				
 				// The stem
 				crispCorr = (stemAttr['stroke-width'] % 2) / 2;
