@@ -158,12 +158,14 @@ namespace LearningTrack
 			CALCULATINGFUNCTIONS function = new CALCULATINGFUNCTIONS ();
 
 			//store list of scores and averages
-			List <double> scores, averages;
+			List <double> scores, averages, MAXs, MINs;
 
 			//For each category in extractedCategories
 			foreach (CATEGORY category in extractedCategories){
 				//Get a new list of averages from each assignment
 				averages = new List<double>();
+				MAXs = new List<double>();
+				MINs = new List<double>();
 
 				//For each assignment in that category's assignment list
 				foreach (ASSIGNMENT assignment in category.assignments){
@@ -185,21 +187,35 @@ namespace LearningTrack
 					double assignmentAverage = function.getAverage(scores);
 					//calculate assignment standard deviation
 					double assignmentStandardDev = function.getStandardDev(scores);
+					//calculate assignment max
+					double assignmentMax = function.getMax(scores);
+					//calculate assignment min
+					double assignmentMin = function.getMin(scores);
 					//set values to its respective assignment
 					assignment.assignmentAverage = assignmentAverage;
 					assignment.assignmentStandardDev = assignmentStandardDev;
-					//add average to list to be averaged in category
+					assignment.assignmentMax = assignmentMax;
+					assignment.assignmentMin = assignmentMin;
+					//add average, max, min to list to be averaged in category
 					averages.Add(assignmentAverage);
+					MAXs.Add(assignmentMax);
+					MINs.Add(assignmentMin);
 				}
 				//Calculate category stats after calculating all assignment stats
 
-				//calculate assignment average
+				//calculate category average
 				double categoryAverage = function.getAverage(averages);
-				//calculate assignment standard deviation
+				//calculate category standard deviation
 				double categoryStandardDev = function.getStandardDev(averages);
+				//calculate category MAX
+				double categoryMax = function.getMax(MAXs);
+				//calculate category MIN
+				double categoryMin = function.getMin(MINs);
 				//set values accordingly
 				category.categoryAverage = categoryAverage;
 				category.categoryStandardDev = categoryStandardDev;
+				category.categoryMax = categoryMax;
+				category.categoryMin = categoryMin;
 			}
 			//set extracted and calculated values to list of CATEGORY categories to be XML serialized
 			STATISTICS statistics = new STATISTICS(){categories = extractedCategories};

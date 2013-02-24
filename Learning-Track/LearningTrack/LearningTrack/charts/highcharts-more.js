@@ -1086,7 +1086,8 @@ seriesTypes.gauge = Highcharts.extendClass(seriesTypes.line, GaugeSeries);/* ***
 defaultPlotOptions.boxplot = merge(defaultPlotOptions.column, {
 	fillColor: '#FFFFFF',
 	lineWidth: 1,
-	//medianColor: null,
+//	medianColor: '#d81417',
+	studentColor: '#d81417', //red
 	medianWidth: 2,
 	states: {
 		hover: {
@@ -1168,6 +1169,7 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			highPlot,
 			lowPlot,
 			medianPlot,
+			studentPlot,
 			crispCorr,
 			crispX,
 			graphic,
@@ -1178,6 +1180,8 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			whiskersAttr,
 			medianPath,
 			medianAttr,
+			studentPath,
+			studentAttr,
 			width,
 			left,
 			right,
@@ -1195,6 +1199,7 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			stemAttr = {};
 			whiskersAttr = {};
 			medianAttr = {};
+			studentAttr = {};
 			color = point.color || series.color;
 			
 			if (point.plotY !== UNDEFINED) {
@@ -1226,8 +1231,8 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 				medianAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
 				
 				// Student Score attributes
-				medianAttr.stroke = point.medianColor || options.medianColor || color;
-				medianAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
+				studentAttr.stroke = point.studentColor || options.studentColor || color;
+				studentAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
 				
 				// The stem
 				crispCorr = (stemAttr['stroke-width'] % 2) / 2;
@@ -1306,6 +1311,18 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 					'z'
 				];
 				
+				// The student score
+				crispCorr = (studentAttr['stroke-width'] % 2) / 2;				
+				studentPlot = mathRound(point.studentPlot) + crispCorr;
+				studentPath = [
+					'M',
+					left, 
+					studentPlot,
+					right, 
+					studentPlot,
+					'z'
+				];
+				
 				// Create or update the graphics
 				if (graphic) { // update
 					
@@ -1317,6 +1334,7 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 						point.box.animate({ d: boxPath });
 					}
 					point.medianShape.animate({ d: medianPath });
+					point.studentShape.animate({ d: studentPath });
 					
 				} else { // create new
 					point.graphic = graphic = renderer.g()
@@ -1338,6 +1356,10 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 					}	
 					point.medianShape = renderer.path(medianPath)
 						.attr(medianAttr)
+						.add(graphic);	
+					
+					point.studentShape = renderer.path(studentPath)
+						.attr(studentAttr)
 						.add(graphic);		
 				}
 			}
