@@ -121,7 +121,7 @@ namespace LearningTrack
 
 					//Check if user exists
 					if (courses == null){
-						using (var alert = new UIAlertView("Login Error Message", "Cannot Connect To Server. Please try again.", null, "OK", null)){
+						using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
 							alert.Show();
 							this.LoginLoadingIndicator.StopAnimating();
 						}

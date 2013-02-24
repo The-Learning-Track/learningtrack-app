@@ -34,10 +34,10 @@ namespace LearningTrack
 			{					
 
 				//--------------------------------------------------------------------------------------------------
-				// PARSE JSON 
+				// PARSE JSON FOR CLASS DATA
 				var client = new RestClient();
 				client.BaseUrl = "";
-				//client.Authenticator = new HttpBasicAuthenticator("username", "password");
+
 
 				var request = new RestRequest();
 				request.Resource = "";
@@ -55,9 +55,14 @@ namespace LearningTrack
 				var responseDeserialized = client.Execute<List<Student>>(request);
 
 				List<Student> blackboardData = responseDeserialized.Data;
-				//List<Student> BBSTUDENTINFO = responseDeserialized.Data;
-				//--------------------------------------------------------------------------------------------------
-				if(isProfessor)
+
+				//Check if data is received
+				/*if (blackboardData == null){
+					using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
+						alert.Show();
+					}
+				}
+				else */if(isProfessor)
 				{
 					this.PerformSegue("ToInstructorInterface", this);
 				}
