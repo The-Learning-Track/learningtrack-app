@@ -43,6 +43,8 @@ namespace LearningTrack
 		//standard deviation and average (for the overall category), and list of assignments
 		public double categoryStandardDev { get; set; }
 		public double categoryAverage { get; set; }
+		public double categoryMax { get; set; }
+		public double categoryMin { get; set; }
 		public List <ASSIGNMENT> assignments { get; set; }
 	}
 
@@ -54,6 +56,8 @@ namespace LearningTrack
 		public double assignmentStandardDev { get; set; }
 		public double assignmentAverage { get; set; }
 		public double totalPoints { get; set; }
+		public double assignmentMax { get; set; }
+		public double assignmentMin { get; set; }
 	}
 
 	public class CALCULATINGFUNCTIONS
@@ -96,6 +100,50 @@ namespace LearningTrack
 			//get standard deviation by taking the square root of variance divided by count - 1
 			standardDev = Math.Sqrt(variance/(scores.Count - 1));
 			return Math.Round(standardDev,4);
+		}
+
+		public double getMax (List<double> scores)
+		{
+			double currentMax = 0;
+			bool firstTime = true;
+
+			//check each score
+			foreach (double score in scores) {
+				if (firstTime){
+					//set first score to max
+					currentMax = score;
+					//set flag to false
+					firstTime = false;
+				}
+				else if (score > currentMax){
+					currentMax = score;
+				}
+			}
+			
+			//return max
+			return Math.Round(currentMax,4);
+		}
+
+		public double getMin (List<double> scores)
+		{
+			double currentMin = 100;
+			bool firstTime = true;
+
+			//check each score
+			foreach (double score in scores) {
+				if (firstTime){
+					//set first score to min
+					currentMin = score;
+					//set flag to false
+					firstTime = false;
+				}
+				else if (score < currentMin){
+					currentMin = score;
+				}
+			}
+			
+			//return min
+			return Math.Round(currentMin,4);
 		}
 	}
 }

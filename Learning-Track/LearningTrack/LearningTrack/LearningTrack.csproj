@@ -208,7 +208,9 @@
     <Content Include="charts\SeatingCharts\highcharts.js" />
     <Content Include="charts\SeatingCharts\highcharts-more.js" />
     <Content Include="charts\SeatingCharts\seatingchart.xml" />
-    <Content Include="charts\standardDev.htm" />
+    <Content Include="charts\standardDev.htm">
+      <DependentUpon>VsClassAverage.htm</DependentUpon>
+    </Content>
     <Content Include="charts\SeatingCharts\studio.html" />
     <Content Include="charts\SeatingCharts\studio_student.html" />
     <Content Include="charts\SeatingCharts\morse_student.html" />
