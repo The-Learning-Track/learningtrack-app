@@ -22,7 +22,7 @@ namespace LearningTrack
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(List<CATEGORY>));
 			string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");      
-			
+
 			//Creates new file, overwrites old file atuomatically
 			Stream myStream = new FileStream(path, FileMode.Create);
 			

@@ -510,7 +510,7 @@ wrap(axisProto, 'init', function (proceed, chart, userOptions) {
 		if (!chart.panes) {
 			chart.panes = [];
 		}
-		this.pane = chart.panes[paneIndex] = pane = new Pane(
+		this.pane = pane = chart.panes[paneIndex] = chart.panes[paneIndex] || new Pane(
 			splat(chartOptions.pane)[paneIndex],
 			chart,
 			axis
@@ -1079,15 +1079,14 @@ var GaugeSeries = {
 	drawTracker: seriesTypes.column.prototype.drawTracker
 };
 seriesTypes.gauge = Highcharts.extendClass(seriesTypes.line, GaugeSeries);/* ****************************************************************************
- * Start Box plot series code											      *
+* Start Box plot series code											      *
  *****************************************************************************/
 
 // Set default options
 defaultPlotOptions.boxplot = merge(defaultPlotOptions.column, {
 	fillColor: '#FFFFFF',
 	lineWidth: 1,
-//	medianColor: '#d81417',
-	studentColor: '#d81417', //red
+	medianColor: '#d81417', //red
 	medianWidth: 2,
 	states: {
 		hover: {
@@ -1099,10 +1098,10 @@ defaultPlotOptions.boxplot = merge(defaultPlotOptions.column, {
 	//stemWidth: null,
 	threshold: null,
 	tooltip: {
-		pointFormat: '<span style="color:{series.color};font-weight:bold">Student Score: {point.studentScore}</span><br/>' +
+		pointFormat: '<span style="color:{series.color};font-weight:bold">Student Score: {point.median}</span><br/>' +
 			'Maximum: {point.high}<br/>' +
 			'Higher quartile: {point.q3}<br/>' +
-			'Median: {point.median}<br/>' +
+			'Average: {point.average}<br/>' +
 			'Lower quartile: {point.q1}<br/>' +
 			'Minimum: {point.low}<br/>'
 	},
@@ -1114,9 +1113,9 @@ defaultPlotOptions.boxplot = merge(defaultPlotOptions.column, {
 // Create the series object
 seriesTypes.boxplot = extendClass(seriesTypes.column, {
 	type: 'boxplot',
-	pointArrayMap: ['low', 'q1', 'median', 'q3', 'high', 'studentScore'], // array point configs are mapped to this
+	pointArrayMap: ['low', 'q1', 'median', 'q3', 'high', 'average'], // array point configs are mapped to this
 	toYData: function (point) { // return a plain array for speedy calculation
-		return [point.low, point.q1, point.median, point.q3, point.high, point.studentScore];
+		return [point.low, point.q1, point.studentScore, point.q3, point.high, point.median];
 	},
 	pointValKey: 'high', // defines the top of the tracker
 	
@@ -1169,7 +1168,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			highPlot,
 			lowPlot,
 			medianPlot,
-			studentPlot,
 			crispCorr,
 			crispX,
 			graphic,
@@ -1180,8 +1178,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			whiskersAttr,
 			medianPath,
 			medianAttr,
-			studentPath,
-			studentAttr,
 			width,
 			left,
 			right,
@@ -1199,7 +1195,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 			stemAttr = {};
 			whiskersAttr = {};
 			medianAttr = {};
-			studentAttr = {};
 			color = point.color || series.color;
 			
 			if (point.plotY !== UNDEFINED) {
@@ -1230,9 +1225,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 				medianAttr.stroke = point.medianColor || options.medianColor || color;
 				medianAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
 				
-				// Student Score attributes
-				studentAttr.stroke = point.studentColor || options.studentColor || color;
-				studentAttr['stroke-width'] = point.medianWidth || options.medianWidth || options.lineWidth;
 				
 				// The stem
 				crispCorr = (stemAttr['stroke-width'] % 2) / 2;
@@ -1311,18 +1303,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 					'z'
 				];
 				
-				// The student score
-				crispCorr = (studentAttr['stroke-width'] % 2) / 2;				
-				studentPlot = mathRound(point.studentPlot) + crispCorr;
-				studentPath = [
-					'M',
-					left, 
-					studentPlot,
-					right, 
-					studentPlot,
-					'z'
-				];
-				
 				// Create or update the graphics
 				if (graphic) { // update
 					
@@ -1334,7 +1314,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 						point.box.animate({ d: boxPath });
 					}
 					point.medianShape.animate({ d: medianPath });
-					point.studentShape.animate({ d: studentPath });
 					
 				} else { // create new
 					point.graphic = graphic = renderer.g()
@@ -1356,10 +1335,6 @@ seriesTypes.boxplot = extendClass(seriesTypes.column, {
 					}	
 					point.medianShape = renderer.path(medianPath)
 						.attr(medianAttr)
-						.add(graphic);	
-					
-					point.studentShape = renderer.path(studentPath)
-						.attr(studentAttr)
 						.add(graphic);		
 				}
 			}
@@ -1396,7 +1371,16 @@ seriesTypes.errorbar = extendClass(seriesTypes.boxplot, {
 		return [point.low, point.high];
 	},
 	pointValKey: 'high', // defines the top of the tracker
-	doQuartiles: false
+	doQuartiles: false,
+
+	/**
+	 * Get the width and X offset, either on top of the linked series column
+	 * or standalone
+	 */
+	getColumnMetrics: function () {
+		return (this.linkedParent && this.linkedParent.columnMetrics) || 
+			seriesTypes.column.prototype.getColumnMetrics.call(this);
+	}
 });
 
 /* ****************************************************************************
@@ -2505,4 +2489,4 @@ wrap(pointerProto, 'getCoordinates', function (proceed, e) {
 	return ret;
 });
 }(Highcharts));
-window.console && console.log('--- Running highcharts-more.src.js from GitHub, branch v3.0Beta ---');
+window.console && console.log('--- Running highcharts-more.src.js from GitHub, branch/commit/tag "rambera" ---');
