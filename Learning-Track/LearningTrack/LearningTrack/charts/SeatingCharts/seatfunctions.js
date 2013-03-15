@@ -236,7 +236,7 @@ function queryXML() //this function will query the appropriate XML file and retu
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
  		///Users/dicksonpun/Library/Application Support/iPhone Simulator/6.0/Applications/C216FBF7-C07C-419A-9EB7-C8A0372CCC11/Documents/seatingChart.xml
-		xmlhttp.open("GET","seatingchart.xml",false);
+		xmlhttp.open("GET","../Documents/seatingChart.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 

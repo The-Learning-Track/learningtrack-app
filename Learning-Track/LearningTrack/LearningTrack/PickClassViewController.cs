@@ -123,7 +123,39 @@ namespace LearningTrack
 			}
 			
 			//Extracted and combined grades and studentINFO under a list of 'Student' objects
-			List<Student> COMPLETEINFO = myDB.getCompleteStudentINFO (studentINFO, studentGrades);
+			//List<Student> COMPLETEINFO = myDB.getCompleteStudentINFO (studentINFO, studentGrades);
+
+			List <Grade> JohnDoeGrades = new List<Grade> ();
+			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 7, totalPoints = 10, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 29, totalPoints = 100, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 55, totalPoints = 100, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 74, totalPoints = 100, studentID = "000"});
+			Student JohnDoe = new Student {firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1", grades = JohnDoeGrades};
+
+			List <Grade> KatsuGrades = new List<Grade> ();
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 7, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 8, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 8, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 86, totalPoints = 100, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 83, totalPoints = 100, studentID = "001"});
+			Student Katsu = new Student {firstName = "Katsutoshi", lastName = "Kawakami", studentID = "001", seatLocation = "A3", grades = KatsuGrades};
+
+			List <Grade> DicksonGrades = new List<Grade> ();
+			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 94, totalPoints = 100, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 70, totalPoints = 100, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 97, totalPoints = 100, studentID = "002"});
+			Student Dickson = new Student {firstName = "Dickson", lastName = "Pun", studentID = "002", seatLocation = "B1", grades = DicksonGrades};
+
+			List <Student> COMPLETEINFO = new List<Student> ();
+			COMPLETEINFO.Add (JohnDoe);
+			COMPLETEINFO.Add (Katsu);
+			COMPLETEINFO.Add (Dickson);
 
 			//---------Get and set standard deviations and averages for all categories and associated assignments--------
 			//Create STATISTICS structure from List<Student> first
@@ -222,6 +254,75 @@ namespace LearningTrack
 
 			//Create XML for class averages
 			statistics.serializeToXML();
+
+			//Assemble XML for Seating Chart
+			//Create structure to store XML for seating chart DATA
+			List<SEAT> extractedSeating = new List<SEAT>();
+
+			//store list of scores and averages, assume overall weight is even across the category board
+			List <double> homeworkScores, examScores, labScores, overallScores;
+
+			//For each student in list of student get their seating chart data
+			foreach (Student student in COMPLETEINFO) {
+				SEAT temp = new SEAT();
+				temp.SEAT_NUMBER = student.seatLocation;
+				temp.NAME = student.firstName + " " + student.lastName;
+				temp.ATTENDANCE_FLAG = "N/A";
+				temp.MISSING_ASSIGNMENT_FLAG = "N/A";
+				temp.PREDICT_GRADE = "N/A";
+				temp.OVERALL_AVERAGE = "N/A";
+
+				//Get a new list of scores from each student
+				homeworkScores = new List<double>();
+				examScores = new List<double>();
+				labScores = new List<double>();
+
+				//For each grade in list of grades
+				foreach (Grade grades in student.grades) {
+					//If the assignment and category matches up, add score to the list
+					if((grades.category == "Homework")){
+						//add score to list to be averaged in assignment
+						homeworkScores.Add(grades.score);
+					}
+					else if((grades.category == "Exam")){
+						//add score to list to be averaged in assignment
+						examScores.Add(grades.score);
+					}
+					else if((grades.category == "Lab")){
+						//add score to list to be averaged in assignment
+						labScores.Add(grades.score);
+					}
+				}
+
+				if (homeworkScores != null){
+					temp.HOMEWORK_AVERAGE = function.getAverage(homeworkScores).ToString();
+				}
+				else {
+					temp.HOMEWORK_AVERAGE = "N/A";
+				}
+
+				if (examScores != null){
+					temp.EXAM_AVERAGE = function.getAverage(examScores).ToString();
+				}
+				else {
+					temp.EXAM_AVERAGE = "N/A";
+				}
+
+				if (labScores != null){
+					temp.LAB_AVERAGE = function.getAverage(labScores).ToString();
+				}
+				else {
+					temp.LAB_AVERAGE = "N/A";
+				}
+
+				extractedSeating.Add(temp);
+			}
+
+			//set extracted and calculated values to list of SEAT seats to be XML serialized
+			SEATINGCHART mySeatingChart = new SEATINGCHART (){SEATING_CHART = extractedSeating};
+			
+			//Create XML for seating chart
+			mySeatingChart.serializeToXML();
 		}
 	}
 }
