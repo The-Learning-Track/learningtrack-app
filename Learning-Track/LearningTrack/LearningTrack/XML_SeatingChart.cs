@@ -69,6 +69,7 @@ namespace LearningTrack
 	{
 		public string SEAT_NUMBER{ get; set; }
 		public string NAME{ get; set; }
+		public string ID{ get; set; }
 		public string OVERALL_AVERAGE{ get; set; }
 		public string ATTENDANCE_FLAG{ get; set; }
 		public string MISSING_ASSIGNMENT_FLAG{ get; set; }

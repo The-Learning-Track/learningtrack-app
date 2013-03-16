@@ -235,11 +235,15 @@ function queryXML() //this function will query the appropriate XML file and retu
 		{// code for IE6, IE5
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
- 		///Users/dicksonpun/Library/Application Support/iPhone Simulator/6.0/Applications/C216FBF7-C07C-419A-9EB7-C8A0372CCC11/Documents/seatingChart.xml
-		xmlhttp.open("GET","../Documents/seatingChart.xml",false);
+
+		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 
+		//xmlDoc=new ActiveXObject("Microsoft.XMLDOM"); 
+		//xmlDoc.async=false; 
+		//xmlDoc.load("/Documents/seatingChart.xml"); 
+		
 		var x=xmlDoc.getElementsByTagName("SEAT");
 		for (i=0;i<x.length;i++)
 		{ 
