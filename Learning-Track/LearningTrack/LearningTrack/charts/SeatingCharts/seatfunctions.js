@@ -235,7 +235,8 @@ function queryXML() //this function will query the appropriate XML file and retu
 		{// code for IE6, IE5
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
-
+		
+		//NOTE: EE68CBDF-B0CA-4C41-B100-FADF96CD1967 THE GUID CHANGES EVERY ITERATION OF A VERSION UPDATE (I.E. : 6.0 ->6.1)
 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
