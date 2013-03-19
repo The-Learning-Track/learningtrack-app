@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Data;
 using Mono.Data.Sqlite;
 using System.Collections.Generic;
-using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
@@ -102,29 +101,7 @@ namespace LearningTrack
 				nextViewController.myCOURSES = myCourses;
 			}
 
-			// TEST DATABASE
-			// Figure out where the SQLite database will be.
-			var documents = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
-			string _pathToDatabase = Path.Combine (documents, "db_sqlite-net.db");
-			
-			// Automatically creates table of 'Student' objects
-			Database myDB = new Database (_pathToDatabase);
-			
-			//Query from database and recreate list of grades
-			List<Grade> studentGrades = new List<Grade> ();
-			foreach (var grade in myDB.QueryAllGrades()) {
-				studentGrades.Add (grade);
-			}
-			
-			//Query from database and recreate list of students
-			List<StudentINFO> studentINFO = new List<StudentINFO> ();
-			foreach (var student in myDB.QueryAllStudents()) {
-				studentINFO.Add (student);
-			}
-			
-			//Extracted and combined grades and studentINFO under a list of 'Student' objects
-			//List<Student> COMPLETEINFO = myDB.getCompleteStudentINFO (studentINFO, studentGrades);
-
+			//DUMMY DATA - NEED TO IMPLEMENT STUDENT XML 
 			List <Grade> JohnDoeGrades = new List<Grade> ();
 			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
 			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
@@ -156,6 +133,10 @@ namespace LearningTrack
 			COMPLETEINFO.Add (JohnDoe);
 			COMPLETEINFO.Add (Katsu);
 			COMPLETEINFO.Add (Dickson);
+
+			COURSEGRADES studentGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
+			//Serialize to XML
+			studentGrades.serializeToXML();
 
 			//---------Get and set standard deviations and averages for all categories and associated assignments--------
 			//Create STATISTICS structure from List<Student> first
@@ -260,7 +241,7 @@ namespace LearningTrack
 			List<SEAT> extractedSeating = new List<SEAT>();
 
 			//store list of scores and averages, assume overall weight is even across the category board
-			List <double> homeworkScores, examScores, labScores, overallScores;
+			List <double> homeworkScores, examScores, labScores;
 
 			//For each student in list of student get their seating chart data
 			foreach (Student student in COMPLETEINFO) {

@@ -240,10 +240,6 @@ function queryXML() //this function will query the appropriate XML file and retu
 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
-
-		//xmlDoc=new ActiveXObject("Microsoft.XMLDOM"); 
-		//xmlDoc.async=false; 
-		//xmlDoc.load("/Documents/seatingChart.xml"); 
 		
 		var x=xmlDoc.getElementsByTagName("SEAT");
 		for (i=0;i<x.length;i++)

@@ -123,7 +123,6 @@
     <Compile Include="StudentOptionsViewController.designer.cs">
       <DependentUpon>StudentOptionsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="SQLite.cs" />
     <Compile Include="InstructorSeatingChartViewController.cs" />
     <Compile Include="InstructorSeatingChartViewController.designer.cs">
       <DependentUpon>InstructorSeatingChartViewController.cs</DependentUpon>

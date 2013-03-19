@@ -3,7 +3,6 @@ using System.IO;
 using System.Drawing;
 using System.Data;
 using Mono.Data.Sqlite;
-using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Collections.Generic;
@@ -12,35 +11,6 @@ using System.Xml;
 
 namespace LearningTrack
 {
-	[Serializable]
-	[Preserve]
-	/* EXPECTED FORMAT OF XML FILE
-	 * -----------------------------
-	<SEATING_CHART>
-		<SEAT>
-	        <SEAT_NUMBER>A1</SEAT_NUMBER>
-	        <NAME>Bob</NAME>
-	        <OVERALL_AVERAGE>good</OVERALL_AVERAGE>
-	        <ATTENDANCE_FLAG>false</ATTENDANCE_FLAG>
-	        <MISSING_ASSIGNMENT_FLAG>false</MISSING_ASSIGNMENT_FLAG>
-	        <HOMEWORK_AVERAGE>bad</HOMEWORK_AVERAGE>
-	        <EXAM_AVERAGE>bad</EXAM_AVERAGE>
-	        <LAB_AVERAGE>bad</LAB_AVERAGE>
-	        <PREDICT_GRADE>B</PREDICT_GRADE>
-		</SEAT>
-		<SEAT>
-	        <SEAT_NUMBER>A10</SEAT_NUMBER>
-	        <NAME>Patrick</NAME>
-	        <OVERALL_AVERAGE>bad</OVERALL_AVERAGE>
-	        <ATTENDANCE_FLAG>false</ATTENDANCE_FLAG>
-	        <MISSING_ASSIGNMENT_FLAG>false</MISSING_ASSIGNMENT_FLAG>
-	        <HOMEWORK_AVERAGE>good</HOMEWORK_AVERAGE>
-	        <EXAM_AVERAGE>bad</EXAM_AVERAGE>
-	        <LAB_AVERAGE>ok</LAB_AVERAGE>
-	        <PREDICT_GRADE>B</PREDICT_GRADE>
-		</SEAT>
-	</SEATING_CHART>
-	*/
 	public class SEATINGCHART
 	{
 		//List of 'SEAT' objects

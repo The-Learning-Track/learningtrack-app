@@ -4,7 +4,6 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using System.Linq;
 using System.Collections.Generic;
-using SQLite;
 using System.IO;
 
 namespace LearningTrack
@@ -15,9 +14,6 @@ namespace LearningTrack
 		{
 		}
 
-		//Destination directory of database
-		private string _pathToDatabase;
-
 		public ClassList myCourses;
 
 		public override void ViewDidLoad ()
@@ -26,15 +22,11 @@ namespace LearningTrack
 
 			logoutButton.TouchUpInside += (sender, e) => 
 			{	
-				// Figure out where the SQLite database will be.
+				// Figure out where the XML FILES will be.
 				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-				_pathToDatabase = Path.Combine(path, "db_sqlite-net.db");
-				
-				// Automatically creates table of 'Student' and 'Grade' objects
-				Database accessDB = new Database(_pathToDatabase);
 				
 				//CLEAR EVERYTHING
-				accessDB.clearDB ();
+
 				//---------------------------------------------------------------------------------------
 				//Clear THEN logout
 				this.PerformSegue("StudentLogout", this);
@@ -43,15 +35,11 @@ namespace LearningTrack
 			// if change class is pressed
 			changeClassButton.TouchUpInside += (sender, e) =>
 			{	
-				// Figure out where the SQLite database will be.
+				// Figure out where the XML FILES will be.
 				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-				_pathToDatabase = Path.Combine(path, "db_sqlite-net.db");
-				
-				// Automatically creates table of 'Student' and 'Grade' objects
-				Database accessDB = new Database(_pathToDatabase);
 				
 				//CLEAR EVERYTHING
-				accessDB.clearDB ();
+		
 				//---------------------------------------------------------------------------------------
 				//Clear THEN change class
 				this.PerformSegue ("StudentChangeClass", this);

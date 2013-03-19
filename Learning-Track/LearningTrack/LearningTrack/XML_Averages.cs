@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Data;
 using Mono.Data.Sqlite;
 using System.Collections.Generic;
-using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;

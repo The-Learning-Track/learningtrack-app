@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Data;
 using Mono.Data.Sqlite;
 using System.Collections.Generic;
-using SQLite;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
@@ -17,8 +16,6 @@ namespace LearningTrack
 		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
-
-		private string _pathToDatabase;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -159,45 +156,6 @@ namespace LearningTrack
 				nextViewController.myCourses = courses;
 
 				this.LoginLoadingIndicator.StopAnimating();
-
-				// Figure out where the SQLite database will be.
-				var documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-				_pathToDatabase = Path.Combine(documents, "db_sqlite-net.db");
-
-				//GET DB path to test for iOS directory path
-				//string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
-
-				// Automatically creates table of 'Student' and 'Grade' objects
-				Database myDB = new Database(_pathToDatabase);
-
-				//CLEAR EVERYTHING
-				myDB.clearDB ();
-
-				//INSERT NEW STUDENTS
-				myDB.Insert(new StudentINFO { firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1"});
-				myDB.Insert(new StudentINFO { firstName = "Katsutoshi", lastName = "Kawakami", studentID = "001", seatLocation = "A3"});
-				myDB.Insert(new StudentINFO { firstName = "Dickson", lastName = "Pun", studentID = "002", seatLocation = "B1"});
-				//INSERT CORRESPONDING GRADES
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 7, totalPoints = 10, studentID = "000"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 7, totalPoints = 10, studentID = "001"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 8, totalPoints = 10, studentID = "001"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 8, totalPoints = 10, studentID = "001"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
-				myDB.Insert(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
-
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam1", score = 29, totalPoints = 100, studentID = "000"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam2", score = 55, totalPoints = 100, studentID = "000"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam3", score = 74, totalPoints = 100, studentID = "000"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam2", score = 86, totalPoints = 100, studentID = "001"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam3", score = 83, totalPoints = 100, studentID = "001"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam1", score = 94, totalPoints = 100, studentID = "002"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam2", score = 70, totalPoints = 100, studentID = "002"});
-				myDB.Insert(new Grade {category = "Exam", assignmentName = "Exam3", score = 97, totalPoints = 100, studentID = "002"});
-
 			}
 		}
 		
