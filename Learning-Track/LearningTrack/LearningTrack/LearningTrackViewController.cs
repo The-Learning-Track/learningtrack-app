@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
+using WebloginConnection;
 
 namespace LearningTrack
 {
@@ -16,6 +17,7 @@ namespace LearningTrack
 		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
+		public int count = 0;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -34,15 +36,31 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
-			//Hide Keyboard after textfield entry
-			UsernameField.ShouldReturn = delegate{
-				UsernameField.ResignFirstResponder();
-				return true;
-			};
-			PasswordField.ShouldReturn = delegate{
-				PasswordField.ResignFirstResponder();
-				return true;
-			};
+			//BU WEBLOGIN
+			var webloginConnection = new BUWebloginConnection ();
+			var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+			var request = new NSUrlRequest (url);
+			
+			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+				if (data.Length > 0) {
+					count++;
+					var username = "dicksonp";
+					int herp = 0;
+					//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
+					//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
+					
+					
+					//-------------------------------------------------------------------
+					//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
+					List<string> testCourseNames = new List<string> ();
+					testCourseNames.Add ("[Lecture Hall]");
+					testCourseNames.Add ("[Studio Classroom]");
+					List<string> testCourseIDs = new List<string> ();
+					testCourseIDs.Add ("[LECTURE ID]");
+					testCourseIDs.Add ("[STUDIO ID]");
+					courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
+				}
+			});
 
 			// When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
@@ -50,29 +68,25 @@ namespace LearningTrack
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
 
-				//Get Username and Password
-				username = UsernameField.Text;
-				var password = PasswordField.Text;
+				
 
-				//-------------------------------------------------------------------
-				//DUMMY TESTS -- ASSUME 1 to 1 match up
-				List<string> testCourseNames = new List<string> ();
-				testCourseNames.Add ("[Lecture Hall]");
-				testCourseNames.Add ("[Studio Classroom]");
-				List<string> testCourseIDs = new List<string> ();
-				testCourseIDs.Add ("[LECTURE ID]");
-				testCourseIDs.Add ("[STUDIO ID]");
-				courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
+				
+				_isProfessor = true;
+				//if verified, stop animating loading indicator
+				this.LoginLoadingIndicator.StopAnimating();
+				this.PerformSegue("ToPickClass", this);
 
+
+				/*
 				//Should pass on to Blackboard for verification
-				if ((username == "student") && (username.Length != 0) && (password.Length != 0)){
+				if (username == "dicksonp"){
 					//flag for privileges later
 					_isProfessor = false;
 					//if verified, stop animating loading indicator
 					this.LoginLoadingIndicator.StopAnimating();
 					this.PerformSegue("ToPickClass", this);
 				}
-				else if ((username == "instructor") && (username.Length != 0) && (password.Length != 0)){
+				else if (username == "instructor"){
 					//flag for privileges later
 					_isProfessor = true;
 					//if verified, stop animating loading indicator
@@ -86,7 +100,7 @@ namespace LearningTrack
 					using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
 						alert.Show();
 					}
-				}
+				}*/
 
 
 				// CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
@@ -142,6 +156,7 @@ namespace LearningTrack
 				}*/
 
 			};
+
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)

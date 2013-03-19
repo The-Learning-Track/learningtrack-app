@@ -8,6 +8,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
 using System.Linq;
+using WebloginConnection;
 
 namespace LearningTrack
 {
@@ -26,6 +27,7 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
+
 			CreateTableItems();
 
 			//Transition to interface depending on user privileges
@@ -38,20 +40,20 @@ namespace LearningTrack
 				client.BaseUrl = "";
 
 
-				var request = new RestRequest();
-				request.Resource = "";
+				var Crequest = new RestRequest();
+				Crequest.Resource = "";
 				// set format to JSON
-				request.RequestFormat = DataFormat.Json;
+				Crequest.RequestFormat = DataFormat.Json;
 				var msg = new userINFO {username = myCourses.username, 
 										courseID = myCourses.courseIDs[selectedRow], 
 										courseName = myCourses.courseNames[selectedRow]};
 
 				//This will result in a single JSON object, that contains the properties on the object passed into the Serialize method.
-				request.AddParameter("infoRequest",request.JsonSerializer.Serialize(msg));
+				Crequest.AddParameter("infoRequest",Crequest.JsonSerializer.Serialize(msg));
 
 				// automatically deserialize result
 				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized = client.Execute<List<Student>>(request);
+				var responseDeserialized = client.Execute<List<Student>>(Crequest);
 
 				List<Student> blackboardData = responseDeserialized.Data;
 

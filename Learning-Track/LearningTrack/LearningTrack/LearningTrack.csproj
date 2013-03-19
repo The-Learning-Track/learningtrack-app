@@ -90,6 +90,9 @@
     <Reference Include="RestSharp.MonoTouch">
       <HintPath>RestSharp.MonoTouch.dll</HintPath>
     </Reference>
+    <Reference Include="WebloginLibrary">
+      <HintPath>WebloginLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -149,9 +152,14 @@
     <Compile Include="BackendCommunication.cs" />
     <Compile Include="XML_SeatingChart.cs" />
     <Compile Include="XML_Averages.cs" />
+    <Compile Include="BUWebloginViewController.cs" />
+    <Compile Include="BUWebloginViewController.designer.cs">
+      <DependentUpon>BUWebloginViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
+    <InterfaceDefinition Include="Weblogin.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
