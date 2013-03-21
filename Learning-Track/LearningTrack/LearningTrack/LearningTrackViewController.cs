@@ -8,6 +8,8 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
 using WebloginConnection;
+using System.Threading;
+using System.ComponentModel;
 
 namespace LearningTrack
 {
@@ -17,7 +19,7 @@ namespace LearningTrack
 		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
-		public int count = 0;
+		public bool isAuthenticated = false;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -31,50 +33,66 @@ namespace LearningTrack
 		}
 		
 		#region View lifecycle
-		
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 
-			//BU WEBLOGIN
-			var webloginConnection = new BUWebloginConnection ();
-			var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
-			var request = new NSUrlRequest (url);
-			
-			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
-				if (data.Length > 0) {
-					count++;
-					var username = "dicksonp";
-					int herp = 0;
-					//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
-					//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
-					
-					
-					//-------------------------------------------------------------------
-					//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
-					List<string> testCourseNames = new List<string> ();
-					testCourseNames.Add ("[Lecture Hall]");
-					testCourseNames.Add ("[Studio Classroom]");
-					List<string> testCourseIDs = new List<string> ();
-					testCourseIDs.Add ("[LECTURE ID]");
-					testCourseIDs.Add ("[STUDIO ID]");
-					courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
-				}
-			});
-
 			// When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
-				this.LoginLoadingIndicator.StopAnimating();
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
 
+				// Call the method that runs asynchronously.
+				//BU WEBLOGIN - ASYNCHRONOUS CALL
+				var webloginConnection = new BUWebloginConnection ();
+				var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+				var request = new NSUrlRequest (url);
 				
+				var executedCallBack = new AutoResetEvent(false);
+				
+				webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+					if (data == null){
+						//display error alert message
+						using (var alert = new UIAlertView("Login Error Message", "Connection lost or Authentication Fail. Please try again.", null, "OK", null)){
+							alert.Show();
+						}
+					}
+					else if (data.Length > 0) {
+						//Upon successful authentication
+						isAuthenticated = true;
+						BeginInvokeOnMainThread (delegate {});
+						
+						//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
+						//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
+						
+						//-------------------------------------------------------------------
+						//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
+						List<string> testCourseNames = new List<string> ();
+						testCourseNames.Add ("[Lecture Hall]");
+						testCourseNames.Add ("[Studio Classroom]");
+						List<string> testCourseIDs = new List<string> ();
+						testCourseIDs.Add ("[LECTURE ID]");
+						testCourseIDs.Add ("[STUDIO ID]");
+						courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
+						
+						this.LoginLoadingIndicator.StopAnimating();	
+						
+					}
+					executedCallBack.Set();
+				});
+				executedCallBack.WaitOne(TimeSpan.Zero, false);
 
+				if (isAuthenticated){
+					this.PerformSegue("ToPickClass", this);
 				
-				_isProfessor = true;
-				//if verified, stop animating loading indicator
-				this.LoginLoadingIndicator.StopAnimating();
-				this.PerformSegue("ToPickClass", this);
+				}
+					/*Console.WriteLine("Waiting on async call");
+					(new Thread(ASyncCallCompleted)).Start();
+					mySync.WaitOne();
+					Console.WriteLine("Waiting Completed");
+					Console.Read();*/
+				
 
 
 				/*
@@ -166,6 +184,8 @@ namespace LearningTrack
 			if (segue.Identifier == "ToPickClass") {
 				// Get reference to the destination view controller
 				var nextViewController = (PickClassViewController) segue.DestinationViewController;
+
+
 				//Pass bool _isProfessor to the next view controller
 				nextViewController.isProfessor = _isProfessor;
 				nextViewController.myCourses = courses;
@@ -173,7 +193,48 @@ namespace LearningTrack
 				this.LoginLoadingIndicator.StopAnimating();
 			}
 		}
-		
+
+		public void callBUWebLogin(){
+			//BU WEBLOGIN - ASYNCHRONOUS CALL
+			var webloginConnection = new BUWebloginConnection ();
+			var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+			var request = new NSUrlRequest (url);
+			
+			var executedCallBack = new AutoResetEvent(false);
+			
+			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+				if (data == null){
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Connection lost or Authentication Fail. Please try again.", null, "OK", null)){
+						alert.Show();
+					}
+				}
+				else if (data.Length > 0) {
+					//Upon successful authentication
+					isAuthenticated = true;
+					BeginInvokeOnMainThread (delegate {});
+					
+					//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
+					//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
+					
+					//-------------------------------------------------------------------
+					//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
+					List<string> testCourseNames = new List<string> ();
+					testCourseNames.Add ("[Lecture Hall]");
+					testCourseNames.Add ("[Studio Classroom]");
+					List<string> testCourseIDs = new List<string> ();
+					testCourseIDs.Add ("[LECTURE ID]");
+					testCourseIDs.Add ("[STUDIO ID]");
+					courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
+					
+					this.LoginLoadingIndicator.StopAnimating();	
+					
+				}
+				executedCallBack.Set();
+			});
+			executedCallBack.WaitOne();
+		}
+
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);

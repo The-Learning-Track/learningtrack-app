@@ -27,7 +27,6 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
-
 			CreateTableItems();
 
 			//Transition to interface depending on user privileges
