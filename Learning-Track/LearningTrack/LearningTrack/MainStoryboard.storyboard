@@ -38,6 +38,20 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WsT-ch-B2Z">
+                                <rect key="frame" x="591" y="342" width="326" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Authentication Successful!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.35587152304861308" green="0.53449904264688108" blue="0.60718834918478259" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="SUM-XL-GBy">
                                 <rect key="frame" x="837" y="311" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,6 +80,7 @@
                     <connections>
                         <outlet property="LoginButton" destination="W2u-wc-eUJ" id="2bg-vo-HPR"/>
                         <outlet property="LoginLoadingIndicator" destination="SUM-XL-GBy" id="Tgb-dh-oDx"/>
+                        <outlet property="loginLabel" destination="WsT-ch-B2Z" id="sT7-fb-f5M"/>
                         <segue destination="ttf-8U-8Fu" kind="modal" identifier="ToPickClass" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dQY-ia-ofv"/>
                     </connections>
                 </viewController>
@@ -466,6 +481,7 @@
             <relationships>
                 <relationship kind="outlet" name="LoginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="LoginLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="PickClassViewController" superclassName="UIViewController">

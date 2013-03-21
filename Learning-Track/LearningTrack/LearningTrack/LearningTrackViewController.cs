@@ -176,6 +176,7 @@ namespace LearningTrack
 					isAuthenticated = true;
 					BeginInvokeOnMainThread (delegate {
 						this.LoginButton.SetTitle ("Continue", UIControlState.Normal);
+						this.loginLabel.Hidden = false;
 					});
 					
 					//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
