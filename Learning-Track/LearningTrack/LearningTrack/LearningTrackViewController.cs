@@ -19,6 +19,7 @@ namespace LearningTrack
 		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
+		//private static AutoResetEvent mySync = new AutoResetEvent(false);
 		public bool isAuthenticated = false;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
@@ -43,49 +44,11 @@ namespace LearningTrack
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
 
-				// Call the method that runs asynchronously.
-				//BU WEBLOGIN - ASYNCHRONOUS CALL
-				var webloginConnection = new BUWebloginConnection ();
-				var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
-				var request = new NSUrlRequest (url);
-				
-				var executedCallBack = new AutoResetEvent(false);
-				
-				webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
-					if (data == null){
-						//display error alert message
-						using (var alert = new UIAlertView("Login Error Message", "Connection lost or Authentication Fail. Please try again.", null, "OK", null)){
-							alert.Show();
-						}
-					}
-					else if (data.Length > 0) {
-						//Upon successful authentication
-						isAuthenticated = true;
-						BeginInvokeOnMainThread (delegate {});
-						
-						//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
-						//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
-						
-						//-------------------------------------------------------------------
-						//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
-						List<string> testCourseNames = new List<string> ();
-						testCourseNames.Add ("[Lecture Hall]");
-						testCourseNames.Add ("[Studio Classroom]");
-						List<string> testCourseIDs = new List<string> ();
-						testCourseIDs.Add ("[LECTURE ID]");
-						testCourseIDs.Add ("[STUDIO ID]");
-						courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
-						
-						this.LoginLoadingIndicator.StopAnimating();	
-						
-					}
-					executedCallBack.Set();
-				});
-				executedCallBack.WaitOne(TimeSpan.Zero, false);
-
 				if (isAuthenticated){
 					this.PerformSegue("ToPickClass", this);
-				
+				}
+				else{
+					callBUWebLogin();
 				}
 					/*Console.WriteLine("Waiting on async call");
 					(new Thread(ASyncCallCompleted)).Start();
@@ -199,20 +162,21 @@ namespace LearningTrack
 			var webloginConnection = new BUWebloginConnection ();
 			var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
 			var request = new NSUrlRequest (url);
-			
-			var executedCallBack = new AutoResetEvent(false);
-			
+
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Connection lost or Authentication Fail. Please try again.", null, "OK", null)){
+					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+						this.LoginLoadingIndicator.StopAnimating();	
 						alert.Show();
 					}
 				}
 				else if (data.Length > 0) {
 					//Upon successful authentication
 					isAuthenticated = true;
-					BeginInvokeOnMainThread (delegate {});
+					BeginInvokeOnMainThread (delegate {
+						this.LoginButton.SetTitle ("Continue", UIControlState.Normal);
+					});
 					
 					//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
 					//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
@@ -230,9 +194,7 @@ namespace LearningTrack
 					this.LoginLoadingIndicator.StopAnimating();	
 					
 				}
-				executedCallBack.Set();
 			});
-			executedCallBack.WaitOne();
 		}
 
 		public override void ViewWillAppear (bool animated)
