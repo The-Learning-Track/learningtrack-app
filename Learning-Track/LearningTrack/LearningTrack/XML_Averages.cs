@@ -50,6 +50,7 @@ namespace LearningTrack
 	public class ASSIGNMENT
 	{
 		public string assignmentName { get; set; }
+		public string assignmentCategory { get; set; }
 
 		//standard deviation and average
 		public double assignmentStandardDev { get; set; }

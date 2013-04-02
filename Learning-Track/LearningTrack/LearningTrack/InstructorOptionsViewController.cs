@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using RestSharp;
+using WebloginConnection;
 
 namespace LearningTrack
 {
@@ -59,6 +60,14 @@ namespace LearningTrack
 				//Pass values to the next view controller
 				nextViewController.myCourses = myCourses;
 				nextViewController.isProfessor = true;
+			}
+			if (segue.Identifier == "InstructorLogout") {
+				// Get reference to the destination view controller
+				var nextViewController = (LearningTrackViewController) segue.DestinationViewController;
+				// CLEAR XMLS * REMEMBER TO DO SO
+
+				// LOGOUT OF BU WEBLOGIN SESSION
+				BUWebloginConnection logout;
 			}
 		}
 

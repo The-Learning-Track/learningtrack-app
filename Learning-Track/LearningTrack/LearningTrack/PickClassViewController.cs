@@ -249,7 +249,7 @@ namespace LearningTrack
 				SEAT temp = new SEAT();
 				temp.SEAT_NUMBER = student.seatLocation;
 				temp.NAME = student.firstName;
-				temp.ID = student.studentID;
+				temp.STUDENT_ID = student.studentID;
 				temp.ATTENDANCE_FLAG = "N/A";
 				temp.MISSING_ASSIGNMENT_FLAG = "N/A";
 				temp.PREDICT_GRADE = "N/A";

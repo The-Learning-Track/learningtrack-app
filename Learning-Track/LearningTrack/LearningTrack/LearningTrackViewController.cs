@@ -193,7 +193,10 @@ namespace LearningTrack
 					courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
 					
 					this.LoginLoadingIndicator.StopAnimating();	
-					
+					/* Update UI on main thread */
+					BeginInvokeOnMainThread(delegate {						
+						this.PerformSegue("ToPickClass", this);
+					});
 				}
 			});
 		}

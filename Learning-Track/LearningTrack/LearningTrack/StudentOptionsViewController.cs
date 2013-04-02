@@ -5,6 +5,7 @@ using MonoTouch.UIKit;
 using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using WebloginConnection;
 
 namespace LearningTrack
 {
@@ -27,12 +28,15 @@ namespace LearningTrack
 				
 				//CLEAR EVERYTHING
 
+
+				// LOGOUT
+				Logout();
+
 				//---------------------------------------------------------------------------------------
 				//Clear THEN logout
-				this.PerformSegue("StudentLogout", this);
+				//this.PerformSegue("StudentLogout", this);
 			};
 
-			// if change class is pressed
 			changeClassButton.TouchUpInside += (sender, e) =>
 			{	
 				// Figure out where the XML FILES will be.
@@ -46,6 +50,17 @@ namespace LearningTrack
 			};
 		}
 
+		public void Logout(){
+			// LOGOUT OF BU WEBLOGIN SESSION
+			BUWebloginConnection.Logout();
+
+			/* Update UI on main thread */
+			//BeginInvokeOnMainThread(delegate {						
+				this.PerformSegue("StudentLogout", this);
+			//});
+
+		}
+
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue (segue, sender);
@@ -56,6 +71,10 @@ namespace LearningTrack
 				//Pass values to the next view controller
 				nextViewController.myCourses = myCourses;
 				nextViewController.isProfessor = false;
+			}
+			if (segue.Identifier == "StudentLogout") {
+				// Get reference to the destination view controller
+				//var nextViewController = (LearningTrackViewController) segue.DestinationViewController;
 			}
 		}
 	}
