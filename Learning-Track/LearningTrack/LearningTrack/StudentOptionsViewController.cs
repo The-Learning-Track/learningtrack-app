@@ -6,6 +6,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using WebloginConnection;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace LearningTrack
 {
@@ -23,11 +25,23 @@ namespace LearningTrack
 
 			logoutButton.TouchUpInside += (sender, e) => 
 			{	
-				// Figure out where the XML FILES will be.
-				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-				
-				//CLEAR EVERYTHING
+				// Figure out where the XML FILES will be and CLEAR EVERYTHING
+				string seatingChartPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
+				string courseAveragesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");
+				string courseGradesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseGrades.xml");
 
+				//Creates new file, overwrites old file automatically - seatingChart.xml
+				Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
+				XmlWriter myXMLWriter = XmlWriter.Create(myStream);
+				//Creates new file, overwrites old file automatically - courseAverages.xml
+				myStream = new FileStream(courseAveragesPath, FileMode.Create);
+				myXMLWriter = XmlWriter.Create(myStream);
+				//Creates new file, overwrites old file automatically - courseGrades.xml
+				myStream = new FileStream(courseGradesPath, FileMode.Create);
+				myXMLWriter = XmlWriter.Create(myStream);
+				//Close stream
+				myStream.Flush(); 
+				myStream.Close();
 
 				// LOGOUT
 				Logout();
@@ -39,10 +53,23 @@ namespace LearningTrack
 
 			changeClassButton.TouchUpInside += (sender, e) =>
 			{	
-				// Figure out where the XML FILES will be.
-				var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+				// Figure out where the XML FILES will be and CLEAR EVERYTHING
+				string seatingChartPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
+				string courseAveragesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");
+				string courseGradesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseGrades.xml");
 				
-				//CLEAR EVERYTHING
+				//Creates new file, overwrites old file automatically - seatingChart.xml
+				Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
+				XmlWriter myXMLWriter = XmlWriter.Create(myStream);
+				//Creates new file, overwrites old file automatically - courseAverages.xml
+				myStream = new FileStream(courseAveragesPath, FileMode.Create);
+				myXMLWriter = XmlWriter.Create(myStream);
+				//Creates new file, overwrites old file automatically - courseGrades.xml
+				myStream = new FileStream(courseGradesPath, FileMode.Create);
+				myXMLWriter = XmlWriter.Create(myStream);
+				//Close stream
+				myStream.Flush(); 
+				myStream.Close();
 		
 				//---------------------------------------------------------------------------------------
 				//Clear THEN change class

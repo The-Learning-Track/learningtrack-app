@@ -19,8 +19,6 @@ namespace LearningTrack
 		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
-		//private static AutoResetEvent mySync = new AutoResetEvent(false);
-		public bool isAuthenticated = false;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -44,45 +42,7 @@ namespace LearningTrack
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
 
-				if (isAuthenticated){
-					this.PerformSegue("ToPickClass", this);
-				}
-				else{
-					callBUWebLogin();
-				}
-					/*Console.WriteLine("Waiting on async call");
-					(new Thread(ASyncCallCompleted)).Start();
-					mySync.WaitOne();
-					Console.WriteLine("Waiting Completed");
-					Console.Read();*/
-				
-
-
-				/*
-				//Should pass on to Blackboard for verification
-				if (username == "dicksonp"){
-					//flag for privileges later
-					_isProfessor = false;
-					//if verified, stop animating loading indicator
-					this.LoginLoadingIndicator.StopAnimating();
-					this.PerformSegue("ToPickClass", this);
-				}
-				else if (username == "instructor"){
-					//flag for privileges later
-					_isProfessor = true;
-					//if verified, stop animating loading indicator
-					this.LoginLoadingIndicator.StopAnimating();
-					this.PerformSegue("ToPickClass", this);
-				}
-				else{
-					//stop animating loading indicator
-					this.LoginLoadingIndicator.StopAnimating();
-					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
-						alert.Show();
-					}
-				}*/
-
+				callBUWebLogin();
 
 				// CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
 				/*if ((username.Length != 0) && (password.Length != 0)){
@@ -150,7 +110,7 @@ namespace LearningTrack
 
 
 				//Pass bool _isProfessor to the next view controller
-				nextViewController.isProfessor = true;
+				nextViewController.isProfessor = false;
 				nextViewController.myCourses = courses;
 
 				this.LoginLoadingIndicator.StopAnimating();
@@ -173,9 +133,8 @@ namespace LearningTrack
 				}
 				else if (data.Length > 0) {
 					//Upon successful authentication
-					isAuthenticated = true;
 					BeginInvokeOnMainThread (delegate {
-						this.LoginButton.SetTitle ("Continue", UIControlState.Normal);
+						//this.LoginButton.SetTitle ("Continue", UIControlState.Normal);
 						this.loginLabel.Hidden = false;
 					});
 					
