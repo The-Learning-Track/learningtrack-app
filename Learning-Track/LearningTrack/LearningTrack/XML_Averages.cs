@@ -42,15 +42,15 @@ namespace LearningTrack
 		//standard deviation and average (for the overall category), and list of assignments
 		public double categoryStandardDev { get; set; }
 		public double categoryAverage { get; set; }
-		public double categoryMax { get; set; }
-		public double categoryMin { get; set; }
+		//public double categoryMax { get; set; }
+		//public double categoryMin { get; set; }
 		public List <ASSIGNMENT> assignments { get; set; }
 	}
 
 	public class ASSIGNMENT
 	{
-		public string assignmentName { get; set; }
 		public string assignmentCategory { get; set; }
+		public string assignmentName { get; set; }
 
 		//standard deviation and average
 		public double assignmentStandardDev { get; set; }

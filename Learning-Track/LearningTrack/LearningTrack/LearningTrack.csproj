@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
+    <None Include="charts\SeatingCharts\highcharts\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -166,6 +167,7 @@
     <Folder Include="Images\" />
     <Folder Include="charts\" />
     <Folder Include="charts\SeatingCharts\" />
+    <Folder Include="charts\SeatingCharts\highcharts\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -199,29 +201,37 @@
     <Content Include="charts\VsClassAverage.htm" />
     <Content Include="charts\highcharts-more.js" />
     <Content Include="charts\gradeDistribution.htm" />
-    <Content Include="charts\SeatingCharts\morse.html">
-      <DependentUpon>morse.html</DependentUpon>
-    </Content>
-    <Content Include="charts\SeatingCharts\seatfunctions.js" />
-    <Content Include="charts\SeatingCharts\student_stats.html" />
-    <Content Include="charts\SeatingCharts\backup_v1.html" />
-    <Content Include="charts\SeatingCharts\backupjs" />
     <Content Include="charts\SeatingCharts\Totoro-V1\16_980grid.css" />
     <Content Include="charts\SeatingCharts\Totoro-V1\ReadMe.txt" />
     <Content Include="charts\SeatingCharts\Totoro-V1\demo.css" />
     <Content Include="charts\SeatingCharts\Totoro-V1\index.html" />
     <Content Include="charts\SeatingCharts\Totoro-V1\reset.css" />
     <Content Include="charts\SeatingCharts\Totoro-V1\text.css" />
-    <Content Include="charts\SeatingCharts\highcharts.js" />
-    <Content Include="charts\SeatingCharts\highcharts-more.js" />
-    <Content Include="charts\SeatingCharts\seatingchart.xml" />
     <Content Include="charts\standardDev.htm">
       <DependentUpon>VsClassAverage.htm</DependentUpon>
     </Content>
-    <Content Include="charts\SeatingCharts\studio.html" />
-    <Content Include="charts\SeatingCharts\studio_student.html" />
-    <Content Include="charts\SeatingCharts\morse_student.html" />
-    <Content Include="charts\SeatingCharts\loginfunctions.js" />
+    <Content Include="charts\SeatingCharts\highcharts\courseAverages.xml" />
+    <Content Include="charts\SeatingCharts\highcharts\courseGrades.xml" />
+    <Content Include="charts\SeatingCharts\highcharts\graphFunctions.js" />
+    <Content Include="charts\SeatingCharts\highcharts\highcharts.js" />
+    <Content Include="charts\SeatingCharts\highcharts\highcharts-more.js" />
+    <Content Include="charts\SeatingCharts\highcharts\standardDev.htm" />
+    <Content Include="charts\SeatingCharts\highcharts\standardDevGroup.htm" />
+    <Content Include="charts\SeatingCharts\highcharts\studentAverages.xml" />
+    <Content Include="charts\SeatingCharts\highcharts\VsClassAverage.htm" />
+    <Content Include="charts\SeatingCharts\backup_v1.html" />
+    <Content Include="charts\SeatingCharts\backupjs" />
+    <Content Include="charts\SeatingCharts\highcharts.js" />
+    <Content Include="charts\SeatingCharts\highcharts-more.js" />
     <Content Include="charts\SeatingCharts\login_xml.xml" />
+    <Content Include="charts\SeatingCharts\loginfunctions.js" />
+    <Content Include="charts\SeatingCharts\morse.html" />
+    <Content Include="charts\SeatingCharts\morse_group.html" />
+    <Content Include="charts\SeatingCharts\morse_student.html" />
+    <Content Include="charts\SeatingCharts\seatfunctions.js" />
+    <Content Include="charts\SeatingCharts\seatingchart.xml" />
+    <Content Include="charts\SeatingCharts\studio.html" />
+    <Content Include="charts\SeatingCharts\studio_group.html" />
+    <Content Include="charts\SeatingCharts\studio_student.html" />
   </ItemGroup>
 </Project>

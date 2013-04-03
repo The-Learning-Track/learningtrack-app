@@ -1,4 +1,4 @@
-function studentSeat(firstname,overallaverage,attendanceflag,missingassignmentFlag, seatnumber, homeworkavg, examavg, labavg, prediction) //this function creates the JavaScript object
+function studentSeat(firstname,overallaverage,attendanceflag,missingassignmentFlag, seatnumber, homeworkavg, examavg, labavg, prediction, id) //this function creates the JavaScript object
 {
     //PROPERTIES LISTED HERE --------------------------
 	this.name=firstname; //1
@@ -10,6 +10,7 @@ function studentSeat(firstname,overallaverage,attendanceflag,missingassignmentFl
 	this.examAverage=examavg; //7
 	this.labAverage=labavg; //8
     this.predictedGrade = prediction; //9
+    this.studentID = id; //10
     
     //METHODS BEGIN HERE ------------------------------
 	this.setHomework=setHomework;
@@ -199,10 +200,15 @@ function seatPopup(id, array)
 	var index=getIndex(id, array);
 	if (index != null)
 	{
-	preurl = 'student_stats.html?id=';
+	preurl = 'highcharts/standardDev.htm?id='
+	//preurl = 'student_stats.html?id=';
 	url = preurl + id;
-	window.open(url,'popUpWindow','height=500,width=800,left=300,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=0, directories=no, status=no');
+	//window.open(url,'popUpWindow','height=1000,width=980,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=0, directories=no, status=no');
+	window.location.href = url;
+	//window.open(url);
 	}
+	//window.location.href = url;
+	//var e = document.getElementByI
 
 
 }
@@ -221,6 +227,21 @@ function seatName(id, array)
 		document.write("<br>");
 	}
 }
+/*===============================================================================================================*/
+
+
+function isTaken(id, array)
+{
+	var index = getIndex(id, array);
+	if (index != null)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 /*===============================================================================================================*/
 
@@ -237,7 +258,12 @@ function queryXML() //this function will query the appropriate XML file and retu
 		}
 		
 		//NOTE: EE68CBDF-B0CA-4C41-B100-FADF96CD1967 THE GUID CHANGES EVERY ITERATION OF A VERSION UPDATE (I.E. : 6.0 ->6.1)
+		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
+		//xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
+		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/seatingChart.xml",false);
+		
+		//xmlhttp.open("GET","seatingChart.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 		
@@ -254,7 +280,9 @@ function queryXML() //this function will query the appropriate XML file and retu
 				x[i].getElementsByTagName("HOMEWORK_AVERAGE")[0].childNodes[0].nodeValue,
 				x[i].getElementsByTagName("EXAM_AVERAGE")[0].childNodes[0].nodeValue,
 				x[i].getElementsByTagName("LAB_AVERAGE")[0].childNodes[0].nodeValue,
-				x[i].getElementsByTagName("PREDICT_GRADE")[0].childNodes[0].nodeValue);
+				x[i].getElementsByTagName("PREDICT_GRADE")[0].childNodes[0].nodeValue,
+				x[i].getElementsByTagName("STUDENT_ID")[0].childNodes[0].nodeValue
+				);
 		}
 		return studArray;
 }//end function parenthesis
@@ -285,3 +313,40 @@ function studentSeatfromURL()
 	//var studentSeatNumber = pathArray[1];
 	return seatnumber;
 }//end of function
+
+
+/*===============================================================================================================*/
+function checkboxSubmit(studentsArray)
+{
+	//alert(studentsArray[0].studentID);
+	var checked_array = new Array();
+	var string = "?group="
+	var chkbx = document.getElementsByName("group");
+	var category = document.getElementsByName("category");
+	for (i = 0; i < chkbx.length; i++) //loop through --> THIS WILL IGNORE EMPTY SEATS
+	{
+		if (chkbx[i].checked == true) //if a student seat is selected 
+		{
+			temp = chkbx[i].value; //take the seat number and make it into a temporary variable
+			for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
+			{
+				if(temp == studentsArray[j].seat) //if that temporary variable is equal to a student's seat
+				{
+					string += studentsArray[j].studentID + ","; //adds the student id numbers to the URL
+				}
+			}
+		}
+	}
+	//alert(string);
+	preurl = 'highcharts/standardDevGroup.htm'
+	url = preurl + string;
+	//document.URL = url;
+	window.location.href = url;
+	//var e = document.getElementById("category");
+	//var strUser = e.options[e.selectedIndex].value;
+	//alert(strUser);
+	
+	//alert(category.selected.value);
+}
+
+

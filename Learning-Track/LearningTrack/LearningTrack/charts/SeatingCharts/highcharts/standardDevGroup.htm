@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<form id="somform">
+	<select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	</select>
+	<select id="students" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	</select>
+	<a onclick="goBack();" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: small; padding: 2px;'>Go Back</a>
+</form>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="graphFunctions.js"></script>
+		<script type="text/javascript">	
+		
+	/* ===== QUERY THE GRADE SHEET AND GET ALL STUDENTS GRADES ======= */	
+	var getGrades = GetGrades();
+	var getAssignments = GetAssignment();
+	/* ===== END OF QUERYING ==========================================*/
+	
+	/* ========= GET ALL THE CATEGORIES TO MAKE INTO THE MENU ============ */
+	var myselect = document.getElementById("sample");
+	var studentselect = document.getElementById("students");
+	var categoryArray = new Array();
+	categoryArray = GetCategory();
+	/* ===================================================================== */
+	
+	/* ========= GET THE PATH NAME ============ */
+	var url1 = document.URL;
+	var path_pre = url1.split("?cat="); //remove the category from the url
+	var path = path_pre[0]; //this is for the category
+	/* ===================================================================== */
+	
+	/* ====== THIS SECTION SPLITS THE URL TO GET THE ARRAY OF STUDENT IDS TO COMPARE ====== */
+	var newarray = document.URL;
+	var array1=newarray.split('group=');
+	var temp = array1[1];
+	var studentIDarray = temp.split(',');
+	//alert(studentIDarray[1]);
+	/* ===== END OF SPLIT ARRAY ===== */
+
+/* ===== END OF SPLIT ARRAY ===== */
+	
+	var category = getCategoryID();	 //get the category ID from the URL
+	if (category > categoryArray.length)
+	{
+		categoryname = 'Overall';
+	}
+	else{
+	var categoryname = categoryArray[category].name; //get the name of the category from the URL
+	}
+	
+	/* ====== CALCULATE GROUPS ====== */
+	//var plotit = calculateGroups(studentIDarray, categoryname, getGrades, getAssignments);
+	//alert(plotit.nameArray);
+	
+	student_URL = document.URL;
+	student_URL_2 = student_URL.split("?student=");
+	
+	for (i = 0; i < categoryArray.length; i++) //will create the drop down based on the amount of categories that there are
+	{
+		//alert(catID);
+		if (i == category){ //if it's the category that's selected in the URL
+			//var url='standardDev.htm?cat=' + i;
+			url = path + '?cat=' + i;
+			myselect.add(new Option(categoryArray[i].name, url, true, true));	}
+		else
+		{
+			//var url='standardDev.htm?cat=' + i;
+			url = path + '?cat=' + i;
+			myselect.add(new Option(categoryArray[i].name, url));
+		}
+	}
+	var nextoption = categoryArray.length + 1;
+	url = path + '?cat=' + nextoption;
+	//======= ADDS THE OVERALL OPTION TO THE MENU AND DEFAULTS IT IF THE CATEGORY MENU IS THAT OF OVERALL
+	if (category == nextoption){
+	myselect.add(new Option('Overall', url, true, true));
+	}
+	else{
+		myselect.add(new Option('Overall', url));
+	}
+/* ================== GET STUDENTS NAME FROM IDS FOR THE MENU ============================ */
+
+
+	var arrayOfStudents = GetSeats();
+	var studentnames = new Array();
+	for (i = 0; i < studentIDarray.length - 1; i++)
+	{
+		for (j = 0; j < arrayOfStudents.length; j++)
+		{
+			if (arrayOfStudents[j].idnumber == studentIDarray[i])
+			{
+				studentnames.push(arrayOfStudents[j].firstname);
+			
+			}
+		}
+	}
+/* ================== CREATE DROPDOWN FOR WHICH STUDENT'S INFORMATION TO DISPLAY ============================ */
+	student_url_id = getStudentID();
+	student_URL = document.URL;
+	student_URL_2 = student_URL.split("?student=");
+	
+	var thiswillwork = document.URL;
+	var best_split_yet = thiswillwork.split(",?");
+	//alert (best_split_yet[0]);
+	
+	for (i = 0; i < studentIDarray.length - 1; i++) //will create the drop down based on the amount of categories that there are
+	{
+		//alert(catID);
+		if (i == student_url_id){ //if it's the category that's selected in the URL
+			//var url='standardDev.htm?cat=' + i;
+			url = student_URL_2[0] + '?student=' + i;
+			studentselect.add(new Option(studentnames[i], url, true, true));	}
+		else
+		{
+			//var url='standardDev.htm?cat=' + i;
+			url = student_URL_2[0] + '?student=' + i;
+			studentselect.add(new Option(studentnames[i], url));
+		}
+	}
+
+	//alert(myselect.options[myselect.selectedIndex].value);	
+/* ================== CREATE DROPDOWN FOR WHICH STUDENT'S INFORMATION TO DISPLAY ============================ */
+	
+//alert(categoryname);
+
+$(function () {
+	
+	 var student_u_id = 0;
+	 student_u_id = getStudentID();
+	 var student_ID = studentIDarray[student_u_id];
+	if (categoryname != 'Overall')
+	{	 
+		 var plotit = calculateGroups(studentIDarray, categoryname, getGrades, getAssignments, student_ID);
+		 var categoryArray = new Array();
+		 categoryArray = GetCategory();
+		 var assignmentsArray = new Array();
+		 assignmentsArray = GetAssignment();
+		 var gradeArray = new Array();
+		 gradeArray = GetGrades();
+	}
+
+	if (categoryname == 'Overall'){ 
+		 var plotit = calculateGroups(studentIDarray, categoryname, getGrades, getAssignments, student_ID);
+		 var categoryArray = new Array();
+		 categoryArray = GetCategory();
+		 var assignmentsArray = new Array();
+		 assignmentsArray = GetAssignment();
+		 var gradeArray = new Array();
+		 gradeArray = GetGrades();
+		 //plotit = overallStats(student_ID);
+		 
+		 plotit = overallGroupStats(student_ID, studentIDarray, true);
+	
+	}
+	            
+    $('#container').highcharts({
+
+	    chart: {
+	        type: 'boxplot'
+	    },
+	    
+       title: {
+            text: plotit.title
+       },
+        
+       subtitle: {
+           text: plotit.subtitle, //this changes
+       },
+	    
+	    legend: {
+	        enabled: false
+	    },
+	
+	    xAxis: {
+	        categories: plotit.nameArray, 
+	        //['Hi', '2', '3'], //changes
+	        title: {
+	            text: plotit.xAxis
+	        }
+	    },
+	    
+	    yAxis: {
+	        title: {
+	            text: plotit.yAxis //stays static
+	        }/*,
+	        plotLines: [{
+	            value: 93, // CATEGORY AVERAGE
+	            color: 'red',
+	            width: 1,
+	            label: {
+	                text: 'Category Average: 93',
+	                align: 'center',
+	                style: {
+	                    color: 'gray'
+	                }
+	            }
+	        }] */ 
+	    },
+	
+	    series: [{
+	        name: 'Scores',
+	        data: plotit.dataArray,
+	         //arrayofarray, 
+	        	//[
+                //MIN,-σ,STUDENTSCORE,+σ,MAX,AVERAGE
+	           //[76, 80, 88, 89, 96, 88],
+	           //[73, 85, 93, 98, 100, 88],
+	            //[71, 76, 81, 87, 91, 72]
+	        //],
+	        tooltip: {
+	            headerFormat: ''
+	        }
+	    }]
+	
+	});
+});	
+
+
+if (categoryname != 'Overall'){
+$(function () {
+    //store grades in array
+    var newarray = document.URL;
+	var array1=newarray.split('group=');
+	var temp = array1[1];
+	var studentIDarray = temp.split(',');
+	
+	student_u_id = getStudentID();
+	var student_ID = studentIDarray[student_u_id];
+
+    var studGrades = new Array();
+    studGrades=GetGrades();
+    var assignmentsArray = new Array();
+	assignmentsArray = GetAssignment();
+	var assignmentnames = AssignmentsNames(assignmentsArray, categoryname);
+	var length1 = assignmentnames.length;
+	var homeworkArray = new Array();
+   homeworkArray = FilterGrades(student_ID, categoryname, studGrades);
+   var numberarray = getNumbers(homeworkArray);
+
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container2'
+            },
+            xAxis: {
+            	
+            categories: assignmentnames,
+            	title: {text: 'Assignment names'},
+            	max: length1-1
+                //min: 0
+                //max: 5.5
+            },
+            yAxis: {
+                min: 0,
+                title: {text: 'Grades'}
+            },
+            title: {
+                text: categoryname + ' Grade Trend'
+            },
+            series: [{
+                type: 'line',
+                name: 'Grade Trend',
+                data: [[0,Start(numberarray)], [numberarray.length,End(numberarray)]],
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            }, {
+                type: 'scatter',
+                name: 'Grade Average',
+                data: numberarray,
+                marker: {
+                    radius: 4
+                }
+            }]
+        });
+    });
+    
+});
+
+function Start(studentGrades)
+{	
+	var sum = 0;
+	for (var ii = 0; ii < studentGrades.length; ii++){
+		sum += studentGrades[ii];
+	}
+	var average = sum/studentGrades.length;
+	return average;
+}
+
+function End(studentGrades)
+{
+	//y = mx+ b, m is slope, x is studentGrades.length, b is initial value, return y	
+	var slope = (studentGrades[studentGrades.length-1] - studentGrades[0])/(studentGrades.length - 0);
+	
+	return (slope*(studentGrades.length-1)) + studentGrades[0];
+}
+}
+		</script>
+	</head>
+	<body>
+<script src="highcharts.js"></script>
+<script src="highcharts-more.js"></script>
+<script type="text/javascript">
+	//var name = categoryArray[0].name;
+	//alert(name);
+	//myselect.add(new Option("Homework", "Homework"));
+	//myselect
+</script>
+<div id="container" style="width: 700px; height: 400px; margin: 0 auto; border-bottom: solid gray 1px"></div>
+	<br /> <br />
+
+<div id="container2" style="width: 700px; height: 400px; margin: 0 auto; border: none"></div>
+
+	</body>
+</html>

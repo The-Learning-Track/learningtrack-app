@@ -26,60 +26,70 @@
 </style>
 <script>
 var studentsArray = queryXML();
+     function makeCheckbox(seatNum, array)
+     {
+        var return1 = isTaken(seatNum, studentsArray);
+    	if (return1 == true)
+    	{
+    		//alert('true');
+    		var checkbox = "<center><input type='checkbox' name = 'group' value='" + seatNum +"' /></center>";
+    		document.write(checkbox);
 
+    	}
+    	else{
+	    	document.write("<br />");
+    	}
+     }
 </script>
 
 </head>
 
 <body>
+
 <div class="container_16">
     <!-- START INTRO -->
   <div class="row">
- <!--
-    <div class="grid_16 intro">
-    	<div class="grid_4" style="background: none;">
-        	<center><a class="menuoptions" href="morse.html?id=homework"> Homework Heat Map <br /> </a></center>
-        </div>
-    	<div class="grid_4" style="background: none;">
-        	<center><a href="morse.html?id=exam" class="menuoptions"> Exam Heat Map <br /></a></center>
-    	</div>
-    	<div class="grid_4" style="background: none;">
-        	<center><a href="morse.html?id=lab" class="menuoptions"> Lab Heat Map <br /></a></center>
-    	</div>
-    	<div class="grid_4 omega" style="background: none;">
-    		<center><a href="morse.html" style="color: black; background: #E8E8E8" class="menuoptions"> Overall Heat Map <br /></a></center>
-    	</div>
-    </div>
-    -->
-    
-    <select onchange="javascript:location.href=this.value">
-  <option value="morse.html?id=homework" id="Homework">Homework Heat Map</option>
-  <option value="morse.html?id=exam" id="Homework">Exam Heat Map</option>
-  <option value="morse.html?id=lab" id="Homework">Lab Heat Map</option>
-  <option value="morse.html" id="Homework">Morse Heat Map</option>
+    <select id = "category" onchange="javascript:location.href=this.value">
+  <option name = "category" value="morse_group.html?id=homework">Homework Heat Map</option>
+  <option name = "category" value="morse_group.html?id=exam">Exam Heat Map</option>
+  <option name = "category" value="morse_group.html?id=lab">Lab Heat Map</option>
+  <option name = "category" value="morse_group.html">Morse Heat Map</option>
   </select>
+  <input onclick="checkboxSubmit(studentsArray);" type="submit" value="Compare Groups">
   </div>
-  
   <div class="row">
-  <a onclick="seatPopup('K1', studentsArray)" style="none">
+  <a style="none">
     <div id="K1" class="grid_1"><style onload="seatcolor('K1', studentsArray);"></style>
-      <p><script>seatName('K1', studentsArray); </script> </p>
+    <script>
+	    makeCheckbox('K1', studentsArray);
+    </script> 
+    <div id="append" name="append"></div>
+      <p><script>seatName('K1', studentsArray); </script></p>
     </div>
   </a> 
   
-    <a onclick="seatPopup('K2', studentsArray)" style="none">
+    <a style="none">
     <div id="K2" class="grid_1"><style onload="seatcolor('K2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K2', studentsArray);
+    </script> 
       <p><script>seatName('K2', studentsArray); </script> </p>
     </div>
   </a>
-       <a onclick="seatPopup('K3', studentsArray)"  style="none">
+       <a style="none">
     <div id="K3" class="grid_1"><style onload="seatcolor('K3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K3', studentsArray);
+    </script> 
       <p><script>seatName('K3', studentsArray);</script></p>
     </div>
      </a>
     
-        <a onclick="seatPopup('K4', studentsArray)"  style="none">
+        <a style="none">
     <div id="K4" class="grid_1"><style onload="seatcolor('K4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K4', studentsArray);
+    </script> 
       <p><script>seatName('K4', studentsArray);</script></p>
     </div>
       </a>
@@ -90,38 +100,56 @@ var studentsArray = queryXML();
     </div>
       </a>
     
-        <a onclick="seatPopup('K5', studentsArray)"  style="none">
+        <a style="none">
     <div id="K5" class="grid_1"><style onload="seatcolor('K5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K5', studentsArray);
+    </script> 
       <p><script>seatName('K5', studentsArray);</script> </p>
     </div>
       </a>
     
-        <a onclick="seatPopup('K6', studentsArray)"  style="none">
+        <a style="none">
     <div id="K6" class="grid_1"><style onload="seatcolor('K6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K6', studentsArray);
+    </script> 
       <p><script>seatName('K6', studentsArray);</script></p>
     </div>
       </a>
       
-        <a onclick="seatPopup('K7', studentsArray)"  style="none">
+        <a style="none">
     <div id="K7" class="grid_1"><style onload="seatcolor('K7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K7', studentsArray);
+    </script> 
       <p><script>seatName('K7', studentsArray);</script></p>
     </div>
       </a>
       
-       <a onclick="seatPopup('K8', studentsArray)" style="none">
+       <a style="none">
     <div id="K8" class="grid_1"><style onload="seatcolor('K8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K8', studentsArray);
+	    </script> 
       <p><script>seatName('K8', studentsArray);</script></p>
     </div>
      </a>
     
-        <a onclick="seatPopup('K9', studentsArray)"  style="none">
+        <a style="none">
     <div id="K9" class="grid_1"><style onload="seatcolor('K9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K9', studentsArray);
+	    </script> 
       <p><script>seatName('K9', studentsArray);</script></p>
     </div>
       </a>
     
-        <a onclick="seatPopup('K10', studentsArray)"  style="none">
+        <a style="none">
     <div id="K10" class="grid_1"><style onload="seatcolor('K10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K10', studentsArray);
+    </script> 
       <p><script>seatName('K10', studentsArray);</script></p>
     </div>
       </a>
@@ -130,26 +158,38 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-        <a onclick="seatPopup('K11', studentsArray)"  style="none">
+        <a style="none">
     <div id="K11" class="grid_1"><style onload="seatcolor('K11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K11', studentsArray);
+    </script> 
       <p><script>seatName('K11', studentsArray);</script></p>
     </div>
       </a>
       
-          <a onclick="seatPopup('K12', studentsArray)"  style="none">
+          <a style="none">
     <div id="K12" class="grid_1"><style onload="seatcolor('K12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K12', studentsArray);
+    </script> 
       <p><script>seatName('K12', studentsArray);</script></p>
     </div>
         </a>
     
-        <a onclick="seatPopup('K13', studentsArray)"  style="none">
+        <a style="none">
     <div id="K13" class="grid_1"><style onload="seatcolor('K13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K13', studentsArray);
+    </script> 
       <p><script>seatName('K13', studentsArray);</script></p>
     </div>
       </a>
       
-          <a onclick="seatPopup('K14', studentsArray)"  style="none">
+          <a style="none">
     <div id="K14"class="grid_1 omega"><style onload="seatcolor('K14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K14', studentsArray);
+    </script> 
       <p><script>seatName('K14', studentsArray);</script></p>
     </div>
         </a>
@@ -157,26 +197,38 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
    <div class="row">
   
-      <a onclick="seatPopup('J1', studentsArray)"  style="none">
+      <a style="none">
     <div id="J1" class="grid_1"><style onload="seatcolor('J1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J1', studentsArray);
+    </script> 
       <p><script>seatName('J1', studentsArray);</script></p>
     </div>
     </a> 
     
-      <a onclick="seatPopup('J2', studentsArray)"  style="none">
+      <a style="none">
     <div id="J2" class="grid_1"><style onload="seatcolor('J2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J2', studentsArray);
+    </script> 
       <p><script>seatName('J2', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('J3', studentsArray)" style="none">
+      <a style="none">
     <div id="J3" class="grid_1"><style onload="seatcolor('J3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J3', studentsArray);
+    </script> 
       <p><script>seatName('J3', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('J4', studentsArray)"  style="none">
+      <a style="none">
     <div id="J4" class="grid_1"><style onload="seatcolor('J4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J4', studentsArray);
+    </script> 
       <p><script>seatName('J4', studentsArray);</script></p>
     </div>
     </a>
@@ -185,38 +237,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-      <a onclick="seatPopup('J5', studentsArray)"  style="none">
+      <a style="none">
     <div id="J5" class="grid_1"><style onload="seatcolor('J5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J5', studentsArray);
+    </script> 
       <p><script>seatName('J5', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('J6', studentsArray)"  style="none">
+      <a style="none">
     <div id="J6" class="grid_1"><style onload="seatcolor('J6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J6', studentsArray);
+    </script> 
       <p><script>seatName('J6', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('J7', studentsArray)"  style="none">  
+      <a style="none">  
     <div id="J7" class="grid_1"><style onload="seatcolor('J7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J7', studentsArray);
+    </script> 
       <p><script>seatName('J7', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('J8', studentsArray)"  style="none">
+      <a style="none">
     <div id="J8"class="grid_1"><style onload="seatcolor('J8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J8', studentsArray);
+    </script> 
       <p><script>seatName('J8', studentsArray);</script></p>
     </div>
     </a>
     
-        <a onclick="seatPopup('J9', studentsArray)"  style="none">
+        <a style="none">
     <div id="J9" class="grid_1"><style onload="seatcolor('J9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J9', studentsArray);
+    </script> 
       <p><script>seatName('J9', studentsArray);</script></p>
     </div>
       </a>
       
-     <a onclick="seatPopup('J10', studentsArray)"  style="none">
+     <a style="none">
     <div id="J10" class="grid_1"><style onload="seatcolor('J10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J10', studentsArray);
+    </script> 
       <p><script>seatName('J10', studentsArray);</script></p>
     </div>
    </a>
@@ -226,26 +296,38 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
    
-     <a onclick="seatPopup('J11', studentsArray)"  style="none">
+     <a style="none">
     <div id="J11" class="grid_1"><style onload="seatcolor('J11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J11', studentsArray);
+    </script> 
       <p><script>seatName('J11', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('J12', studentsArray)" style="none">
+    <a style="none">
     <div id="J12" class="grid_1"><style onload="seatcolor('J12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J12', studentsArray);
+    </script> 
       <p><script>seatName('J12', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('J13', studentsArray)" style="none">
+      <a style="none">
     <div id="J13" class="grid_1"><style onload="seatcolor('J13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J13', studentsArray);
+    </script> 
       <p><script>seatName('J13', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('J14', studentsArray)"  style="none">
+     <a style="none">
     <div id="J14" class="grid_1 omega"><style onload="seatcolor('J14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('J14', studentsArray);
+    </script> 
       <p><script>seatName('J14', studentsArray);</script></p>
     </div>
    </a>
@@ -253,25 +335,37 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-    <a onclick="seatPopup('I1', studentsArray)"  style="none">
+    <a style="none">
     <div id="I1" class="grid_1"><style onload="seatcolor('I1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I1', studentsArray);
+    </script> 
       <p><script>seatName('I1', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('I2', studentsArray)"  style="none">
+      <a style="none">
     <div id="I2" class="grid_1"><style onload="seatcolor('I2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I2', studentsArray);
+    </script> 
       <p><script>seatName('I2', studentsArray);</script></p>
     </div>
     </a>
-     <a onclick="seatPopup('I3', studentsArray)"  style="none">
+     <a style="none">
     <div id="I3" class="grid_1"><style onload="seatcolor('I3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I3', studentsArray);
+    </script> 
       <p><script>seatName('I3', studentsArray);</script></p>
     </div>
    </a>
    
-      <a onclick="seatPopup('I4', studentsArray)"  style="none">
+      <a style="none">
     <div id="I4" class="grid_1"><style onload="seatcolor('I4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I4', studentsArray);
+    </script> 
       <p><script>seatName('I4', studentsArray);</script></p>
     </div>
     </a>
@@ -280,38 +374,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('I5', studentsArray)"  style="none">
+     <a style="none">
     <div id="I5" class="grid_1"><style onload="seatcolor('I5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I5', studentsArray);
+    </script> 
       <p><script>seatName('I5', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('I6', studentsArray)"  style="none">
+     <a style="none">
     <div id="I6" class="grid_1"><style onload="seatcolor('I6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I6', studentsArray);
+    </script> 
       <p><script>seatName('I6', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('I7', studentsArray)" style="none">
+     <a style="none">
     <div id= "I7" class="grid_1"><style onload="seatcolor('I7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I7', studentsArray);
+    </script> 
       <p><script>seatName('I7', studentsArray);</script></p>
     </div>
    </a>
    
-      <a onclick="seatPopup('I8', studentsArray)"  style="none">
+      <a style="none">
     <div id="I8" class="grid_1"><style onload="seatcolor('I8', studentsArray);"></style>
+    <script>
+	    makeCheckbox('I8', studentsArray);
+    </script> 
       <p><script>seatName('I8', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('I9', studentsArray)"  style="none">
+      <a style="none">
     <div id="I9" class="grid_1"><style onload="seatcolor('I9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I9', studentsArray);
+    </script> 
       <p><script>seatName('I9', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('I10', studentsArray)"  style="none">
+     <a style="none">
     <div id="I10" class="grid_1"><style onload="seatcolor('I10', studentsArray);"></style>
+       <script>
+	    makeCheckbox('I10', studentsArray);
+    </script> 
       <p><script>seatName('I10', studentsArray);</script></p>
     </div>
    </a>
@@ -320,26 +432,38 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-      <a onclick="seatPopup('I11', studentsArray)"  style="none">
+      <a style="none">
     <div id="I11" class="grid_1"><style onload="seatcolor('I11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I11', studentsArray);
+    </script> 
       <p><script>seatName('I11', studentsArray);</script></p>
     </div>
     </a>
     
-        <a onclick="seatPopup('I12', studentsArray)"  style="none">
+        <a style="none">
     <div id="I12" class="grid_1"><style onload="seatcolor('I12', studentsArray);"></style>
+       <script>
+	    makeCheckbox('I12', studentsArray);
+    </script> 
       <p><script>seatName('I12', studentsArray);</script></p>
     </div>
       </a>
       
-     <a onclick="seatPopup('I13', studentsArray)"  style="none">
+     <a style="none">
     <div id="I13" class="grid_1"><style onload="seatcolor('I13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I13', studentsArray);
+    </script> 
       <p><script>seatName('I13', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('I14', studentsArray)"  style="none">
+     <a style="none">
     <div id="I14" class="grid_1 omega"><style onload="seatcolor('I14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('I14', studentsArray);
+    </script> 
       <p><script>seatName('I14', studentsArray);</script></p>
     </div>
    </a>
@@ -347,26 +471,38 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-      <a onclick="seatPopup('H1', studentsArray)"  style="none">
+      <a style="none">
     <div id="H1" class="grid_1"><style onload="seatcolor('H1', studentsArray);"></style>
+       <script>
+	    makeCheckbox('H1', studentsArray);
+    </script> 
       <p><script>seatName('H1', studentsArray);</script></p>
     </div>
     </a>
     
-        <a onclick="seatPopup('H2', studentsArray)"  style="none">
+        <a style="none">
     <div id="H2" class="grid_1"><style onload="seatcolor('H2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H2', studentsArray);
+    </script> 
       <p><script>seatName('H2', studentsArray);</script></p>
     </div>
       </a>
       
-       <a onclick="seatPopup('H3', studentsArray)"  style="none">
+       <a style="none">
     <div id="H3" class="grid_1"><style onload="seatcolor('H3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H3', studentsArray);
+    </script> 
       <p><script>seatName('H3', studentsArray);</script></p>
     </div>
      </a>
      
-     <a onclick="seatPopup('H4', studentsArray)"  style="none">
+     <a style="none">
     <div id="H4" class="grid_1"><style onload="seatcolor('H4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H4', studentsArray);
+    </script> 
       <p><script>seatName('H4', studentsArray);</script></p>
     </div>
    </a>
@@ -375,39 +511,57 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('H5', studentsArray)"  style="none">
+     <a style="none">
     <div id="H5" class="grid_1"><style onload="seatcolor('H5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H5', studentsArray);
+    </script> 
       <p><script>seatName('H5', studentsArray);</script></p>
     </div>
    </a>
     
     
-     <a onclick="seatPopup('H6', studentsArray)"  style="none">
+     <a style="none">
     <div id="H6" class="grid_1"><style onload="seatcolor('H6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H6', studentsArray);
+    </script> 
       <p><script>seatName('H6', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('H7', studentsArray)"  style="none">
+    <a style="none">
     <div id="H7" class="grid_1"><style onload="seatcolor('H7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H7', studentsArray);
+    </script> 
       <p><script>seatName('H7', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('H8', studentsArray)"  style="none">
+      <a style="none">
     <div id="H8" class="grid_1"><style onload="seatcolor('H8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H8', studentsArray);
+    </script> 
       <p><script>seatName('H8', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('H9', studentsArray)"  style="none">
+     <a style="none">
     <div id="H9" class="grid_1"><style onload="seatcolor('H9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H9', studentsArray);
+    </script> 
       <p><script>seatName('H9', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('H10', studentsArray)"  style="none">
+     <a style="none">
     <div id="H10" class="grid_1"><style onload="seatcolor('H10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H10', studentsArray);
+    </script> 
       <p><script>seatName('H10', studentsArray);</script></p>
     </div>
    </a>
@@ -416,26 +570,36 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('H11', studentsArray)"  style="none">
+     <a style="none">
     <div id="H11" class="grid_1"><style onload="seatcolor('H11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H11', studentsArray);
+    </script> 
       <p><script>seatName('H11', studentsArray);</script></p>
     </div>
    </a>
     
-    <a onclick="seatPopup('H12', studentsArray)"  style="none">
+    <a style="none">
     <div id="H12" class="grid_1"><style onload="seatcolor('H12', studentsArray);"></style>
+    <center><input type="checkbox" name="group" value="H12"></center>
       <p><script>seatName('H12', studentsArray);</script></p>
     </div>
   </a>
   
-    <a onclick="seatPopup('H13', studentsArray)"  style="none">
+    <a style="none">
     <div id="H13" class="grid_1"><style onload="seatcolor('H13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H13', studentsArray);
+    </script> 
       <p><script>seatName('H13', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('H14', studentsArray)"  style="none">
+      <a style="none">
     <div id="H14" class="grid_1 omega"><style onload="seatcolor('H14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('H14', studentsArray);
+    </script> 
       <p><script>seatName('H14', studentsArray);</script></p>
     </div>
     </a>
@@ -443,25 +607,37 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-      <a onclick="seatPopup('G1', studentsArray)"  style="none">
+      <a  style="none">
     <div id="G1" class="grid_1"><style onload="seatcolor('G1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G1', studentsArray);
+    </script> 
       <p><script>seatName('G1', studentsArray);</script></p>
     </div>
     </a>
     
-    <a onclick="seatPopup('G2', studentsArray)" style="none">
+    <a style="none">
     <div id="G2" class="grid_1"><style onload="seatcolor('G2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G2', studentsArray);
+    </script> 
       <p><script>seatName('G2', studentsArray);</script></p>
     </div>
   </a>
-    <a onclick="seatPopup('G3', studentsArray)"  style="none">
+    <a  style="none">
     <div id="G3" class="grid_1"><style onload="seatcolor('G3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G3', studentsArray);
+    </script> 
       <p><script>seatName('G3', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('G4', studentsArray)"  style="none">
+      <a style="none">
     <div id="G4" class="grid_1"><style onload="seatcolor('G4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G4', studentsArray);
+    </script> 
       <p><script>seatName('G4', studentsArray);</script></p>
     </div>
     </a>
@@ -472,39 +648,57 @@ var studentsArray = queryXML();
     </div>
    </a>
    
-    <a onclick="seatPopup('G5', studentsArray)"  style="none">
+    <a  style="none">
     <div id="G5" class="grid_1"><style onload="seatcolor('G5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G5', studentsArray);
+    </script> 
       <p><script>seatName('G5', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('G6', studentsArray)"  style="none">
+      <a style="none">
     <div id="G6" class="grid_1"><style onload="seatcolor('G6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G6', studentsArray);
+    </script> 
       <p><script>seatName('G6', studentsArray);</script></p>
     </div>
     </a>
     
-    <a onclick="seatPopup('G7', studentsArray)"  style="none">
+    <a style="none">
     <div id="G7" class="grid_1"><style onload="seatcolor('G7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G7', studentsArray);
+    </script> 
       <p><script>seatName('G7', studentsArray);</script></p>
     </div>
   </a>
   
-   <a onclick="seatPopup('G8', studentsArray)"  style="none">
+   <a  style="none">
     <div id="G8" class="grid_1"><style onload="seatcolor('G8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G8', studentsArray);
+    </script> 
       <p><script>seatName('G8', studentsArray);</script></p>
     </div>
  </a>
  
-     <a onclick="seatPopup('G9', studentsArray)"  style="none">
+     <a  style="none">
     <div id="G9" class="grid_1"><style onload="seatcolor('G9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G9', studentsArray);
+    </script> 
       <p><script>seatName('G9', studentsArray);</script></p>
     </div>
    </a>
     
     
-      <a onclick="seatPopup('G10', studentsArray)"  style="none">
+      <a  style="none">
     <div id="G10" class="grid_1"><style onload="seatcolor('G10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G10', studentsArray);
+    </script> 
       <p><script>seatName('G10', studentsArray);</script></p>
     </div>
     </a>
@@ -515,26 +709,38 @@ var studentsArray = queryXML();
     </div>
   </a>
   
-      <a onclick="seatPopup('G11', studentsArray)"  style="none">
+      <a style="none">
     <div id="G11" class="grid_1"><style onload="seatcolor('G11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G11', studentsArray);
+    </script> 
       <p><script>seatName('G11', studentsArray);</script></p>
     </div>
     </a>
     
     
-     <a onclick="seatPopup('G12', studentsArray)"  style="none">
+     <a style="none">
     <div id="G12" class="grid_1"><style onload="seatcolor('G12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G12', studentsArray);
+    </script> 
       <p><script>seatName('G12', studentsArray);</script></p>
     </div>
    </a>
-     <a onclick="seatPopup('G13', studentsArray)"  style="none">
+     <a style="none">
     <div id="G13" class="grid_1"><style onload="seatcolor('G13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G13', studentsArray);
+    </script> 
       <p><script>seatName('G13', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('G14', studentsArray)"  style="none">
+    <a style="none">
     <div id="G14" class="grid_1 omega"><style onload="seatcolor('G14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('G14', studentsArray);
+    </script> 
       <p><script>seatName('G14', studentsArray);</script></p>
     </div>
   </a>
@@ -542,26 +748,38 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
  
-   <a onclick="seatPopup('F1', studentsArray)"  style="none">
+   <a style="none">
     <div id="F1" class="grid_1"><style onload="seatcolor('F1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F1', studentsArray);
+    </script> 
       <p><script>seatName('F1', studentsArray);</script></p>
     </div>
  </a>
  
-     <a onclick="seatPopup('F2', studentsArray)" style="none">
+     <a style="none">
     <div id="F2" class="grid_1"><style onload="seatcolor('F2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F2', studentsArray);
+    </script> 
       <p><script>seatName('F2', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('F3', studentsArray )"  style="none">
+    <a style="none">
     <div id="F3" class="grid_1"><style onload="seatcolor('F3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F3', studentsArray);
+    </script> 
       <p><script>seatName('F3', studentsArray);</script></p>
     </div>
   </a>
   
     <a onclick="seatPopup('F4', studentsArray)"  style="none">
     <div id="F4" class="grid_1"><style onload="seatcolor('F4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F4', studentsArray);
+    </script> 
       <p><script>seatName('F4', studentsArray);</script></p>
     </div>
   </a>
@@ -571,38 +789,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('F5', studentsArray)"  style="none">
+     <a  style="none">
     <div id="F5" class="grid_1"><style onload="seatcolor('F5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F5', studentsArray);
+    </script> 
       <p><script>seatName('F5', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('F6', studentsArray)" style="none">
+     <a style="none">
     <div id="F6" class="grid_1"><style onload="seatcolor('F6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F6', studentsArray);
+    </script> 
       <p><script>seatName('F6', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('F7', studentsArray)"  style="none">
+     <a style="none">
     <div id="F7" class="grid_1"><style onload="seatcolor('F7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F7', studentsArray);
+    </script> 
       <p><script>seatName('F7', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('F8', studentsArray)"  style="none">
+       <a style="none">
     <div id="F8" class="grid_1"><style onload="seatcolor('F8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F8', studentsArray);
+    </script> 
       <p><script>seatName('F8', studentsArray);</script></p>
     </div>
      </a>
      
-     <a onclick="seatPopup('F9', studentsArray)"  style="none">
+     <a  style="none">
     <div id="F9" class="grid_1"><style onload="seatcolor('F9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F9', studentsArray);
+    </script> 
       <p><script>seatName('F9', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('F10', studentsArray)" style="none">
+       <a style="none">
     <div id="F10" class="grid_1"><style onload="seatcolor('F10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F10', studentsArray);
+    </script> 
       <p><script>seatName('F10', studentsArray);</script></p>
     </div>
      </a>
@@ -612,52 +848,76 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('F11', studentsArray)"  style="none">
+     <a  style="none">
     <div id="F11" class="grid_1"><style onload="seatcolor('F11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F11', studentsArray);
+    </script> 
       <p><script>seatName('F11', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('F12', studentsArray)"  style="none">
+       <a style="none">
     <div id="F12" class="grid_1"><style onload="seatcolor('F12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F12', studentsArray);
+    </script> 
       <p><script>seatName('F12', studentsArray);</script></p>
     </div>
      </a>
      
-      <a onclick="seatPopup('F13', studentsArray)"  style="none">
+      <a style="none">
     <div id="F13" class="grid_1"><style onload="seatcolor('F13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F13', studentsArray);
+    </script> 
       <p><script>seatName('F13', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('F14', studentsArray)"  style="none">
+     <a style="none">
     <div id="F14" class="grid_1 omega"> <style onload="seatcolor('F14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('F14', studentsArray);
+    </script> 
       <p><script>seatName('F14', studentsArray);</script></p>
     </div>
    </a>
     
   </div><!-- end .row -->
  <div class="row">
-      <a onclick="seatPopup('E1', studentsArray)"  style="none">
+      <a style="none">
     <div id='E1' class="grid_1"><style onload="seatcolor('E1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E1', studentsArray);
+    </script> 
       <p><script>seatName('E1', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('E2', studentsArray)"  style="none">
+     <a style="none">
     <div id='E2' class="grid_1"><style onload="seatcolor('E2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E2', studentsArray);
+    </script> 
       <p><script>seatName('E2', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('E3', studentsArray)"  style="none">
+       <a style="none">
     <div id="E3" class="grid_1"><style onload="seatcolor('E3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E3', studentsArray);
+    </script> 
       <p><script>seatName('E3', studentsArray);</script></p>
     </div>
      </a>
      
-     <a onclick="seatPopup('E4', studentsArray)"  style="none">
+     <a style="none">
     <div id="E4" class="grid_1"><style onload="seatcolor('E4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E4', studentsArray);
+    </script> 
       <p><script>seatName('E4', studentsArray);</script></p>
     </div>
    </a>
@@ -666,38 +926,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('E5', studentsArray)"  style="none">
+     <a style="none">
     <div id="E5" class="grid_1"><style onload="seatcolor('E5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E5', studentsArray);
+    </script> 
       <p><script>seatName('E5', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('E6', studentsArray)"  style="none">
+     <a style="none">
     <div id="E6" class="grid_1"><style onload="seatcolor('E6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E6', studentsArray);
+    </script> 
       <p><script>seatName('E6', studentsArray);</script></p>
     </div>
    </a>
    
-      <a onclick="seatPopup('E7', studentsArray)"  style="none">
+      <a style="none">
     <div id="E7" class="grid_1"><style onload="seatcolor('E7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E7', studentsArray);
+    </script> 
       <p><script>seatName('E7', studentsArray);</script></p>
     </div>
     </a>
     
-      <a onclick="seatPopup('E8', studentsArray)"  style="none">
+      <a style="none">
     <div id="E8" class="grid_1"><style onload="seatcolor('E8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E8', studentsArray);
+    </script> 
       <p><script>seatName('E8', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('E9', studentsArray)"  style="none">
+     <a style="none">
     <div id="E9" class="grid_1"><style onload="seatcolor('E9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E9', studentsArray);
+    </script> 
       <p><script>seatName('E9', studentsArray);</script></p>
     </div>
    </a>
 
-    <a onclick="seatPopup('E10', studentsArray)"  style="none">
+    <a style="none">
     <div id="E10" class="grid_1"><style onload="seatcolor('E10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('K1', studentsArray);
+    </script> 
       <p><script>seatName('E10', studentsArray);</script></p>
     </div>
   </a>
@@ -707,25 +985,37 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('E11', studentsArray)"  style="none">
+     <a style="none">
     <div id="E11" class="grid_1"><style onload="seatcolor('E11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E11', studentsArray);
+    </script> 
       <p><script>seatName('E11', studentsArray);</script></p>
     </div>
    </a>
-     <a onclick="seatPopup('E12', studentsArray)"  style="none">
+     <a style="none">
     <div id="E12" class="grid_1"><style onload="seatcolor('E12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E12', studentsArray);
+    </script> 
       <p><script>seatName('E12', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('E13', studentsArray)"  style="none">
+       <a style="none">
     <div id="E13" class="grid_1"><style onload="seatcolor('E13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E13', studentsArray);
+    </script> 
       <p><script>seatName('E13', studentsArray);</script></p>
     </div>
      </a>
     
-     <a onclick="seatPopup('E14', studentsArray)"  style="none">   
+     <a style="none">   
     <div id="E14" class="grid_1 omega"><style onload="seatcolor('E14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('E14', studentsArray);
+    </script> 
       <p><script>seatName('E14', studentsArray);</script></p>
     </div>
    </a>
@@ -733,26 +1023,38 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-    <a onclick="seatPopup('D1', studentsArray)"  style="none">
+    <a style="none">
     <div id="D1" class="grid_1"><style onload="seatcolor('D1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D1', studentsArray);
+    </script> 
       <p><script>seatName('D1', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('D2', studentsArray)"  style="none">
+      <a style="none">
     <div id="D2" class="grid_1"><style onload="seatcolor('D2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D2', studentsArray);
+    </script> 
       <p><script>seatName('D2', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('D3', studentsArray)" style="none">
+     <a style="none">
     <div id="D3" class="grid_1"><style onload="seatcolor('D3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D3', studentsArray);
+    </script> 
       <p><script>seatName('D3', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('D4', studentsArray)"  style="none">
+       <a style="none">
     <div id="D4" class="grid_1"><style onload="seatcolor('D4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D4', studentsArray);
+    </script> 
       <p><script>seatName('D4', studentsArray);</script></p>
     </div>
      </a>
@@ -761,38 +1063,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('D5', studentsArray)"  style="none">
+     <a style="none">
     <div id="D5" class="grid_1"><style onload="seatcolor('D5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D5', studentsArray);
+    </script> 
       <p><script>seatName('D5', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('D6', studentsArray)"  style="none">
+       <a style="none">
     <div id="D6" class="grid_1"><style onload="seatcolor('D6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D6', studentsArray);
+    </script> 
       <p><script>seatName('D6', studentsArray);</script></p>
     </div>
      </a>
      
-     <a onclick="seatPopup('D7', studentsArray)"  style="none">
+     <a style="none">
     <div id="D7" class="grid_1"><style onload="seatcolor('D7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D7', studentsArray);
+    </script> 
       <p><script>seatName('D7', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('D8', studentsArray)"  style="none">
+       <a style="none">
     <div id="D8" class="grid_1"><style onload="seatcolor('D8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D8', studentsArray);
+    </script> 
       <p><script>seatName('D8', studentsArray);</script></p>
     </div>
      </a>
      
-     <a onclick="seatPopup('D9', studentsArray)"  style="none">
+     <a style="none">
     <div id="D9" class="grid_1"><style onload="seatcolor('D9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D9', studentsArray);
+    </script> 
       <p><script>seatName('D9', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('D10', studentsArray)"  style="none">
+     <a style="none">
     <div id="D10" class="grid_1"><style onload="seatcolor('D10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D10', studentsArray);
+    </script> 
       <p><script>seatName('D10', studentsArray);</script></p>
     </div>
    </a>
@@ -803,51 +1123,75 @@ var studentsArray = queryXML();
     </div>
   </a>
   
-      <a onclick="seatPopup('D11', studentsArray)"  style="none">
+      <a style="none">
     <div id="D11" class="grid_1"><style onload="seatcolor('D11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D11', studentsArray);
+    </script> 
       <p><script>seatName('D11', studentsArray);</script></p>
     </div>
     </a>
     
-    <a onclick="seatPopup('D12', studentsArray)"  style="none">
+    <a style="none">
     <div id="D12" class="grid_1"><style onload="seatcolor('D12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D12', studentsArray);
+    </script> 
       <p><script>seatName('D12', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('D13', studentsArray)"  style="none">
+      <a style="none">
     <div id="D13" class="grid_1"><style onload="seatcolor('D13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D13', studentsArray);
+    </script> 
       <p><script>seatName('D13', studentsArray);</script></p>
     </div>
     </a>
-     <a onclick="seatPopup('D14', studentsArray)"  style="none">
+     <a style="none">
     <div id="D14" class="grid_1 omega"><style onload="seatcolor('D14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('D14', studentsArray);
+    </script> 
       <p><script>seatName('D14', studentsArray);</script></p>
     </div>
    </a>
     
   </div><!-- end .row -->
  <div class="row">
-     <a onclick="seatPopup('C1', studentsArray)"  style="none">
+     <a style="none">
     <div id="C1" class="grid_1"><style onload="seatcolor('C1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C1', studentsArray);
+    </script> 
       <p><script>seatName('C1', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('C2', studentsArray)"  style="none">
+       <a style="none">
     <div id="C2" class="grid_1"><style onload="seatcolor('C2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C2', studentsArray);
+    </script> 
       <p><script>seatName('C2', studentsArray);</script></p>
     </div>
      </a>
  
-     <a onclick="seatPopup('C3', studentsArray)" style="none">
+     <a style="none">
     <div id="C3" class="grid_1"><style onload="seatcolor('C3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C3', studentsArray);
+    </script> 
       <p><script>seatName('C3', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('C4', studentsArray)" style="none">
+       <a style="none">
     <div id="C4" class="grid_1"><style onload="seatcolor('C4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C4', studentsArray);
+    </script> 
       <p><script>seatName('C4', studentsArray);</script></p>
     </div>
      </a>
@@ -858,38 +1202,56 @@ var studentsArray = queryXML();
     </div>
    </a>
    
-       <a onclick="seatPopup('C5', studentsArray)"  style="none">
+       <a  style="none">
     <div id="C5" class="grid_1"><style onload="seatcolor('C5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C5', studentsArray);
+    </script> 
       <p><script>seatName('C5', studentsArray);</script></p>
     </div>
      </a>
  
-     <a onclick="seatPopup('C6', studentsArray)"  style="none">
+     <a style="none">
     <div id="C6" class="grid_1"><style onload="seatcolor('C6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C6', studentsArray);
+    </script> 
       <p><script>seatName('C6', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('C7', studentsArray)"  style="none">
+       <a style="none">
     <div id="C7" class="grid_1"><style onload="seatcolor('C7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C7', studentsArray);
+    </script> 
       <p><script>seatName('C7', studentsArray);</script></p>
     </div>
      </a>
      
-      <a onclick="seatPopup('C8', studentsArray)"  style="none">
+      <a style="none">
     <div id="C8" class="grid_1"><style onload="seatcolor('C8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C8', studentsArray);
+    </script> 
       <p><script>seatName('C8', studentsArray);</script></p>
     </div>
     </a>
     
-        <a onclick="seatPopup('C9', studentsArray)"  style="none">
+        <a style="none">
     <div id="C9" class="grid_1"><style onload="seatcolor('C9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C9', studentsArray);
+    </script> 
       <p><script>seatName('C9', studentsArray);</script></p>
     </div>
       </a>
       
-     <a onclick="seatPopup('C10', studentsArray)"  style="none">
+     <a  style="none">
     <div id="C10" class="grid_1"><style onload="seatcolor('C10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C10', studentsArray);
+    </script> 
       <p><script>seatName('C10', studentsArray);</script></p>
     </div>
    </a>
@@ -898,26 +1260,38 @@ var studentsArray = queryXML();
     <div class="grid_1 blank">
       <p>BLANK</p>
     </div>
-     <a onclick="seatPopup('C11', studentsArray)"  style="none">
+     <a style="none">
     <div id="C11" class="grid_1"><style onload="seatcolor('C11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C11', studentsArray);
+    </script> 
       <p><script>seatName('C11', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('C12', studentsArray)"  style="none">
+     <a style="none">
     <div id="C12" class="grid_1"><style onload="seatcolor('C12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C12', studentsArray);
+    </script> 
       <p><script>seatName('C12', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('C13', studentsArray)" style="none">
+    <a style="none">
     <div id="C13" class="grid_1"><style onload="seatcolor('C13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C13', studentsArray);
+    </script> 
       <p><script>seatName('C13', studentsArray);</script></p>
     </div>
   </a>
   
-   <a onclick="seatPopup('C14', studentsArray)"  style="none">
+   <a  style="none">
     <div id="C14" class="grid_1 omega"><style onload="seatcolor('C14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('C14', studentsArray);
+    </script> 
       <p><script>seatName('C14', studentsArray);</script></p>
     </div>
  </a>
@@ -925,26 +1299,38 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-    <a onclick="seatPopup('B1', studentsArray)"  style="none">
+    <a style="none">
     <div id="B1" class="grid_1"><style onload="seatcolor('B1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B1', studentsArray);
+    </script> 
       <p><script>seatName('B1', studentsArray);</script></p>
     </div>
   </a>
   
-    <a onclick="seatPopup('B2', studentsArray)"  style="none">
+    <a style="none">
     <div id="B2" class="grid_1"><style onload="seatcolor('B2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B2', studentsArray);
+    </script> 
       <p><script>seatName('B2', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('B3', studentsArray)"  style="none">
+      <a style="none">
     <div id="B3" class="grid_1"><style onload="seatcolor('B3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B3', studentsArray);
+    </script> 
       <p><script>seatName('B3', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('B4', studentsArray)"  style="none">
+     <a style="none">
     <div id="B4" class="grid_1"><style onload="seatcolor('B4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B4', studentsArray);
+    </script> 
       <p><script>seatName('B4', studentsArray);</script></p>
     </div>
    </a>
@@ -952,38 +1338,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('B5', studentsArray)"  style="none">
+     <a style="none">
     <div id="B5" class="grid_1"><style onload="seatcolor('B5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B5', studentsArray);
+    </script> 
       <p><script>seatName('B5', studentsArray);</script></p>
     </div>
    </a>
    
-      <a onclick="seatPopup('B6', studentsArray)"  style="none">
+      <a style="none">
     <div id="B6" class="grid_1"><style onload="seatcolor('B6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B6', studentsArray);
+    </script> 
       <p><script>seatName('B6', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('B7', studentsArray)"  style="none">
+     <a style="none">
     <div id="B7" class="grid_1"><style onload="seatcolor('B7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B7', studentsArray);
+    </script> 
       <p><script>seatName('B7', studentsArray);</script></p>
     </div>
    </a>
    
-     <a onclick="seatPopup('B8', studentsArray)"  style="none">
+     <a style="none">
     <div id="B8" class="grid_1"><style onload="seatcolor('B8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B8', studentsArray);
+    </script> 
       <p><script>seatName('B8', studentsArray);</script></p>
     </div>
    </a>
    
-      <a onclick="seatPopup('B9', studentsArray)"  style="none">
+      <a style="none">
     <div id="B9" class="grid_1"><style onload="seatcolor('B9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B9', studentsArray);
+    </script> 
       <p><script>seatName('B9', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('B10', studentsArray)"  style="none">
+     <a style="none">
     <div id="B10" class="grid_1"><style onload="seatcolor('B10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B10', studentsArray);
+    </script> 
       <p><script>seatName('B10', studentsArray);</script></p>
     </div>
    </a>
@@ -994,26 +1398,38 @@ var studentsArray = queryXML();
     </div>
   </a>
   
-    <a onclick="seatPopup('B11', studentsArray)"  style="none">  
+    <a style="none">  
     <div id="B11" class="grid_1"><style onload="seatcolor('B11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B11', studentsArray);
+    </script> 
       <p><script>seatName('B11', studentsArray);</script></p>
     </div>
   </a>  
   
-      <a onclick="seatPopup('B12', studentsArray)"  style="none">
+      <a style="none">
     <div id="B12" class="grid_1"><style onload="seatcolor('B12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B12', studentsArray);
+    </script> 
       <p><script>seatName('B12', studentsArray);</script></p>
     </div>
     </a>
     
-    <a onclick="seatPopup('B13', studentsArray)"  style="none">
+    <a style="none">
     <div id="B13" class="grid_1"><style onload="seatcolor('B13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B13', studentsArray);
+    </script> 
       <p><script>seatName('B13', studentsArray);</script></p>
     </div>
   </a>
  
-     <a onclick="seatPopup('B14', studentsArray)"  style="none">
+     <a style="none">
     <div id="B14" class="grid_1 omega"><style onload="seatcolor('B14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('B14', studentsArray);
+    </script> 
       <p><script>seatName('B14', studentsArray);</script></p>
     </div>
    </a>
@@ -1021,26 +1437,38 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-      <a onclick="seatPopup('A1', studentsArray)"  style="none">
+      <a style="none">
     <div id="A1" class="grid_1"><style onload="seatcolor('A1', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A1', studentsArray);
+    </script> 
       <p><script>seatName('A1', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('A2', studentsArray)"  style="none">
+     <a style="none">
     <div id="A2" class="grid_1"><style onload="seatcolor('A2', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A2', studentsArray);
+    </script> 
       <p><script>seatName('A2', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('A3', studentsArray)"  style="none">
+    <a style="none">
     <div id="A3" class="grid_1"><style onload="seatcolor('A3', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A3', studentsArray);
+    </script> 
       <p><script>seatName('A3', studentsArray);</script></p>
     </div>
   </a>
   
-    <a onclick="seatPopup('A4', studentsArray)"  style="none">
+    <a style="none">
     <div id="A4" class="grid_1"><style onload="seatcolor('A4', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A4', studentsArray);
+    </script> 
       <p><script>seatName('A4', studentsArray);</script></p>
     </div>
   </a>
@@ -1050,38 +1478,56 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('A5', studentsArray)"  style="none">
+     <a style="none">
     <div id="A5" class="grid_1"><style onload="seatcolor('A5', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A5', studentsArray);
+    </script> 
       <p><script>seatName('A5', studentsArray);</script></p>
     </div>
    </a>
    
-    <a onclick="seatPopup('A6', studentsArray)"  style="none">
+    <a style="none">
     <div id="A6" class="grid_1"><style onload="seatcolor('A6', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A6', studentsArray);
+    </script> 
       <p><script>seatName('A6', studentsArray);</script></p>
     </div>
   </a>
   
-    <a onclick="seatPopup('A7', studentsArray)"  style="none">
+    <a style="none">
     <div id="A7" class="grid_1"><style onload="seatcolor('A7', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A7', studentsArray);
+    </script> 
       <p><script>seatName('A7', studentsArray);</script></p>
     </div>
   </a>
   
-      <a onclick="seatPopup('A8', studentsArray)"  style="none">
+      <a style="none">
     <div id="A8" class="grid_1"><style onload="seatcolor('A8', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A8', studentsArray);
+    </script> 
       <p><script>seatName('A8', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('A9', studentsArray)"  style="none">
+     <a style="none">
     <div id="A9" class="grid_1"><style onload="seatcolor('A9', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A9', studentsArray);
+    </script> 
       <p><script>seatName('A9', studentsArray);</script></p>
     </div>
    </a>
    
-      <a onclick="seatPopup('A10', studentsArray)"  style="none">
+      <a style="none">
     <div id="A10" class="grid_1"><style onload="seatcolor('A10', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A10', studentsArray);
+    </script> 
       <p><script>seatName('A10', studentsArray);</script></p>
     </div>
     </a>
@@ -1091,26 +1537,38 @@ var studentsArray = queryXML();
       <p>BLANK</p>
     </div>
     
-     <a onclick="seatPopup('A11', studentsArray)"  style="none">
+     <a  style="none">
     <div id="A11" class="grid_1"><style onload="seatcolor('A11', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A11', studentsArray);
+    </script> 
       <p><script>seatName('A11', studentsArray);</script></p>
     </div>
    </a>
   
-      <a onclick="seatPopup('A12', studentsArray)"  style="none">
+      <a style="none">
     <div id="A12" class="grid_1"><style onload="seatcolor('A12', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A12', studentsArray);
+    </script> 
       <p><script>seatName('A12', studentsArray);</script></p>
     </div>
     </a>
     
-     <a onclick="seatPopup('A13', studentsArray)"  style="none">
+     <a style="none">
     <div id="A13" class="grid_1"><style onload="seatcolor('A13', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A13', studentsArray);
+    </script> 
       <p><script>seatName('A13', studentsArray);</script></p>
     </div>
    </a>
    
-       <a onclick="seatPopup('A14', studentsArray)"  style="none">
+       <a style="none">
     <div id="A14" class="grid_1 omega"><style onload="seatcolor('A14', studentsArray);"></style>
+        <script>
+	    makeCheckbox('A14', studentsArray);
+    </script> 
       <p><script>seatName('A14', studentsArray);</script></p>
     </div>
      </a>
@@ -1125,7 +1583,6 @@ var studentsArray = queryXML();
            </div>
   </div>
   <!-- END INTRO -->
-
 </div><!-- end .container_16 -->
 </body>
 </html>

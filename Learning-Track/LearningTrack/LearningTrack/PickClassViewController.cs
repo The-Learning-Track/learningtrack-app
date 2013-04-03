@@ -113,13 +113,13 @@ namespace LearningTrack
 			Student JohnDoe = new Student {firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1", grades = JohnDoeGrades};
 
 			List <Grade> KatsuGrades = new List<Grade> ();
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 7, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 8, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 8, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 8, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 3, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 0, totalPoints = 10, studentID = "001"});
 			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 86, totalPoints = 100, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 83, totalPoints = 100, studentID = "001"});
-			Student Katsu = new Student {firstName = "Katsutoshi", lastName = "Kawakami", studentID = "001", seatLocation = "A3", grades = KatsuGrades};
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 56, totalPoints = 100, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 3, totalPoints = 100, studentID = "001"});
+			Student Katsu = new Student {firstName = "Katsu", lastName = "Kawakami", studentID = "001", seatLocation = "A3", grades = KatsuGrades};
 
 			List <Grade> DicksonGrades = new List<Grade> ();
 			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
@@ -150,7 +150,7 @@ namespace LearningTrack
 					//Add category to list if it does not contain the category already
 					if(!(extractedCategories.Any(cName => cName.categoryName == grades.category))){
 						List<ASSIGNMENT> tempAssignment = new List<ASSIGNMENT> ()
-							{(new ASSIGNMENT{assignmentName = grades.assignmentName, totalPoints = grades.totalPoints})};
+							{(new ASSIGNMENT{assignmentName = grades.assignmentName, totalPoints = grades.totalPoints, assignmentCategory = grades.category})};
 						extractedCategories.Add(new CATEGORY{categoryName = grades.category, assignments = tempAssignment});
 					}
 					//else check if the assignment exists in the category yet
@@ -161,7 +161,8 @@ namespace LearningTrack
 							    !(category.assignments.Any(aName => aName.assignmentName == grades.assignmentName))){
 
 								//add new assignment, name and total points associated
-								category.assignments.Add(new ASSIGNMENT{assignmentName = grades.assignmentName, totalPoints = grades.totalPoints});
+								category.assignments.Add(new ASSIGNMENT{assignmentName = grades.assignmentName, totalPoints = grades.totalPoints,
+														assignmentCategory = grades.category});
 							}
 						}
 					}
@@ -222,14 +223,14 @@ namespace LearningTrack
 				//calculate category standard deviation
 				double categoryStandardDev = function.getStandardDev(averages);
 				//calculate category MAX
-				double categoryMax = function.getMax(MAXs);
+				//double categoryMax = function.getMax(MAXs);
 				//calculate category MIN
-				double categoryMin = function.getMin(MINs);
+				//double categoryMin = function.getMin(MINs);
 				//set values accordingly
 				category.categoryAverage = categoryAverage;
 				category.categoryStandardDev = categoryStandardDev;
-				category.categoryMax = categoryMax;
-				category.categoryMin = categoryMin;
+				//category.categoryMax = categoryMax;
+				//category.categoryMin = categoryMin;
 			}
 			//set extracted and calculated values to list of CATEGORY categories to be XML serialized
 			STATISTICS statistics = new STATISTICS(){categories = extractedCategories};

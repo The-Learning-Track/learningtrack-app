@@ -150,7 +150,7 @@ namespace LearningTrack
 
 
 				//Pass bool _isProfessor to the next view controller
-				nextViewController.isProfessor = _isProfessor;
+				nextViewController.isProfessor = true;
 				nextViewController.myCourses = courses;
 
 				this.LoginLoadingIndicator.StopAnimating();
