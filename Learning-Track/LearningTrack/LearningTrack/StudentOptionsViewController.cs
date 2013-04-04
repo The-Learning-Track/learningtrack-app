@@ -19,9 +19,9 @@ namespace LearningTrack
 
 		public ClassList myCourses;
 
-		public override void ViewDidLoad ()
+		public override void ViewDidAppear(bool animated)
 		{
-			base.ViewDidLoad();
+			base.ViewDidAppear(animated);
 
 			logoutButton.TouchUpInside += (sender, e) => 
 			{	
@@ -32,13 +32,10 @@ namespace LearningTrack
 
 				//Creates new file, overwrites old file automatically - seatingChart.xml
 				Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
-				XmlWriter myXMLWriter = XmlWriter.Create(myStream);
 				//Creates new file, overwrites old file automatically - courseAverages.xml
 				myStream = new FileStream(courseAveragesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
 				//Creates new file, overwrites old file automatically - courseGrades.xml
 				myStream = new FileStream(courseGradesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
 				//Close stream
 				myStream.Flush(); 
 				myStream.Close();
@@ -49,6 +46,7 @@ namespace LearningTrack
 				//---------------------------------------------------------------------------------------
 				//Clear THEN logout
 				//this.PerformSegue("StudentLogout", this);
+
 			};
 
 			changeClassButton.TouchUpInside += (sender, e) =>
@@ -60,20 +58,20 @@ namespace LearningTrack
 				
 				//Creates new file, overwrites old file automatically - seatingChart.xml
 				Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
-				XmlWriter myXMLWriter = XmlWriter.Create(myStream);
 				//Creates new file, overwrites old file automatically - courseAverages.xml
 				myStream = new FileStream(courseAveragesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
 				//Creates new file, overwrites old file automatically - courseGrades.xml
 				myStream = new FileStream(courseGradesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
 				//Close stream
 				myStream.Flush(); 
 				myStream.Close();
 		
 				//---------------------------------------------------------------------------------------
 				//Clear THEN change class
-				this.PerformSegue ("StudentChangeClass", this);
+				//this.PerformSegue ("StudentChangeClass", this);
+				this.RemoveFromParentViewController();
+				//this.DismissViewController(true,null);
+				//this.ParentViewController.DismissViewController(true,null);
 			};
 		}
 
@@ -83,7 +81,8 @@ namespace LearningTrack
 
 			/* Update UI on main thread */
 			//BeginInvokeOnMainThread(delegate {						
-				this.PerformSegue("StudentLogout", this);
+			//this.PerformSegue("StudentLogout", this);
+			//this.ParentViewController.RemoveFromParentViewController();
 			//});
 
 		}
@@ -98,11 +97,28 @@ namespace LearningTrack
 				//Pass values to the next view controller
 				nextViewController.myCourses = myCourses;
 				nextViewController.isProfessor = false;
+
+				//this.DismissViewController(false,null);
 			}
-			if (segue.Identifier == "StudentLogout") {
+			//if (segue.Identifier == "StudentLogout") {
 				// Get reference to the destination view controller
 				//var nextViewController = (LearningTrackViewController) segue.DestinationViewController;
-			}
+			//}
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+		}
+		
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+		}
+		
+		public override void ViewDidDisappear (bool animated)
+		{
+			base.ViewDidDisappear (animated);
 		}
 	}
 }

@@ -81,12 +81,12 @@
                         <outlet property="LoginButton" destination="W2u-wc-eUJ" id="2bg-vo-HPR"/>
                         <outlet property="LoginLoadingIndicator" destination="SUM-XL-GBy" id="Tgb-dh-oDx"/>
                         <outlet property="loginLabel" destination="WsT-ch-B2Z" id="sT7-fb-f5M"/>
-                        <segue destination="ttf-8U-8Fu" kind="modal" identifier="ToPickClass" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dQY-ia-ofv"/>
+                        <segue destination="ttf-8U-8Fu" kind="modal" identifier="ToPickClass" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="dQY-ia-ofv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1229" y="-765"/>
+            <point key="canvasLocation" x="-1201" y="-781"/>
         </scene>
         <!--Pick Class View Controller - Pick Class Window-->
         <scene sceneID="WBm-XL-pMa">
@@ -106,6 +106,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Pick Class" id="exJ-FW-ZFI">
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="mnL-9b-mCu"/>
                                         <barButtonItem key="rightBarButtonItem" title="Continue" id="D8J-Ro-7r9"/>
                                     </navigationItem>
                                 </items>
@@ -118,6 +119,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="ContinueButton" destination="D8J-Ro-7r9" id="sof-Td-Act"/>
+                        <outlet property="LogoutButton" destination="mnL-9b-mCu" id="amD-09-9me"/>
                         <outlet property="classTable" destination="7Ma-zU-7d3" id="uTH-hU-yUR"/>
                         <segue destination="hqu-Fl-1Ey" kind="modal" identifier="ToInstructorInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="rCR-kn-web"/>
                         <segue destination="Xmi-mW-Wdz" kind="modal" identifier="ToStudentInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="RYO-Yn-p0g"/>
@@ -218,7 +220,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ttf-8U-8Fu" kind="modal" identifier="StudentChangeClass" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="EfG-3X-8ck"/>
+                                    <segue destination="ttf-8U-8Fu" kind="modal" identifier="StudentChangeClass" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="EfG-3X-8ck"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WWf-zD-tsk">
@@ -233,7 +235,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2" kind="modal" identifier="StudentLogout" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="pD3-2S-hpJ"/>
+                                    <segue destination="2" kind="modal" identifier="StudentLogout" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="pD3-2S-hpJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Change Classes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H15-Gz-eCr">
@@ -343,7 +345,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ttf-8U-8Fu" kind="modal" identifier="InstructorChangeClass" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="2QN-ue-swN"/>
+                                    <segue destination="ttf-8U-8Fu" kind="modal" identifier="InstructorChangeClass" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="2QN-ue-swN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="U54-Ao-gpg">
@@ -358,7 +360,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="2" kind="modal" identifier="InstructorLogout" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="xV1-P9-EM7"/>
+                                    <segue destination="2" kind="modal" identifier="InstructorLogout" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="xV1-P9-EM7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Change Classes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O8H-k8-86m">
@@ -487,7 +489,9 @@
         <class className="PickClassViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickClassViewController.h"/>
             <relationships>
+                <relationship kind="action" name="unwindFromClass:" candidateClass="UIStoryboardSegue"/>
                 <relationship kind="outlet" name="ContinueButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="LogoutButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="classTable" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -517,6 +521,9 @@
         <class className="StudentTabBarController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StudentTabBarController.h"/>
         </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
@@ -525,6 +532,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="dQY-ia-ofv"/>
-        <segue reference="pD3-2S-hpJ"/>
+        <segue reference="xV1-P9-EM7"/>
     </inferredMetricsTieBreakers>
 </document>

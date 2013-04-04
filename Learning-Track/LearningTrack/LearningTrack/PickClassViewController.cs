@@ -18,6 +18,8 @@ namespace LearningTrack
 		public int selectedRow;
 		//get list from previous query
 		public ClassList myCourses;
+		//need to dismiss previous viewcontroller
+		public LearningTrackViewController login;
 
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
@@ -26,6 +28,8 @@ namespace LearningTrack
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad ();
+
+			//login.DismissViewController(true,null);
 
 			CreateTableItems();
 
@@ -71,6 +75,15 @@ namespace LearningTrack
 					this.PerformSegue("ToStudentInterface", this);
 				}
 			};
+
+			//Logout
+			//LogoutButton.Clicked += (sender, e) => 
+			//{	
+			//	BUWebloginConnection.Logout();
+
+			//	this.RemoveFromParentViewController();
+				//this.DismissViewController(true,null);
+			//};
 		}
 
 		protected void CreateTableItems ()
@@ -307,6 +320,26 @@ namespace LearningTrack
 			
 			//Create XML for seating chart
 			mySeatingChart.serializeToXML();
+		}
+
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+		}
+		
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+		}
+		
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+		}
+		
+		public override void ViewDidDisappear (bool animated)
+		{
+			base.ViewDidDisappear (animated);
 		}
 	}
 }

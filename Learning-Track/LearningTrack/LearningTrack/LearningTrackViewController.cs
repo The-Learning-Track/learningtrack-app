@@ -19,6 +19,7 @@ namespace LearningTrack
 		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
+		public bool isAuthenticated = false;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -33,9 +34,11 @@ namespace LearningTrack
 		
 		#region View lifecycle
 
-		public override void ViewDidLoad ()
+		public override void ViewDidAppear(bool animated)
 		{
-			base.ViewDidLoad ();
+			base.ViewDidAppear(animated);
+
+			this.loginLabel.Hidden = true;
 
 			// When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
@@ -112,6 +115,7 @@ namespace LearningTrack
 				//Pass bool _isProfessor to the next view controller
 				nextViewController.isProfessor = false;
 				nextViewController.myCourses = courses;
+				nextViewController.login = this;
 
 				this.LoginLoadingIndicator.StopAnimating();
 			}
@@ -133,6 +137,7 @@ namespace LearningTrack
 				}
 				else if (data.Length > 0) {
 					//Upon successful authentication
+					isAuthenticated = true;
 					BeginInvokeOnMainThread (delegate {
 						//this.LoginButton.SetTitle ("Continue", UIControlState.Normal);
 						this.loginLabel.Hidden = false;
@@ -163,11 +168,6 @@ namespace LearningTrack
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-		}
-		
-		public override void ViewDidAppear (bool animated)
-		{
-			base.ViewDidAppear (animated);
 		}
 		
 		public override void ViewWillDisappear (bool animated)
