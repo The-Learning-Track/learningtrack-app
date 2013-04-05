@@ -10,7 +10,6 @@ namespace LearningTrack
 	public partial class InstructorTabBarController : UITabBarController
 	{
 		public int chartType;
-		public ClassList myCOURSES;
 
 		public InstructorTabBarController (IntPtr handle) : base (handle)
 		{
@@ -22,12 +21,12 @@ namespace LearningTrack
 
 			//Create UIViewController for Seating Chart reference
 			InstructorSeatingChartViewController seatingTab = (InstructorSeatingChartViewController)this.ViewControllers[0];
-			//InstructorStatisticsViewController statTab = (InstructorStatisticsViewController)this.ViewControllers[1];
+			InstructorGroupStatisticsViewController groupStatisticsTab = (InstructorGroupStatisticsViewController)this.ViewControllers[1];
 			InstructorOptionsViewController optionTab = (InstructorOptionsViewController)this.ViewControllers[2];
 
 			// pass values to their appropriate tabs
 			seatingTab.chartType = chartType;
-			optionTab.myCourses = myCOURSES;
+			groupStatisticsTab.chartType = chartType;
 		}
 	}
 }

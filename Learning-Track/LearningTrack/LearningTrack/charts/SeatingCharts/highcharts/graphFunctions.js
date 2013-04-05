@@ -25,7 +25,8 @@ function seatID(seatnum, idnum, first, last)
 /*===============================================================================================================*/
 function GetGrades() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
-	var studArray = new Array(); //initiate the array for it to return
+	//alert("getting to the graph Functions")
+	var studArray = new Array(); //initiat;e the array for it to return
 	if (window.XMLHttpRequest)
 		{// code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp=new XMLHttpRequest(); //create xml request

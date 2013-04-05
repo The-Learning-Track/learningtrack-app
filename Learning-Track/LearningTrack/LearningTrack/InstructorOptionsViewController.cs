@@ -19,8 +19,6 @@ namespace LearningTrack
 		{
 		}
 
-		public ClassList myCourses;
-
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
@@ -44,6 +42,7 @@ namespace LearningTrack
 					myStream.Close();
 				}
 				catch (IOException IOe){
+					var err = IOe.ToString();
 				}
 				// LOGOUT
 				this.ParentViewController.DismissViewController(true, null);

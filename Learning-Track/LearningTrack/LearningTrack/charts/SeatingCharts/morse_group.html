@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="Totoro-V1/16_980grid.css" />
 <link rel="stylesheet" href="Totoro-V1/demo.css" />
 <script type="text/javascript" src="seatfunctions.js"></script>
+<script type="text/javascript" src="highcharts/graphFunctions.js"></script>
 
 <style type="text/css">
 .menuoptions{
@@ -581,7 +582,9 @@ var studentsArray = queryXML();
     
     <a style="none">
     <div id="H12" class="grid_1"><style onload="seatcolor('H12', studentsArray);"></style>
-    <center><input type="checkbox" name="group" value="H12"></center>
+   <script>
+	    makeCheckbox('H14', studentsArray);
+    </script> 
       <p><script>seatName('H12', studentsArray);</script></p>
     </div>
   </a>
@@ -1580,6 +1583,7 @@ var studentsArray = queryXML();
     <div class="grid_16 intro">
         <h1 style="color: black;">Front of room</h1>
        <!-- <a onclick="document.location.reload(true);"> refresh </a> -->
+       <center><img src="highcharts/key.png"></center>
            </div>
   </div>
   <!-- END INTRO -->

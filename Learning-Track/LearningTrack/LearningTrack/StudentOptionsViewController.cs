@@ -17,8 +17,6 @@ namespace LearningTrack
 		{
 		}
 
-		public ClassList myCourses;
-
 		public override void ViewDidAppear(bool animated)
 		{
 			base.ViewDidAppear(animated);
@@ -42,6 +40,7 @@ namespace LearningTrack
 					myStream.Close();
 				}
 				catch (IOException IOe){
+					var err = IOe.ToString();
 				}
 				// LOGOUT
 				this.ParentViewController.DismissViewController(true, null);

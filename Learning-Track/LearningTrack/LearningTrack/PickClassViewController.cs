@@ -54,6 +54,7 @@ namespace LearningTrack
 					myStream.Close();
 				}
 				catch (IOException IOe){
+					var err = IOe.ToString();
 				}
 				// LOGOUT
 				this.DismissViewController(true, null);
@@ -66,9 +67,9 @@ namespace LearningTrack
 				//--------------------------------------------------------------------------------------------------
 				// PARSE JSON FOR CLASS DATA
 				var myUsername = myCourses.username;
-				var myUserID = myCourses.userID;
+				//var myUserID = myCourses.userID;
 				var mySelectedCourseID = myCourses.courseIDs[selectedRow];
-				var mySelectedCourseName = myCourses.courseNames[selectedRow];
+				//var mySelectedCourseName = myCourses.courseNames[selectedRow];
 
 				// get each student's scores and if they are instructor for the class
 				var client = new RestClient();
@@ -135,13 +136,11 @@ namespace LearningTrack
 				var nextViewController = (InstructorTabBarController)segue.DestinationViewController;
 				//Pass values to the next view controller
 				nextViewController.chartType = selectedRow;
-				nextViewController.myCOURSES = myCourses;
 			} else if (segue.Identifier == "ToStudentInterface") {
 				// Get reference to the destination view controller
 				var nextViewController = (StudentTabBarController)segue.DestinationViewController;
 				//Pass values to the next view controller
 				nextViewController.chartType = selectedRow;
-				nextViewController.myCOURSES = myCourses;
 			}
 
 			//Implement COMPLETEINFO EQUIVALENT
@@ -167,20 +166,62 @@ namespace LearningTrack
 					}
 					if (derp == 0){
 						tempSeatLocation = "A1";
+						COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
+							seatLocation = tempSeatLocation, grades = tempGrade});
 						derp = 1;
 					}
 					else{
 						tempSeatLocation = "B1";
+						COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
+							seatLocation = tempSeatLocation, grades = tempGrade});
 					}
 
-					COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
-													seatLocation = tempSeatLocation, grades = tempGrade});
+					//COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
+					//								seatLocation = tempSeatLocation, grades = tempGrade});
 				}
 			}
 
 			COURSEGRADES studentGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
 			//Serialize to XML
 			studentGrades.serializeToXML();
+			
+			/*//DUMMY DATA - NEED TO IMPLEMENT STUDENT XML 
+			List <Grade> JohnDoeGrades = new List<Grade> ();
+			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 7, totalPoints = 10, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 29, totalPoints = 100, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 55, totalPoints = 100, studentID = "000"});
+			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 74, totalPoints = 100, studentID = "000"});
+			Student JohnDoe = new Student {firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1", grades = JohnDoeGrades};
+			
+			List <Grade> KatsuGrades = new List<Grade> ();
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 8, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 3, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 0, totalPoints = 10, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 56, totalPoints = 100, studentID = "001"});
+			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 3, totalPoints = 100, studentID = "001"});
+			Student Katsu = new Student {firstName = "Katsu", lastName = "Kawakami", studentID = "001", seatLocation = "A3", grades = KatsuGrades};
+			
+			List <Grade> DicksonGrades = new List<Grade> ();
+			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 94, totalPoints = 100, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 70, totalPoints = 100, studentID = "002"});
+			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 97, totalPoints = 100, studentID = "002"});
+			Student Dickson = new Student {firstName = "Dickson", lastName = "Pun", studentID = "002", seatLocation = "B1", grades = DicksonGrades};
+			
+			List <Student> COMPLETEINFO = new List<Student> ();
+			COMPLETEINFO.Add (JohnDoe);
+			COMPLETEINFO.Add (Katsu);
+			COMPLETEINFO.Add (Dickson);
+			
+			COURSEGRADES studentGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
+			//Serialize to XML
+			studentGrades.serializeToXML();
+			*/
 
 			//---------Get and set standard deviations and averages for all categories and associated assignments--------
 			//Create STATISTICS structure from List<Student> first

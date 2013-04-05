@@ -45,7 +45,6 @@ namespace LearningTrack
 			plotList.Add ("Grade Distribution");
 
 			//Add table items from list
-			plotTable.Source = new PlotSelectTableSource (plotList.ToArray(), this);
 		}
 		
 		public void LoadPlot (int plot = 0)

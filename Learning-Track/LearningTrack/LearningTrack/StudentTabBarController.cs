@@ -10,7 +10,6 @@ namespace LearningTrack
 	public partial class StudentTabBarController : UITabBarController
 	{
 		public int chartType;
-		public ClassList myCOURSES;
 
 		public StudentTabBarController (IntPtr handle) : base (handle)
 		{
@@ -27,7 +26,6 @@ namespace LearningTrack
 			
 			// pass values to their appropriate tabs
 			seatingTab.chartType = chartType;
-			optionTab.myCourses = myCOURSES;
 		}
 	}
 }

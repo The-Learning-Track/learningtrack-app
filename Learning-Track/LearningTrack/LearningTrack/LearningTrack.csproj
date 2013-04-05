@@ -110,15 +110,10 @@
       <DependentUpon>PickClassViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="TableSource.cs" />
-    <Compile Include="InstructorStatisticsViewController.cs" />
-    <Compile Include="InstructorStatisticsViewController.designer.cs">
-      <DependentUpon>InstructorStatisticsViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="StudentStatisticsViewController.cs" />
     <Compile Include="StudentStatisticsViewController.designer.cs">
       <DependentUpon>StudentStatisticsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlotSelectTableSource.cs" />
     <Compile Include="InstructorOptionsViewController.cs" />
     <Compile Include="InstructorOptionsViewController.designer.cs">
       <DependentUpon>InstructorOptionsViewController.cs</DependentUpon>
@@ -156,6 +151,10 @@
     <Compile Include="BUWebloginViewController.designer.cs">
       <DependentUpon>BUWebloginViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstructorGroupStatisticsViewController.cs" />
+    <Compile Include="InstructorGroupStatisticsViewController.designer.cs">
+      <DependentUpon>InstructorGroupStatisticsViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -190,6 +189,7 @@
     <BundleResource Include="Resources\glyphicons_114_list.png" />
     <BundleResource Include="Resources\glyphicons_137_cogwheels.png" />
     <BundleResource Include="Resources\glyphicons_151_new_window.png" />
+    <BundleResource Include="charts\SeatingCharts\highcharts\key.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="charts\highcharts.js" />
