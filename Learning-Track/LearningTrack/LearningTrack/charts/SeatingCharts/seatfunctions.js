@@ -293,15 +293,19 @@ function studentSeatfromURL()
 /*===============================================================================================================*/
 function checkboxSubmit(studentsArray)
 {
+
         //alert(studentsArray[0].studentID);
         var checked_array = new Array();
         var string = "?group="
         var chkbx = document.getElementsByName("group");
         var category = document.getElementsByName("category");
+        var chkcount = 0;
+
         for (i = 0; i < chkbx.length; i++) //loop through --> THIS WILL IGNORE EMPTY SEATS
         {
                 if (chkbx[i].checked == true) //if a student seat is selected
                 {
+                		chkcount++;
                         temp = chkbx[i].value; //take the seat number and make it into a temporary variable
                         for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
                         {
@@ -312,18 +316,74 @@ function checkboxSubmit(studentsArray)
                         }
                 }
         }
-        //alert(string);
+        if (chkcount < 2)
+        {
+        	alert('Must choose 2 or more students to compare.');
+        }
+        else{
         preurl = 'highcharts/standardDevGroup.htm'
         url = preurl + string;
         //document.URL = url;
         window.location.href = url;
-        //var e = document.getElementById("category");
-        //var strUser = e.options[e.selectedIndex].value;
-        //alert(strUser);
-
-        //alert(category.selected.value);
+        }
+        
 }
 
 /*===============================================================================================================*/
 
+function checkboxSubmitGroup(studentsArray)
+{
 
+        //alert(studentsArray[0].studentID);
+        var checked_array = new Array();
+        var string = "?group="
+        var chkbx = document.getElementsByName("group");
+        var category = document.getElementsByName("category");
+ 		var chkcount = 0;
+        for (i = 0; i < chkbx.length; i++) //loop through --> THIS WILL IGNORE EMPTY SEATS
+        {
+                if (chkbx[i].checked == true) //if a student seat is selected
+                {		
+                		chkcount++;
+                        temp = chkbx[i].value; //take the seat number and make it into a temporary variable
+                        for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
+                        {
+                                if(temp == studentsArray[j].seat) //if that temporary variable is equal to a student's seat
+                                {
+                                        string += studentsArray[j].studentID + ","; //adds the student id numbers to the URL
+                                }
+                        }
+                }
+        }
+        if (chkcount < 2)
+        {
+        	 alert('Must choose 2 or more students to compare.');
+        }
+        else{
+        //alert(string);
+        preurl = 'highcharts/standardDevGroupStudio.htm'
+        url = preurl + string;
+        //document.URL = url;
+        window.location.href = url;
+		}
+       
+}
+
+/*===============================================================================================================*/
+function seatPopupStudio(id, array)
+{
+        var index=getIndex(id, array);
+        if (index != null)
+        {
+        preurl = 'highcharts/standardDevGroup.htm?id='
+        //preurl = 'student_stats.html?id=';
+        url = preurl + id;
+        //window.open(url,'popUpWindow','height=1000,width=980,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=0, directories=no, status=no');
+        window.location.href = url;
+        //window.open(url);
+        }
+        //window.location.href = url;
+        //var e = document.getElementByI
+
+
+}

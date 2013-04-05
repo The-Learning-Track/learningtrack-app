@@ -77,7 +77,7 @@ namespace LearningTrack
 
 				// get each student's scores and if they are instructor for the class
 				var client = new RestClient();
-				client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getGrades/"+mySelectedCourseID+"/"+myUsername;
+				client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getGrades/"+myUsername+"/"+mySelectedCourseID;
 				
 				var request = new RestRequest();
 				// set format to JSON
@@ -104,7 +104,7 @@ namespace LearningTrack
 				myAssignmentINFO = responseDeserialized2.Data;
 
 				//Check if data is received
-				if ((myGradeINFO == null) && (myAssignmentINFO == null)){
+				if ((myGradeINFO == null) || (myAssignmentINFO == null)){
 					using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
 						alert.Show();
 					}

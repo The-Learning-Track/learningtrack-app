@@ -232,5 +232,7 @@
     <Content Include="charts\SeatingCharts\studio.html" />
     <Content Include="charts\SeatingCharts\studio_group.html" />
     <Content Include="charts\SeatingCharts\studio_student.html" />
+    <Content Include="charts\SeatingCharts\highcharts\standardDevGroupStudio.htm" />
+    <Content Include="charts\SeatingCharts\highcharts\standardDevStudio.htm" />
   </ItemGroup>
 </Project>

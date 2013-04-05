@@ -5,7 +5,6 @@
  <form id="somform">
         <select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
         </select>
-          <input onclick="checkboxSubmit(studentsArray);" type="submit" value="Compare Groups">
   </form>
     </center>
 <meta charset="utf-8" />
@@ -100,6 +99,7 @@ var studentsArray = queryXML();
     <!-- START INTRO -->
   <div class="row">
   <!-- -- <input onclick="checkboxSubmit(studentsArray);" type="submit" value="Compare Groups"> -->
+   <center><input onclick="checkboxSubmitGroup(studentsArray);" type="submit" value="Compare Groups"></center>
   </div>
   
   <div class="row"><!======================== ROW 1 =============================/>
