@@ -45,8 +45,14 @@ namespace LearningTrack
 				try{
 					//Creates new file, overwrites old file automatically - seatingChart.xml
 					Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
+					//Close stream
+					myStream.Flush(); 
+					myStream.Close();
 					//Creates new file, overwrites old file automatically - courseAverages.xml
 					myStream = new FileStream(courseAveragesPath, FileMode.Create);
+					//Close stream
+					myStream.Flush(); 
+					myStream.Close();
 					//Creates new file, overwrites old file automatically - courseGrades.xml
 					myStream = new FileStream(courseGradesPath, FileMode.Create);
 					//Close stream
