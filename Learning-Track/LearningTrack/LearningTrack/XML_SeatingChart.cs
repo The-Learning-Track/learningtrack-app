@@ -40,15 +40,15 @@ namespace LearningTrack
 		public string SEAT_NUMBER{ get; set; }
 		public string NAME{ get; set; }
 		public string STUDENT_ID{ get; set; }
-		//public string IS_CURRENT_STUDENT { get; set;}
+		public string IS_CURRENT_STUDENT { get; set;}
 		//----------------------------------------------------------
-		public string OVERALL_AVERAGE{ get; set; }
-		public string ATTENDANCE_FLAG{ get; set; }
-		public string MISSING_ASSIGNMENT_FLAG{ get; set; }
-		public string HOMEWORK_AVERAGE{ get; set; }
-		public string EXAM_AVERAGE{ get; set; }
-		public string LAB_AVERAGE{ get; set; }
-		public string PREDICT_GRADE{ get; set; }
+		//public string OVERALL_AVERAGE{ get; set; }
+		//public string ATTENDANCE_FLAG{ get; set; }
+		//public string MISSING_ASSIGNMENT_FLAG{ get; set; }
+		//public string HOMEWORK_AVERAGE{ get; set; }
+		//public string EXAM_AVERAGE{ get; set; }
+		//public string LAB_AVERAGE{ get; set; }
+		//public string PREDICT_GRADE{ get; set; }
 	}
 
 	public class COURSEGRADES

@@ -16,6 +16,8 @@ namespace LearningTrack
 	{
 		public bool isProfessor;
 		public int selectedRow;
+		public string username; //needed for seating chart
+		public string userID; //needed for individual student, filter their data only
 		//get list from previous query
 		public ClassList myCourses;
 		//need to match these up
@@ -345,7 +347,16 @@ namespace LearningTrack
 				temp.SEAT_NUMBER = student.seatLocation;
 				temp.NAME = student.firstName;
 				temp.STUDENT_ID = student.studentID;
-				temp.ATTENDANCE_FLAG = "N/A";
+				if (student.studentID == userID){
+					//if the student has the same id as the logged in student, flag this user
+					temp.IS_CURRENT_STUDENT = "true";
+				}
+				else {
+					//if the student has the same id as the logged in student, flag this user
+					temp.IS_CURRENT_STUDENT = "false";
+				}
+
+				/*temp.ATTENDANCE_FLAG = "N/A";
 				temp.MISSING_ASSIGNMENT_FLAG = "N/A";
 				temp.PREDICT_GRADE = "N/A";
 				temp.OVERALL_AVERAGE = "N/A";
@@ -391,7 +402,7 @@ namespace LearningTrack
 				}
 				else {
 					temp.LAB_AVERAGE = "N/A";
-				}
+				}*/
 
 				extractedSeating.Add(temp);
 			}

@@ -16,7 +16,8 @@ namespace LearningTrack
 	public partial class LearningTrackViewController : UIViewController
 	{
 		// get values to transfer to next controller
-		public string username;
+		public string username; //needed for seating chart
+		public string userID; //needed for individual student, filter their data only
 		public ClassList courses;
 		public bool isAuthenticated = false;
 
@@ -81,6 +82,8 @@ namespace LearningTrack
 						//Clear Both UsernameField & PasswordField
 						PasswordField.Text = "";
 						UsernameField.Text = "";
+						username = courses.username;
+						userID = courses.userID;
 						this.PerformSegue("ToPickClass", this);
 					}
 					else{
@@ -173,6 +176,8 @@ namespace LearningTrack
 
 				//Pass bool _isProfessor to the next view controller
 				nextViewController.myCourses = courses;
+				nextViewController.username = username;
+				nextViewController.userID = userID;
 
 				this.LoginLoadingIndicator.StopAnimating();
 			}
