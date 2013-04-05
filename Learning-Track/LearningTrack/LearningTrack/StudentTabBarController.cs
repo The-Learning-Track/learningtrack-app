@@ -22,7 +22,7 @@ namespace LearningTrack
 			//Create UIViewController for Seating Chart reference
 			StudentSeatingChartViewController seatingTab = (StudentSeatingChartViewController)this.ViewControllers[0];
 			//StudentStatisticsViewController statTab = (StudentStatisticsViewController)this.ViewControllers[1];
-			StudentOptionsViewController optionTab = (StudentOptionsViewController)this.ViewControllers[2];
+			//StudentOptionsViewController optionTab = (StudentOptionsViewController)this.ViewControllers[2];
 			
 			// pass values to their appropriate tabs
 			seatingTab.chartType = chartType;

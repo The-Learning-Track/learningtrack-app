@@ -11,49 +11,7 @@ function grade(gID, subject, assignname, score, points, studID) //this function 
     //METHODS BEGIN HERE ------------------------------
 }
 /*===============================================================================================================*/
-/*
-function GetGrades() //this function will query the appropriate XML file and return the array of JavaScript objects
-{ //begin function
-	//alert('hello!');
-        var studArray = new Array(); //initiate the array for it to return
-        if (window.XMLHttpRequest)
-                {// code for IE7+, Firefox, Chrome, Opera, Safari
-                        xmlhttp=new XMLHttpRequest(); //create xml request
-                }
-        else
-                {// code for IE6, IE5
-                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-                }
-						//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 			xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/courseGrades.xml",false);
- 			//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseGrades.xml",false);
-			//xmlhttp.open("GET","courseGrades.xml",false);
-               // xmlhttp.open("GET","highcharts/courseGrades.xml",false);
-                xmlhttp.send();
-                xmlDoc=xmlhttp.responseXML;
-                var x=xmlDoc.getElementsByTagName("Grade");
-                //var y=xmlDoc.getElementsByTagName("seatLocation")[1].childNodes[0].nodeValue;
-                for (i=0;i<x.length;i++)
-                {
-                        //constructor for the objects that represent whether a seat is taken
-                                studArray[i]=new grade(
-                                x[i].getElementsByTagName("ID")[0].childNodes[0].nodeValue,
-                                x[i].getElementsByTagName("category")[0].childNodes[0].nodeValue,
-                                x[i].getElementsByTagName("assignmentName")[0].childNodes[0].nodeValue,
-                                x[i].getElementsByTagName("score")[0].childNodes[0].nodeValue,
-                                x[i].getElementsByTagName("totalPoints")[0].childNodes[0].nodeValue,
-                                x[i].getElementsByTagName("studentID")[0].childNodes[0].nodeValue
-                                );
 
-                }
-
-                        //alert("Grade 1: " + studArray[0].grade + " Student ID: " + studArray[0].studentID);
-
-        return studArray;
-                //alert(y);
-
-}//end function parenthesis
-*/
 /*===============================================================================================================*/
 function calculateAverage(array)
 {
@@ -105,61 +63,28 @@ function studentSeat(firstname, seatnumber, id) //this function creates the Java
 /*===============================================================================================================*/
 function seatcolor(id, array) {
 //alert ('in seat color');
-x=document.getElementById(id)  //Find the element
+        x=document.getElementById(id)  //Find the element
 
         var pathArray = document.URL;
         var average_pre = pathArray.split('=');
         var average = average_pre[1];
         var index = getIndex(id, array);
-       // if (index != undefined)
-        //{
-        //	alert(index);
-        //}
-        //alert(index);
-        //alert('gets here! ');
         grades = GetGrades();
-        //alert('this will show it gets here after the grades xml');
-        //alert('gets here: ' + grades);
         var student_id=array[index].studentID;
-       //if (student_id != undefined)
-       //{
-        //	alert(student_id);
-        //}
-        //alert(studentid);
-        var studHWgrades = new Array();
-        var classHWgrades = new Array();
-        var studLabgrades = new Array();
-        var classLabgrades = new Array();
-        var studExamgrades = new Array();
-        var classExamgrades = new Array();
+        var studHWgrades = new Array(); //hw grades is actually any grades i that category
+        var classHWgrades = new Array(); //hw grades is actually any grade in that category
         var classAllgrades = new Array();
         var studAllgrades = new Array();
         for (i = 0; i < grades.length; i++)
         {
                 //alert('loop id: ' + grades[i].studentID + 'student id: ' + student_id);
-                if (grades[i].category == 'Homework')
+                if (grades[i].category == average)
                 {
                         classHWgrades.push(parseFloat(grades[i].grade));
                 }
-                if ((grades[i].category == 'Homework') && (grades[i].studentID == student_id ))
+                if ((grades[i].category == average) && (grades[i].studentID == student_id ))
                 {
                         studHWgrades.push(parseFloat(grades[i].grade));
-                }
-                if (grades[i].category == 'Exam')
-                {
-                        classExamgrades.push(parseFloat(grades[i].grade));
-                }
-                if ((grades[i].category == 'Exam') && (grades[i].studentID == student_id ))
-                {
-                        studExamgrades.push(parseFloat(grades[i].grade));
-                }
-                if (grades[i].category == 'Lab')
-                {
-                        classLabgrades.push(parseFloat(grades[i].grade));
-                }
-                if ((grades[i].category == 'Lab') && (grades[i].studentID == student_id ))
-                {
-                        studLabgrades.push(parseFloat(grades[i].grade));
                 }
                 if (grades[i].studentID == student_id)
                 {
@@ -170,33 +95,21 @@ x=document.getElementById(id)  //Find the element
 
 /* CALCULATE ALL AVERAGES */
         var studHWavg = calculateAverage(studHWgrades);
-        var studLabavg = calculateAverage(studLabgrades);
-        var studExamavg = calculateAverage(studExamgrades);
         var studOverallavg = calculateAverage(studAllgrades);
-        //alert(studOverallavg);
 
         var classHWavg = calculateAverage(classHWgrades);
-        var classExamavg = calculateAverage(classExamgrades);
-        var classLabgavg = calculateAverage(classLabgrades);
         var classoverallavg = calculateAverage(classAllgrades);
 
         var HWstd = standardDev(classHWgrades);
-        var Examstd = standardDev(classExamgrades);
-        var Labstd = standardDev(classLabgrades);
         var Overallstd = standardDev(classAllgrades);
 
         var upboundHW = classHWavg + HWstd;
         var lowboundHW = classHWavg - HWstd;
-        var upboundExam = classExamavg + Examstd;
-        var lowboundExam = classExamavg - Examstd;
-        var upboundLab = classLabgavg + Labstd;
-        var lowboundLab = classLabgavg - Labstd;
         var upboundOverall = classoverallavg + Overallstd;
         var lowboundOverall = classoverallavg - Overallstd;
 
-        //alert('Upper bound ' + upboundLab + ' lower bound: ' + lowboundLab + ' student average ' + studLabavg);
 
-if (average == null)
+if (average == 'overall')
 {
         if ((studOverallavg < classoverallavg) && (studOverallavg > lowboundOverall)) //below average, above lowerbound
         {
@@ -224,12 +137,12 @@ if (average == null)
         }
         else //default to gray if there's an issue
         {
-                x.style.background="black";
+                x.style.background="#C8C8C8";
                 x.style.color="null";
         }
 }
 
-else if (average == "homework")
+else
 {
         if ((studHWavg < classHWavg) && (studHWavg > lowboundHW)) //below average, above lowerbound
         {
@@ -253,78 +166,14 @@ else if (average == "homework")
         }
         else
         {
-                x.style.background="blue";
-                x.style.color="null";
-        }
-
-}
-else if (average == "exam")
-{
-        if ((studExamavg < classExamavg) && (studExamavg > lowboundExam)) //below average, above lowerbound
-        {
-                x.style.background="#FF9900";
-                x.style.color="white";
-        }
-        else if ((studExamavg > classExamavg) && (studExamavg < upboundExam)) //above average, below upperbound
-        {
-                x.style.background="#33CC00";
-                x.style.color="white";
-        }
-        else if (studExamavg > upboundExam) //above the upperbound
-        {
-                x.style.background="#336600";
-                x.style.color="white";
-        }
-        else if (studExamavg < lowboundExam) //below the lowerbound
-        {
-                x.style.background="#FF3300";
-                x.style.color="white";
-        }
-        else
-        {
-                x.style.background="white";
-                x.style.color="null";
-        }
-
-}
-else if (average == "lab")
-{
-        if ((studLabavg < classLabgavg)&&(studLabavg> lowboundLab))//below average, above lowerbound
-        {
-                x.style.background="#FF9900";
-                x.style.color="white";
-        }
-        else if ((studLabavg > classLabgavg)&&(studLabavg< upboundLab)) //above average, below upperbound
-        {
-                x.style.background="#33CC00";
-                x.style.color="white";
-        }
-        else if (studLabavg > upboundLab ) //above the upperbound
-        {
-                x.style.background="#336600";
-                x.style.color="black";
-        }
-        else if (studLabavg < lowboundLab)
-        {
-                x.style.background = "#FF3300";
-                x.style.color = "white";
-        }
-        else
-        {
-                x.style.background="pink";
-                x.style.color="null";
-        }
-
-}
-else
-{
                 x.style.background="#C8C8C8";
                 x.style.color="null";
+        }
+
 }
 
 }//end of seat color function
 
-//var test = K5.name;
 /*===============================================================================================================*/
 
 //create function that opens up the popup if the seat isn't empty

@@ -41,6 +41,10 @@ namespace LearningTrack
 				}
 				catch (IOException IOe){
 					var err = IOe.ToString();
+					//display error alert message
+					using (var alert = new UIAlertView("Exception Caught", err , null, "OK", null)){
+						alert.Show();
+					}
 				}
 				// LOGOUT
 				this.ParentViewController.DismissViewController(true, null);

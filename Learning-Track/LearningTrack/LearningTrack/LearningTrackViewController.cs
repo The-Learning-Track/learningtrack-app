@@ -77,7 +77,7 @@ namespace LearningTrack
 					courses = RESPONSE;
 					
 					//Check if user exists
-					if (courses.Registered == true){
+					if ((courses != null) && (courses.Registered == true)){
 						//Clear Both UsernameField & PasswordField
 						PasswordField.Text = "";
 						UsernameField.Text = "";

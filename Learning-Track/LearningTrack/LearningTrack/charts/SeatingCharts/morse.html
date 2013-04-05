@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<center> Select Heat Map:
+  <form id="somform">
+        <select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+        </select>
+  </form>
+  </center>
 <meta charset="utf-8" />
 <title>Morse</title>
 <link rel="stylesheet" href="Totoro-V1/reset.css" />
@@ -27,7 +33,35 @@
 </style>
 <script>
 var studentsArray = queryXML();
+ var categoryArray = new Array();
+        categoryArray = GetCategory();
+        var categoryname;
 
+        var url1 = document.URL;
+        var path_pre = url1.split("?id=");
+        var path = path_pre[0];
+        var myselect = document.getElementById("sample");
+        categoryname = path_pre[1];
+
+        if (categoryname == null)
+        {
+                newurl = path + "?id=" + categoryArray[0].name;
+                document.location.href = newurl;
+        }
+
+        for (i = 0; i < categoryArray.length; i++) //will create the drop down based on the amount of categories that there are
+        {
+                if (categoryArray[i].name == path_pre[1]){ //if it's the category that's selected in the URL
+                        url = path + '?id=' + categoryArray[i].name;
+                        myselect.add(new Option(categoryArray[i].name, url, true, true));
+                        }
+                else
+                {
+                        //var url='standardDev.htm?cat=' + i;
+                        url = path + '?id=' + categoryArray[i].name;
+                        myselect.add(new Option(categoryArray[i].name, url));
+                }
+        }
 </script>
 
 </head>
@@ -52,13 +86,14 @@ var studentsArray = queryXML();
     	</div>
     </div>
     -->
-    
+    <!---
     <select onchange="javascript:location.href=this.value">
   <option value="morse.html?id=homework" id="Homework">Homework Heat Map</option>
   <option value="morse.html?id=exam" id="Homework">Exam Heat Map</option>
   <option value="morse.html?id=lab" id="Homework">Lab Heat Map</option>
   <option value="morse.html" id="Homework">Morse Heat Map</option>
   </select>
+  
   </div>
   
   <div class="row">
