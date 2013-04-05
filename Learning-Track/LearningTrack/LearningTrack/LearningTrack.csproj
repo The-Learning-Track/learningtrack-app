@@ -149,7 +149,6 @@
     <Compile Include="StudentTabBarController.designer.cs">
       <DependentUpon>StudentTabBarController.cs</DependentUpon>
     </Compile>
-    <Compile Include="JSONtestClass.cs" />
     <Compile Include="BackendCommunication.cs" />
     <Compile Include="XML_SeatingChart.cs" />
     <Compile Include="XML_Averages.cs" />

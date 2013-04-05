@@ -18,8 +18,9 @@ namespace LearningTrack
 		public int selectedRow;
 		//get list from previous query
 		public ClassList myCourses;
-		//need to dismiss previous viewcontroller
-		public LearningTrackViewController login;
+		//need to match these up
+		public AssignmentINFO myAssignmentINFO;
+		public gradeINFO myGradeINFO;
 
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
@@ -29,9 +30,34 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
-			//login.DismissViewController(true,null);
+			if (classTable.Source == null){
+				CreateTableItems();
+			}
 
-			CreateTableItems();
+			//LOGOUT
+			LogoutButton.Clicked += (sender, e) =>
+			{	
+				// Figure out where the XML FILES will be and CLEAR EVERYTHING
+				string seatingChartPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
+				string courseAveragesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");
+				string courseGradesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseGrades.xml");
+				
+				try{
+					//Creates new file, overwrites old file automatically - seatingChart.xml
+					Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
+					//Creates new file, overwrites old file automatically - courseAverages.xml
+					myStream = new FileStream(courseAveragesPath, FileMode.Create);
+					//Creates new file, overwrites old file automatically - courseGrades.xml
+					myStream = new FileStream(courseGradesPath, FileMode.Create);
+					//Close stream
+					myStream.Flush(); 
+					myStream.Close();
+				}
+				catch (IOException IOe){
+				}
+				// LOGOUT
+				this.DismissViewController(true, null);
+			};
 
 			//Transition to interface depending on user privileges
 			ContinueButton.Clicked += (sender, e) => 
@@ -39,51 +65,54 @@ namespace LearningTrack
 
 				//--------------------------------------------------------------------------------------------------
 				// PARSE JSON FOR CLASS DATA
+				var myUsername = myCourses.username;
+				var myUserID = myCourses.userID;
+				var mySelectedCourseID = myCourses.courseIDs[selectedRow];
+				var mySelectedCourseName = myCourses.courseNames[selectedRow];
+
+				// get each student's scores and if they are instructor for the class
 				var client = new RestClient();
-				client.BaseUrl = "";
-
-
-				var Crequest = new RestRequest();
-				Crequest.Resource = "";
+				client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getGrades/"+mySelectedCourseID+"/"+myUsername;
+				
+				var request = new RestRequest();
 				// set format to JSON
-				Crequest.RequestFormat = DataFormat.Json;
-				var msg = new userINFO {username = myCourses.username, 
-										courseID = myCourses.courseIDs[selectedRow], 
-										courseName = myCourses.courseNames[selectedRow]};
-
-				//This will result in a single JSON object, that contains the properties on the object passed into the Serialize method.
-				Crequest.AddParameter("infoRequest",Crequest.JsonSerializer.Serialize(msg));
-
+				request.RequestFormat = DataFormat.Json;
+				
 				// automatically deserialize result
 				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized = client.Execute<List<Student>>(Crequest);
+				var responseDeserialized = client.Execute<gradeINFO>(request);
+				
+				myGradeINFO = responseDeserialized.Data;
 
-				List<Student> blackboardData = responseDeserialized.Data;
+				// get all grade total standards and match via columnID
+				var client2 = new RestClient();
+				client2.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getAssignmentInfo/"+mySelectedCourseID;
+
+				var request2 = new RestRequest();
+				// set format to JSON
+				request2.RequestFormat = DataFormat.Json;
+				
+				// automatically deserialize result
+				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+				var responseDeserialized2 = client2.Execute<AssignmentINFO>(request2);
+				
+				myAssignmentINFO = responseDeserialized2.Data;
 
 				//Check if data is received
-				/*if (blackboardData == null){
+				if ((myGradeINFO == null) && (myAssignmentINFO == null)){
 					using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
 						alert.Show();
 					}
 				}
-				else */if(isProfessor)
+				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myGradeINFO.instructor == true))
 				{
 					this.PerformSegue("ToInstructorInterface", this);
 				}
-				else
+				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myGradeINFO.instructor == false))
 				{
 					this.PerformSegue("ToStudentInterface", this);
 				}
 			};
-
-			//Logout
-			//LogoutButton.Clicked += (sender, e) => 
-			//{	
-			//	BUWebloginConnection.Logout();
-
-			//	this.RemoveFromParentViewController();
-				//this.DismissViewController(true,null);
-			//};
 		}
 
 		protected void CreateTableItems ()
@@ -115,38 +144,39 @@ namespace LearningTrack
 				nextViewController.myCOURSES = myCourses;
 			}
 
-			//DUMMY DATA - NEED TO IMPLEMENT STUDENT XML 
-			List <Grade> JohnDoeGrades = new List<Grade> ();
-			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 7, totalPoints = 10, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 29, totalPoints = 100, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 55, totalPoints = 100, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 74, totalPoints = 100, studentID = "000"});
-			Student JohnDoe = new Student {firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1", grades = JohnDoeGrades};
+			//Implement COMPLETEINFO EQUIVALENT
+			List<Student> COMPLETEINFO = new List<Student> ();
+			string tempStudentID = "";
+			int derp = 0;
+			string tempSeatLocation = "";
 
-			List <Grade> KatsuGrades = new List<Grade> ();
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 8, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 3, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 0, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 56, totalPoints = 100, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 3, totalPoints = 100, studentID = "001"});
-			Student Katsu = new Student {firstName = "Katsu", lastName = "Kawakami", studentID = "001", seatLocation = "A3", grades = KatsuGrades};
+			//for each student
+			foreach (StudentList studentList in myGradeINFO.studentList){
+				List<Grade> tempGrade = new List<Grade>();
+				//for each grade associated with that student
+				if (studentList.gradeList.Count != 0){
+					foreach (GradeList gradeList in studentList.gradeList){
+						//check if the assignment matches up and add it appropriately
+						foreach (CourseINFO courseINFO in myAssignmentINFO.courseInfo){
+							if (courseINFO.columnId == gradeList.columnID){
+								tempGrade.Add (new Grade{category = courseINFO.category, assignmentName = courseINFO.assignmentNames,
+										score = gradeList.score, totalPoints = courseINFO.possiblePoints, studentID = gradeList.studentID});
+								tempStudentID = gradeList.studentID;
+							}
+						}
+					}
+					if (derp == 0){
+						tempSeatLocation = "A1";
+						derp = 1;
+					}
+					else{
+						tempSeatLocation = "B1";
+					}
 
-			List <Grade> DicksonGrades = new List<Grade> ();
-			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 94, totalPoints = 100, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 70, totalPoints = 100, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 97, totalPoints = 100, studentID = "002"});
-			Student Dickson = new Student {firstName = "Dickson", lastName = "Pun", studentID = "002", seatLocation = "B1", grades = DicksonGrades};
-
-			List <Student> COMPLETEINFO = new List<Student> ();
-			COMPLETEINFO.Add (JohnDoe);
-			COMPLETEINFO.Add (Katsu);
-			COMPLETEINFO.Add (Dickson);
+					COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
+													seatLocation = tempSeatLocation, grades = tempGrade});
+				}
+			}
 
 			COURSEGRADES studentGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
 			//Serialize to XML

@@ -16,7 +16,6 @@ namespace LearningTrack
 	public partial class LearningTrackViewController : UIViewController
 	{
 		// get values to transfer to next controller
-		public bool _isProfessor;
 		public string username;
 		public ClassList courses;
 		public bool isAuthenticated = false;
@@ -34,13 +33,74 @@ namespace LearningTrack
 		
 		#region View lifecycle
 
-		public override void ViewDidAppear(bool animated)
+		public override void ViewDidLoad()
 		{
-			base.ViewDidAppear(animated);
+			base.ViewDidLoad ();
 
 			this.loginLabel.Hidden = true;
 
+			//Hide Keyboard after textfield entry
+			UsernameField.ShouldReturn = delegate{
+				UsernameField.ResignFirstResponder();
+				return true;
+			};
+			PasswordField.ShouldReturn = delegate{
+				PasswordField.ResignFirstResponder();
+				return true;
+			};
+			
 			// When LoginButton is clicked, this will happen:
+			LoginButton.TouchUpInside += (sender, e) => {
+				//Start animating loading indicator
+				this.LoginLoadingIndicator.StartAnimating();
+				
+				//Get Username and Password
+				username = UsernameField.Text;
+				var password = PasswordField.Text;
+
+				// CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
+				if ((username.Length != 0) && (password.Length != 0)){					
+					// http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getCourses/dicksonp
+					// PARSE JSON 
+					var client = new RestClient();
+					client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getCourses/" + username;
+					
+					var request = new RestRequest();
+					// set format to JSON
+					request.RequestFormat = DataFormat.Json;
+					
+					// automatically deserialize result
+					// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+					var responseDeserialized = client.Execute<ClassList>(request);
+					
+					ClassList RESPONSE = responseDeserialized.Data;
+					courses = RESPONSE;
+					
+					//Check if user exists
+					if (courses.Registered == true){
+						//Clear Both UsernameField & PasswordField
+						PasswordField.Text = "";
+						UsernameField.Text = "";
+						this.PerformSegue("ToPickClass", this);
+					}
+					else{
+						using (var alert = new UIAlertView("Login Error Message", "Could not connect to server. Please try again.", null, "OK", null)){
+							alert.Show();
+							this.LoginLoadingIndicator.StopAnimating();
+						}
+					}
+				}
+				else{
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Username and password cannot be empty. Please try again.", null, "OK", null)){
+						alert.Show();
+						this.LoginLoadingIndicator.StopAnimating();
+					}
+				}
+
+			};
+
+			/* When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
@@ -97,9 +157,9 @@ namespace LearningTrack
 						alert.Show();
 						this.LoginLoadingIndicator.StopAnimating();
 					}
-				}*/
+				} 
 
-			};
+			};*/
 
 		}
 
@@ -111,11 +171,8 @@ namespace LearningTrack
 				// Get reference to the destination view controller
 				var nextViewController = (PickClassViewController) segue.DestinationViewController;
 
-
 				//Pass bool _isProfessor to the next view controller
-				nextViewController.isProfessor = false;
 				nextViewController.myCourses = courses;
-				nextViewController.login = this;
 
 				this.LoginLoadingIndicator.StopAnimating();
 			}

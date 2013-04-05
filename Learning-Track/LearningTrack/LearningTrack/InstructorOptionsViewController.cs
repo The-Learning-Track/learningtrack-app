@@ -25,33 +25,6 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
-			// if logout is pressed
-			logoutButton.TouchUpInside += (sender, e) =>
-			{	
-				// Figure out where the XML FILES will be and CLEAR EVERYTHING
-				string seatingChartPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
-				string courseAveragesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");
-				string courseGradesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseGrades.xml");
-				
-				//Creates new file, overwrites old file automatically - seatingChart.xml
-				Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
-				XmlWriter myXMLWriter = XmlWriter.Create(myStream);
-				//Creates new file, overwrites old file automatically - courseAverages.xml
-				myStream = new FileStream(courseAveragesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
-				//Creates new file, overwrites old file automatically - courseGrades.xml
-				myStream = new FileStream(courseGradesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
-				//Close stream
-				myStream.Flush(); 
-				myStream.Close();
-
-				//---------------------------------------------------------------------------------------
-				//Clear THEN logout
-				this.PerformSegue ("InstructorLogout", this);
-			};
-
-			// if change class is pressed
 			changeClassButton.TouchUpInside += (sender, e) =>
 			{	
 				// Figure out where the XML FILES will be and CLEAR EVERYTHING
@@ -59,44 +32,22 @@ namespace LearningTrack
 				string courseAveragesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");
 				string courseGradesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseGrades.xml");
 				
-				//Creates new file, overwrites old file automatically - seatingChart.xml
-				Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
-				XmlWriter myXMLWriter = XmlWriter.Create(myStream);
-				//Creates new file, overwrites old file automatically - courseAverages.xml
-				myStream = new FileStream(courseAveragesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
-				//Creates new file, overwrites old file automatically - courseGrades.xml
-				myStream = new FileStream(courseGradesPath, FileMode.Create);
-				myXMLWriter = XmlWriter.Create(myStream);
-				//Close stream
-				myStream.Flush(); 
-				myStream.Close();
-
-				//---------------------------------------------------------------------------------------
-				//Clear THEN change class
-				this.PerformSegue ("InstructorChangeClass", this);
+				try{
+					//Creates new file, overwrites old file automatically - seatingChart.xml
+					Stream myStream = new FileStream(seatingChartPath, FileMode.Create);
+					//Creates new file, overwrites old file automatically - courseAverages.xml
+					myStream = new FileStream(courseAveragesPath, FileMode.Create);
+					//Creates new file, overwrites old file automatically - courseGrades.xml
+					myStream = new FileStream(courseGradesPath, FileMode.Create);
+					//Close stream
+					myStream.Flush(); 
+					myStream.Close();
+				}
+				catch (IOException IOe){
+				}
+				// LOGOUT
+				this.ParentViewController.DismissViewController(true, null);
 			};
-		}
-
-		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
-		{
-			base.PrepareForSegue (segue, sender);
-			//Make sure we are dealing with the appropriate segue
-			if (segue.Identifier == "InstructorChangeClass") {
-				// Get reference to the destination view controller
-				var nextViewController = (PickClassViewController) segue.DestinationViewController;
-				//Pass values to the next view controller
-				nextViewController.myCourses = myCourses;
-				nextViewController.isProfessor = true;
-			}
-			if (segue.Identifier == "InstructorLogout") {
-				// Get reference to the destination view controller
-				var nextViewController = (LearningTrackViewController) segue.DestinationViewController;
-				// CLEAR XMLS * REMEMBER TO DO SO
-
-				// LOGOUT OF BU WEBLOGIN SESSION
-				BUWebloginConnection logout;
-			}
 		}
 
 		public override void ViewWillAppear (bool animated)

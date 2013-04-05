@@ -21,8 +21,8 @@ namespace LearningTrack
 	{
 		public string category { get; set; }
 		public string assignmentName { get; set; }
-		public int score { get; set; }
-		public int totalPoints { get; set; }
+		public double score { get; set; }
+		public double totalPoints { get; set; }
 		public string studentID { get; set; }
 	}
 
