@@ -48,8 +48,9 @@
     <ConsolePause>False</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>True</MtouchDebug>
-    <MtouchProfiling>True</MtouchProfiling>
     <IpaPackageName />
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -92,6 +93,9 @@
     </Reference>
     <Reference Include="WebloginLibrary">
       <HintPath>WebloginLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +159,7 @@
     <Compile Include="InstructorGroupStatisticsViewController.designer.cs">
       <DependentUpon>InstructorGroupStatisticsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="XML_TEST.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -190,6 +195,10 @@
     <BundleResource Include="Resources\glyphicons_137_cogwheels.png" />
     <BundleResource Include="Resources\glyphicons_151_new_window.png" />
     <BundleResource Include="charts\SeatingCharts\highcharts\key.png" />
+    <BundleResource Include="Resources\iconpng57.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Logo_2.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="charts\highcharts.js" />

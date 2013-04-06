@@ -6,8 +6,8 @@
 	<string>Learning Track</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Resources/launchicon.png</string>
-		<string>Resources/retinalaunchicon.png</string>
+		<string>Icon-72</string>
+		<string>Icon-72@2x</string>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>

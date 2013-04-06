@@ -318,7 +318,8 @@ function checkboxSubmit(studentsArray)
         }
         if (chkcount < 2)
         {
-        	alert('Must choose 2 or more students to compare.');
+        	//alert('Must choose 2 or more students to compare.');
+        	document.getElementByID('comments').innterHTML="Must select 2 or more students.";
         }
         else{
         preurl = 'highcharts/standardDevGroup.htm'
@@ -357,7 +358,7 @@ function checkboxSubmitGroup(studentsArray)
         }
         if (chkcount < 2)
         {
-        	 alert('Must choose 2 or more students to compare.');
+        	 document.getElementByID('comments').innterHTML="Must select 2 or more students.";
         }
         else{
         //alert(string);

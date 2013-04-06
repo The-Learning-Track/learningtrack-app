@@ -32,6 +32,7 @@ namespace LearningTrack
 		public string lastName { get; set; }
 		public List<GradeList> gradeList { get; set; }
 		public string studentID { get; set; }
+		public string username { get; set; }
 	}
 
 	public class GradeList
@@ -52,5 +53,18 @@ namespace LearningTrack
 		public string columnId { get; set; }
 		public double possiblePoints { get; set; }
 		public string assignmentNames { get; set; }
+	}
+
+	public class ClassSeats
+	{
+		public List<string> seatLocation { get; set; }
+		public List<string> usernames { get; set;}
+	}
+
+	public class SEAT_REFERENCE
+	{
+		public string studentID { get; set; }
+		public string username { get; set; }
+		public string seatLocation { get; set; }
 	}
 }

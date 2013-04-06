@@ -23,6 +23,8 @@ namespace LearningTrack
 		//need to match these up
 		public AssignmentINFO myAssignmentINFO;
 		public gradeINFO myGradeINFO;
+		public ClassSeats myClassSeats;
+		public List<SEAT_REFERENCE> seatReferences;
 
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
@@ -69,6 +71,7 @@ namespace LearningTrack
 					}
 				}
 				// LOGOUT
+				BUWebloginConnection.Logout(); // DELETE COOKIES
 				this.DismissViewController(true, null);
 			};
 
@@ -83,10 +86,10 @@ namespace LearningTrack
 				var mySelectedCourseID = myCourses.courseIDs[selectedRow];
 				//var mySelectedCourseName = myCourses.courseNames[selectedRow];
 
+				//--------------------------------------------------------------------------------------------------------------------------
 				// get each student's scores and if they are instructor for the class
 				var client = new RestClient();
 				client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getGrades/"+myUsername+"/"+mySelectedCourseID;
-				
 				var request = new RestRequest();
 				// set format to JSON
 				request.RequestFormat = DataFormat.Json;
@@ -96,11 +99,10 @@ namespace LearningTrack
 				var responseDeserialized = client.Execute<gradeINFO>(request);
 				
 				myGradeINFO = responseDeserialized.Data;
-
+				//--------------------------------------------------------------------------------------------------------------------------
 				// get all grade total standards and match via columnID
 				var client2 = new RestClient();
 				client2.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getAssignmentInfo/"+mySelectedCourseID;
-
 				var request2 = new RestRequest();
 				// set format to JSON
 				request2.RequestFormat = DataFormat.Json;
@@ -110,18 +112,44 @@ namespace LearningTrack
 				var responseDeserialized2 = client2.Execute<AssignmentINFO>(request2);
 				
 				myAssignmentINFO = responseDeserialized2.Data;
+				//--------------------------------------------------------------------------------------------------------------------------
+				// get all grade total standards and match via columnID
+				var client3 = new RestClient();
+				client3.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getSeats/"+mySelectedCourseID;
+				var request3 = new RestRequest();
+				// set format to JSON
+				request3.RequestFormat = DataFormat.Json;
+				
+				// automatically deserialize result
+				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+				var responseDeserialized3 = client3.Execute<ClassSeats>(request3);
+				
+				myClassSeats = responseDeserialized3.Data;
 
+				//NEED TO TEST CORRECT SPLIT AND REGROUP
+				var myClassSeatsUsernames = myClassSeats.usernames.ToArray();
+				var myClassSeatLocations = myClassSeats.seatLocation.ToArray();
+
+				for (int count = 0; count < myClassSeats.seatLocation.Count; count++){
+					SEAT_REFERENCE tempSeatRef = new SEAT_REFERENCE();
+					tempSeatRef.username = myClassSeatsUsernames[count];
+					tempSeatRef.seatLocation = myClassSeatLocations[count];
+					tempSeatRef.studentID = "";
+					seatReferences.Add(tempSeatRef);
+				}
+
+				//--------------------------------------------------------------------------------------------------------------------------
 				//Check if data is received
-				if ((myGradeINFO == null) || (myAssignmentINFO == null)){
+				if ((myGradeINFO == null) || (myAssignmentINFO == null) || (myClassSeats == null)){
 					using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
 						alert.Show();
 					}
 				}
-				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myGradeINFO.instructor == true))
+				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myClassSeats != null) && (myGradeINFO.instructor == true))
 				{
 					this.PerformSegue("ToInstructorInterface", this);
 				}
-				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myGradeINFO.instructor == false))
+				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myClassSeats != null) && (myGradeINFO.instructor == false))
 				{
 					this.PerformSegue("ToStudentInterface", this);
 				}
@@ -158,7 +186,6 @@ namespace LearningTrack
 			//Implement COMPLETEINFO EQUIVALENT
 			List<Student> COMPLETEINFO = new List<Student> ();
 			string tempStudentID = "";
-			int derp = 0;
 			string tempSeatLocation = "";
 
 			//for each student
@@ -176,64 +203,23 @@ namespace LearningTrack
 							}
 						}
 					}
-					if (derp == 0){
-						tempSeatLocation = "A1";
-						COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
-							seatLocation = tempSeatLocation, grades = tempGrade});
-						derp = 1;
+					//MATCH UP USERNAMES TO STUDENTID
+					foreach (SEAT_REFERENCE seatRef in seatReferences){
+						if (seatRef.username == studentList.username){
+							seatRef.studentID = studentList.studentID;
+							//get seatLocation while here
+							tempSeatLocation = seatRef.seatLocation;
+						}
 					}
-					else{
-						tempSeatLocation = "B1";
-						COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
-							seatLocation = tempSeatLocation, grades = tempGrade});
-					}
-
-					//COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
-					//								seatLocation = tempSeatLocation, grades = tempGrade});
+					//set all info
+					COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
+													seatLocation = tempSeatLocation, grades = tempGrade});
 				}
 			}
 
 			COURSEGRADES studentGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
 			//Serialize to XML
 			studentGrades.serializeToXML();
-			
-			/*//DUMMY DATA - NEED TO IMPLEMENT STUDENT XML 
-			List <Grade> JohnDoeGrades = new List<Grade> ();
-			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 2, totalPoints = 10, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 5, totalPoints = 10, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 7, totalPoints = 10, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 29, totalPoints = 100, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 55, totalPoints = 100, studentID = "000"});
-			JohnDoeGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 74, totalPoints = 100, studentID = "000"});
-			Student JohnDoe = new Student {firstName = "John", lastName = "Doe", studentID = "000", seatLocation = "A1", grades = JohnDoeGrades};
-			
-			List <Grade> KatsuGrades = new List<Grade> ();
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 8, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 3, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 0, totalPoints = 10, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 77, totalPoints = 100, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 56, totalPoints = 100, studentID = "001"});
-			KatsuGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 3, totalPoints = 100, studentID = "001"});
-			Student Katsu = new Student {firstName = "Katsu", lastName = "Kawakami", studentID = "001", seatLocation = "A3", grades = KatsuGrades};
-			
-			List <Grade> DicksonGrades = new List<Grade> ();
-			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW1", score = 9, totalPoints = 10, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW2", score = 7, totalPoints = 10, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Homework", assignmentName = "HW3", score = 9, totalPoints = 10, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam1", score = 94, totalPoints = 100, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam2", score = 70, totalPoints = 100, studentID = "002"});
-			DicksonGrades.Add(new Grade {category = "Exam", assignmentName = "Exam3", score = 97, totalPoints = 100, studentID = "002"});
-			Student Dickson = new Student {firstName = "Dickson", lastName = "Pun", studentID = "002", seatLocation = "B1", grades = DicksonGrades};
-			
-			List <Student> COMPLETEINFO = new List<Student> ();
-			COMPLETEINFO.Add (JohnDoe);
-			COMPLETEINFO.Add (Katsu);
-			COMPLETEINFO.Add (Dickson);
-			
-			COURSEGRADES studentGrades = new COURSEGRADES {COURSE_GRADES = COMPLETEINFO};
-			//Serialize to XML
-			studentGrades.serializeToXML();
-			*/
 
 			//---------Get and set standard deviations and averages for all categories and associated assignments--------
 			//Create STATISTICS structure from List<Student> first
@@ -318,15 +304,9 @@ namespace LearningTrack
 				double categoryAverage = function.getAverage(averages);
 				//calculate category standard deviation
 				double categoryStandardDev = function.getStandardDev(averages);
-				//calculate category MAX
-				//double categoryMax = function.getMax(MAXs);
-				//calculate category MIN
-				//double categoryMin = function.getMin(MINs);
 				//set values accordingly
 				category.categoryAverage = categoryAverage;
 				category.categoryStandardDev = categoryStandardDev;
-				//category.categoryMax = categoryMax;
-				//category.categoryMin = categoryMin;
 			}
 			//set extracted and calculated values to list of CATEGORY categories to be XML serialized
 			STATISTICS statistics = new STATISTICS(){categories = extractedCategories};
@@ -337,9 +317,6 @@ namespace LearningTrack
 			//Assemble XML for Seating Chart
 			//Create structure to store XML for seating chart DATA
 			List<SEAT> extractedSeating = new List<SEAT>();
-
-			//store list of scores and averages, assume overall weight is even across the category board
-			List <double> homeworkScores, examScores, labScores;
 
 			//For each student in list of student get their seating chart data
 			foreach (Student student in COMPLETEINFO) {
@@ -355,55 +332,6 @@ namespace LearningTrack
 					//if the student has the same id as the logged in student, flag this user
 					temp.IS_CURRENT_STUDENT = "false";
 				}
-
-				/*temp.ATTENDANCE_FLAG = "N/A";
-				temp.MISSING_ASSIGNMENT_FLAG = "N/A";
-				temp.PREDICT_GRADE = "N/A";
-				temp.OVERALL_AVERAGE = "N/A";
-
-				//Get a new list of scores from each student
-				homeworkScores = new List<double>();
-				examScores = new List<double>();
-				labScores = new List<double>();
-
-				//For each grade in list of grades
-				foreach (Grade grades in student.grades) {
-					//If the assignment and category matches up, add score to the list
-					if((grades.category == "Homework")){
-						//add score to list to be averaged in assignment
-						homeworkScores.Add(grades.score);
-					}
-					else if((grades.category == "Exam")){
-						//add score to list to be averaged in assignment
-						examScores.Add(grades.score);
-					}
-					else if((grades.category == "Lab")){
-						//add score to list to be averaged in assignment
-						labScores.Add(grades.score);
-					}
-				}
-
-				if (homeworkScores != null){
-					temp.HOMEWORK_AVERAGE = function.getAverage(homeworkScores).ToString();
-				}
-				else {
-					temp.HOMEWORK_AVERAGE = "N/A";
-				}
-
-				if (examScores != null){
-					temp.EXAM_AVERAGE = function.getAverage(examScores).ToString();
-				}
-				else {
-					temp.EXAM_AVERAGE = "N/A";
-				}
-
-				if (labScores != null){
-					temp.LAB_AVERAGE = function.getAverage(labScores).ToString();
-				}
-				else {
-					temp.LAB_AVERAGE = "N/A";
-				}*/
-
 				extractedSeating.Add(temp);
 			}
 

@@ -2,14 +2,14 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Data;
-using Mono.Data.Sqlite;
 using System.Collections.Generic;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using RestSharp;
+//using RestSharp;
 using WebloginConnection;
 using System.Threading;
 using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace LearningTrack
 {
@@ -19,7 +19,6 @@ namespace LearningTrack
 		public string username; //needed for seating chart
 		public string userID; //needed for individual student, filter their data only
 		public ClassList courses;
-		public bool isAuthenticated = false;
 
 		public LearningTrackViewController (IntPtr handle) : base (handle)
 		{
@@ -38,9 +37,7 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
-			this.loginLabel.Hidden = true;
-
-			//Hide Keyboard after textfield entry
+			/*//Hide Keyboard after textfield entry
 			UsernameField.ShouldReturn = delegate{
 				UsernameField.ResignFirstResponder();
 				return true;
@@ -48,13 +45,17 @@ namespace LearningTrack
 			PasswordField.ShouldReturn = delegate{
 				PasswordField.ResignFirstResponder();
 				return true;
-			};
+			};*/
 			
 			// When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
-				
+
+				//BU WEBLOGIN
+				callBUWebLogin();
+
+				/*
 				//Get Username and Password
 				username = UsernameField.Text;
 				var password = PasswordField.Text;
@@ -99,71 +100,8 @@ namespace LearningTrack
 						alert.Show();
 						this.LoginLoadingIndicator.StopAnimating();
 					}
-				}
-
+				}*/
 			};
-
-			/* When LoginButton is clicked, this will happen:
-			LoginButton.TouchUpInside += (sender, e) => {
-				//Start animating loading indicator
-				this.LoginLoadingIndicator.StartAnimating();
-
-				callBUWebLogin();
-
-				// CONNECT TO KATSU ----------------CHECK FOR BOOL FLAG INSTEAD OF TRY---------------------------------------
-				/*if ((username.Length != 0) && (password.Length != 0)){
-					//flag for privileges later
-					_isProfessor = true;
-
-					// http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getCourses/dicksonp
-					// PARSE JSON 
-					var client = new RestClient();
-					client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getCourses/";
-					//client.Authenticator = new HttpBasicAuthenticator("username", "password");
-					
-					var request = new RestRequest();
-					request.Resource = username;
-
-					if(username=="realpxy") // For Testing Purposes only
-						_isProfessor=false;
-
-					// set format to JSON
-					request.RequestFormat = DataFormat.Json;
-					
-					// automatically deserialize result
-					// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-					var responseDeserialized = client.Execute<ClassList>(request);
-					
-					ClassList RESPONSE = responseDeserialized.Data;
-					courses = RESPONSE;
-
-					//Check if user exists
-					if (courses == null){
-						using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
-							alert.Show();
-							this.LoginLoadingIndicator.StopAnimating();
-						}
-					}
-					else if (courses.Registered == true){
-						this.PerformSegue("ToPickClass", this);
-					}
-					else{
-						using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
-							alert.Show();
-							this.LoginLoadingIndicator.StopAnimating();
-						}
-					}
-				}
-				else{
-					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Incorrect username or password. Please try again.", null, "OK", null)){
-						alert.Show();
-						this.LoginLoadingIndicator.StopAnimating();
-					}
-				} 
-
-			};*/
-
 		}
 
 		public override void PrepareForSegue (UIStoryboardSegue segue, NSObject sender)
@@ -199,20 +137,14 @@ namespace LearningTrack
 				}
 				else if (data.Length > 0) {
 					//Upon successful authentication
-					isAuthenticated = true;
-					BeginInvokeOnMainThread (delegate {
-						//this.LoginButton.SetTitle ("Continue", UIControlState.Normal);
-						this.loginLabel.Hidden = false;
-					});
-					
-					//JsonObject json = (JsonObject)JsonObject.Parse(data.ToString());
-					//JsonArray stops = (JsonArray)json["ResultSet"]["Result"];
-					
+
+					BU_BUS_STOPS busStops = JsonConvert.DeserializeObject<BU_BUS_STOPS>(data.ToString());
+
 					//-------------------------------------------------------------------
 					//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
 					List<string> testCourseNames = new List<string> ();
-					testCourseNames.Add ("[Lecture Hall]");
-					testCourseNames.Add ("[Studio Classroom]");
+					testCourseNames.Add ("OFFLINETEST - [Lecture Hall]");
+					testCourseNames.Add ("OFFLINETEST - [Studio Classroom]");
 					List<string> testCourseIDs = new List<string> ();
 					testCourseIDs.Add ("[LECTURE ID]");
 					testCourseIDs.Add ("[STUDIO ID]");
