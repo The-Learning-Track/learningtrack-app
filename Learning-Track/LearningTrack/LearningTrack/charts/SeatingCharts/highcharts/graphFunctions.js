@@ -36,7 +36,7 @@ function GetGrades() //this function will query the appropriate XML file and ret
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/courseGrades.xml",false);
+ 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseGrades.xml",false);
  		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseGrades.xml",false);
 		//xmlhttp.open("GET","courseGrades.xml",false);
 		xmlhttp.send();
@@ -77,7 +77,7 @@ function GetSeats() //this function will query the appropriate XML file and retu
 		}
  		
  		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/courseGrades.xml",false);
+ 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseGrades.xml",false);
  		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseGrades.xml",false);
 		//xmlhttp.open("GET","courseGrades.xml",false);
 		xmlhttp.send();
@@ -194,7 +194,7 @@ function GetCategory() //this function will query the appropriate XML file and r
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/courseAverages.xml",false);
+ 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseAverages.xml",false);
  		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseAverages.xml",false);
 		//xmlhttp.open("GET","courseAverages.xml",false);
 		xmlhttp.send();
@@ -223,6 +223,7 @@ function GetCategory() //this function will query the appropriate XML file and r
 
 function GetAssignment() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
+	//alert("welcome to the get assignment function!");
 	var assignmentArray = new Array(); //initiate the array for it to return
 	if (window.XMLHttpRequest)
 		{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -233,15 +234,17 @@ function GetAssignment() //this function will query the appropriate XML file and
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/courseAverages.xml",false);
+ 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseAverages.xml",false);
 		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseAverages.xml",false);
 		//xmlhttp.open("GET","courseAverages.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 		var x=xmlDoc.getElementsByTagName("ASSIGNMENT");
+		//alert("you are here.");
 		//var y=xmlDoc.getElementsByTagName("seatLocation")[1].childNodes[0].nodeValue;
 		for (i=0;i<x.length;i++)
 		{ 	
+			//alert("in for loop");
 			//constructor for the objects that represent whether a seat is taken
 				assignmentArray[i]=new Assignments(
 				x[i].getElementsByTagName("assignmentName")[0].childNodes[0].nodeValue,

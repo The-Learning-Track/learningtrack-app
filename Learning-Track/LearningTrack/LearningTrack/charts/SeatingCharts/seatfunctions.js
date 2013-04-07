@@ -49,12 +49,9 @@ function studentSeat(firstname, seatnumber, id) //this function creates the Java
 	//alert('Getting to studentSeat: ' + firstname);
     //PROPERTIES LISTED HERE --------------------------
         this.name=firstname; //1
-        this.seat=seatnumber; //5
+        this.seat = seatnumber;
     	this.studentID = id; //10
-    	//if (id != undefined)
-    	//{
-    	//	alert('student seat object: ' + id);
-    	//}
+
 
 }
 
@@ -229,7 +226,6 @@ function isTaken(id, array)
 
 function queryXML() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
-        //alert('gets here');
         var studArray = new Array(); //initiate the array for it to return
         if (window.XMLHttpRequest)
                 {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -239,13 +235,13 @@ function queryXML() //this function will query the appropriate XML file and retu
                 {// code for IE6, IE5
                         xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
                 }
-		//NOTE: EE68CBDF-B0CA-4C41-B100-FADF96CD1967 THE GUID CHANGES EVERY ITERATION OF A VERSION UPDATE (I.E. : 6.0 ->6.1)
+		//NOTE: THE GUID CHANGES EVERY ITERATION OF A VERSION UPDATE (I.E. : 6.0 ->6.1)
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
-		//xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
-		xmlhttp.open("GET","/private/var/mobile/Applications/EE68CBDF-B0CA-4C41-B100-FADF96CD1967/Documents/seatingChart.xml",false);
+		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/seatingChart.xml",false);
 		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/seatingChart.xml",false);
-		
+		//alert('if gets here, it is opened');
 		//xmlhttp.open("GET","seatingChart.xml",false);
+		
                 xmlhttp.send();
                 xmlDoc=xmlhttp.responseXML;
 
@@ -257,6 +253,7 @@ function queryXML() //this function will query the appropriate XML file and retu
                                 x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue,
                                 x[i].getElementsByTagName("SEAT_NUMBER")[0].childNodes[0].nodeValue,
                                 x[i].getElementsByTagName("STUDENT_ID")[0].childNodes[0].nodeValue
+                                //x[i].getElementsByTagName("IS_CURRENT_STUDENT")[0].childNodes[0].nodeValue
                                 );
                 }
                 return studArray;
@@ -293,8 +290,6 @@ function studentSeatfromURL()
 /*===============================================================================================================*/
 function checkboxSubmit(studentsArray)
 {
-
-        //alert(studentsArray[0].studentID);
         var checked_array = new Array();
         var string = "?group="
         var chkbx = document.getElementsByName("group");
@@ -305,7 +300,6 @@ function checkboxSubmit(studentsArray)
         {
                 if (chkbx[i].checked == true) //if a student seat is selected
                 {
-                		chkcount++;
                         temp = chkbx[i].value; //take the seat number and make it into a temporary variable
                         for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
                         {
@@ -316,18 +310,10 @@ function checkboxSubmit(studentsArray)
                         }
                 }
         }
-        if (chkcount < 2)
-        {
-        	//alert('Must choose 2 or more students to compare.');
-        	document.getElementByID('comments').innterHTML="Must select 2 or more students.";
-        }
-        else{
+
         preurl = 'highcharts/standardDevGroup.htm'
         url = preurl + string;
-        //document.URL = url;
         window.location.href = url;
-        }
-        
 }
 
 /*===============================================================================================================*/
@@ -335,17 +321,17 @@ function checkboxSubmit(studentsArray)
 function checkboxSubmitGroup(studentsArray)
 {
 
-        //alert(studentsArray[0].studentID);
+        alert(studentsArray[0].studentID);
         var checked_array = new Array();
         var string = "?group="
         var chkbx = document.getElementsByName("group");
         var category = document.getElementsByName("category");
- 		var chkcount = 0;
+ 		//var chkcount = 0;
         for (i = 0; i < chkbx.length; i++) //loop through --> THIS WILL IGNORE EMPTY SEATS
         {
                 if (chkbx[i].checked == true) //if a student seat is selected
                 {		
-                		chkcount++;
+                		//chkcount++;
                         temp = chkbx[i].value; //take the seat number and make it into a temporary variable
                         for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
                         {
@@ -356,17 +342,17 @@ function checkboxSubmitGroup(studentsArray)
                         }
                 }
         }
-        if (chkcount < 2)
-        {
-        	 document.getElementByID('comments').innterHTML="Must select 2 or more students.";
-        }
-        else{
+        //if (chkcount < 2)
+        //{
+        //	 document.getElementByID('comments').innterHTML="Must select 2 or more students.";
+        //}
+        //else{
         //alert(string);
-        preurl = 'highcharts/standardDevGroupStudio.htm'
+        preurl = 'highcharts/standardDevGroupStudio.htm';
         url = preurl + string;
         //document.URL = url;
         window.location.href = url;
-		}
+		//}
        
 }
 

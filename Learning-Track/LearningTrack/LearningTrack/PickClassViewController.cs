@@ -9,6 +9,7 @@ using MonoTouch.UIKit;
 using RestSharp;
 using System.Linq;
 using WebloginConnection;
+using Newtonsoft.Json;
 
 namespace LearningTrack
 {
@@ -24,7 +25,7 @@ namespace LearningTrack
 		public AssignmentINFO myAssignmentINFO;
 		public gradeINFO myGradeINFO;
 		public ClassSeats myClassSeats;
-		public List<SEAT_REFERENCE> seatReferences;
+		public List<SEAT_REFERENCE> seatReferences = new List<SEAT_REFERENCE>();
 
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
@@ -86,7 +87,8 @@ namespace LearningTrack
 				var mySelectedCourseID = myCourses.courseIDs[selectedRow];
 				//var mySelectedCourseName = myCourses.courseNames[selectedRow];
 
-				//--------------------------------------------------------------------------------------------------------------------------
+				/*
+				//-------------------------------------------------------------------------------------------------------------------------
 				// get each student's scores and if they are instructor for the class
 				var client = new RestClient();
 				client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getGrades/"+myUsername+"/"+mySelectedCourseID;
@@ -125,35 +127,43 @@ namespace LearningTrack
 				var responseDeserialized3 = client3.Execute<ClassSeats>(request3);
 				
 				myClassSeats = responseDeserialized3.Data;
+				*/
 
-				//NEED TO TEST CORRECT SPLIT AND REGROUP
-				var myClassSeatsUsernames = myClassSeats.usernames.ToArray();
-				var myClassSeatLocations = myClassSeats.seatLocation.ToArray();
+				getGrades();
 
-				for (int count = 0; count < myClassSeats.seatLocation.Count; count++){
-					SEAT_REFERENCE tempSeatRef = new SEAT_REFERENCE();
-					tempSeatRef.username = myClassSeatsUsernames[count];
-					tempSeatRef.seatLocation = myClassSeatLocations[count];
-					tempSeatRef.studentID = "";
-					seatReferences.Add(tempSeatRef);
-				}
 
-				//--------------------------------------------------------------------------------------------------------------------------
-				//Check if data is received
-				if ((myGradeINFO == null) || (myAssignmentINFO == null) || (myClassSeats == null)){
-					using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
-						alert.Show();
-					}
-				}
-				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myClassSeats != null) && (myGradeINFO.instructor == true))
-				{
-					this.PerformSegue("ToInstructorInterface", this);
-				}
-				else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myClassSeats != null) && (myGradeINFO.instructor == false))
-				{
-					this.PerformSegue("ToStudentInterface", this);
-				}
+
 			};
+		}
+
+		public void continueToSegue(){
+			//NEED TO TEST CORRECT SPLIT AND REGROUP
+			var myClassSeatsUsernames = myClassSeats.usernames.ToArray();
+			var myClassSeatLocations = myClassSeats.seatLocation.ToArray();
+			
+			for (int count = 0; count < myClassSeats.seatLocation.Count; count++){
+				SEAT_REFERENCE tempSeatRef = new SEAT_REFERENCE();
+				tempSeatRef.username = myClassSeatsUsernames[count];
+				tempSeatRef.seatLocation = myClassSeatLocations[count];
+				tempSeatRef.studentID = "";
+				seatReferences.Add(tempSeatRef);
+			}
+			
+			//--------------------------------------------------------------------------------------------------------------------------
+			//Check if data is received
+			if ((myGradeINFO == null) || (myAssignmentINFO == null) || (myClassSeats == null)){
+				using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
+					alert.Show();
+				}
+			}
+			else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myClassSeats != null) && (myGradeINFO.instructor == true))
+			{
+				this.PerformSegue("ToInstructorInterface", this);
+			}
+			else if((myGradeINFO != null) && (myAssignmentINFO != null) && (myClassSeats != null) && (myGradeINFO.instructor == false))
+			{
+				this.PerformSegue("ToStudentInterface", this);
+			}
 		}
 
 		protected void CreateTableItems ()
@@ -207,10 +217,20 @@ namespace LearningTrack
 					foreach (SEAT_REFERENCE seatRef in seatReferences){
 						if (seatRef.username == studentList.username){
 							seatRef.studentID = studentList.studentID;
-							//get seatLocation while here
-							tempSeatLocation = seatRef.seatLocation;
 						}
 					}
+
+					//get seatlocation
+					foreach (SEAT_REFERENCE seatRef in seatReferences){
+						if (seatRef.username == studentList.username){
+							tempSeatLocation = seatRef.seatLocation;
+							break;
+						}
+						else {
+							tempSeatLocation = "null";
+						}
+					}
+
 					//set all info
 					COMPLETEINFO.Add (new Student{firstName = studentList.firstName, lastName = studentList.lastName, studentID = tempStudentID,
 													seatLocation = tempSeatLocation, grades = tempGrade});
@@ -340,6 +360,84 @@ namespace LearningTrack
 			
 			//Create XML for seating chart
 			mySeatingChart.serializeToXML();
+		}
+
+		public void getGrades(){
+			var mySelectedCourseID = myCourses.courseIDs[selectedRow];
+			//BU WEBLOGIN - ASYNCHRONOUS CALL
+			var webloginConnection = new BUWebloginConnection ();
+			//var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+			var url = new NSUrl ("http://www-devl.bu.edu/link/bin/uiscgi_the_learning_track_cbr.pl?operation=getGrades&course="+mySelectedCourseID);
+			var request = new NSUrlRequest (url);
+			
+			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+				if (data == null){
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+						alert.Show();
+					}
+				}
+				else if (data.Length > 0) {
+					//Upon successful authentication PARSE DATA
+					myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
+
+					BeginInvokeOnMainThread(delegate {						
+						getCourseInfo();
+					});
+				}
+			});
+		}
+
+		public void getCourseInfo(){
+			var mySelectedCourseID = myCourses.courseIDs[selectedRow];
+			//BU WEBLOGIN - ASYNCHRONOUS CALL
+			var webloginConnection = new BUWebloginConnection ();
+			//var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+			var url = new NSUrl ("http://www-devl.bu.edu/link/bin/uiscgi_the_learning_track_cbr.pl?operation=getAssignmentInfo&course="+mySelectedCourseID);
+			var request = new NSUrlRequest (url);
+			
+			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+				if (data == null){
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+						alert.Show();
+					}
+				}
+				else if (data.Length > 0) {
+					//Upon successful authentication PARSE DATA
+					myAssignmentINFO = JsonConvert.DeserializeObject<AssignmentINFO>(data.ToString());
+
+					BeginInvokeOnMainThread(delegate {						
+						getSeats();
+					});
+				}
+			});
+		}
+
+		public void getSeats(){
+			var mySelectedCourseID = myCourses.courseIDs[selectedRow];
+			//BU WEBLOGIN - ASYNCHRONOUS CALL
+			var webloginConnection = new BUWebloginConnection ();
+			//var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+			var url = new NSUrl ("http://www-devl.bu.edu/link/bin/uiscgi_the_learning_track_cbr.pl?operation=getSeats&course="+mySelectedCourseID);
+			var request = new NSUrlRequest (url);
+			
+			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+				if (data == null){
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+						alert.Show();
+					}
+				}
+				else if (data.Length > 0) {
+					//Upon successful authentication PARSE DATA
+					myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
+
+					BeginInvokeOnMainThread(delegate {						
+						continueToSegue();
+					});
+				}
+			});
 		}
 
 		public override void ViewWillAppear (bool animated)
