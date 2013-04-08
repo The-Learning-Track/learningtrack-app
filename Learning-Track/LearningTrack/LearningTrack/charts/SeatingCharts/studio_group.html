@@ -44,7 +44,8 @@
 </style>
 <script>
 var studentsArray = queryXML();
-var studentsArray = queryXML();
+var grades = GetGrades();
+//var studentsArray = queryXML();
      function makeCheckbox(seatNum, array)
      {
         var return1 = isTaken(seatNum, studentsArray);
@@ -62,6 +63,7 @@ var studentsArray = queryXML();
           var categoryArray = new Array();
         categoryArray = GetCategory();
         var categoryname;
+        var calculatedGrades = calculateGrades(grades, categoryArray);
 
         var url1 = document.URL;
         var path_pre = url1.split("?id=");
@@ -119,7 +121,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
-    <div id="A1" class="grid_1"><style onload="seatcolor('A1', studentsArray);"></style>
+    <div id="A1" class="grid_1"><style onload="seatcolor('A1', studentsArray, grades, calculatedGrades);"></style>
      <script>
 	    makeCheckbox('A1', studentsArray);
     </script> 
@@ -132,7 +134,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
       <a onclick="" style="none"><! 6 >
-    <div id="A2" class="grid_1"><style onload="seatcolor('A1', studentsArray);"></style>
+    <div id="A2" class="grid_1"><style onload="seatcolor('A1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A2', studentsArray);
     </script> 
@@ -153,7 +155,7 @@ var studentsArray = queryXML();
     </div>
 
       <a onclick="" style="none"><! 11 >
-    <div id="B1" class="grid_1"><style onload="seatcolor('B1', studentsArray);"></style>
+    <div id="B1" class="grid_1"><style onload="seatcolor('B1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B1', studentsArray);
     </script> 
@@ -165,7 +167,7 @@ var studentsArray = queryXML();
     </div>
     
       <a onclick="" style="none"><! 13 >
-    <div id="B2" class="grid_1"><style onload="seatcolor('B2', studentsArray);"></style>
+    <div id="B2" class="grid_1"><style onload="seatcolor('B2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B2', studentsArray);
     </script> 
@@ -191,7 +193,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
-    <div id="A9" class="grid_1"><style onload="seatcolor('A9', studentsArray);"></style>
+    <div id="A9" class="grid_1"><style onload="seatcolor('A9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A9', studentsArray);
     </script> 
@@ -211,7 +213,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="A3" class="grid_1"><style onload="seatcolor('A3', studentsArray);"></style>
+    <div id="A3" class="grid_1"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A3', studentsArray);
     </script> 
@@ -227,7 +229,7 @@ var studentsArray = queryXML();
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="B9" class="grid_1"><style onload="seatcolor('B9', studentsArray);"></style>
+    <div id="B9" class="grid_1"><style onload="seatcolor('B9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B9', studentsArray);
     </script> 
@@ -246,7 +248,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
-    <div id="B3" class="grid_1"><style onload="seatcolor('B3', studentsArray);"></style>
+    <div id="B3" class="grid_1"><style onload="seatcolor('B3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B3', studentsArray);
     </script> 
@@ -408,7 +410,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
-    <div id="A8" class="grid_1"><style onload="seatcolor('A8', studentsArray);"></style>
+    <div id="A8" class="grid_1"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A8', studentsArray);
     </script> 
@@ -428,7 +430,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="A4" class="grid_1"><style onload="seatcolor('A4', studentsArray);"></style>
+    <div id="A4" class="grid_1"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A4', studentsArray);
     </script> 
@@ -444,7 +446,7 @@ var studentsArray = queryXML();
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="B8" class="grid_1"><style onload="seatcolor('B8', studentsArray);"></style>
+    <div id="B8" class="grid_1"><style onload="seatcolor('B8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B8', studentsArray);
     </script> 
@@ -463,7 +465,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
-    <div id="B4" class="grid_1"><style onload="seatcolor('B4', studentsArray);"></style>
+    <div id="B4" class="grid_1"><style onload="seatcolor('B4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B4', studentsArray);
     </script> 
@@ -491,21 +493,21 @@ var studentsArray = queryXML();
     </div>
     </a>
     <a onclick=""  style="none"> <! 4 -->
-    <div id="A7" class="grid_1"><style onload="seatcolor('A7', studentsArray);"></style>
+    <div id="A7" class="grid_1"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A7', studentsArray);
     </script> 
       <p><script>seatName('A7', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 5 -->
-    <div id="A6" class="grid_1"><style onload="seatcolor('A6', studentsArray);"></style>
+    <div id="A6" class="grid_1"><style onload="seatcolor('A6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A6', studentsArray);
     </script> 
       <p><script>seatName('A6', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 6 -->
-    <div id="A5" class="grid_1"><style onload="seatcolor('A5', studentsArray);"></style>
+    <div id="A5" class="grid_1"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A5', studentsArray);
     </script> 
@@ -528,21 +530,21 @@ var studentsArray = queryXML();
     </div>
     </a>
         <a onclick=""  style="none"> <! 11 -->
-    <div id="B7" class="grid_1"><style onload="seatcolor('B7', studentsArray);"></style>
+    <div id="B7" class="grid_1"><style onload="seatcolor('B7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B7', studentsArray);
     </script> 
       <p><script>seatName('A7', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 12 -->
-    <div id="B6" class="grid_1"><style onload="seatcolor('B6', studentsArray);"></style>
+    <div id="B6" class="grid_1"><style onload="seatcolor('B6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B6', studentsArray);
     </script> 
       <p><script>seatName('B6', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 13 -->
-    <div id="B5" class="grid_1"><style onload="seatcolor('B5', studentsArray);"></style>
+    <div id="B5" class="grid_1"><style onload="seatcolor('B5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('B5', studentsArray);
     </script> 
@@ -582,7 +584,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
-    <div id="C1" class="grid_1"><style onload="seatcolor('C1', studentsArray);"></style>
+    <div id="C1" class="grid_1"><style onload="seatcolor('C1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C1', studentsArray);
     </script> 
@@ -595,7 +597,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
       <a onclick="" style="none"><! 6 >
-    <div id="C2" class="grid_1"><style onload="seatcolor('C2', studentsArray);"></style>
+    <div id="C2" class="grid_1"><style onload="seatcolor('C2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C2', studentsArray);
     </script> 
@@ -616,7 +618,7 @@ var studentsArray = queryXML();
     </div>
 
       <a onclick="" style="none"><! 11 >
-    <div id="D1" class="grid_1"><style onload="seatcolor('D1', studentsArray);"></style>
+    <div id="D1" class="grid_1"><style onload="seatcolor('D1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D1', studentsArray);
     </script> 
@@ -628,7 +630,7 @@ var studentsArray = queryXML();
     </div>
     
       <a onclick="" style="none"><! 13 >
-    <div id="D2" class="grid_1"><style onload="seatcolor('D2', studentsArray);"></style>
+    <div id="D2" class="grid_1"><style onload="seatcolor('D2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D2', studentsArray);
     </script> 
@@ -656,7 +658,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
-    <div id="C9" class="grid_1"><style onload="seatcolor('C9', studentsArray);"></style>
+    <div id="C9" class="grid_1"><style onload="seatcolor('C9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C9', studentsArray);
     </script> 
@@ -676,7 +678,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="C3" class="grid_1"><style onload="seatcolor('C3', studentsArray);"></style>
+    <div id="C3" class="grid_1"><style onload="seatcolor('C3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C3', studentsArray);
     </script> 
@@ -692,7 +694,7 @@ var studentsArray = queryXML();
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="D9" class="grid_1"><style onload="seatcolor('D9', studentsArray);"></style>
+    <div id="D9" class="grid_1"><style onload="seatcolor('D9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D9', studentsArray);
     </script> 
@@ -711,7 +713,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
-    <div id="D3" class="grid_1"><style onload="seatcolor('D3', studentsArray);"></style>
+    <div id="D3" class="grid_1"><style onload="seatcolor('D3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D3', studentsArray);
     </script> 
@@ -873,7 +875,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
-    <div id="C8" class="grid_1"><style onload="seatcolor('C8', studentsArray);"></style>
+    <div id="C8" class="grid_1"><style onload="seatcolor('C8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C8', studentsArray);
     </script> 
@@ -893,7 +895,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="C4" class="grid_1"><style onload="seatcolor('C4', studentsArray);"></style>
+    <div id="C4" class="grid_1"><style onload="seatcolor('C4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C4', studentsArray);
     </script> 
@@ -909,7 +911,7 @@ var studentsArray = queryXML();
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="D8" class="grid_1"><style onload="seatcolor('D8', studentsArray);"></style>
+    <div id="D8" class="grid_1"><style onload="seatcolor('D8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D8', studentsArray);
     </script> 
@@ -928,7 +930,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
-    <div id="D4" class="grid_1"><style onload="seatcolor('D4', studentsArray);"></style>
+    <div id="D4" class="grid_1"><style onload="seatcolor('D4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D4', studentsArray);
     </script> 
@@ -958,7 +960,7 @@ var studentsArray = queryXML();
     </div>
     </a>
     <a onclick=""  style="none"> <! 4 -->
-    <div id="C7" class="grid_1"><style onload="seatcolor('C7', studentsArray);"></style>
+    <div id="C7" class="grid_1"><style onload="seatcolor('C7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C7', studentsArray);
     </script> 
@@ -972,7 +974,7 @@ var studentsArray = queryXML();
       <p><script>seatName('C6', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 6 -->
-    <div id="C5" class="grid_1"><style onload="seatcolor('C5', studentsArray);"></style>
+    <div id="C5" class="grid_1"><style onload="seatcolor('C5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('C5', studentsArray);
     </script> 
@@ -995,21 +997,21 @@ var studentsArray = queryXML();
     </div>
     </a>
         <a onclick=""  style="none"> <! 11 -->
-    <div id="D7" class="grid_1"><style onload="seatcolor('D7', studentsArray);"></style>
+    <div id="D7" class="grid_1"><style onload="seatcolor('D7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D7', studentsArray);
     </script> 
       <p><script>seatName('D7', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 12 -->
-    <div id="D6" class="grid_1"><style onload="seatcolor('D6', studentsArray);"></style>
+    <div id="D6" class="grid_1"><style onload="seatcolor('D6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D6', studentsArray);
     </script> 
       <p><script>seatName('D6', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 13 -->
-    <div id="D5" class="grid_1"><style onload="seatcolor('D5', studentsArray);"></style>
+    <div id="D5" class="grid_1"><style onload="seatcolor('D5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('D5', studentsArray);
     </script> 
@@ -1046,7 +1048,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
-    <div id="E1" class="grid_1"><style onload="seatcolor('E1', studentsArray);"></style>
+    <div id="E1" class="grid_1"><style onload="seatcolor('E1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E1', studentsArray);
     </script> 
@@ -1059,7 +1061,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
       <a onclick="" style="none"><! 6 >
-    <div id="E2" class="grid_1"><style onload="seatcolor('E2', studentsArray);"></style>
+    <div id="E2" class="grid_1"><style onload="seatcolor('E2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E2', studentsArray);
     </script> 
@@ -1080,7 +1082,7 @@ var studentsArray = queryXML();
     </div>
 
       <a onclick="" style="none"><! 11 >
-    <div id="F1" class="grid_1"><style onload="seatcolor('F1', studentsArray);"></style>
+    <div id="F1" class="grid_1"><style onload="seatcolor('F1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F1', studentsArray);
     </script> 
@@ -1092,7 +1094,7 @@ var studentsArray = queryXML();
     </div>
     
       <a onclick="" style="none"><! 13 >
-    <div id="F2" class="grid_1"><style onload="seatcolor('F2', studentsArray);"></style>
+    <div id="F2" class="grid_1"><style onload="seatcolor('F2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F2', studentsArray);
     </script> 
@@ -1119,7 +1121,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
-    <div id="E9" class="grid_1"><style onload="seatcolor('E9', studentsArray);"></style>
+    <div id="E9" class="grid_1"><style onload="seatcolor('E9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E9', studentsArray);
     </script> 
@@ -1139,7 +1141,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="E3" class="grid_1"><style onload="seatcolor('E3', studentsArray);"></style>
+    <div id="E3" class="grid_1"><style onload="seatcolor('E3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E3', studentsArray);
     </script> 
@@ -1155,7 +1157,7 @@ var studentsArray = queryXML();
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="F9" class="grid_1"><style onload="seatcolor('F9', studentsArray);"></style>
+    <div id="F9" class="grid_1"><style onload="seatcolor('F9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F9', studentsArray);
     </script> 
@@ -1174,7 +1176,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
-    <div id="F3" class="grid_1"><style onload="seatcolor('F3', studentsArray);"></style>
+    <div id="F3" class="grid_1"><style onload="seatcolor('F3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F3', studentsArray);
     </script> 
@@ -1336,7 +1338,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
-    <div id="E8" class="grid_1"><style onload="seatcolor('E8', studentsArray);"></style>
+    <div id="E8" class="grid_1"><style onload="seatcolor('E8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E8', studentsArray);
     </script> 
@@ -1356,7 +1358,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="E4" class="grid_1"><style onload="seatcolor('E4', studentsArray);"></style>
+    <div id="E4" class="grid_1"><style onload="seatcolor('E4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E4', studentsArray);
     </script> 
@@ -1372,7 +1374,7 @@ var studentsArray = queryXML();
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="F8" class="grid_1"><style onload="seatcolor('F8', studentsArray);"></style>
+    <div id="F8" class="grid_1"><style onload="seatcolor('F8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F8', studentsArray);
     </script> 
@@ -1391,7 +1393,7 @@ var studentsArray = queryXML();
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
-    <div id="F4" class="grid_1"><style onload="seatcolor('F4', studentsArray);"></style>
+    <div id="F4" class="grid_1"><style onload="seatcolor('F4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F4', studentsArray);
     </script> 
@@ -1421,21 +1423,21 @@ var studentsArray = queryXML();
     </div>
     </a>
     <a onclick=""  style="none"> <! 4 -->
-    <div id="E7" class="grid_1"><style onload="seatcolor('E7', studentsArray);"></style>
+    <div id="E7" class="grid_1"><style onload="seatcolor('E7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E7', studentsArray);
     </script> 
       <p><script>seatName('E7', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 5 -->
-    <div id="E6" class="grid_1"><style onload="seatcolor('E6', studentsArray);"></style>
+    <div id="E6" class="grid_1"><style onload="seatcolor('E6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E6', studentsArray);
     </script> 
       <p><script>seatName('E6', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 6 -->
-    <div id="E5" class="grid_1"><style onload="seatcolor('E5', studentsArray);"></style>
+    <div id="E5" class="grid_1"><style onload="seatcolor('E5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('E5', studentsArray);
     </script> 
@@ -1458,21 +1460,21 @@ var studentsArray = queryXML();
     </div>
     </a>
         <a onclick=""  style="none"> <! 11 -->
-    <div id="F7" class="grid_1"><style onload="seatcolor('F7', studentsArray);"></style>
+    <div id="F7" class="grid_1"><style onload="seatcolor('F7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F7', studentsArray);
     </script> 
       <p><script>seatName('F7', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 12 -->
-    <div id="F6" class="grid_1"><style onload="seatcolor('F6', studentsArray);"></style>
+    <div id="F6" class="grid_1"><style onload="seatcolor('F6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F6', studentsArray);
     </script> 
       <p><script>seatName('F6', studentsArray);</script></p>
     </div></a>
     <a onclick=""  style="none"> <! 13 -->
-    <div id="F5" class="grid_1"><style onload="seatcolor('F5', studentsArray);"></style>
+    <div id="F5" class="grid_1"><style onload="seatcolor('F5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('F5', studentsArray);
     </script> 
@@ -1567,7 +1569,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
     <a onclick = "" style="none"> <! 2 >
-    <div id="G1" class="grid_1"><style onload="seatcolor('G1', studentsArray);"></style> 
+    <div id="G1" class="grid_1"><style onload="seatcolor('G1', studentsArray, grades, calculatedGrades);"></style> 
         <script>
 	    makeCheckbox('G1', studentsArray);
     </script> 
@@ -1579,7 +1581,7 @@ var studentsArray = queryXML();
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
-    <div id="G2" class="grid_1"><style onload="seatcolor('G2', studentsArray);"></style>
+    <div id="G2" class="grid_1"><style onload="seatcolor('G2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G2', studentsArray);
     </script> 
@@ -1597,7 +1599,7 @@ var studentsArray = queryXML();
   </a> 
      
     <a onclick="" style="none"><! 7 >
-    <div id="H1" class="grid_1"><style onload="seatcolor('H1', studentsArray);"></style>
+    <div id="H1" class="grid_1"><style onload="seatcolor('H1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H1', studentsArray);
     </script> 
@@ -1609,7 +1611,7 @@ var studentsArray = queryXML();
     </div>
    
     <a onclick="" style="none"><! 9 >
-    <div id="H2" class="grid_1"><style onload="seatcolor('H2', studentsArray);"></style>
+    <div id="H2" class="grid_1"><style onload="seatcolor('H2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H2', studentsArray);
     </script> 
@@ -1627,7 +1629,7 @@ var studentsArray = queryXML();
     </div>
     
       <a onclick="" style="none"><! 13 >
-    <div id="I1" class="grid_1"><style onload="seatcolor('I1', studentsArray);"></style>
+    <div id="I1" class="grid_1"><style onload="seatcolor('I1', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I1', studentsArray);
     </script> 
@@ -1638,7 +1640,7 @@ var studentsArray = queryXML();
         <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 14 >
     </div>
       <a onclick="" style="none"><! 15 >
-    <div id="I2" class="grid_1"><style onload="seatcolor('I2', studentsArray);"></style>
+    <div id="I2" class="grid_1"><style onload="seatcolor('I2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I2', studentsArray);
     </script> 
@@ -1654,7 +1656,7 @@ var studentsArray = queryXML();
  <div class="row">
   
       <a onclick=""  style="none"> <! 1 >
-    <div id="G9" class="grid_1"><style onload="seatcolor('G9', studentsArray);"></style>
+    <div id="G9" class="grid_1"><style onload="seatcolor('G9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I9', studentsArray);
     </script> 
@@ -1663,7 +1665,7 @@ var studentsArray = queryXML();
     </a>
     
      <a onclick=""  style="none"> <! 2>
-    <div id="A2" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray);"></style>
+    <div id="A2" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A2', studentsArray);
     </script> 
@@ -1672,7 +1674,7 @@ var studentsArray = queryXML();
    </a>
    
     <a onclick=""  style="none"><! 3>
-    <div id="A3" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray);"></style>
+    <div id="A3" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A3', studentsArray);
     </script> 
@@ -1681,7 +1683,7 @@ var studentsArray = queryXML();
   </a>
   
     <a onclick=""  style="none"><! 4>
-    <div id="A4" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray);"></style>
+    <div id="A4" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A4', studentsArray);
     </script> 
@@ -1691,7 +1693,7 @@ var studentsArray = queryXML();
   
   
     <a onclick=""  style="none"><! 5>
-    <div id="G3" class="grid_1"><style onload="seatcolor('G3', studentsArray);"></style>
+    <div id="G3" class="grid_1"><style onload="seatcolor('G3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G3', studentsArray);
     </script> 
@@ -1700,7 +1702,7 @@ var studentsArray = queryXML();
   </a>
     
      <a onclick=""  style="none"><! 6>
-    <div id="H9" class="grid_1"><style onload="seatcolor('H9', studentsArray);"></style>
+    <div id="H9" class="grid_1"><style onload="seatcolor('H9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H9', studentsArray);
     </script> 
@@ -1709,7 +1711,7 @@ var studentsArray = queryXML();
    </a>
    
     <a onclick=""  style="none"><! 7>
-    <div id="A6" class="grid_1 blank"><style onload="seatcolor('A6', studentsArray);"></style>
+    <div id="A6" class="grid_1 blank"><style onload="seatcolor('A6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A6', studentsArray);
     </script> 
@@ -1718,7 +1720,7 @@ var studentsArray = queryXML();
   </a>
   
     <a onclick=""  style="none"> <! 8>
-    <div id="A7" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray);"></style>
+    <div id="A7" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A7', studentsArray);
     </script> 
@@ -1727,7 +1729,7 @@ var studentsArray = queryXML();
   </a>
   
       <a onclick=""  style="none"><! 9>
-    <div id="A8" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray);"></style>
+    <div id="A8" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A8', studentsArray);
     </script> 
@@ -1736,7 +1738,7 @@ var studentsArray = queryXML();
     </a>
     
      <a onclick=""  style="none"><! 10>
-    <div id="H3" class="grid_1"><style onload="seatcolor('H3', studentsArray);"></style>
+    <div id="H3" class="grid_1"><style onload="seatcolor('H3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H3', studentsArray);
     </script> 
@@ -1745,7 +1747,7 @@ var studentsArray = queryXML();
    </a>
    
       <a onclick=""  style="none"><! 11>
-    <div id="A10" class="grid_1 blank"><style onload="seatcolor('A10', studentsArray);"></style>
+    <div id="A10" class="grid_1 blank"><style onload="seatcolor('A10', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A10', studentsArray);
     </script> 
@@ -1755,7 +1757,7 @@ var studentsArray = queryXML();
     
   
     <a onclick=""  style="none"><! 12>
-    <div id="I9" class="grid_1"><style onload="seatcolor('I9', studentsArray);"></style>
+    <div id="I9" class="grid_1"><style onload="seatcolor('I9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I9', studentsArray);
     </script> 
@@ -1764,7 +1766,7 @@ var studentsArray = queryXML();
   </a>
     
      <a onclick=""  style="none"> <! 13>
-    <div id="A11" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray);"></style>
+    <div id="A11" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A11', studentsArray);
     </script> 
@@ -1773,7 +1775,7 @@ var studentsArray = queryXML();
    </a>
   
       <a onclick=""  style="none"><! 14>
-    <div id="A12" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray);"></style>
+    <div id="A12" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A12', studentsArray);
     </script> 
@@ -1782,7 +1784,7 @@ var studentsArray = queryXML();
     </a>
     
      <a onclick=""  style="none"><! 15>
-    <div id="A13" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray);"></style>
+    <div id="A13" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A13', studentsArray);
     </script> 
@@ -1791,7 +1793,7 @@ var studentsArray = queryXML();
    </a>
    
        <a onclick=""  style="none"> <! 16>
-    <div id="I3" class="grid_1 omega"><style onload="seatcolor('I3', studentsArray);"></style>
+    <div id="I3" class="grid_1 omega"><style onload="seatcolor('I3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I3', studentsArray);
     </script> 
@@ -1940,7 +1942,7 @@ var studentsArray = queryXML();
    <div class="row">
   
       <a onclick=""  style="none"> <! 1>
-    <div id="G8" class="grid_1 "><style onload="seatcolor('G8', studentsArray);"></style>
+    <div id="G8" class="grid_1 "><style onload="seatcolor('G8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G8', studentsArray);
     </script> 
@@ -1949,7 +1951,7 @@ var studentsArray = queryXML();
     </a>
     
      <a onclick=""  style="none"><! 2>
-    <div id="A2" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray);"></style>
+    <div id="A2" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A2', studentsArray);
     </script> 
@@ -1958,7 +1960,7 @@ var studentsArray = queryXML();
    </a>
    
     <a onclick=""  style="none"><! 3>
-    <div id="A3" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray);"></style>
+    <div id="A3" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A3', studentsArray);
     </script> 
@@ -1967,7 +1969,7 @@ var studentsArray = queryXML();
   </a>
   
     <a onclick=""  style="none"><! 4>
-    <div id="A4" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray);"></style>
+    <div id="A4" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A4', studentsArray);
     </script> 
@@ -1976,7 +1978,7 @@ var studentsArray = queryXML();
   </a>
   
     <a onclick=""  style="none"><! 5>
-    <div id="G4" class="grid_1"><style onload="seatcolor('G4', studentsArray);"></style>
+    <div id="G4" class="grid_1"><style onload="seatcolor('G4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G4', studentsArray);
     </script> 
@@ -1985,7 +1987,7 @@ var studentsArray = queryXML();
   </a>
     
      <a onclick=""  style="none"><! 6>
-    <div id="H8" class="grid_1"><style onload="seatcolor('H8', studentsArray);"></style>
+    <div id="H8" class="grid_1"><style onload="seatcolor('H8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H8', studentsArray);
     </script> 
@@ -1994,25 +1996,25 @@ var studentsArray = queryXML();
    </a>
    
     <a onclick=""  style="none"><! 7>
-    <div id="H8" class="grid_1 blank"><style onload="seatcolor('H8', studentsArray);"></style>
+    <div id="H8" class="grid_1 blank"><style onload="seatcolor('H8', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('H8', studentsArray);</script></p>
     </div>
   </a>
   
     <a onclick=""  style="none"><! 8>
-    <div id="A7" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray);"></style>
+    <div id="A7" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A7', studentsArray);</script></p>
     </div>
   </a>
   
       <a onclick=""  style="none"><! 9>
-    <div id="A8" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray);"></style>
+    <div id="A8" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A8', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"><! 10>
-    <div id="H4" class="grid_1"><style onload="seatcolor('H4', studentsArray);"></style>
+    <div id="H4" class="grid_1"><style onload="seatcolor('H4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H4', studentsArray);
     </script> 
@@ -2021,13 +2023,13 @@ var studentsArray = queryXML();
    </a>
    
       <a onclick=""  style="none"><! 11>
-    <div id="H4" class="grid_1 blank"><style onload="seatcolor('H4', studentsArray);"></style>
+    <div id="H4" class="grid_1 blank"><style onload="seatcolor('H4', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('H4', studentsArray);</script></p>
     </div>
     </a>
     
     <a onclick=""  style="none"><! 12>
-    <div id="I8" class="grid_1"><style onload="seatcolor('I8', studentsArray);"></style>
+    <div id="I8" class="grid_1"><style onload="seatcolor('I8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I8', studentsArray);
     </script> 
@@ -2036,25 +2038,25 @@ var studentsArray = queryXML();
   </a>
   
      <a onclick=""  style="none"><! 13>
-    <div id="I8" class="grid_1 blank"><style onload="seatcolor('I8', studentsArray);"></style>
+    <div id="I8" class="grid_1 blank"><style onload="seatcolor('I8', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('I8', studentsArray);</script></p>
     </div>
    </a>
   
       <a onclick=""  style="none"><! 14>
-    <div id="A12" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray);"></style>
+    <div id="A12" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A12', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"><! 15>
-    <div id="A13" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray);"></style>
+    <div id="A13" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A13', studentsArray);</script></p>
     </div>
    </a>
    
        <a onclick=""  style="none"><! 16>
-    <div id="I4" class="grid_1 omega"><style onload="seatcolor('I4', studentsArray);"></style>
+    <div id="I4" class="grid_1 omega"><style onload="seatcolor('I4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I4', studentsArray);
     </script> 
@@ -2067,13 +2069,13 @@ var studentsArray = queryXML();
    <div class="row">
   
       <a onclick=""  style="none"> <! 1>
-    <div id="A1" class="grid_1 blank"><style onload="seatcolor('A1', studentsArray);"></style>
+    <div id="A1" class="grid_1 blank"><style onload="seatcolor('A1', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A1', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"> <! 2>
-    <div id="G7" class="grid_1"><style onload="seatcolor('G7', studentsArray);"></style>
+    <div id="G7" class="grid_1"><style onload="seatcolor('G7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G7', studentsArray);
     </script> 
@@ -2082,7 +2084,7 @@ var studentsArray = queryXML();
    </a>
    
     <a onclick=""  style="none"> <! 3>
-    <div id="G6" class="grid_1"><style onload="seatcolor('G6', studentsArray);"></style>
+    <div id="G6" class="grid_1"><style onload="seatcolor('G6', studentsArray, grades, calculatedGrades);"></style>
     <script>
 	    makeCheckbox('G6', studentsArray);
     </script> 
@@ -2091,7 +2093,7 @@ var studentsArray = queryXML();
   </a>
   
     <a onclick=""  style="none"><! 4>
-    <div id="G5" class="grid_1"><style onload="seatcolor('G5', studentsArray);"></style>
+    <div id="G5" class="grid_1"><style onload="seatcolor('G5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G5', studentsArray);
     </script> 
@@ -2100,19 +2102,19 @@ var studentsArray = queryXML();
   </a>
   
      <a onclick=""  style="none"> <! 5>
-    <div id="A5" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray);"></style>
+    <div id="A5" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A5', studentsArray);</script></p>
     </div>
    </a>
     
      <a onclick=""  style="none"><! 6>
-    <div id="A5" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray);"></style>
+    <div id="A5" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A5', studentsArray);</script></p>
     </div>
    </a>
    
     <a onclick=""  style="none"><! 7>
-    <div id="H7" class="grid_1"><style onload="seatcolor('H7', studentsArray);"></style>
+    <div id="H7" class="grid_1"><style onload="seatcolor('H7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H7', studentsArray);
     </script> 
@@ -2121,7 +2123,7 @@ var studentsArray = queryXML();
   </a>
   
     <a onclick=""  style="none"> <! 8>
-    <div id="H6" class="grid_1"><style onload="seatcolor('H6', studentsArray);"></style>
+    <div id="H6" class="grid_1"><style onload="seatcolor('H6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H6', studentsArray);
     </script> 
@@ -2130,7 +2132,7 @@ var studentsArray = queryXML();
   </a>
   
       <a onclick=""  style="none"><! 9>
-    <div id="H5" class="grid_1"><style onload="seatcolor('H5', studentsArray);"></style>
+    <div id="H5" class="grid_1"><style onload="seatcolor('H5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H5', studentsArray);
     </script> 
@@ -2139,25 +2141,25 @@ var studentsArray = queryXML();
     </a>
     
      <a onclick=""  style="none"><! 10>
-    <div id="A9" class="grid_1 blank"><style onload="seatcolor('A9', studentsArray);"></style>
+    <div id="A9" class="grid_1 blank"><style onload="seatcolor('A9', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A9', studentsArray);</script></p>
     </div>
    </a>
    
       <a onclick=""  style="none"><! 11>
-    <div id="A10" class="grid_1 blank"><style onload="seatcolor('A10', studentsArray);"></style>
+    <div id="A10" class="grid_1 blank"><style onload="seatcolor('A10', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A10', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"><! 12>
-    <div id="A11" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray);"></style>
+    <div id="A11" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A11', studentsArray);</script></p>
     </div>
    </a>
     
      <a style="none"><! 13>
-    <div id="I7" class="grid_1"><style onload="seatcolor('I7', studentsArray);"></style>
+    <div id="I7" class="grid_1"><style onload="seatcolor('I7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I7', studentsArray);
     </script> 
@@ -2166,7 +2168,7 @@ var studentsArray = queryXML();
    </a>
   
       <a onclick=""  style="none"><! 14>
-    <div id="I6" class="grid_1"><style onload="seatcolor('I6', studentsArray);"></style>
+    <div id="I6" class="grid_1"><style onload="seatcolor('I6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I6', studentsArray);
     </script> 
@@ -2175,7 +2177,7 @@ var studentsArray = queryXML();
     </a>
     
      <a onclick=""  style="none"><! 10>
-    <div id="I5" class="grid_1"><style onload="seatcolor('I5', studentsArray);"></style>
+    <div id="I5" class="grid_1"><style onload="seatcolor('I5', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('I5', studentsArray);
     </script> 
@@ -2184,7 +2186,7 @@ var studentsArray = queryXML();
    </a>
    
        <a onclick=""  style="none">
-    <div id="A14" class="grid_1 omega blank"><style onload="seatcolor('A14', studentsArray);"></style>
+    <div id="A14" class="grid_1 omega blank"><style onload="seatcolor('A14', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A14', studentsArray);</script></p>
     </div>
      </a>

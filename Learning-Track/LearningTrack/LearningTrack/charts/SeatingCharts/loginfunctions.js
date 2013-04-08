@@ -4,15 +4,6 @@ function seatTaken(seatnumber, taken) //this function creates the JavaScript obj
 	this.seat=seatnumber; //1
 	this.available=taken;
 
-    
-    //METHODS BEGIN HERE ------------------------------
-    /*
-	this.setHomework=setHomework;
-	function setHomework(average)
-	{	//set the homework average
-		this.homeworkAverage=average;
-	}
-	*/
 }
 /*===============================================================================================================*/
 function queryXML() //this function will query the appropriate XML file and return the array of JavaScript objects
@@ -116,6 +107,7 @@ function seatTakenName(id, array){
 //create function that opens up the popup if the seat isn't empty
 function takeSeat(id, array)
 {
+	//id = seatnumber 
 	var seatnumber = studentSeatfromURL();
 	i = getIndex(id, array);
 	if (i == null)

@@ -57,29 +57,89 @@ function studentSeat(firstname, seatnumber, id) //this function creates the Java
 
 /*===============================================================================================================*/
 
+function studentSeatCalcs(cat, avg, standard, upp, low) //this function creates the JavaScript object
+{
+	this.category = cat;
+	this.average = avg;
+	this.standardDev = standard;
+	this.upperBound = upp;
+	this.lowerBound = low;
+}
+
 /*===============================================================================================================*/
-function seatcolor(id, array) {
+function calculateGrades(grades, categories)
+{
+	var calculatedGrades = new Array();
+	ii = 0;
+	while(ii < categories.length){
+		var tempcat = categories[ii].name;
+		//alert('top of loop: ' + tempcat);
+		var tempgrades = new Array();
+		for (j = 0; j < grades.length; j++)
+		{
+			if (grades[j].category == tempcat)
+			{
+				tempgrades.push(parseFloat(grades[j].grade));
+			}
+		}
+		var tempavg = calculateAverage(tempgrades);
+		var tempstd = standardDev(tempgrades);
+		var tempup = tempavg + tempstd;
+		var templow = tempavg - tempstd;
+		var tempobj = new studentSeatCalcs(tempcat, tempavg, tempstd, tempup, templow);
+		//alert('Object category ' + tempobj.category);
+		calculatedGrades.push(tempobj);
+		//alert('pushed object');
+		ii++;
+	}
+	var allGrades = new Array();
+	for (ii = 0; ii < grades.length; ii++)
+	{	
+		allGrades.push(parseFloat(grades[ii].grade));
+	}
+		tempavg = calculateAverage(allGrades);
+		tempstd = standardDev(allGrades);
+		tempup = tempavg + tempstd;
+		templow = tempavg - tempstd;
+		var tempobj = new studentSeatCalcs(tempcat, tempavg, tempstd, tempup, templow);
+		calculatedGrades.push(tempobj);
+		return calculatedGrades;
+
+}
+
+
+/*===============================================================================================================*/
+function seatcolor(id, array, grades, calculatedGrades) {
 //alert ('in seat color');
-        x=document.getElementById(id)  //Find the element
+        x=document.getElementById(id);  //Find the element
 
         var pathArray = document.URL;
         var average_pre = pathArray.split('=');
         var average = average_pre[1];
         var index = getIndex(id, array);
-        grades = GetGrades();
         var student_id=array[index].studentID;
         var studHWgrades = new Array(); //hw grades is actually any grades i that category
         var classHWgrades = new Array(); //hw grades is actually any grade in that category
         var classAllgrades = new Array();
         var studAllgrades = new Array();
+        var catIndex;
+        for (i = 0; i < calculatedGrades.length; i++)
+        {
+        	if (calculatedGrades[i].category == average)
+        	{
+        		catIndex = i;
+        		break;
+        	}
+        }
+        
         for (i = 0; i < grades.length; i++)
         {
                 //alert('loop id: ' + grades[i].studentID + 'student id: ' + student_id);
-                if (grades[i].category == average)
-                {
-                        classHWgrades.push(parseFloat(grades[i].grade));
-                }
-                if ((grades[i].category == average) && (grades[i].studentID == student_id ))
+               // if (grades[i].category == average)
+                //{
+                //        classHWgrades.push(parseFloat(grades[i].grade));
+               // }
+                if ((grades[i].category == average) && (grades[i].studentID == student_id))
                 {
                         studHWgrades.push(parseFloat(grades[i].grade));
                 }
@@ -87,47 +147,35 @@ function seatcolor(id, array) {
                 {
                         studAllgrades.push(parseFloat(grades[i].grade));
                 }
-                classAllgrades.push(parseFloat(grades[i].grade));
         }
+        
 
 /* CALCULATE ALL AVERAGES */
         var studHWavg = calculateAverage(studHWgrades);
         var studOverallavg = calculateAverage(studAllgrades);
 
-        var classHWavg = calculateAverage(classHWgrades);
-        var classoverallavg = calculateAverage(classAllgrades);
-
-        var HWstd = standardDev(classHWgrades);
-        var Overallstd = standardDev(classAllgrades);
-
-        var upboundHW = classHWavg + HWstd;
-        var lowboundHW = classHWavg - HWstd;
-        var upboundOverall = classoverallavg + Overallstd;
-        var lowboundOverall = classoverallavg - Overallstd;
-
-
 if (average == 'overall')
 {
-        if ((studOverallavg < classoverallavg) && (studOverallavg > lowboundOverall)) //below average, above lowerbound
+        if ((studOverallavg < calculatedGrades[catIndex].average) && (studOverallavg > calculatedGrades[catIndex].lowerBound)) //below average, above lowerbound
         {
                 //should be an orangish color
                 //x.style.background="#E42121";
                 x.style.background="#FF9900";
                 x.style.color="white";
         }
-        else if ((studOverallavg > classoverallavg) && (studOverallavg < upboundOverall)) //above average, below upperbound
+        else if ((studOverallavg > calculatedGrades[catIndex].average) && (studOverallavg < calculatedGrades[catIndex].upperBound)) //above average, below upperbound
         {
                 //should be yellowish green color
                 //x.style.background="#006600";
                 x.style.background="#33CC00";
                 x.style.color="white";
         }
-        else if (studOverallavg > upboundOverall) //above the upperbound
+        else if (studOverallavg > calculatedGrades[catIndex].upperBound) //above the upperbound
         {
                 x.style.background="#336600";
                 x.style.color="white";
         }
-        else if (studOverallavg < lowboundOverall)  //below lowerbound
+        else if (studOverallavg < calculatedGrades[catIndex].lowerBound)  //below lowerbound
         {
                 x.style.background="#FF3300";
                 x.style.color="white";
@@ -138,25 +186,24 @@ if (average == 'overall')
                 x.style.color="null";
         }
 }
-
 else
 {
-        if ((studHWavg < classHWavg) && (studHWavg > lowboundHW)) //below average, above lowerbound
+        if ((studHWavg < calculatedGrades[catIndex].average) && (studHWavg > calculatedGrades[catIndex].lowerBound)) //below average, above lowerbound
         {
                 x.style.background="#FF9900";
                 x.style.color="white";
         }
-        else if ((studHWavg > classHWavg) && (studHWavg < upboundHW)) //above average, below upperbound
+        else if ((studHWavg > calculatedGrades[catIndex].average) && (studHWavg < calculatedGrades[catIndex].upperBound)) //above average, below upperbound
         {
                 x.style.background="#33CC00";
                 x.style.color="white";
         }
-        else if (studHWavg > upboundHW) //above the upperbound
+        else if (studHWavg > calculatedGrades[catIndex].upperBound) //above the upperbound
         {
                 x.style.background="#336600";
                 x.style.color="white";
         }
-        else if (studHWavg < lowboundHW) //below the lowerbound
+        else if (studHWavg < calculatedGrades[catIndex].upperBound) //below the lowerbound
         {
                 x.style.background="#FF3300";
                 x.style.color="white";
@@ -321,17 +368,14 @@ function checkboxSubmit(studentsArray)
 function checkboxSubmitGroup(studentsArray)
 {
 
-        alert(studentsArray[0].studentID);
         var checked_array = new Array();
         var string = "?group="
         var chkbx = document.getElementsByName("group");
         var category = document.getElementsByName("category");
- 		//var chkcount = 0;
         for (i = 0; i < chkbx.length; i++) //loop through --> THIS WILL IGNORE EMPTY SEATS
         {
                 if (chkbx[i].checked == true) //if a student seat is selected
                 {		
-                		//chkcount++;
                         temp = chkbx[i].value; //take the seat number and make it into a temporary variable
                         for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
                         {
@@ -342,17 +386,10 @@ function checkboxSubmitGroup(studentsArray)
                         }
                 }
         }
-        //if (chkcount < 2)
-        //{
-        //	 document.getElementByID('comments').innterHTML="Must select 2 or more students.";
-        //}
-        //else{
-        //alert(string);
+
         preurl = 'highcharts/standardDevGroupStudio.htm';
         url = preurl + string;
-        //document.URL = url;
         window.location.href = url;
-		//}
        
 }
 
@@ -362,7 +399,7 @@ function seatPopupStudio(id, array)
         var index=getIndex(id, array);
         if (index != null)
         {
-        preurl = 'highcharts/standardDevGroup.htm?id='
+        preurl = 'highcharts/standardDevStudio.htm?id='
         //preurl = 'student_stats.html?id=';
         url = preurl + id;
         //window.open(url,'popUpWindow','height=1000,width=980,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=0, directories=no, status=no');
