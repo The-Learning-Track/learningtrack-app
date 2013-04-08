@@ -97,6 +97,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="JsBridge">
+      <HintPath>JsBridge.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -243,5 +246,6 @@
     <Content Include="charts\SeatingCharts\studio_student.html" />
     <Content Include="charts\SeatingCharts\highcharts\standardDevGroupStudio.htm" />
     <Content Include="charts\SeatingCharts\highcharts\standardDevStudio.htm" />
+    <Content Include="charts\SeatingCharts\mt.js" />
   </ItemGroup>
 </Project>

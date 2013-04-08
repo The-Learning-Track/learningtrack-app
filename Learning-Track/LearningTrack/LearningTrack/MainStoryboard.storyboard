@@ -159,29 +159,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="qsX-gj-aQz">
-                                <rect key="frame" x="963" y="4" width="56" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" backgroundImage="repeat@2x.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Refresh">
-                                            <attributes>
-                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="View Statistics" image="graph_bar_trend.png" id="8d2-he-UgZ"/>
                     <connections>
-                        <outlet property="RefreshButton" destination="qsX-gj-aQz" id="Ftu-dD-hTi"/>
                         <outlet property="webView" destination="cAI-FS-9Nk" id="UID-oo-1Cz"/>
                     </connections>
                 </viewController>
@@ -503,7 +486,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StudentStatisticsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="plotTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

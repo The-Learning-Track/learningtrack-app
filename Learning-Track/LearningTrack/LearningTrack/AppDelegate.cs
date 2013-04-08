@@ -5,6 +5,8 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
+using cdeutsch;
+
 namespace LearningTrack
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -29,6 +31,8 @@ namespace LearningTrack
 		//
 		public override bool FinishedLaunching (UIApplication application, NSDictionary launchOptions)
 		{
+			JsBridge.EnableJsBridge();
+
 			return true;
 		}
 		

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="Totoro-V1/16_980grid.css" />
 <link rel="stylesheet" href="Totoro-V1/demo.css" />
 <script type="text/javascript" src="loginfunctions.js"></script>
-
+<script src="mt.js"></script>
 
 <style type="text/css">
 .menuoptions{
@@ -180,7 +180,7 @@ var studentsArray = queryXML();
     </a>
     
       <a onclick="takeSeat('J8', studentsArray)"  style="none">
-    <div id="J8"class="grid_1"><style onload="seatTakenColor('J8', studentsArray);"></style>
+    <div id="J8" class="grid_1"><style onload="seatTakenColor('J8', studentsArray);"></style>
       <p><script>seatTakenName('J8', studentsArray);</script></p>
     </div>
     </a>
@@ -997,7 +997,10 @@ var studentsArray = queryXML();
   </div><!-- end .row -->
  <div class="row">
   
-      <a onclick="takeSeat('A1', studentsArray)"  style="none">
+      <a onclick="takeSeat('A1', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'A1'});"  
+		style="none">
     <div id="A1" class="grid_1"><style onload="seatTakenColor('A1', studentsArray);"></style>
       <p><script>seatTakenName('A1', studentsArray);</script></p>
     </div>

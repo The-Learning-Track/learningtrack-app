@@ -26,6 +26,7 @@ namespace LearningTrack
 		public gradeINFO myGradeINFO;
 		public ClassSeats myClassSeats;
 		public List<SEAT_REFERENCE> seatReferences = new List<SEAT_REFERENCE>();
+		public SEATINGCHART mySeatingChart;
 
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
@@ -120,6 +121,13 @@ namespace LearningTrack
 			classTable.Source = new PickClassTableSource(myCourses.courseNames.ToArray(), this);
 		}
 
+		public string getSelectedCourseID (int selectedRow)
+		{
+			string[] courseIDs = myCourses.courseIDs.ToArray();
+
+			return courseIDs[selectedRow];
+		}
+
 		// selectedRow determines the seating chart to be displayed
 		public void setSelectedRow (int row){
 			selectedRow = row;	
@@ -134,11 +142,15 @@ namespace LearningTrack
 				var nextViewController = (InstructorTabBarController)segue.DestinationViewController;
 				//Pass values to the next view controller
 				nextViewController.chartType = selectedRow;
+				nextViewController.mySeatingChart = mySeatingChart;
+				nextViewController.userID = userID;
 			} else if (segue.Identifier == "ToStudentInterface") {
 				// Get reference to the destination view controller
 				var nextViewController = (StudentTabBarController)segue.DestinationViewController;
 				//Pass values to the next view controller
 				nextViewController.chartType = selectedRow;
+				nextViewController.mySeatingChart = mySeatingChart;
+				nextViewController.userID = userID;
 			}
 
 			//Implement COMPLETEINFO EQUIVALENT
@@ -304,7 +316,7 @@ namespace LearningTrack
 			}
 
 			//set extracted and calculated values to list of SEAT seats to be XML serialized
-			SEATINGCHART mySeatingChart = new SEATINGCHART (){SEATING_CHART = extractedSeating};
+			mySeatingChart = new SEATINGCHART (){SEATING_CHART = extractedSeating};
 			
 			//Create XML for seating chart
 			mySeatingChart.serializeToXML();

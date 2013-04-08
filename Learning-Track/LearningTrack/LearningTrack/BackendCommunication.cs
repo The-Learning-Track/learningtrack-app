@@ -67,4 +67,9 @@ namespace LearningTrack
 		public string username { get; set; }
 		public string seatLocation { get; set; }
 	}
+
+	public class SEAT_SELECTION_RESPONSE
+	{
+		public bool success { get; set; }
+	}
 }

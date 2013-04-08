@@ -10,6 +10,9 @@ namespace LearningTrack
 	public partial class InstructorTabBarController : UITabBarController
 	{
 		public int chartType;
+		public string courseID;
+		public SEATINGCHART mySeatingChart;
+		public string userID;
 
 		public InstructorTabBarController (IntPtr handle) : base (handle)
 		{
@@ -26,7 +29,11 @@ namespace LearningTrack
 
 			// pass values to their appropriate tabs
 			seatingTab.chartType = chartType;
+			seatingTab.mySeatingChart = mySeatingChart;
+			seatingTab.userID = userID;
 			groupStatisticsTab.chartType = chartType;
+			groupStatisticsTab.mySeatingChart = mySeatingChart;
+			groupStatisticsTab.userID = userID;
 		}
 	}
 }

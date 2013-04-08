@@ -107,6 +107,7 @@ function seatTakenName(id, array){
 //create function that opens up the popup if the seat isn't empty
 function takeSeat(id, array)
 {
+
 	//id = seatnumber 
 	var seatnumber = studentSeatfromURL();
 	i = getIndex(id, array);
@@ -134,6 +135,10 @@ function takeStudioSeat(id, array)
 	window.location = url;
 	//window.open(url,'popUpWindow','height=500,width=800,left=300,top=100,resizable=no,scrollbars=no,toolbar=no,menubar=no,location=0, directories=no, status=no');
 	}
+	
 
 
 }
+
+
+function printAlert(){alert("Hello World");}

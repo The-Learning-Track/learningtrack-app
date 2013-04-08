@@ -10,6 +10,8 @@ namespace LearningTrack
 	public partial class InstructorGroupStatisticsViewController : UIViewController
 	{
 		public int chartType;
+		public SEATINGCHART mySeatingChart;
+		public string userID;
 
 		public InstructorGroupStatisticsViewController (IntPtr handle) : base (handle)
 		{

@@ -12,6 +12,8 @@ namespace LearningTrack
 	public partial class InstructorSeatingChartViewController : UIViewController
 	{
 		public int chartType;
+		public SEATINGCHART mySeatingChart;
+		public string userID;
 
 		public InstructorSeatingChartViewController (IntPtr handle) : base (handle)
 		{
