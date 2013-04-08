@@ -79,60 +79,8 @@ namespace LearningTrack
 			//Transition to interface depending on user privileges
 			ContinueButton.Clicked += (sender, e) => 
 			{					
-
-				//--------------------------------------------------------------------------------------------------
-				// PARSE JSON FOR CLASS DATA
-				var myUsername = myCourses.username;
-				//var myUserID = myCourses.userID;
-				var mySelectedCourseID = myCourses.courseIDs[selectedRow];
-				//var mySelectedCourseName = myCourses.courseNames[selectedRow];
-
-				/*
-				//-------------------------------------------------------------------------------------------------------------------------
-				// get each student's scores and if they are instructor for the class
-				var client = new RestClient();
-				client.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getGrades/"+myUsername+"/"+mySelectedCourseID;
-				var request = new RestRequest();
-				// set format to JSON
-				request.RequestFormat = DataFormat.Json;
-				
-				// automatically deserialize result
-				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized = client.Execute<gradeINFO>(request);
-				
-				myGradeINFO = responseDeserialized.Data;
-				//--------------------------------------------------------------------------------------------------------------------------
-				// get all grade total standards and match via columnID
-				var client2 = new RestClient();
-				client2.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getAssignmentInfo/"+mySelectedCourseID;
-				var request2 = new RestRequest();
-				// set format to JSON
-				request2.RequestFormat = DataFormat.Json;
-				
-				// automatically deserialize result
-				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized2 = client2.Execute<AssignmentINFO>(request2);
-				
-				myAssignmentINFO = responseDeserialized2.Data;
-				//--------------------------------------------------------------------------------------------------------------------------
-				// get all grade total standards and match via columnID
-				var client3 = new RestClient();
-				client3.BaseUrl = "http://thelearningtrack.no-ip.org:8080/theLearningTrack/rest/getSeats/"+mySelectedCourseID;
-				var request3 = new RestRequest();
-				// set format to JSON
-				request3.RequestFormat = DataFormat.Json;
-				
-				// automatically deserialize result
-				// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
-				var responseDeserialized3 = client3.Execute<ClassSeats>(request3);
-				
-				myClassSeats = responseDeserialized3.Data;
-				*/
-
+				// Get JSON from backend and parse them after consecutive asynchonous calls and then segue.
 				getGrades();
-
-
-
 			};
 		}
 
@@ -373,7 +321,7 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+					using (var alert = new UIAlertView("Login Error Message", "Could not get grade INFO.", null, "OK", null)){
 						alert.Show();
 					}
 				}
@@ -399,7 +347,7 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+					using (var alert = new UIAlertView("Login Error Message", "Could not get Course INFO.", null, "OK", null)){
 						alert.Show();
 					}
 				}
@@ -425,7 +373,7 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+					using (var alert = new UIAlertView("Login Error Message", "Could not get seat INFO.", null, "OK", null)){
 						alert.Show();
 					}
 				}

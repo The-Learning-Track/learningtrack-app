@@ -116,12 +116,29 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Qra-le-8K8">
+                                <rect key="frame" x="962" y="4" width="56" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" backgroundImage="repeat@2x.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Refresh">
+                                            <attributes>
+                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Group Statistics" image="graph_bar_trend.png" id="b8P-1K-rdS"/>
                     <connections>
+                        <outlet property="RefreshButton" destination="Qra-le-8K8" id="Gx0-hu-Mg5"/>
                         <outlet property="webView" destination="Wl2-u4-A9S" id="vge-33-3RF"/>
                     </connections>
                 </viewController>
@@ -142,12 +159,29 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="qsX-gj-aQz">
+                                <rect key="frame" x="963" y="4" width="56" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" backgroundImage="repeat@2x.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Refresh">
+                                            <attributes>
+                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="View Statistics" image="graph_bar_trend.png" id="8d2-he-UgZ"/>
                     <connections>
+                        <outlet property="RefreshButton" destination="qsX-gj-aQz" id="Ftu-dD-hTi"/>
                         <outlet property="webView" destination="cAI-FS-9Nk" id="UID-oo-1Cz"/>
                     </connections>
                 </viewController>
@@ -227,12 +261,29 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="9xQ-l7-5cg">
+                                <rect key="frame" x="963" y="4" width="56" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" backgroundImage="repeat@2x.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Refresh">
+                                            <attributes>
+                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Seating Chart" image="glyphicons_043_group.png" id="CQf-vm-XNQ"/>
                     <connections>
+                        <outlet property="RefreshButton" destination="9xQ-l7-5cg" id="s7v-Sx-DCV"/>
                         <outlet property="SeatWebView" destination="lnu-4l-hU2" id="1z3-jN-6I6"/>
                     </connections>
                 </viewController>
@@ -327,12 +378,29 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="ThU-OX-V2B">
+                                <rect key="frame" x="962" y="4" width="56" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" backgroundImage="repeat@2x.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Refresh">
+                                            <attributes>
+                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Seating Chart" image="glyphicons_043_group.png" id="YCD-gO-7lp"/>
                     <connections>
+                        <outlet property="RefreshButton" destination="ThU-OX-V2B" id="pPO-gU-4qb"/>
                         <outlet property="SeatWebView" destination="efV-JC-trr" id="lSJ-EI-b3X"/>
                     </connections>
                 </viewController>
@@ -369,11 +437,13 @@
         <image name="glyphicons_151_new_window.png" width="26" height="22"/>
         <image name="graph_bar_trend.png" width="26" height="26"/>
         <image name="pencil.png" width="26" height="26"/>
+        <image name="repeat@2x.png" width="52" height="52"/>
     </resources>
     <classes>
         <class className="InstructorGroupStatisticsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InstructorGroupStatisticsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
@@ -387,6 +457,7 @@
         <class className="InstructorSeatingChartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InstructorSeatingChartViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="SeatWebView" candidateClass="UIWebView"/>
             </relationships>
         </class>
@@ -424,12 +495,14 @@
         <class className="StudentSeatingChartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StudentSeatingChartViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="SeatWebView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="StudentStatisticsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StudentStatisticsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="plotTable" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>

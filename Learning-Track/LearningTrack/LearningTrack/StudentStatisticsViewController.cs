@@ -28,6 +28,13 @@ namespace LearningTrack
 			
 			//Load the student's statistics
 			LoadStudentStatistics();
+
+			RefreshButton.TouchUpInside += (sender, e) => {
+				//Update XML
+				
+				//Reload Chart
+				LoadStudentStatistics();
+			};
 		}
 		
 		public void LoadStudentStatistics ()

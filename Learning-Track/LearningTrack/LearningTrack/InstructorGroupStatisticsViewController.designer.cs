@@ -13,12 +13,20 @@ namespace LearningTrack
 	{
 		[Outlet]
 		MonoTouch.UIKit.UIWebView webView { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton RefreshButton { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (webView != null) {
 				webView.Dispose ();
 				webView = null;
+			}
+
+			if (RefreshButton != null) {
+				RefreshButton.Dispose ();
+				RefreshButton = null;
 			}
 		}
 	}

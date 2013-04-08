@@ -12,6 +12,7 @@ namespace LearningTrack
 	public partial class StudentSeatingChartViewController : UIViewController
 	{
 		public int chartType;
+		public int count = 0;
 
 		public StudentSeatingChartViewController (IntPtr handle) : base (handle)
 		{
@@ -23,6 +24,13 @@ namespace LearningTrack
 			
 			//Load the first plot, for now
 			LoadSeatingChart(chartType);
+
+			RefreshButton.TouchUpInside += (sender, e) => {
+				//Update XML
+
+				//Reload Chart
+				LoadSeatingChart(chartType);
+			};
 		}
 		
 		public void LoadSeatingChart (int chart)

@@ -23,6 +23,13 @@ namespace LearningTrack
 			
 			//Load the first plot, for now
 			LoadSeatingChart(chartType);
+
+			RefreshButton.TouchUpInside += (sender, e) => {
+				//Update XML
+				
+				//Reload Chart
+				LoadSeatingChart(chartType);
+			};
 		}
 
 		public void LoadSeatingChart (int chart)

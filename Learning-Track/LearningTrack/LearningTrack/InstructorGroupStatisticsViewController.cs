@@ -30,6 +30,13 @@ namespace LearningTrack
 			
 			//Load the first plot, for now
 			LoadGroupingChart(chartType);
+
+			RefreshButton.TouchUpInside += (sender, e) => {
+				//Update XML
+				
+				//Reload Chart
+				LoadGroupingChart(chartType);
+			};
 		}
 		
 		public void LoadGroupingChart (int chart)
