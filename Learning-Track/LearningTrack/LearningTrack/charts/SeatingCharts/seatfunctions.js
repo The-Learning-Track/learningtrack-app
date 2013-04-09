@@ -269,6 +269,7 @@ function isTaken(id, array)
         }
 }
 
+
 /*===============================================================================================================*/
 
 function queryXML() //this function will query the appropriate XML file and return the array of JavaScript objects
@@ -406,8 +407,6 @@ function seatPopupStudio(id, array)
         window.location.href = url;
         //window.open(url);
         }
-        //window.location.href = url;
-        //var e = document.getElementByI
 
 
 }

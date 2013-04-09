@@ -39,13 +39,10 @@ namespace LearningTrack
 			//Register Listener for Javascript events.
 			this.SeatWebView.AddEventListener("seatCheck", delegate(FireEventData arg) {
 				BeginInvokeOnMainThread (delegate { 
+					//verify selected seat
 					var selectedSeat =  arg.Data["selectedSeat"].ToString();
 
 					sendSeatLocationToBackend(selectedSeat);
-
-					using (var alert = new UIAlertView("Your Seat Selection", selectedSeat, null, "OK", null)){
-						alert.Show();
-					}
 				});	
 			});
 		}

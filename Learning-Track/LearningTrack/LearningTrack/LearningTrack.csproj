@@ -247,5 +247,6 @@
     <Content Include="charts\SeatingCharts\highcharts\standardDevGroupStudio.htm" />
     <Content Include="charts\SeatingCharts\highcharts\standardDevStudio.htm" />
     <Content Include="charts\SeatingCharts\mt.js" />
+    <Content Include="charts\SeatingCharts\highcharts\standardDevStudent.html" />
   </ItemGroup>
 </Project>

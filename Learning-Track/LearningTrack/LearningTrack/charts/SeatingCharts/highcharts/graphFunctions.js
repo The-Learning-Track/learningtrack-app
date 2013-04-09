@@ -21,7 +21,33 @@ function seatID(seatnum, idnum, first, last)
 	this.firstname = first;
 	this.lastname = last;
 }
-
+/*===============================================================================================================*/
+function standardDev(array)
+{
+        var average = calculateAverage(array);
+        var squares = new Array()
+        for (i = 0; i < array.length; i++)
+        {
+                var temp = average - array[i];
+                var pow = Math.pow(temp, 2);
+                squares.push(pow);
+        }
+        var mean = calculateAverage(squares);
+        var squareroot = Math.sqrt(mean);
+        return squareroot;
+}
+/*===============================================================================================================*/
+function calculateAverage(array)
+{
+        var sum = 0;
+        var average;
+        for (i = 0; i < array.length; i++)
+        {
+                sum = sum + array[i];
+        }
+        average = sum / array.length;
+        return average;
+}
 /*===============================================================================================================*/
 function GetGrades() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
@@ -487,11 +513,10 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 		neg_temp = neg_temp.toFixed(2);
 		//alert(neg_temp);
 		var pos_temp = average[i] + standard_dev[i];
-		//pos_temp = parseFloat(pos_temp);
+
 		pos_temp = pos_temp.toFixed(2);
 		average_tmp = parseFloat(average[i]);
 		average_tmp = average_tmp.toFixed(2);
-		//alert(pos_temp);
 		var temparray = [parseFloat(minGrades[i]), neg_temp, parseFloat(individGradeArray[i]), pos_temp, parseFloat(maxGrades[i]), average_tmp];
 		dataArray.push(temparray);
 	}
@@ -571,6 +596,7 @@ function goBack()
 //================================================================================
 function overallGroupStats(student_ID, student_ID_array)
 {
+
 	//gradeArray is from courseGrades, so overall all of the grades
 	//getAssignments is from courseAverages xml, which is all the assignments
 	//=========================step 1 ========================================
@@ -704,7 +730,7 @@ function overallGroupStats(student_ID, student_ID_array)
 	var temp_stud_average = 0; 
 	var temp_avg_count = 0;
 	var student_Averages = new Array();
-	//alert(category_Names);
+
 	for (jj = 0; jj < category_Names.length; jj++)
 	{
 		var temp_avg_count = 0;
@@ -725,7 +751,201 @@ function overallGroupStats(student_ID, student_ID_array)
 		//alert(student_Averages);
 	}//end of jj loop
 	//var finalstudentavg = temp_stud_average / temp_avg_count;
+	//=====================CREATE OVERALL PERCENTAGE================================
+
+
+
+	var dataArray = new Array();
+	//=========================step 5 ========================================
+	//=====================CREATE PLOT OBJECTS================================
+	for (i = 0; i < category_Array.length; i++)
+	{
+		var neg_temp = averages[i] - standard_dev[i];
+		neg_temp = neg_temp.toFixed(2);
+		var pos_temp = averages[i] + standard_dev[i];
+		pos_temp = pos_temp.toFixed(2);
+		var temparray = [categoryMin[i], neg_temp, student_Averages[i], pos_temp, categoryMax[i], averages[i]];
+		dataArray.push(temparray);
+	}
+	var title = 'Overall';
+		title2 = 'Overall Performance';
+	xaxis = "Category";
+	yaxis = "Percentage";
+	subtitle = "By percentage of points earned in each category";
+	plotobject = new PlotObject(title, dataArray, category_Names, title2, xaxis, yaxis, subtitle);
+	return plotobject;
 	
+}
+
+/*===============================================================================================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+function overallGroupStatsStudent(student_ID, student_ID_array)
+{
+
+	//gradeArray is from courseGrades, so overall all of the grades
+	//getAssignments is from courseAverages xml, which is all the assignments
+	//=========================step 1 ========================================
+	var category_Array = GetCategory();
+	var category_Names = new Array();
+	for (i = 0; i < category_Array.length; i++)
+	{	
+		category_Names.push(category_Array[i].name);
+	}
+	
+	//=========================step 2 ========================================
+	//add up total points for each individual subject
+	var assignment_Array = GetAssignment(); //gets assignments
+	var totalpoints = new Array(); //store the total amount of points in each category
+	var amountOfAssignments = new Array(); //store the amount of assignments in each category
+	var scalefactor = new Array(); //store the scale factor for each assignment
+	for (i = 0; i < category_Names.length; i++)
+	{
+		tempname = category_Names[i];
+		var temp_sum_points = 0;
+		var assignmentCount = 0;
+		for (j = 0; j < assignment_Array.length; j++)
+		{
+			if (assignment_Array[j].category == tempname)
+			{
+				temp_sum_points = temp_sum_points + parseFloat(assignment_Array[j].points);
+				assignmentCount++;
+			}
+		}
+		totalpoints.push(temp_sum_points);
+		amountOfAssignments.push(assignmentCount);
+	}
+	
+	//=========================step 3 ========================================
+	//loop through and find all the grades according to each category
+	//and then average them together, store them in an array
+	var all_grades_pre = GetGrades();
+	var all_grades = new Array();
+	for(ii = 0; ii < student_ID_array.length-1; ii++)
+	{
+		temp_stud_ID= student_ID_array[ii];
+		for (jj = 0; jj< all_grades_pre.length; jj++)
+		{
+			if (all_grades_pre[jj].studentID == temp_stud_ID)
+			{
+				all_grades.push(all_grades_pre[jj]);
+			}
+		}
+	}
+	
+	var averages = new Array(); //will store the averages for each category
+	var conversion_factor;
+	for (i = 0; i < category_Names.length; i++)
+	{
+		var tempname = category_Names[i];
+		var tempsum = 0;
+		var average = 0;
+		var divisor = 0;
+		for (j = 0; j < all_grades.length; j++)
+		{
+			if (all_grades[j].category == tempname)
+			{
+				conversion_factor = 100 / parseFloat(all_grades[j].totalPoints);
+				tempsum = tempsum + (parseFloat(all_grades[j].grade) * conversion_factor);
+				divisor++;
+			}	
+		}	
+		average = tempsum / divisor;
+		averages.push(average);
+	}
+	//=========================step 4 ========================================
+	//must calculate each student's average and find the minimum and the maximum
+	//begin by looping through all the grades and getting each student's id
+	
+	var categoryMax = new Array();
+	var categoryMin = new Array();
+	var studentIDs = GetSeats();
+	var STDev = new Array();
+	var standard_dev = new Array();
+	for (i = 0; i < category_Names.length; i++)
+	{
+		var studentAverages = new Array();
+		var temp_category = category_Names[i];
+		for (j = 0; j < student_ID_array.length-1; j++)
+		{
+			var temp_sum_1 = 0;
+			var temp_count = 0;
+			var tempaverage;
+			var temp_id = student_ID_array[j];
+			for (k = 0; k < all_grades.length; k++)
+			{
+				if ((all_grades[k].studentID == temp_id) && (all_grades[k].category == temp_category))
+				{
+					conversion_factor = 100 / parseFloat(all_grades[k].totalPoints);
+					temp_sum_1 = temp_sum_1 + (parseFloat(all_grades[k].grade) * conversion_factor);
+					temp_count++;
+				}
+			}
+			temp_average = temp_sum_1 / temp_count;
+			temp_average=temp_average.toFixed(2);
+			studentAverages.push(temp_average);
+		}//end of j loop
+		categoryMax.push(Math.max.apply(null, studentAverages));
+		categoryMin.push(Math.min.apply(null, studentAverages));
+		
+		/* CALCULATE THE STANDARD DEVIATION============================================== */
+		var average_temporary = averages[i];
+		var temp_stdevs = new Array();
+		var subtract_temp;
+		var tempsqrt;
+		for (kk = 0; kk < studentAverages.length; kk++)
+		{
+			subtract_temp = studentAverages[kk] - average_temporary;
+			var pow = Math.pow(subtract_temp, 2);
+			temp_stdevs.push(pow);
+		}
+		
+		var tempstd_sum = 0;
+		for (kk = 0; kk < temp_stdevs.length; kk++)
+		{
+			tempstd_sum = tempstd_sum + temp_stdevs[kk];
+		}
+		tempstd_sum = tempstd_sum / studentAverages.length;
+		tempsqrt = Math.sqrt(tempstd_sum);
+		standard_dev.push(tempsqrt);
+
+
+	} //end of i loop
+	
+	//=====================FIND PARTICULAR STUDENT'S AVERAGE================================
+	var temp_stud_average = 0; 
+	var temp_avg_count = 0;
+	var student_Averages = new Array();
+
+	for (jj = 0; jj < category_Names.length; jj++)
+	{
+		var temp_avg_count = 0;
+		var temp_stud_average = 0; 
+		var tempcat = category_Names[jj];
+		for (ii = 0; ii < all_grades_pre.length; ii++)
+		{
+			if ((all_grades_pre[ii].studentID == student_ID) && (all_grades_pre[ii].category == tempcat))
+			{
+				var multiplier = 100 / parseFloat(all_grades_pre[ii].totalPoints);
+				temp_stud_average = temp_stud_average + (parseFloat(all_grades_pre[ii].grade)*multiplier);
+				temp_avg_count++;
+				}
+		}
+		var finalstudentavg = temp_stud_average / temp_avg_count;
+		student_Averages.push(finalstudentavg);
+	}//end of jj loop
+	//var finalstudentavg = temp_stud_average / temp_avg_count;
 	//=====================CREATE OVERALL PERCENTAGE================================
 
 

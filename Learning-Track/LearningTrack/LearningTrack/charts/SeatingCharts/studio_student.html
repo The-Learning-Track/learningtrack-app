@@ -39,6 +39,10 @@
 </style>
 <script>
 var studentsArray = queryXML();
+//for (i = 0; i < studentsArray.length; i++)
+//{
+//	alert('Name: ' + studentsArray[i].name + ' Seat num: ' + studentsArray[i].seatNum);
+//}
 
 </script>
 
@@ -58,7 +62,8 @@ var studentsArray = queryXML();
 
   
   <div class="row"><!======================== ROW 1 =============================/>
-  
+    <br />
+  <br />
   <a style="none"> <! 1 >
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
@@ -71,7 +76,9 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
-    <a onclick="takeStudioSeat('A1', studentsArray)" style="none"><! 4 >
+    <a onclick="takeStudioSeat('A1', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'A1'});" style="none"><! 4 >
     <div id="A1" class="grid_1"><style onload="seatTakenColor('A1', studentsArray);"></style>
       <p><script>seatTakenName('A1', studentsArray); </script> </p>
     </div>
@@ -81,7 +88,9 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
-      <a onclick="takeStudioSeat('A2', studentsArray)" style="none"><! 6 >
+      <a onclick="takeStudioSeat('A2', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'A2'});" style="none"><! 6 >
     <div id="A2" class="grid_1"><style onload="seatTakenColor('A1', studentsArray);"></style>
       <p><script>seatTakenName('A2', studentsArray); </script> </p>
     </div>
@@ -99,7 +108,9 @@ var studentsArray = queryXML();
       <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 10 >
     </div>
 
-      <a onclick="takeStudioSeat('B1', studentsArray)" style="none"><! 11 >
+      <a onclick="takeStudioSeat('B1', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'B1'});" style="none"><! 11 >
     <div id="B1" class="grid_1"><style onload="seatTakenColor('B1', studentsArray);"></style>
       <p><script>seatTakenName('B1', studentsArray); </script> </p>
     </div>
@@ -108,7 +119,9 @@ var studentsArray = queryXML();
         <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 12 >
     </div>
     
-      <a onclick="takeStudioSeat('B2', studentsArray)" style="none"><! 13 >
+      <a onclick="takeStudioSeat('B2', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'B2'});" style="none"><! 13 >
     <div id="B2" class="grid_1"><style onload="seatTakenColor('B2', studentsArray);"></style>
       <p><script>seatTakenName('B2', studentsArray); </script> </p>
     </div>
@@ -131,7 +144,9 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
-       <a onclick="takeStudioSeat('A9', studentsArray)"  style="none"> <! 3 -->
+       <a onclick="takeStudioSeat('A9', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'A9'});"  style="none"> <! 3 -->
     <div id="A9" class="grid_1"><style onload="seatTakenColor('A9', studentsArray);"></style>
       <p><script>seatTakenName('A9', studentsArray);</script></p>
     </div>
@@ -148,7 +163,9 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
-    <a onclick="takeStudioSeat('A3', studentsArray)"  style="none"> <! 7 -->
+    <a onclick="takeStudioSeat('A3', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'A3'});"  style="none"> <! 7 -->
     <div id="A3" class="grid_1"><style onload="seatTakenColor('A3', studentsArray);"></style>
       <p><script>seatTakenName('A3', studentsArray);</script></p>
     </div>

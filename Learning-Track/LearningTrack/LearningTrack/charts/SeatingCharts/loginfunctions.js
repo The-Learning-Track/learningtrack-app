@@ -1,8 +1,10 @@
-function seatTaken(seatnumber, taken) //this function creates the JavaScript object
+function seatTaken(nme, num, studid, istake) //this function creates the JavaScript object
 {
     //PROPERTIES LISTED HERE --------------------------
-	this.seat=seatnumber; //1
-	this.available=taken;
+	this.name= nme; //1
+	this.seatNum = num;
+	this.studentID = studid;
+	this.isStudent = istake;
 
 }
 /*===============================================================================================================*/
@@ -18,7 +20,8 @@ function queryXML() //this function will query the appropriate XML file and retu
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
  
-		xmlhttp.open("GET","login_xml.xml",false);
+		//xmlhttp.open("GET","login_xml.xml",false);
+		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/seatingChart.xml",false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 
@@ -27,8 +30,11 @@ function queryXML() //this function will query the appropriate XML file and retu
 		{ 
 			//constructor for the objects that represent whether a seat is taken
 				studArray[i]=new seatTaken(
+				x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue,
 				x[i].getElementsByTagName("SEAT_NUMBER")[0].childNodes[0].nodeValue,
-				x[i].getElementsByTagName("TAKEN")[0].childNodes[0].nodeValue);
+				x[i].getElementsByTagName("STUDENT_ID")[0].childNodes[0].nodeValue,
+				x[i].getElementsByTagName("IS_CURRENT_STUDENT")[0].childNodes[0].nodeValue
+				);
 		}
 		return studArray;
 }//end function parenthesis
@@ -43,6 +49,17 @@ function getIndex(id, array){ //function that returns the index of where a seat 
 			break;
 		}
 }
+}//end of getIndex function
+
+function getSeatIndex(id, array){ //function that finds whether a student is there
+	for(i=0; i<array.length; i++) {
+		if(array[i].seatNum == id)
+		{
+			return i;
+			break;
+		}
+}
+return null;
 }//end of getIndex function
 
 /*===============================================================================================================*/
@@ -64,21 +81,18 @@ function studentSeatfromURL()
 /*===============================================================================================================*/
 function seatTakenColor(id, array) {
 x=document.getElementById(id);  //Find the element 
-//x.style.background="green";           //Change the style
-//x.style.color="white";
-//value = StudentArray.indexOf(id);
-/*
-	var pathArray = document.URL;
-	var average_pre = pathArray.split('=');
-	var average = average_pre[1];
-	*/
-	var index = getIndex(id, array);
+	var index = getSeatIndex(id, array);
 	var seatnumber = studentSeatfromURL();
-
-	if (array[index].available == "false")
+	var taken = currentStudentID(array);
+	if (taken == id)
+	{
+		x.style.background="green";
+	}
+	else if (array[index].seatNum == id)
 	{
 		x.style.background="#E42121";
 		x.style.color="white";
+		//document.write("Taken");
 	}
 	else
 	{
@@ -90,17 +104,46 @@ x=document.getElementById(id);  //Find the element
 /*===============================================================================================================*/
 function seatTakenName(id, array){
 	var seatnumber = studentSeatfromURL();
-	if (seatnumber != id)
+	var taken = currentStudentID(studentsArray);
+	if (taken == id)
 	{
-		document.write("<br>");
+		x=document.getElementById(id);  //Find the element 
+		x.style.background="green";
+		document.write("You");
 	}
 	else
 	{
-		x=document.getElementById(id);  //Find the element 
-		x.style.background="#E42121";
-		document.write("You");
-		
+		document.write("<br>");
 	}
+}
+/*===============================================================================================================*/
+
+
+function currentStudentID(array)
+{
+	for (i = 0; i < array.length; i++)
+	{
+		if (array[i].isStudent == 'true')
+		{
+			temp =  array[i].seatNum;
+		}
+	}
+	return temp;
+}
+
+/*===============================================================================================================*/
+
+
+function GetStudentID(array)
+{
+	for (i = 0; i < array.length; i++)
+	{
+		if (array[i].isStudent == 'true')
+		{
+			temp =  array[i].studentID;
+		}
+	}
+	return temp;
 }
 /*===============================================================================================================*/
 

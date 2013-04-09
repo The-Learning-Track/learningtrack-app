@@ -143,6 +143,7 @@ namespace LearningTrack
 				//Pass values to the next view controller
 				nextViewController.chartType = selectedRow;
 				nextViewController.mySeatingChart = mySeatingChart;
+				nextViewController.courseID = getSelectedCourseID(selectedRow);
 				nextViewController.userID = userID;
 			} else if (segue.Identifier == "ToStudentInterface") {
 				// Get reference to the destination view controller
@@ -150,6 +151,7 @@ namespace LearningTrack
 				//Pass values to the next view controller
 				nextViewController.chartType = selectedRow;
 				nextViewController.mySeatingChart = mySeatingChart;
+				nextViewController.courseID = getSelectedCourseID(selectedRow);
 				nextViewController.userID = userID;
 			}
 
@@ -301,7 +303,12 @@ namespace LearningTrack
 			//For each student in list of student get their seating chart data
 			foreach (Student student in COMPLETEINFO) {
 				SEAT temp = new SEAT();
-				temp.SEAT_NUMBER = student.seatLocation;
+				if (student.seatLocation == ""){
+					temp.SEAT_NUMBER = "null";
+				}
+				else {
+					temp.SEAT_NUMBER = student.seatLocation;
+				}
 				temp.NAME = student.firstName;
 				temp.STUDENT_ID = student.studentID;
 				if (student.studentID == userID){

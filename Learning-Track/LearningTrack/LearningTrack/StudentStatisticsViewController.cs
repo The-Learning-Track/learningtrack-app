@@ -28,19 +28,12 @@ namespace LearningTrack
 			
 			//Load the student's statistics
 			LoadStudentStatistics();
-
-			RefreshButton.TouchUpInside += (sender, e) => {
-				//Update XML
-				
-				//Reload Chart
-				LoadStudentStatistics();
-			};
 		}
 		
 		public void LoadStudentStatistics ()
 		{
 			//link local filename to become a local HTML URL
-			string fileName = "ENTER NEW FILENAME HERE"; 
+			string fileName = "charts/SeatingCharts/highcharts/standardDevStudent.html"; 
 			string localHtmlUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);
 			
 			//load the appropriate file to the webView

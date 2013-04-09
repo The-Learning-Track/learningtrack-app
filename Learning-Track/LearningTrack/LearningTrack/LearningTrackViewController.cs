@@ -57,8 +57,8 @@ namespace LearningTrack
 
 				//Pass values to the next view controller
 				nextViewController.myCourses = courses;
-				nextViewController.username = username;
-				nextViewController.userID = userID;
+				nextViewController.username = courses.username;
+				nextViewController.userID = courses.userID;
 
 				this.LoginLoadingIndicator.StopAnimating();
 			}
