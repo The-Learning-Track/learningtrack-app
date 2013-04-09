@@ -25,6 +25,9 @@ namespace LearningTrack
 
 		[Outlet]
 		MonoTouch.UIKit.UITextField PasswordField { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel myLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -51,6 +54,11 @@ namespace LearningTrack
 			if (PasswordField != null) {
 				PasswordField.Dispose ();
 				PasswordField = null;
+			}
+
+			if (myLabel != null) {
+				myLabel.Dispose ();
+				myLabel = null;
 			}
 		}
 	}

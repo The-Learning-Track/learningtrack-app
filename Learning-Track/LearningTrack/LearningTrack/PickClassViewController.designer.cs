@@ -19,6 +19,9 @@ namespace LearningTrack
 
 		[Outlet]
 		MonoTouch.UIKit.UIBarButtonItem LogoutButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIActivityIndicatorView LoadingIndicator { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -35,6 +38,11 @@ namespace LearningTrack
 			if (LogoutButton != null) {
 				LogoutButton.Dispose ();
 				LogoutButton = null;
+			}
+
+			if (LoadingIndicator != null) {
+				LoadingIndicator.Dispose ();
+				LoadingIndicator = null;
 			}
 		}
 	}

@@ -31,9 +31,12 @@ namespace LearningTrack
 			seatingTab.chartType = chartType;
 			seatingTab.mySeatingChart = mySeatingChart;
 			seatingTab.userID = userID;
+			seatingTab.courseID = courseID;
+
 			groupStatisticsTab.chartType = chartType;
 			groupStatisticsTab.mySeatingChart = mySeatingChart;
 			groupStatisticsTab.userID = userID;
+			groupStatisticsTab.courseID = courseID;
 		}
 	}
 }

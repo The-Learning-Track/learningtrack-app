@@ -28,9 +28,16 @@
                                 </state>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="SUM-XL-GBy">
-                                <rect key="frame" x="738" y="515" width="20" height="20"/>
+                                <rect key="frame" x="502" y="650" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dY8-xv-5M6">
+                                <rect key="frame" x="128" y="603" width="768" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HPl-S3-jbE">
                                 <rect key="frame" x="592" y="227" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,6 +62,7 @@
                     <connections>
                         <outlet property="LoginButton" destination="W2u-wc-eUJ" id="2bg-vo-HPR"/>
                         <outlet property="LoginLoadingIndicator" destination="SUM-XL-GBy" id="Tgb-dh-oDx"/>
+                        <outlet property="myLabel" destination="dY8-xv-5M6" id="7Iq-bl-MO0"/>
                         <segue destination="ttf-8U-8Fu" kind="modal" identifier="ToPickClass" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="dQY-ia-ofv"/>
                     </connections>
                 </viewController>
@@ -85,6 +93,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="gd8-mD-rNm">
+                                <rect key="frame" x="912" y="12" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -93,6 +105,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="ContinueButton" destination="D8J-Ro-7r9" id="sof-Td-Act"/>
+                        <outlet property="LoadingIndicator" destination="gd8-mD-rNm" id="Ibp-Pb-fao"/>
                         <outlet property="LogoutButton" destination="FhZ-U4-DDY" id="KNL-Vi-PiD"/>
                         <outlet property="classTable" destination="7Ma-zU-7d3" id="uTH-hU-yUR"/>
                         <segue destination="hqu-Fl-1Ey" kind="modal" identifier="ToInstructorInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="rCR-kn-web"/>
@@ -117,7 +130,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Qra-le-8K8">
-                                <rect key="frame" x="962" y="4" width="56" height="37"/>
+                                <rect key="frame" x="959" y="4" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" backgroundImage="repeat@2x.png">
@@ -132,12 +145,17 @@
                                     </attributedString>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="HCL-cf-eOB">
+                                <rect key="frame" x="931" y="19" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Group Statistics" image="graph_bar_trend.png" id="b8P-1K-rdS"/>
                     <connections>
+                        <outlet property="LoadingIndicator" destination="HCL-cf-eOB" id="pyv-ag-L9j"/>
                         <outlet property="RefreshButton" destination="Qra-le-8K8" id="Gx0-hu-Mg5"/>
                         <outlet property="webView" destination="Wl2-u4-A9S" id="vge-33-3RF"/>
                     </connections>
@@ -245,7 +263,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="9xQ-l7-5cg">
-                                <rect key="frame" x="963" y="4" width="56" height="37"/>
+                                <rect key="frame" x="959" y="0.0" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" backgroundImage="repeat@2x.png">
@@ -260,14 +278,26 @@
                                     </attributedString>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="4yd-Vr-GAt">
+                                <rect key="frame" x="931" y="15" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="elm-Zo-MMs">
+                                <rect key="frame" x="20" y="14" width="563" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Seating Chart" image="glyphicons_043_group.png" id="CQf-vm-XNQ"/>
                     <connections>
+                        <outlet property="LoadingIndicator" destination="4yd-Vr-GAt" id="bZ7-l4-EnJ"/>
                         <outlet property="RefreshButton" destination="9xQ-l7-5cg" id="s7v-Sx-DCV"/>
                         <outlet property="SeatWebView" destination="lnu-4l-hU2" id="1z3-jN-6I6"/>
+                        <outlet property="myLabel" destination="elm-Zo-MMs" id="5Cf-ts-GPW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTr-m9-NGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -362,7 +392,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="ThU-OX-V2B">
-                                <rect key="frame" x="962" y="4" width="56" height="37"/>
+                                <rect key="frame" x="960" y="0.0" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" backgroundImage="repeat@2x.png">
@@ -377,12 +407,17 @@
                                     </attributedString>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="ZJY-8v-DJP">
+                                <rect key="frame" x="932" y="15" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Seating Chart" image="glyphicons_043_group.png" id="YCD-gO-7lp"/>
                     <connections>
+                        <outlet property="LoadingIndicator" destination="ZJY-8v-DJP" id="p9O-m3-Wsd"/>
                         <outlet property="RefreshButton" destination="ThU-OX-V2B" id="pPO-gU-4qb"/>
                         <outlet property="SeatWebView" destination="efV-JC-trr" id="lSJ-EI-b3X"/>
                     </connections>
@@ -426,6 +461,7 @@
         <class className="InstructorGroupStatisticsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InstructorGroupStatisticsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
@@ -440,6 +476,7 @@
         <class className="InstructorSeatingChartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InstructorSeatingChartViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="SeatWebView" candidateClass="UIWebView"/>
             </relationships>
@@ -455,12 +492,14 @@
                 <relationship kind="outlet" name="PasswordField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="UsernameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="loginLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="PickClassViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PickClassViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="ContinueButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="LogoutButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="classTable" candidateClass="UITableView"/>
             </relationships>
@@ -478,8 +517,10 @@
         <class className="StudentSeatingChartViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StudentSeatingChartViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="SeatWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="StudentStatisticsViewController" superclassName="UIViewController">

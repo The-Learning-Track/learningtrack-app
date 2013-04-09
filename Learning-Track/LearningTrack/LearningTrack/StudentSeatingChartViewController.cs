@@ -26,14 +26,18 @@ namespace LearningTrack
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad ();
-			
+
+			LoadingIndicator.Hidden = true;
+
 			//Load the first plot, for now
 			LoadSeatingChart(chartType);
 
 			RefreshButton.TouchUpInside += (sender, e) => {
-				//Update XML
-				updateXMLPart1();
-				//Will refresh page from within asynchronous calls
+				LoadingIndicator.Hidden = false;
+				LoadingIndicator.StartAnimating();
+
+				//Get all current seats -> Update XML -> Reload Chart
+				getAllSeats();
 			};
 
 			//Register Listener for Javascript events.
@@ -41,6 +45,11 @@ namespace LearningTrack
 				BeginInvokeOnMainThread (delegate { 
 					//verify selected seat
 					var selectedSeat =  arg.Data["selectedSeat"].ToString();
+
+					myLabel.Text = "Logging into seat: " + selectedSeat + ". Please wait for confirmation...";
+
+					LoadingIndicator.Hidden = false;
+					LoadingIndicator.StartAnimating();
 
 					sendSeatLocationToBackend(selectedSeat);
 				});	
@@ -52,7 +61,7 @@ namespace LearningTrack
 			var webloginConnection = new BUWebloginConnection ();
 			var url = new NSUrl ("http://www-devl.bu.edu/link/bin/uiscgi_the_learning_track_cbr.pl?operation=setSeats&course="+courseID+"&location="+seatLocation);
 			var request = new NSUrlRequest (url);
-			
+
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
@@ -71,12 +80,14 @@ namespace LearningTrack
 							using (var alert = new UIAlertView("Successful Attendance", "You are seated at: " + seatLocation, null, "OK", null)){	
 								alert.Show();
 							}
+							myLabel.Text = "";
 						}
 						else if (seatSelectResponse.success == false){
 							//display error alert message
 							using (var alert = new UIAlertView("Unsuccessful Attendance", "Please try another seat.", null, "OK", null)){	
 								alert.Show();
 							}
+							myLabel.Text = "";
 						}
 						//GET UPDATE ON ALL SEATS
 						getAllSeats();
@@ -155,6 +166,8 @@ namespace LearningTrack
 			mySeatingChart.serializeToXML();
 
 			//Refresh Page
+			LoadingIndicator.Hidden = true;
+			LoadingIndicator.StopAnimating();
 			LoadSeatingChart(chartType);
 		}
 

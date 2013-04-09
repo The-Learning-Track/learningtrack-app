@@ -96,7 +96,8 @@ namespace LearningTrack
 
 					this.LoginLoadingIndicator.StopAnimating();	
 					/* Update UI on main thread */
-					BeginInvokeOnMainThread(delegate {						
+					BeginInvokeOnMainThread(delegate {
+						myLabel.Text = "";
 						this.PerformSegue("ToPickClass", this);
 					});
 				}
@@ -123,6 +124,7 @@ namespace LearningTrack
 	
 					/* Update UI on main thread */
 					BeginInvokeOnMainThread(delegate {						
+						myLabel.Text = "Successful Authentication. Now retrieving your courses...";
 						getCourses();
 					});
 				}

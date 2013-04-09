@@ -36,6 +36,9 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
+			//Hide activity indicator
+			LoadingIndicator.Hidden = true;
+
 			if (classTable.Source == null){
 				CreateTableItems();
 			}
@@ -79,7 +82,9 @@ namespace LearningTrack
 
 			//Transition to interface depending on user privileges
 			ContinueButton.Clicked += (sender, e) => 
-			{					
+			{	
+				LoadingIndicator.Hidden = false;
+				LoadingIndicator.StartAnimating();
 				// Get JSON from backend and parse them after consecutive asynchonous calls and then segue.
 				getGrades();
 			};
@@ -97,7 +102,9 @@ namespace LearningTrack
 				tempSeatRef.studentID = "";
 				seatReferences.Add(tempSeatRef);
 			}
-			
+
+			LoadingIndicator.Hidden = true;
+			LoadingIndicator.StopAnimating();
 			//--------------------------------------------------------------------------------------------------------------------------
 			//Check if data is received
 			if ((myGradeINFO == null) || (myAssignmentINFO == null) || (myClassSeats == null)){

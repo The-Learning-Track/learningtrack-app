@@ -16,6 +16,12 @@ namespace LearningTrack
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton RefreshButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIActivityIndicatorView LoadingIndicator { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel myLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -27,6 +33,16 @@ namespace LearningTrack
 			if (RefreshButton != null) {
 				RefreshButton.Dispose ();
 				RefreshButton = null;
+			}
+
+			if (LoadingIndicator != null) {
+				LoadingIndicator.Dispose ();
+				LoadingIndicator = null;
+			}
+
+			if (myLabel != null) {
+				myLabel.Dispose ();
+				myLabel = null;
 			}
 		}
 	}
