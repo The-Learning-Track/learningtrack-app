@@ -27,6 +27,7 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 			LoadingIndicator.Hidden = true;
+			RefreshButton.Enabled = true;
 
 			//Load the first plot, for now
 			LoadSeatingChart(chartType);
@@ -34,6 +35,7 @@ namespace LearningTrack
 			RefreshButton.TouchUpInside += (sender, e) => {
 				LoadingIndicator.Hidden = false;
 				LoadingIndicator.StartAnimating();
+				RefreshButton.Enabled = false;
 
 				//Get all current seats -> Update XML -> Reload Chart
 				getAllSeats();
@@ -52,6 +54,9 @@ namespace LearningTrack
 				if (data == null){
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Could not get seat INFO.", null, "OK", null)){
+						LoadingIndicator.Hidden = true;
+						LoadingIndicator.StopAnimating();
+						RefreshButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -112,6 +117,7 @@ namespace LearningTrack
 			//Refresh Page
 			LoadingIndicator.StopAnimating();
 			LoadingIndicator.Hidden = true;
+			RefreshButton.Enabled = true;
 			LoadSeatingChart(chartType);
 		}
 		
@@ -127,6 +133,9 @@ namespace LearningTrack
 				if (data == null){
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Could not get grade INFO.", null, "OK", null)){
+						LoadingIndicator.Hidden = true;
+						LoadingIndicator.StopAnimating();
+						RefreshButton.Enabled = true;
 						alert.Show();
 					}
 				}

@@ -36,7 +36,8 @@ namespace LearningTrack
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad ();
-			
+			LoginButton.Enabled = true;
+
 			// When LoginButton is clicked, this will happen:
 			LoginButton.TouchUpInside += (sender, e) => {
 				//Start animating loading indicator
@@ -44,6 +45,8 @@ namespace LearningTrack
 
 				//BU WEBLOGIN
 				callBUWebLogin();
+
+				LoginButton.Enabled = false;
 			};
 		}
 
@@ -61,6 +64,7 @@ namespace LearningTrack
 				nextViewController.userID = courses.userID;
 
 				this.LoginLoadingIndicator.StopAnimating();
+				LoginButton.Enabled = true;
 			}
 		}
 
@@ -76,6 +80,7 @@ namespace LearningTrack
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
 						this.LoginLoadingIndicator.StopAnimating();	
+						LoginButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -114,7 +119,8 @@ namespace LearningTrack
 				if (data == null){
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
-						this.LoginLoadingIndicator.StopAnimating();	
+						this.LoginLoadingIndicator.StopAnimating();
+						LoginButton.Enabled = true;
 						alert.Show();
 					}
 				}

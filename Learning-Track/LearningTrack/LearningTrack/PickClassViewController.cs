@@ -36,6 +36,9 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
+
+			ContinueButton.Enabled = true;
+
 			//Hide activity indicator
 			LoadingIndicator.Hidden = true;
 
@@ -85,6 +88,7 @@ namespace LearningTrack
 			{	
 				LoadingIndicator.Hidden = false;
 				LoadingIndicator.StartAnimating();
+				ContinueButton.Enabled = false;
 				// Get JSON from backend and parse them after consecutive asynchonous calls and then segue.
 				getGrades();
 			};
@@ -109,6 +113,9 @@ namespace LearningTrack
 			//Check if data is received
 			if ((myGradeINFO == null) || (myAssignmentINFO == null) || (myClassSeats == null)){
 				using (var alert = new UIAlertView("Login Error Message", "Cannot connect to server. Please try again.", null, "OK", null)){
+					LoadingIndicator.StopAnimating();
+					LoadingIndicator.Hidden = true;
+					ContinueButton.Enabled = true;
 					alert.Show();
 				}
 			}
@@ -348,6 +355,9 @@ namespace LearningTrack
 				if (data == null){
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Could not get grade INFO.", null, "OK", null)){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						ContinueButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -374,6 +384,9 @@ namespace LearningTrack
 				if (data == null){
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Could not get Course INFO.", null, "OK", null)){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						ContinueButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -400,6 +413,9 @@ namespace LearningTrack
 				if (data == null){
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Could not get seat INFO.", null, "OK", null)){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						ContinueButton.Enabled = true;
 						alert.Show();
 					}
 				}
