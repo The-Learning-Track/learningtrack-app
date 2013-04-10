@@ -162,7 +162,6 @@
     <Compile Include="InstructorGroupStatisticsViewController.designer.cs">
       <DependentUpon>InstructorGroupStatisticsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="XML_TEST.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -202,6 +201,7 @@
     <BundleResource Include="Resources\Icon-72.png" />
     <BundleResource Include="Resources\Logo_2.png" />
     <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\refresh_button.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="charts\highcharts.js" />

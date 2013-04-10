@@ -1,3 +1,10 @@
+function getAppID(){
+	var doc1 = document.URL;
+	var new1 = doc1.split('/Applications/');
+	var new2 = new1[1].split('/');
+	return new2[0];	
+}
+
 function seatTaken(nme, num, studid, istake) //this function creates the JavaScript object
 {
     //PROPERTIES LISTED HERE --------------------------
@@ -10,6 +17,7 @@ function seatTaken(nme, num, studid, istake) //this function creates the JavaScr
 /*===============================================================================================================*/
 function queryXML() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
+	appID = getAppID();
 	var studArray = new Array(); //initiate the array for it to return
 	if (window.XMLHttpRequest)
 		{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -21,7 +29,8 @@ function queryXML() //this function will query the appropriate XML file and retu
 		}
  
 		//xmlhttp.open("GET","login_xml.xml",false);
-		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/seatingChart.xml",false);
+		var URL = '/private/var/mobile/Applications/' + appID + '/Documents/seatingChart.xml';
+		xmlhttp.open("GET",URL,false);
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 

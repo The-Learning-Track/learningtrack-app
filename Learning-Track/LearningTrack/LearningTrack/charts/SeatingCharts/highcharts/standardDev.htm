@@ -11,6 +11,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="graphFunctions.js"></script>
+		<script type="text/javascript" src="../loginfunctions.js"></script>
 		<script type="text/javascript">	
 	var myselect = document.getElementById("sample");
 	var categoryArray = new Array();
@@ -33,8 +34,8 @@
 	
 	var pathArray = document.URL;
 	var index = pathArray.indexOf('?id=');
-	seatnum = pathArray[index + 4] + pathArray[index + 5];
-	//alert (seatnum);
+	seatnum = getStudentID2();
+	//alert(seatnum);
 	
 	for (i = 0; i < categoryArray.length; i++) //will create the drop down based on the amount of categories that there are
 	{
@@ -65,6 +66,8 @@ $(function () {
 	 
 	 if (categoryname != 'Overall')
 	{	 
+
+		 seatnum = getStudentID2();
 		 var categoryArray = new Array();
 		 categoryArray = GetCategory();
 		 var assignmentsArray = new Array();
@@ -72,18 +75,16 @@ $(function () {
 		 var gradeArray = new Array();
 		 gradeArray = GetGrades();
 		 var randomarray = new Array();
-		 var seats = GetSeats();
-		 var seats_pre = GetSeats();
-		// var ids = new Array();
+		 var seats = queryXML();
 		 var stud_id;
-		 for (i = 0; i < seats_pre.length; i++)
+		 var ii = 0;
+		 while(ii < seats.length)
 		 {
-			// ids.push(seats_pre[i].idnumber);
-			 if (seats_pre[i].seatnumber == seatnum)
-			 {
-				 stud_id = seats_pre[i].idnumber;
-				 //alert(stud_id);
-			 }
+			if (seatnum == seats[ii].seatNum)
+			{
+				stud_id = seats[ii].studentID;
+			}
+			ii++;
 		 }
 		 plotObject = createPlotObject(assignmentsArray, categoryname, gradeArray, stud_id);
 	}

@@ -26,15 +26,7 @@
 
 </style>
 <script>
-//alert('gets here');
 var studentsArray = queryXML();
-//alert('did query');
-//for (i = 0; i < studentsArray.length; i++)
-//{
-//	alert('Name: ' + studentsArray[i].name + ' Seat num: ' + studentsArray[i].seatNum + ' is Student: ' + studentsArray[i].isStudent);
-//}
-//var taken = currentStudentID(studentsArray);
-//alert(taken);
 
 </script>
 
@@ -42,13 +34,15 @@ var studentsArray = queryXML();
 
 <body>
 <div class="container_16">
+<br />
+<br />
     <!-- START INTRO -->
   <br />
   <br />
   <div class="row">
   <a onclick="takeSeat('K1', studentsArray);
       	Mt.App.fireEvent('seatCheck', { 
-		    selectedSeat: 'k1'});" style="none">
+		    selectedSeat: 'K1'});" style="none">
     <div id="K1" class="grid_1"><style onload="seatTakenColor('K1', studentsArray);"></style>
       <p><script>seatTakenName('K1', studentsArray); </script> </p>
     </div>

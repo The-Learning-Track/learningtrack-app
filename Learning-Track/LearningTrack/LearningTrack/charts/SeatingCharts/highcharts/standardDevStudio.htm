@@ -33,7 +33,7 @@
 	
 	var pathArray = document.URL;
 	var index = pathArray.indexOf('?id=');
-	seatnum = pathArray[index + 4] + pathArray[index + 5];
+	seatnum = getStudentID2();
 	//alert (seatnum);
 	
 	for (i = 0; i < categoryArray.length; i++) //will create the drop down based on the amount of categories that there are

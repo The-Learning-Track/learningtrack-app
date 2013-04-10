@@ -36,11 +36,11 @@ namespace LearningTrack
 		{
 			base.ViewDidLoad ();
 
-
 			ContinueButton.Enabled = true;
 
 			//Hide activity indicator
 			LoadingIndicator.Hidden = true;
+			LogoutIndicator.Hidden = true;
 
 			if (classTable.Source == null){
 				CreateTableItems();

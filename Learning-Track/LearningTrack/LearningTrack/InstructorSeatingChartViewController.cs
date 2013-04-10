@@ -18,6 +18,7 @@ namespace LearningTrack
 		public string courseID;
 		public ClassSeats myClassSeats;
 		public gradeINFO myGradeINFO;
+		public string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 		public InstructorSeatingChartViewController (IntPtr handle) : base (handle)
 		{
@@ -94,14 +95,21 @@ namespace LearningTrack
 				string[] tempUsername = myClassSeats.usernames.ToArray();
 				string[] tempSeatLocation = myClassSeats.seatLocation.ToArray();
 				
-				for (int ii = 0; ii < tempUsername.Length; ii++){
-					if (tempUsername[ii] == student.username){
-						temp.SEAT_NUMBER = tempSeatLocation[ii];
-						break;
+				if (tempUsername.Length > 0){
+					//if there students
+					for (int ii = 0; ii < tempUsername.Length; ii++){
+						if (tempUsername[ii] == student.username){
+							temp.SEAT_NUMBER = tempSeatLocation[ii];
+							break;
+						}
+						else{
+							temp.SEAT_NUMBER = "null";
+						}
 					}
-					else{
-						temp.SEAT_NUMBER = "null";
-					}
+				}
+				else{
+					//if there are no students set to literal "null"
+					temp.SEAT_NUMBER = "null";
 				}
 				
 				

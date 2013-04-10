@@ -18,13 +18,14 @@ namespace LearningTrack
 		public SEATINGCHART mySeatingChart;
 		public string userID;
 		public gradeINFO myGradeINFO;
+		public string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 		public StudentSeatingChartViewController (IntPtr handle) : base (handle)
 		{
 		}
 
 		public override void ViewDidLoad()
-		{
+		{	
 			base.ViewDidLoad ();
 			LoadingIndicator.Hidden = true;
 			RefreshButton.Enabled = true;
@@ -149,14 +150,21 @@ namespace LearningTrack
 				string[] tempUsername = myClassSeats.usernames.ToArray();
 				string[] tempSeatLocation = myClassSeats.seatLocation.ToArray();
 
-				for (int ii = 0; ii < tempUsername.Length; ii++){
-					if (tempUsername[ii] == student.username){
-						temp.SEAT_NUMBER = tempSeatLocation[ii];
-						break;
+				if (tempUsername.Length > 0){
+					//if there students
+					for (int ii = 0; ii < tempUsername.Length; ii++){
+						if (tempUsername[ii] == student.username){
+							temp.SEAT_NUMBER = tempSeatLocation[ii];
+							break;
+						}
+						else{
+							temp.SEAT_NUMBER = "null";
+						}
 					}
-					else{
-						temp.SEAT_NUMBER = "null";
-					}
+				}
+				else{
+					//if there are no students set to literal "null"
+					temp.SEAT_NUMBER = "null";
 				}
 
 
@@ -220,9 +228,14 @@ namespace LearningTrack
 			string localHtmlUrl = Path.Combine (NSBundle.MainBundle.BundlePath, fileName);
 			
 			//load the appropriate file to the webView
-			SeatWebView.InjectMtJavascript();
 			SeatWebView.LoadRequest(new NSUrlRequest(new NSUrl(localHtmlUrl, false)));
 			SeatWebView.ScalesPageToFit = false;
+
+			//Send message to loading html file
+			this.SeatWebView.FireEvent("sendPathLocation", new {
+				path = path,
+				Success = true
+			});
 		}
 	}
 }

@@ -13,6 +13,7 @@ namespace LearningTrack
 		public string courseID;
 		public SEATINGCHART mySeatingChart;
 		public string userID;
+		public string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
 		public StudentTabBarController (IntPtr handle) : base (handle)
 		{

@@ -97,6 +97,10 @@
                                 <rect key="frame" x="912" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="IpD-rY-4IN">
+                                <rect key="frame" x="78" y="12" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -107,6 +111,7 @@
                         <outlet property="ContinueButton" destination="D8J-Ro-7r9" id="sof-Td-Act"/>
                         <outlet property="LoadingIndicator" destination="gd8-mD-rNm" id="Ibp-Pb-fao"/>
                         <outlet property="LogoutButton" destination="FhZ-U4-DDY" id="KNL-Vi-PiD"/>
+                        <outlet property="LogoutIndicator" destination="IpD-rY-4IN" id="PgG-lP-RAf"/>
                         <outlet property="classTable" destination="7Ma-zU-7d3" id="uTH-hU-yUR"/>
                         <segue destination="hqu-Fl-1Ey" kind="modal" identifier="ToInstructorInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="rCR-kn-web"/>
                         <segue destination="Xmi-mW-Wdz" kind="modal" identifier="ToStudentInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="RYO-Yn-p0g"/>
@@ -130,23 +135,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Qra-le-8K8">
-                                <rect key="frame" x="959" y="4" width="58" height="50"/>
+                                <rect key="frame" x="914" y="1" width="110" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" backgroundImage="repeat@2x.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Refresh">
-                                            <attributes>
-                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <state key="normal" image="refresh_button.png">
+                                    <attributedString key="attributedTitle"/>
                                 </state>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="HCL-cf-eOB">
-                                <rect key="frame" x="931" y="19" width="20" height="20"/>
+                                <rect key="frame" x="886" y="19" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
@@ -206,7 +203,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vnt-09-A69">
-                                <rect key="frame" x="354" y="448" width="317" height="139"/>
+                                <rect key="frame" x="657" y="388" width="317" height="139"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" image="glyphicons_151_new_window.png">
@@ -218,7 +215,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H15-Gz-eCr">
-                                <rect key="frame" x="268" y="320" width="488" height="94"/>
+                                <rect key="frame" x="79" y="410" width="488" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Change Classes Or Logout ">
@@ -239,7 +236,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Options" image="pencil.png" id="VvX-wa-kAg"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="glyphicons_137_cogwheels.png" id="VvX-wa-kAg"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="changeClassButton" destination="vnt-09-A69" id="ZvL-JV-oQW"/>
@@ -263,23 +260,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="9xQ-l7-5cg">
-                                <rect key="frame" x="959" y="0.0" width="58" height="50"/>
+                                <rect key="frame" x="914" y="0.0" width="110" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" backgroundImage="repeat@2x.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Refresh">
-                                            <attributes>
-                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <state key="normal" image="refresh_button.png">
+                                    <attributedString key="attributedTitle"/>
                                 </state>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="4yd-Vr-GAt">
-                                <rect key="frame" x="931" y="15" width="20" height="20"/>
+                                <rect key="frame" x="886" y="18" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="elm-Zo-MMs">
@@ -341,7 +330,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KSc-xR-m9q">
-                                <rect key="frame" x="354" y="452" width="317" height="139"/>
+                                <rect key="frame" x="640" y="333" width="317" height="139"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="glyphicons_151_new_window.png">
@@ -352,8 +341,27 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YGK-US-XeY">
+                                <rect key="frame" x="640" y="505" width="317" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="glyphicons_114_list.png">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Change Classes Or Logout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O8H-k8-86m">
-                                <rect key="frame" x="259" y="333" width="506" height="79"/>
+                                <rect key="frame" x="67" y="362" width="506" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Clear All Seats In Current Class" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c23-nr-xUI">
+                                <rect key="frame" x="12" y="534" width="616" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="40"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -363,15 +371,29 @@
                                 <rect key="frame" x="187" y="62" width="650" height="263"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="W3m-RP-aDC">
+                                <rect key="frame" x="659" y="659" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please wait for seat clearing confirmation..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uYK-6Q-Q6R">
+                                <rect key="frame" x="320" y="649" width="331" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Options" image="pencil.png" id="rr1-dH-fUB"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="glyphicons_137_cogwheels.png" id="rr1-dH-fUB"/>
                     <navigationItem key="navigationItem" title="Title" id="BVd-ZG-c3Y"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="ClearSeatsButton" destination="YGK-US-XeY" id="3W0-up-FOm"/>
+                        <outlet property="LoadingIndicator" destination="W3m-RP-aDC" id="BhN-TC-jQn"/>
                         <outlet property="changeClassButton" destination="KSc-xR-m9q" id="KTF-2b-Spe"/>
+                        <outlet property="myLabel" destination="uYK-6Q-Q6R" id="nT3-of-VzI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXa-oU-cO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -392,23 +414,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="ThU-OX-V2B">
-                                <rect key="frame" x="960" y="0.0" width="58" height="50"/>
+                                <rect key="frame" x="914" y="2" width="110" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" backgroundImage="repeat@2x.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Refresh">
-                                            <attributes>
-                                                <color key="NSColor" red="0.1114351178" green="0.40959730970000002" blue="0.60718834919999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="13" name="Helvetica-BoldOblique"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <state key="normal" image="refresh_button.png">
+                                    <attributedString key="attributedTitle"/>
                                 </state>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="ZJY-8v-DJP">
-                                <rect key="frame" x="932" y="15" width="20" height="20"/>
+                                <rect key="frame" x="886" y="20" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
@@ -452,10 +466,11 @@
     <resources>
         <image name="Logo_2.png" width="879" height="315"/>
         <image name="glyphicons_043_group.png" width="35" height="22"/>
+        <image name="glyphicons_114_list.png" width="24" height="21"/>
+        <image name="glyphicons_137_cogwheels.png" width="34" height="27"/>
         <image name="glyphicons_151_new_window.png" width="26" height="22"/>
         <image name="graph_bar_trend.png" width="26" height="26"/>
-        <image name="pencil.png" width="26" height="26"/>
-        <image name="repeat@2x.png" width="52" height="52"/>
+        <image name="refresh_button.png" width="320" height="178"/>
     </resources>
     <classes>
         <class className="InstructorGroupStatisticsViewController" superclassName="UIViewController">
@@ -469,8 +484,10 @@
         <class className="InstructorOptionsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/InstructorOptionsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="ClearSeatsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="changeClassButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="InstructorSeatingChartViewController" superclassName="UIViewController">
@@ -501,6 +518,7 @@
                 <relationship kind="outlet" name="ContinueButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="LogoutButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="LogoutIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="classTable" candidateClass="UITableView"/>
             </relationships>
         </class>

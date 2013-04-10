@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by MonoDevelop to store outlets and
+// This file has been generated automatically by Xamarin Studio to store outlets and
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
@@ -15,7 +15,13 @@ namespace LearningTrack
 		MonoTouch.UIKit.UIButton changeClassButton { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIButton logoutButton { get; set; }
+		MonoTouch.UIKit.UIButton ClearSeatsButton { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIActivityIndicatorView LoadingIndicator { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel myLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -24,9 +30,19 @@ namespace LearningTrack
 				changeClassButton = null;
 			}
 
-			if (logoutButton != null) {
-				logoutButton.Dispose ();
-				logoutButton = null;
+			if (ClearSeatsButton != null) {
+				ClearSeatsButton.Dispose ();
+				ClearSeatsButton = null;
+			}
+
+			if (LoadingIndicator != null) {
+				LoadingIndicator.Dispose ();
+				LoadingIndicator = null;
+			}
+
+			if (myLabel != null) {
+				myLabel.Dispose ();
+				myLabel = null;
 			}
 		}
 	}

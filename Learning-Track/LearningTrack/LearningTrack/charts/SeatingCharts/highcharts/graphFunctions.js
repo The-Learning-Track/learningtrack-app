@@ -1,3 +1,9 @@
+function getAppID(){
+	var doc1 = document.URL;
+	var new1 = doc1.split('/Applications/');
+	var new2 = new1[1].split('/');
+	return new2[0];	
+}
 /* This document will query the XML Document and correctly format the data for the high charts */
 
 function grade(subject, assignname, score, points, studID) //this function creates the JavaScript object
@@ -62,7 +68,9 @@ function GetGrades() //this function will query the appropriate XML file and ret
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseGrades.xml",false);
+		appID = getAppID();
+		var URL = '/private/var/mobile/Applications/' + appID + '/Documents/courseGrades.xml';
+ 		xmlhttp.open("GET",URL,false);
  		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseGrades.xml",false);
 		//xmlhttp.open("GET","courseGrades.xml",false);
 		xmlhttp.send();
@@ -103,7 +111,9 @@ function GetSeats() //this function will query the appropriate XML file and retu
 		}
  		
  		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseGrades.xml",false);
+ 		ppID = getAppID();
+		var URL = '/private/var/mobile/Applications/' + appID + '/Documents/courseGrades.xml';
+ 		xmlhttp.open("GET",URL,false);
  		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseGrades.xml",false);
 		//xmlhttp.open("GET","courseGrades.xml",false);
 		xmlhttp.send();
@@ -220,7 +230,9 @@ function GetCategory() //this function will query the appropriate XML file and r
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseAverages.xml",false);
+		appID = getAppID();
+		var URL = '/private/var/mobile/Applications/' + appID + '/Documents/courseAverages.xml';
+ 		xmlhttp.open("GET",URL,false);
  		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseAverages.xml",false);
 		//xmlhttp.open("GET","courseAverages.xml",false);
 		xmlhttp.send();
@@ -260,7 +272,9 @@ function GetAssignment() //this function will query the appropriate XML file and
 			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
- 		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/courseAverages.xml",false);
+		appID = getAppID();
+		var URL = '/private/var/mobile/Applications/' + appID + '/Documents/courseAverages.xml';
+ 		xmlhttp.open("GET",URL,false);
 		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/courseAverages.xml",false);
 		//xmlhttp.open("GET","courseAverages.xml",false);
 		xmlhttp.send();
@@ -574,6 +588,29 @@ function getStudentID() {
 	return average;
 }  
 
+
+function getStudentID2() {
+
+	var pathArray = document.URL;
+	var average;
+	var average_pre = pathArray.split('?');
+	if (average_pre.length > 2)
+	{
+		average_pre = pathArray.split('?id=');
+		average_pre=average_pre[1].split('?cat=');
+		average=average_pre[0];
+	}
+	else{
+		average_pre=pathArray.split('?id=');
+		average = average_pre[1];
+	}
+	if (average == null || average == undefined)
+	{
+		average = 0;
+	}
+	return average;
+}  
+
 /*===============================================================================================================*/
 
 function changeCategory()
@@ -778,15 +815,6 @@ function overallGroupStats(student_ID, student_ID_array)
 }
 
 /*===============================================================================================================*/
-
-
-
-
-
-
-
-
-
 
 
 

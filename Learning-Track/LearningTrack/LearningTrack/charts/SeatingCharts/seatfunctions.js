@@ -1,3 +1,10 @@
+function getAppID(){
+	var doc1 = document.URL;
+	var new1 = doc1.split('/Applications/');
+	var new2 = new1[1].split('/');
+	return new2[0];	
+}
+
 function grade(gID, subject, assignname, score, points, studID) //this function creates the JavaScript object
 {
     //PROPERTIES LISTED HERE --------------------------
@@ -285,7 +292,10 @@ function queryXML() //this function will query the appropriate XML file and retu
                 }
 		//NOTE: THE GUID CHANGES EVERY ITERATION OF A VERSION UPDATE (I.E. : 6.0 ->6.1)
 		//45630D06-579B-4141-8D13-08087F6A8936 IS SIMULATOR
-		xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/seatingChart.xml",false);
+		appID = getAppID();
+		var URL = '/private/var/mobile/Applications/' + appID + '/Documents/seatingChart.xml';
+		//xmlhttp.open("GET","/private/var/mobile/Applications/49E7A62E-DCCA-41BC-817E-C4563E11BBF4/Documents/seatingChart.xml",false);
+		xmlhttp.open("GET",URL,false);
 		//xmlhttp.open("GET","/private/var/mobile/Applications/45630D06-579B-4141-8D13-08087F6A8936/Documents/seatingChart.xml",false);
 		//alert('if gets here, it is opened');
 		//xmlhttp.open("GET","seatingChart.xml",false);
