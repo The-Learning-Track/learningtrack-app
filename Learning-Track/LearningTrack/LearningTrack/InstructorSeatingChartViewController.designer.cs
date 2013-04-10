@@ -19,6 +19,9 @@ namespace LearningTrack
 
 		[Outlet]
 		MonoTouch.UIKit.UIActivityIndicatorView LoadingIndicator { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel myLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -35,6 +38,11 @@ namespace LearningTrack
 			if (LoadingIndicator != null) {
 				LoadingIndicator.Dispose ();
 				LoadingIndicator = null;
+			}
+
+			if (myLabel != null) {
+				myLabel.Dispose ();
+				myLabel = null;
 			}
 		}
 	}

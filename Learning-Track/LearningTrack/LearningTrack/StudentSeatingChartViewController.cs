@@ -72,28 +72,38 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful RESPONSE PARSE DATA
-					SEAT_SELECTION_RESPONSE seatSelectResponse = JsonConvert.DeserializeObject<SEAT_SELECTION_RESPONSE>(data.ToString());
-
-					/* Update UI on main thread */
-					BeginInvokeOnMainThread(delegate {						
-						if (seatSelectResponse.success == true){
-							//display error alert message
-							using (var alert = new UIAlertView("Successful Attendance", "You are seated at: " + seatLocation, null, "OK", null)){	
-								alert.Show();
+					try{
+						//Upon successful RESPONSE PARSE DATA
+						SEAT_SELECTION_RESPONSE seatSelectResponse = JsonConvert.DeserializeObject<SEAT_SELECTION_RESPONSE>(data.ToString());
+						
+						/* Update UI on main thread */
+						BeginInvokeOnMainThread(delegate {						
+							if (seatSelectResponse.success == true){
+								//display error alert message
+								using (var alert = new UIAlertView("Successful Attendance", "You are seated at: " + seatLocation, null, "OK", null)){	
+									alert.Show();
+								}
+								myLabel.Text = "";
 							}
-							myLabel.Text = "";
-						}
-						else if (seatSelectResponse.success == false){
-							//display error alert message
-							using (var alert = new UIAlertView("Unsuccessful Attendance", "Please try another seat.", null, "OK", null)){	
-								alert.Show();
+							else if (seatSelectResponse.success == false){
+								//display error alert message
+								using (var alert = new UIAlertView("Unsuccessful Attendance", "Please try another seat.", null, "OK", null)){	
+									alert.Show();
+								}
+								myLabel.Text = "";
 							}
-							myLabel.Text = "";
-						}
-						//GET UPDATE ON ALL SEATS
-						getAllSeats();
-					});
+							//GET UPDATE ON ALL SEATS
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 1 of 3: Updating seating chart...";
+							getAllSeats();
+						});
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 1. Try again.";
+					}
 				}
 			});
 		}
@@ -117,13 +127,23 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
-					
-					BeginInvokeOnMainThread(delegate {						
-						//Update XML;
-						updateXMLPart1();
-					});
+					try{
+						//Upon successful authentication PARSE DATA
+						myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
+						
+						BeginInvokeOnMainThread(delegate {						
+							//Update XML;
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 2 of 3: Matching up students...";
+							updateXMLPart1();
+						});
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 2. Try again.";
+					}
 				}
 			});
 		}
@@ -178,6 +198,7 @@ namespace LearningTrack
 			mySeatingChart.serializeToXML();
 
 			//Refresh Page
+			myLabel.Text = "";
 			LoadingIndicator.Hidden = true;
 			LoadingIndicator.StopAnimating();
 			RefreshButton.Enabled = true;
@@ -203,12 +224,22 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
-					
-					BeginInvokeOnMainThread(delegate {						
-						updateXMLPart2();
-					});
+					try{
+						//Upon successful authentication PARSE DATA
+						myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
+						
+						BeginInvokeOnMainThread(delegate {						
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 3 of 3: Writing to XML...";
+							updateXMLPart2();
+						});
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 3. Try again.";
+					}
 				}
 			});
 		}

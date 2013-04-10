@@ -35,6 +35,8 @@ namespace LearningTrack
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad ();
+			//             "<------MAXIMUM----------LENGTH------>"   For label
+			myLabel.Text = "";
 
 			ContinueButton.Enabled = true;
 
@@ -88,8 +90,10 @@ namespace LearningTrack
 			{	
 				LoadingIndicator.Hidden = false;
 				LoadingIndicator.StartAnimating();
-				ContinueButton.Enabled = false;
+				ContinueButton.Enabled = true;
 				// Get JSON from backend and parse them after consecutive asynchonous calls and then segue.
+				//             "<------MAXIMUM----------LENGTH------>"   For label
+				myLabel.Text = "Step 1 of 5: Getting Grades...";
 				getGrades();
 			};
 		}
@@ -107,6 +111,8 @@ namespace LearningTrack
 				seatReferences.Add(tempSeatRef);
 			}
 
+			//             "<------MAXIMUM----------LENGTH------>"   For label
+			myLabel.Text = "Step 5 of 5: Writing data to XML...";
 			LoadingIndicator.Hidden = true;
 			LoadingIndicator.StopAnimating();
 			//--------------------------------------------------------------------------------------------------------------------------
@@ -362,12 +368,23 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
+					try{
+						//Upon successful authentication PARSE DATA
+						myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
 
-					BeginInvokeOnMainThread(delegate {						
-						getCourseInfo();
-					});
+						BeginInvokeOnMainThread(delegate {						
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 2 of 5: Getting Course Info...";
+							getCourseInfo();
+						});	
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						ContinueButton.Enabled = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 2. Try again.";
+					}
 				}
 			});
 		}
@@ -391,12 +408,23 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myAssignmentINFO = JsonConvert.DeserializeObject<AssignmentINFO>(data.ToString());
-
-					BeginInvokeOnMainThread(delegate {						
-						getSeats();
-					});
+					try{
+						//Upon successful authentication PARSE DATA
+						myAssignmentINFO = JsonConvert.DeserializeObject<AssignmentINFO>(data.ToString());
+						
+						BeginInvokeOnMainThread(delegate {						
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 3 of 5: Getting Seating Info...";
+							getSeats();
+						});	
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						ContinueButton.Enabled = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 3. Try again.";
+					}
 				}
 			});
 		}
@@ -420,12 +448,23 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
-
-					BeginInvokeOnMainThread(delegate {						
-						continueToSegue();
-					});
+					try{
+						//Upon successful authentication PARSE DATA
+						myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
+						
+						BeginInvokeOnMainThread(delegate {
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 4 of 5: Parsing data...";
+							continueToSegue();
+						});
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						ContinueButton.Enabled = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 4. Try again.";
+					}
 				}
 			});
 		}

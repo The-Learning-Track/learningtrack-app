@@ -101,6 +101,13 @@
                                 <rect key="frame" x="78" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ELN-Jy-Bfk">
+                                <rect key="frame" x="582" y="9" width="317" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -113,6 +120,7 @@
                         <outlet property="LogoutButton" destination="FhZ-U4-DDY" id="KNL-Vi-PiD"/>
                         <outlet property="LogoutIndicator" destination="IpD-rY-4IN" id="PgG-lP-RAf"/>
                         <outlet property="classTable" destination="7Ma-zU-7d3" id="uTH-hU-yUR"/>
+                        <outlet property="myLabel" destination="ELN-Jy-Bfk" id="mLm-RN-PAn"/>
                         <segue destination="hqu-Fl-1Ey" kind="modal" identifier="ToInstructorInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="rCR-kn-web"/>
                         <segue destination="Xmi-mW-Wdz" kind="modal" identifier="ToStudentInterface" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="RYO-Yn-p0g"/>
                     </connections>
@@ -134,6 +142,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ih5-bo-uGG">
+                                <rect key="frame" x="20" y="11" width="460" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Qra-le-8K8">
                                 <rect key="frame" x="914" y="1" width="110" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -154,6 +169,7 @@
                     <connections>
                         <outlet property="LoadingIndicator" destination="HCL-cf-eOB" id="pyv-ag-L9j"/>
                         <outlet property="RefreshButton" destination="Qra-le-8K8" id="Gx0-hu-Mg5"/>
+                        <outlet property="myLabel" destination="Ih5-bo-uGG" id="sHo-2G-1fS"/>
                         <outlet property="webView" destination="Wl2-u4-A9S" id="vge-33-3RF"/>
                     </connections>
                 </viewController>
@@ -425,6 +441,13 @@
                                 <rect key="frame" x="886" y="20" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="laK-g8-opp">
+                                <rect key="frame" x="20" y="12" width="460" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -434,6 +457,7 @@
                         <outlet property="LoadingIndicator" destination="ZJY-8v-DJP" id="p9O-m3-Wsd"/>
                         <outlet property="RefreshButton" destination="ThU-OX-V2B" id="pPO-gU-4qb"/>
                         <outlet property="SeatWebView" destination="efV-JC-trr" id="lSJ-EI-b3X"/>
+                        <outlet property="myLabel" destination="laK-g8-opp" id="spI-qO-CEY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixL-rB-tkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,6 +502,7 @@
             <relationships>
                 <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
@@ -496,6 +521,7 @@
                 <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="SeatWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="InstructorTabBarController" superclassName="UITabBarController">
@@ -520,6 +546,7 @@
                 <relationship kind="outlet" name="LogoutButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="LogoutIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="classTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SeatingChartWebView" superclassName="UIView">

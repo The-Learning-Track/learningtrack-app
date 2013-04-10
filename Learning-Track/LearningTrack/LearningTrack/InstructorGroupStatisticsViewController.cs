@@ -71,13 +71,23 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
-					
-					BeginInvokeOnMainThread(delegate {						
-						//Update XML;
-						updateXMLPart1();
-					});
+					try{
+						//Upon successful authentication PARSE DATA
+						myClassSeats = JsonConvert.DeserializeObject<ClassSeats>(data.ToString());
+						
+						BeginInvokeOnMainThread(delegate {						
+							//Update XML;
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 1 of 3: Updating seating chart...";
+							updateXMLPart1();
+						});
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 1. Try again.";
+					}
 				}
 			});
 		}
@@ -124,7 +134,9 @@ namespace LearningTrack
 				
 				extractedSeating.Add(temp);
 			}
-			
+			//             "<------MAXIMUM----------LENGTH------>"   For label
+			myLabel.Text = "Step 3 of 3: Writing to XML...";
+
 			//set extracted and calculated values to list of SEAT seats to be XML serialized
 			mySeatingChart = new SEATINGCHART (){SEATING_CHART = extractedSeating};
 			
@@ -132,6 +144,7 @@ namespace LearningTrack
 			mySeatingChart.serializeToXML();
 			
 			//Refresh Page
+			myLabel.Text = "";
 			LoadingIndicator.Hidden = true;
 			LoadingIndicator.StopAnimating();
 			RefreshButton.Enabled = true;
@@ -157,12 +170,22 @@ namespace LearningTrack
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
-					
-					BeginInvokeOnMainThread(delegate {						
-						updateXMLPart2();
-					});
+					try{
+						//Upon successful authentication PARSE DATA
+						myGradeINFO = JsonConvert.DeserializeObject<gradeINFO>(data.ToString());
+						
+						BeginInvokeOnMainThread(delegate {
+							//             "<------MAXIMUM----------LENGTH------>"   For label
+							myLabel.Text = "Step 2 of 3: Matching up students...";
+							updateXMLPart2();
+						});
+					}
+					catch (Exception e){
+						LoadingIndicator.StopAnimating();
+						LoadingIndicator.Hidden = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at step 2. Try again.";
+					}
 				}
 			});
 		}

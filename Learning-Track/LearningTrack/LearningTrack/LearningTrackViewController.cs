@@ -42,11 +42,11 @@ namespace LearningTrack
 			LoginButton.TouchUpInside += (sender, e) => {
 				//Start animating loading indicator
 				this.LoginLoadingIndicator.StartAnimating();
+				myLabel.Text = "Loading BU Weblogin page. Please wait...";
+				LoginButton.Enabled = false;
 
 				//BU WEBLOGIN
 				callBUWebLogin();
-
-				LoginButton.Enabled = false;
 			};
 		}
 
@@ -77,10 +77,13 @@ namespace LearningTrack
 
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
-					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+					BeginInvokeOnMainThread(delegate {
+						myLabel.Text = "";
 						this.LoginLoadingIndicator.StopAnimating();	
 						LoginButton.Enabled = true;
+					});
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
 						alert.Show();
 					}
 				}
