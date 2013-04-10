@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="Totoro-V1/16_980grid.css" />
 <link rel="stylesheet" href="Totoro-V1/demo.css" />
 <script type="text/javascript" src="loginfunctions.js"></script>
-
+<script src="mt.js"></script>
 
 <style type="text/css">
 .menuoptions{
@@ -91,7 +91,7 @@ var studentsArray = queryXML();
       <a onclick="takeStudioSeat('A2', studentsArray);
       	Mt.App.fireEvent('seatCheck', { 
 		    selectedSeat: 'A2'});" style="none"><! 6 >
-    <div id="A2" class="grid_1"><style onload="seatTakenColor('A1', studentsArray);"></style>
+    <div id="A2" class="grid_1"><style onload="seatTakenColor('A2', studentsArray);"></style>
       <p><script>seatTakenName('A2', studentsArray); </script> </p>
     </div>
   </a>
@@ -237,9 +237,7 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
-    <a onclick="takeStudioSeat('A3', studentsArray);
-      	Mt.App.fireEvent('seatCheck', { 
-		    selectedSeat: 'A3'});"  style="none"> <! 7 -->
+    <a style="none"> <! 7 -->
     <div id="A3" class="grid_1 blank">
       <p><script></script></p>
     </div>
@@ -302,16 +300,15 @@ var studentsArray = queryXML();
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"></div>
+    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;">
+    <div class="circle"></div>
     </div>
     </a> 
     <a style="none"><! 6 -->
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
-    <a onclick="takeStudioSeat('A3', studentsArray);
-      	Mt.App.fireEvent('seatCheck', { 
-		    selectedSeat: 'A3'});"  style="none"> <! 7 -->
+    <a style="none"> <! 7 -->
     <div id="A3" class="grid_1 blank">
       <p><script></script></p>
     </div>
@@ -324,9 +321,7 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
-       <a onclick="takeStudioSeat('B9', studentsArray);
-      	Mt.App.fireEvent('seatCheck', { 
-		    selectedSeat: 'B9'});"  style="none"> <! 10 -->
+    <a style="none"> <! 10 -->
     <div id="B9" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
@@ -1478,7 +1473,7 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
-    <a onclick = "takeStudioSeat('G1', studentsArray);
+    <a onclick= "takeStudioSeat('G1', studentsArray);
       	Mt.App.fireEvent('seatCheck', { 
 		    selectedSeat: 'G1'});" style="none"> <! 2 >
     <div id="G1" class="grid_1"><style onload="seatTakenColor('G1', studentsArray);"></style> 
@@ -1489,7 +1484,9 @@ var studentsArray = queryXML();
     <div id="K1" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
-    <a onclick="takeStudioSeat('G2', studentsArray)" style="none"><! 4 >
+    <a onclick="takeStudioSeat('G2', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'G2'});" style="none"><! 4 >
     <div id="G2" class="grid_1"><style onload="seatTakenColor('G2', studentsArray);"></style>
       <p><script>seatTakenName('G2', studentsArray); </script> </p>
     </div>
@@ -1504,7 +1501,9 @@ var studentsArray = queryXML();
     </div>
   </a> 
      
-    <a onclick="takeStudioSeat('H1', studentsArray)" style="none"><! 7 >
+    <a onclick="takeStudioSeat('H1', studentsArray);
+      	Mt.App.fireEvent('seatCheck', { 
+		    selectedSeat: 'H1'});" style="none"><! 7 >
     <div id="H1" class="grid_1"><style onload="seatTakenColor('H1', studentsArray);"></style>
       <p><script>seatTakenName('H1', studentsArray); </script> </p>
     </div>

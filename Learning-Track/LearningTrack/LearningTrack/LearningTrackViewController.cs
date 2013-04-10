@@ -77,37 +77,34 @@ namespace LearningTrack
 
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
-					BeginInvokeOnMainThread(delegate {
-						myLabel.Text = "";
-						this.LoginLoadingIndicator.StopAnimating();	
-						LoginButton.Enabled = true;
-					});
 					//display error alert message
 					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+						this.LoginLoadingIndicator.StopAnimating();
+						LoginButton.Enabled = true;
+						myLabel.Text = "";
 						alert.Show();
 					}
 				}
 				else if (data.Length > 0) {
-					//Upon successful authentication PARSE DATA
-					courses = JsonConvert.DeserializeObject<ClassList>(data.ToString());
+					try{
+						//Upon successful authentication PARSE DATA
+						courses = JsonConvert.DeserializeObject<ClassList>(data.ToString());
+						
+						this.LoginLoadingIndicator.StopAnimating();	
+						/* Update UI on main thread */
+						BeginInvokeOnMainThread(delegate {
+							myLabel.Text = "";
+							this.PerformSegue("ToPickClass", this);
+						});
+					}
+					catch (Exception){
+						LoginLoadingIndicator.StopAnimating();
+						LoginLoadingIndicator.Hidden = true;
+						//             "<------MAXIMUM----------LENGTH------>"   For label
+						myLabel.Text = "Parsing error at retrieving your courses. Please try again.";
+						LoginButton.Enabled = true;
+					}
 
-					/*//-------------------------------------------------------------------
-					//DUMMY TESTS -- ASSUME 1 to 1 match up EXPECTED RESPONSE CLASS LIST
-					List<string> testCourseNames = new List<string> ();
-					testCourseNames.Add ("OFFLINETEST - [Lecture Hall]");
-					testCourseNames.Add ("OFFLINETEST - [Studio Classroom]");
-					List<string> testCourseIDs = new List<string> ();
-					testCourseIDs.Add ("[LECTURE ID]");
-					testCourseIDs.Add ("[STUDIO ID]");
-					courses = new ClassList{username = "dicksonp", courseNames = testCourseNames, courseIDs = testCourseIDs};
-					*/
-
-					this.LoginLoadingIndicator.StopAnimating();	
-					/* Update UI on main thread */
-					BeginInvokeOnMainThread(delegate {
-						myLabel.Text = "";
-						this.PerformSegue("ToPickClass", this);
-					});
 				}
 			});
 		}
@@ -124,6 +121,7 @@ namespace LearningTrack
 					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
 						this.LoginLoadingIndicator.StopAnimating();
 						LoginButton.Enabled = true;
+						myLabel.Text = "";
 						alert.Show();
 					}
 				}

@@ -82,11 +82,12 @@ namespace LearningTrack
 							updateXMLPart1();
 						});
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 1. Try again.";
+						myLabel.Text = "Parsing error at step 1/3: seating update. Please try again.";
+						RefreshButton.Enabled = true;
 					}
 				}
 			});
@@ -180,11 +181,12 @@ namespace LearningTrack
 							updateXMLPart2();
 						});
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 2. Try again.";
+						myLabel.Text = "Parsing error at step 2/3: matching students. Please try again.";
+						RefreshButton.Enabled = true;
 					}
 				}
 			});

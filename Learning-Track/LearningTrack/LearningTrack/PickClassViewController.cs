@@ -10,6 +10,7 @@ using RestSharp;
 using System.Linq;
 using WebloginConnection;
 using Newtonsoft.Json;
+using System.Timers;
 
 namespace LearningTrack
 {
@@ -28,6 +29,9 @@ namespace LearningTrack
 		public List<SEAT_REFERENCE> seatReferences = new List<SEAT_REFERENCE>();
 		public SEATINGCHART mySeatingChart;
 
+		//Set up timer
+		public Timer pause = new Timer(); // Set up the timer for 3 seconds
+
 		public PickClassViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -39,6 +43,7 @@ namespace LearningTrack
 			myLabel.Text = "";
 
 			ContinueButton.Enabled = true;
+			LogoutButton.Enabled = true;
 
 			//Hide activity indicator
 			LoadingIndicator.Hidden = true;
@@ -51,6 +56,7 @@ namespace LearningTrack
 			//LOGOUT
 			LogoutButton.Clicked += (sender, e) =>
 			{	
+				LogoutButton.Enabled = false;
 				// Figure out where the XML FILES will be and CLEAR EVERYTHING
 				string seatingChartPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "seatingChart.xml");      
 				string courseAveragesPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "courseAverages.xml");
@@ -82,7 +88,12 @@ namespace LearningTrack
 				}
 				// LOGOUT
 				BUWebloginConnection.Logout(); // DELETE COOKIES
-				this.DismissViewController(true, null);
+				// Use timer for wait for cookie deletion
+				LogoutIndicator.StartAnimating();
+				LogoutIndicator.Hidden = false;
+				ContinueButton.Enabled = false;
+				WaitThenDismiss();
+				//this.DismissViewController(true, null);
 			};
 
 			//Transition to interface depending on user privileges
@@ -90,12 +101,33 @@ namespace LearningTrack
 			{	
 				LoadingIndicator.Hidden = false;
 				LoadingIndicator.StartAnimating();
-				ContinueButton.Enabled = true;
+				ContinueButton.Enabled = false;
+				LogoutButton.Enabled = false;
 				// Get JSON from backend and parse them after consecutive asynchonous calls and then segue.
 				//             "<------MAXIMUM----------LENGTH------>"   For label
 				myLabel.Text = "Step 1 of 5: Getting Grades...";
 				getGrades();
 			};
+		}
+
+		public void WaitThenDismiss()
+		{
+			pause.Interval = 3000;
+			pause.AutoReset = false;
+			pause.Elapsed += new ElapsedEventHandler(pause_Elapsed);
+			pause.Start();
+		}
+		public void pause_Elapsed(object sender, ElapsedEventArgs e)
+		{
+			//after 3 seconds has passed
+			//stop timer
+			pause.Stop();
+			BeginInvokeOnMainThread(delegate {						
+				LogoutIndicator.StopAnimating();
+				LogoutIndicator.Hidden = true;
+				//dismiss view controller
+				this.DismissViewController(true, null);
+			});
 		}
 
 		public void continueToSegue(){
@@ -158,6 +190,9 @@ namespace LearningTrack
 			base.PrepareForSegue (segue, sender);
 			//Make sure we are dealing with the appropriate segue
 			if (segue.Identifier == "ToInstructorInterface") {
+				myLabel.Text = "";
+				ContinueButton.Enabled = true;
+				LogoutButton.Enabled = true;
 				// Get reference to the destination view controller
 				var nextViewController = (InstructorTabBarController)segue.DestinationViewController;
 				//Pass values to the next view controller
@@ -166,6 +201,9 @@ namespace LearningTrack
 				nextViewController.courseID = getSelectedCourseID(selectedRow);
 				nextViewController.userID = userID;
 			} else if (segue.Identifier == "ToStudentInterface") {
+				myLabel.Text = "";
+				ContinueButton.Enabled = true;
+				LogoutButton.Enabled = true;
 				// Get reference to the destination view controller
 				var nextViewController = (StudentTabBarController)segue.DestinationViewController;
 				//Pass values to the next view controller
@@ -378,7 +416,7 @@ namespace LearningTrack
 							getCourseInfo();
 						});	
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
@@ -418,7 +456,7 @@ namespace LearningTrack
 							getSeats();
 						});	
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
@@ -458,7 +496,7 @@ namespace LearningTrack
 							continueToSegue();
 						});
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;

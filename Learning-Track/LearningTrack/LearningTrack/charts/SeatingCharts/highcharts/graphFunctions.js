@@ -983,6 +983,7 @@ function overallGroupStatsStudent(student_ID, student_ID_array)
 	//=====================CREATE PLOT OBJECTS================================
 	for (i = 0; i < category_Array.length; i++)
 	{
+		//
 		var neg_temp = averages[i] - standard_dev[i];
 		neg_temp = neg_temp.toFixed(2);
 		var pos_temp = averages[i] + standard_dev[i];

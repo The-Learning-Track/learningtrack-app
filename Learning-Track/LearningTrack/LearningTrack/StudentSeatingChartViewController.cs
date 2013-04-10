@@ -56,6 +56,21 @@ namespace LearningTrack
 					sendSeatLocationToBackend(selectedSeat);
 				});	
 			});
+
+			//Register Listener for Javascript events.
+			this.SeatWebView.AddEventListener("seatCheckStudio", delegate(FireEventData arg) {
+				BeginInvokeOnMainThread (delegate { 
+					//verify selected seat
+					var selectedSeat =  arg.Data["selectedSeat"].ToString();
+					
+					myLabel.Text = "Logging into seat: " + selectedSeat + ". Please wait for confirmation...";
+					
+					LoadingIndicator.Hidden = false;
+					LoadingIndicator.StartAnimating();
+					
+					sendSeatLocationToBackend(selectedSeat);
+				});	
+			});
 		}
 
 		public void sendSeatLocationToBackend (string seatLocation){
@@ -94,15 +109,16 @@ namespace LearningTrack
 							}
 							//GET UPDATE ON ALL SEATS
 							//             "<------MAXIMUM----------LENGTH------>"   For label
-							myLabel.Text = "Step 1 of 3: Updating seating chart...";
+							myLabel.Text = "Step 1 of 3: Logging attendance...";
 							getAllSeats();
 						});
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 1. Try again.";
+						myLabel.Text = "Parsing error at step 1/3: logging attendance. Please try again.";
+						RefreshButton.Enabled = true;
 					}
 				}
 			});
@@ -134,15 +150,16 @@ namespace LearningTrack
 						BeginInvokeOnMainThread(delegate {						
 							//Update XML;
 							//             "<------MAXIMUM----------LENGTH------>"   For label
-							myLabel.Text = "Step 2 of 3: Matching up students...";
+							myLabel.Text = "Step 2 of 3: Updating seating chart...";
 							updateXMLPart1();
 						});
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 2. Try again.";
+						myLabel.Text = "Parsing error at step 2/3: seating update. Please try again.";
+						RefreshButton.Enabled = true;
 					}
 				}
 			});
@@ -230,15 +247,16 @@ namespace LearningTrack
 						
 						BeginInvokeOnMainThread(delegate {						
 							//             "<------MAXIMUM----------LENGTH------>"   For label
-							myLabel.Text = "Step 3 of 3: Writing to XML...";
+							myLabel.Text = "Step 3 of 3: Matching up students...";
 							updateXMLPart2();
 						});
 					}
-					catch (Exception e){
+					catch (Exception){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 3. Try again.";
+						myLabel.Text = "Parsing error at step 3/3: matching students. Please try again.";
+						RefreshButton.Enabled = true;
 					}
 				}
 			});
