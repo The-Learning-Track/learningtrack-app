@@ -54,7 +54,7 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Could not get seat INFO.", null, "OK", null)){
+					using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
 						LoadingIndicator.Hidden = true;
 						LoadingIndicator.StopAnimating();
 						RefreshButton.Enabled = true;
@@ -154,7 +154,7 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Could not get grade INFO.", null, "OK", null)){
+					using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
 						LoadingIndicator.Hidden = true;
 						LoadingIndicator.StopAnimating();
 						RefreshButton.Enabled = true;

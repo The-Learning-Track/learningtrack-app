@@ -154,6 +154,7 @@ namespace LearningTrack
 					LoadingIndicator.StopAnimating();
 					LoadingIndicator.Hidden = true;
 					ContinueButton.Enabled = true;
+					LogoutButton.Enabled = true;
 					alert.Show();
 				}
 			}
@@ -398,10 +399,11 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Could not get grade INFO.", null, "OK", null)){
+					using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
+						LogoutButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -420,6 +422,7 @@ namespace LearningTrack
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
+						LogoutButton.Enabled = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
 						myLabel.Text = "Parsing error at step 2. Try again.";
 					}
@@ -438,10 +441,11 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Could not get Course INFO.", null, "OK", null)){
+					using (var alert = new UIAlertView("Error Message", "Could not get Course INFO.", null, "OK", null)){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
+						LogoutButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -460,6 +464,7 @@ namespace LearningTrack
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
+						LogoutButton.Enabled = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
 						myLabel.Text = "Parsing error at step 3. Try again.";
 					}
@@ -478,10 +483,11 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Could not get seat INFO.", null, "OK", null)){
+					using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
+						LogoutButton.Enabled = true;
 						alert.Show();
 					}
 				}
@@ -500,6 +506,7 @@ namespace LearningTrack
 						LoadingIndicator.StopAnimating();
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
+						LogoutButton.Enabled = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
 						myLabel.Text = "Parsing error at step 4. Try again.";
 					}
