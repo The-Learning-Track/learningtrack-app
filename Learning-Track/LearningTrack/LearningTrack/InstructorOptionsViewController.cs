@@ -28,6 +28,8 @@ namespace LearningTrack
 			base.ViewDidLoad ();
 			LoadingIndicator.Hidden = true;
 			LoadingIndicator.StopAnimating();
+			ClearSeatsButton.Enabled = true;
+			changeClassButton.Enabled = true;
 			myLabel.Text = "";
 
 			changeClassButton.TouchUpInside += (sender, e) =>
@@ -70,6 +72,8 @@ namespace LearningTrack
 				//Start Loading Indicator and change update label
 				LoadingIndicator.Hidden = false;
 				LoadingIndicator.StartAnimating();
+				ClearSeatsButton.Enabled = false;
+				changeClassButton.Enabled = false;
 				myLabel.Text = "Please wait for seat clearing confirmation...";
 				//Call Asynchronous Clear Seats API
 				clearSeats();
@@ -87,9 +91,11 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Login Error Message", "Could not get clear seats.", null, "OK", null)){
+					using (var alert = new UIAlertView("Error Message", "Could not get clear seats.", null, "OK", null)){
 						LoadingIndicator.Hidden = true;
 						LoadingIndicator.StopAnimating();
+						ClearSeatsButton.Enabled = true;
+						changeClassButton.Enabled = true;
 						myLabel.Text = "";
 						alert.Show();
 					}
@@ -107,6 +113,8 @@ namespace LearningTrack
 								LoadingIndicator.StopAnimating();
 								alert.Show();
 							}
+							ClearSeatsButton.Enabled = true;
+							changeClassButton.Enabled = true;
 							myLabel.Text = "";
 						}
 						else if (seatSelectResponse.success == false){
@@ -116,6 +124,8 @@ namespace LearningTrack
 								LoadingIndicator.StopAnimating();
 								alert.Show();
 							}
+							ClearSeatsButton.Enabled = true;
+							changeClassButton.Enabled = true;
 							myLabel.Text = "";
 						}
 					});
