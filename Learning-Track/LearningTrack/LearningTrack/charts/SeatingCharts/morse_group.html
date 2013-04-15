@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<center> Select Heat Map:
- <form id="somform">
-        <select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+    <center>
+ <form id="somform" style="font-size: 18px" > Select heat map: 
+        <select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
         </select>
   </form>
-    </center>
-  
-  
+  </center>
 <meta charset="utf-8" />
 <title>Morse</title>
 <link rel="stylesheet" href="Totoro-V1/reset.css" />
@@ -34,7 +32,8 @@
 
 </style>
 <script>
-var studentsArray = queryXML();
+var studentsArray = new Array();
+studentsArray = queryXML();
 var grades = GetGrades();
      function makeCheckbox(seatNum, array)
      {
@@ -87,14 +86,12 @@ var calculatedGrades = calculateGrades(grades, categoryArray);
 <body>
 
 <div class="container_16">
-<br />
-<br />
     <!-- START INTRO -->
   <div class="row">
-   <center>
-   <br /> <input onclick="checkboxSubmit(studentsArray);" type="submit" value="Compare Groups"><br />
+   <center><input style="font-size: 16px;" onclick="checkboxSubmit(studentsArray);" type="submit" value="Compare Groups">
    </center>
   </div>
+      <!---
   <div class="row">
   <a style="none">
     <div id="K1" class="grid_1"><style onload="seatcolor('K1', studentsArray, grades, calculatedGrades);"></style>
@@ -232,7 +229,8 @@ var calculatedGrades = calculateGrades(grades, categoryArray);
     </div>
         </a>
     
-  </div><!-- end .row -->
+  </div> -->
+  <!-- 
    <div class="row">
   
       <a style="none">
@@ -370,7 +368,7 @@ var calculatedGrades = calculateGrades(grades, categoryArray);
     </div>
    </a>
     
-  </div><!-- end .row -->
+  </div> -->
  <div class="row">
   
     <a style="none">
@@ -1620,7 +1618,7 @@ var calculatedGrades = calculateGrades(grades, categoryArray);
     <div class="grid_16 intro">
         <h1 style="color: black;">Front of room</h1>
        <!-- <a onclick="document.location.reload(true);"> refresh </a> -->
-       <center><img src="highcharts/key.png"></center>
+       <center><img src="highcharts/newkey.jpg"></center>
            </div>
   </div>
   <!-- END INTRO -->

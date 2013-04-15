@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<center> Select Heat Map:
-  <form id="somform">
-        <select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+<center>
+  <form id="somform" style="font-size: 18px"> Select a heat map:
+        <select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
         </select>
   </form>
   </center>
@@ -32,10 +32,10 @@
 
 </style>
 <script>
-//alert('welcome to the page');
-
-var studentsArray = queryXML();
-var grades = GetGrades();
+var studentsArray = new Array();
+studentsArray = queryXML();
+var grades = new Array();
+grades = GetGrades();
  var categoryArray = new Array();
  
         categoryArray = GetCategory();
@@ -77,7 +77,6 @@ var grades = GetGrades();
     <!-- START INTRO -->
   <div class="row">
   <br />
-  <br />
  <!--
     <div class="grid_16 intro">
     	<div class="grid_4" style="background: none;">
@@ -103,7 +102,7 @@ var grades = GetGrades();
   </select>
   
   </div> -->
-  
+ <!-- 
   <div class="row">
   <a onclick="seatPopup('K1', studentsArray)" style="none">
     <div id="K1" class="grid_1"><style onload="seatcolor('K1', studentsArray, grades, calculatedGrades);"></style>
@@ -198,7 +197,8 @@ var grades = GetGrades();
     </div>
         </a>
     
-  </div><!-- end .row -->
+  </div> -->
+  <!--
    <div class="row">
   
       <a onclick="seatPopup('J1', studentsArray)"  style="none">
@@ -294,7 +294,7 @@ var grades = GetGrades();
     </div>
    </a>
     
-  </div><!-- end .row -->
+  </div> -->
  <div class="row">
   
     <a onclick="seatPopup('I1', studentsArray)"  style="none">
@@ -1166,7 +1166,7 @@ var grades = GetGrades();
     <div class="grid_16 intro">
         <h1 style="color: black;">Front of room</h1>
        <!-- <a onclick="document.location.reload(true);"> refresh </a> -->
-       <center><img src="highcharts/key.png"></center>
+       <center><img src="highcharts/newkey.jpg"></center>
            </div>
   </div>
   <!-- END INTRO -->

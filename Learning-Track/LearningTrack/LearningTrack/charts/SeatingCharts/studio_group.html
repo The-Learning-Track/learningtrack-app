@@ -3,7 +3,7 @@
 <head>
 <center> Select Heat Map:
  <form id="somform">
-        <select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+        <select id="sample" style="font-size: large;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
         </select>
   </form>
     </center>
@@ -43,8 +43,10 @@
 
 </style>
 <script>
-var studentsArray = queryXML();
-var grades = GetGrades();
+var studentsArray = new Array();
+studentsArray = queryXML();
+var grades = new Array();
+grades = GetGrades();
 //var studentsArray = queryXML();
      function makeCheckbox(seatNum, array)
      {
@@ -110,15 +112,15 @@ var grades = GetGrades();
   <br />
 <br />
   <a style="none"> <! 1 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 3 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
@@ -131,7 +133,7 @@ var grades = GetGrades();
   </a>
     </a> 
     <a style="none"><! 5 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
       <a onclick="" style="none"><! 6 >
@@ -143,16 +145,16 @@ var grades = GetGrades();
     </div>
   </a>
      
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 7 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 7 >
     </div>
     
-          <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 8 >
+          <div id="" class="grid_1 blank"> <p>BLANK</p><! 8 >
     </div>
    
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 9 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 9 >
     </div>
     
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 10 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 10 >
     </div>
 
       <a onclick="" style="none"><! 11 >
@@ -164,7 +166,7 @@ var grades = GetGrades();
     </div>
   </a>
   
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 12 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 12 >
     </div>
     
       <a onclick="" style="none"><! 13 >
@@ -176,21 +178,21 @@ var grades = GetGrades();
     </div>
   </a>
 
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 14 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 14 >
     </div>
-            <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 15 >
+            <div id="" class="grid_1 blank"> <p>BLANK</p><! 15 >
     </div>
 
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 16 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 16 >
     </div>
 </div>
      <div class="row"> <!--============================ BEGIN ROW 2===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
@@ -202,15 +204,15 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
@@ -222,11 +224,11 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
@@ -237,15 +239,15 @@ var grades = GetGrades();
       <p><script>seatName('B9', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
@@ -256,158 +258,158 @@ var grades = GetGrades();
       <p><script>seatName('B3', studentsArray);</script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
        <div class="row"> <!--============================ blank row between 2 & 3 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
      <div class="row"> <!--============================ blank row between 2 & 3 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"></div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"></div>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
 
  <div class="row"> <! ===================== 3RD ROW ================================>
    <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
@@ -419,15 +421,15 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
@@ -439,11 +441,11 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
@@ -454,15 +456,15 @@ var grades = GetGrades();
       <p><script>seatName('B8', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
@@ -473,24 +475,24 @@ var grades = GetGrades();
       <p><script>seatName('B4', studentsArray);</script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>  
      </div><!-- end .row -->
  <div class="row"><! ===================== 4TH ROW ================================>
     <a style="none"><! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 3 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
     <a onclick=""  style="none"> <! 4 -->
@@ -515,19 +517,19 @@ var grades = GetGrades();
       <p><script>seatName('A5', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 7 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
         <a style="none"><! 10 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
         <a onclick=""  style="none"> <! 11 -->
@@ -552,15 +554,15 @@ var grades = GetGrades();
       <p><script>seatName('B5', studentsArray);</script></p>
     </div></a>
             <a style="none"><! 14 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
     
@@ -568,20 +570,20 @@ var grades = GetGrades();
     
   </div><!-- end .row -->
  <div class="row"> <! ============== ROW 5 ====================>
-        <div id="K1" class="grid_16 blank"> <p>BLANK</p> </div>
+        <div id="" class="grid_16 blank"> <p>BLANK</p> </div>
   </div><!-- end .row -->
  <div class="row"> <! ============= ROW 6 =====================>
         
   <a style="none"> <! 1 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 3 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
@@ -594,7 +596,7 @@ var grades = GetGrades();
   </a>
     </a> 
     <a style="none"><! 5 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
       <a onclick="" style="none"><! 6 >
@@ -606,16 +608,16 @@ var grades = GetGrades();
     </div>
   </a>
      
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 7 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 7 >
     </div>
     
-          <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 8 >
+          <div id="" class="grid_1 blank"> <p>BLANK</p><! 8 >
     </div>
    
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 9 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 9 >
     </div>
     
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 10 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 10 >
     </div>
 
       <a onclick="" style="none"><! 11 >
@@ -627,7 +629,7 @@ var grades = GetGrades();
     </div>
   </a>
   
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 12 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 12 >
     </div>
     
       <a onclick="" style="none"><! 13 >
@@ -639,23 +641,23 @@ var grades = GetGrades();
     </div>
   </a>
 
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 14 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 14 >
     </div>
-            <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 15 >
+            <div id="" class="grid_1 blank"> <p>BLANK</p><! 15 >
     </div>
 
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 16 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 16 >
     </div>
 
   </div><!-- end .row -->
   
  <div class="row"> <! ============= ROW 7 =====================>
             <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
@@ -667,15 +669,15 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
@@ -687,11 +689,11 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
@@ -702,15 +704,15 @@ var grades = GetGrades();
       <p><script>seatName('D9', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
@@ -721,158 +723,158 @@ var grades = GetGrades();
       <p><script>seatName('D3', studentsArray);</script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
     <div class="row"> <!--============================ blank row between 7 & 8 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
      <div class="row"> <!--============================ blank row between 7 & 8 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
         <a style="none"><! 12 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
 
  <div class="row"><! ============= ROW 8 =====================>
    <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
@@ -884,15 +886,15 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
@@ -904,11 +906,11 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
@@ -919,15 +921,15 @@ var grades = GetGrades();
       <p><script>seatName('D8', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
@@ -938,26 +940,26 @@ var grades = GetGrades();
       <p><script>seatName('D4', studentsArray);</script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>  
 
     </div><!-- end .row -->
   
  <div class="row"><! ============= ROW 9 =====================>
           <a style="none"><! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 3 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
     <a onclick=""  style="none"> <! 4 -->
@@ -982,19 +984,19 @@ var grades = GetGrades();
       <p><script>seatName('C5', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 7 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
         <a style="none"><! 10 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
         <a onclick=""  style="none"> <! 11 -->
@@ -1019,33 +1021,33 @@ var grades = GetGrades();
       <p><script>seatName('D5', studentsArray);</script></p>
     </div></a>
             <a style="none"><! 14 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
 
   </div><!-- end .row -->
  <div class="row"> <! ============== ROW 10 ====================>
-        <div id="K1" class="grid_16 blank"> <p>BLANK</p> </div>
+        <div id="" class="grid_16 blank"> <p>BLANK</p> </div>
   </div><!-- end .row -->
  <div class="row"><! ============= ROW 11 =====================>
     <a style="none"> <! 1 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 3 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
@@ -1058,7 +1060,7 @@ var grades = GetGrades();
   </a>
     </a> 
     <a style="none"><! 5 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
       <a onclick="" style="none"><! 6 >
@@ -1070,16 +1072,16 @@ var grades = GetGrades();
     </div>
   </a>
      
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 7 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 7 >
     </div>
     
-          <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 8 >
+          <div id="" class="grid_1 blank"> <p>BLANK</p><! 8 >
     </div>
    
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 9 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 9 >
     </div>
     
-      <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 10 >
+      <div id="" class="grid_1 blank"> <p>BLANK</p><! 10 >
     </div>
 
       <a onclick="" style="none"><! 11 >
@@ -1091,7 +1093,7 @@ var grades = GetGrades();
     </div>
   </a>
   
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 12 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 12 >
     </div>
     
       <a onclick="" style="none"><! 13 >
@@ -1103,22 +1105,22 @@ var grades = GetGrades();
     </div>
   </a>
 
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 14 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 14 >
     </div>
-            <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 15 >
+            <div id="" class="grid_1 blank"> <p>BLANK</p><! 15 >
     </div>
 
-        <div id="K1" class="grid_1 blank"> <p>BLANK</p><! 16 >
+        <div id="" class="grid_1 blank"> <p>BLANK</p><! 16 >
     </div>
         
   </div><!-- end .row -->
    <div class="row"> <! ============= ROW 12 =====================>
             <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
@@ -1130,15 +1132,15 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
@@ -1150,11 +1152,11 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
@@ -1165,15 +1167,15 @@ var grades = GetGrades();
       <p><script>seatName('F9', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
@@ -1184,158 +1186,158 @@ var grades = GetGrades();
       <p><script>seatName('F3', studentsArray);</script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
    <div class="row"> <!--============================ blank row between 12 & 13 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
      <div class="row"> <!--============================ blank row between 7 & 8 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
 
  <div class="row"><! ============= ROW 13 =====================>
    <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a onclick=""  style="none"> <! 3 -->
@@ -1347,15 +1349,15 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
@@ -1367,11 +1369,11 @@ var grades = GetGrades();
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
@@ -1382,15 +1384,15 @@ var grades = GetGrades();
       <p><script>seatName('F8', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a onclick=""  style="none"> <! 14 -->
@@ -1401,26 +1403,26 @@ var grades = GetGrades();
       <p><script>seatName('F4', studentsArray);</script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>  
 
     </div><!-- end .row -->
   
  <div class="row"><! ============= ROW 14 =====================>
           <a style="none"><! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 3 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
     <a onclick=""  style="none"> <! 4 -->
@@ -1445,19 +1447,19 @@ var grades = GetGrades();
       <p><script>seatName('E5', studentsArray);</script></p>
     </div></a>
         <a style="none"><! 7 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
         <a style="none"><! 10 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
         <a onclick=""  style="none"> <! 11 -->
@@ -1482,91 +1484,91 @@ var grades = GetGrades();
       <p><script>seatName('F5', studentsArray);</script></p>
     </div></a>
             <a style="none"><! 14 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
 
   </div><!-- end .row -->
    <div class="row"> <!--============================ blank row between 15 & 16 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
    <div class="row"> <! ============= ROW 16 =====================>
         
     <a style="none"><! 1 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a onclick = "" style="none"> <! 2 >
@@ -1578,7 +1580,7 @@ var grades = GetGrades();
     </div>
   </a> 
     <a style="none"><! 3 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a onclick="" style="none"><! 4 >
@@ -1591,7 +1593,7 @@ var grades = GetGrades();
   </a>
     </a> 
     <a style="none"><! 5 >
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 6 >
@@ -1666,7 +1668,7 @@ var grades = GetGrades();
     </a>
     
      <a onclick=""  style="none"> <! 2>
-    <div id="A2" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A2', studentsArray);
     </script> 
@@ -1675,7 +1677,7 @@ var grades = GetGrades();
    </a>
    
     <a onclick=""  style="none"><! 3>
-    <div id="A3" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A3', studentsArray);
     </script> 
@@ -1684,7 +1686,7 @@ var grades = GetGrades();
   </a>
   
     <a onclick=""  style="none"><! 4>
-    <div id="A4" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A4', studentsArray);
     </script> 
@@ -1694,7 +1696,7 @@ var grades = GetGrades();
   
   
     <a onclick=""  style="none"><! 5>
-    <div id="G3" class="grid_1"><style onload="seatcolor('G3', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1"><style onload="seatcolor('G3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('G3', studentsArray);
     </script> 
@@ -1703,7 +1705,7 @@ var grades = GetGrades();
   </a>
     
      <a onclick=""  style="none"><! 6>
-    <div id="H9" class="grid_1"><style onload="seatcolor('H9', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1"><style onload="seatcolor('H9', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H9', studentsArray);
     </script> 
@@ -1712,7 +1714,7 @@ var grades = GetGrades();
    </a>
    
     <a onclick=""  style="none"><! 7>
-    <div id="A6" class="grid_1 blank"><style onload="seatcolor('A6', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A6', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A6', studentsArray);
     </script> 
@@ -1721,7 +1723,7 @@ var grades = GetGrades();
   </a>
   
     <a onclick=""  style="none"> <! 8>
-    <div id="A7" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A7', studentsArray);
     </script> 
@@ -1730,7 +1732,7 @@ var grades = GetGrades();
   </a>
   
       <a onclick=""  style="none"><! 9>
-    <div id="A8" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A8', studentsArray);
     </script> 
@@ -1767,7 +1769,7 @@ var grades = GetGrades();
   </a>
     
      <a onclick=""  style="none"> <! 13>
-    <div id="A11" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A11', studentsArray);
     </script> 
@@ -1776,7 +1778,7 @@ var grades = GetGrades();
    </a>
   
       <a onclick=""  style="none"><! 14>
-    <div id="A12" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray, grades, calculatedGrades);"></style>
+    <div id="A" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A12', studentsArray);
     </script> 
@@ -1785,7 +1787,7 @@ var grades = GetGrades();
     </a>
     
      <a onclick=""  style="none"><! 15>
-    <div id="A13" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A13', studentsArray);
     </script> 
@@ -1805,132 +1807,132 @@ var grades = GetGrades();
   </div><!-- end .row -->
      <div class="row"> <!--============================ blank row between 17 & 18 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
        <a style="none"> <! 3 -->
-    <div id="A9" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p></p>
     </div>
    </a>
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
      <a style="none"><! 9 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a>
        <a onclick=""  style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 16 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
 
   </div><!-- end .row -->
    <div class="row"> <!--============================ blank row between 17 & 18 ===================================-->
   <a style="none"> <! 1 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 2 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
   </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
     <a style="none"><! 4 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 5 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 6 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a onclick=""  style="none"> <! 7 -->
-    <div id="A3" class="grid_1 blank">
+    <div id="" class="grid_1 blank">
       <p><script></script></p>
     </div>
    </a>
     <a style="none"><! 8 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
+    <div id="" class="grid_1" style="position: absolute; width: 5px; height: 5px; overflow: visible;"><div class="circle"> </div>
     </div>
     </a> 
        <a onclick=""  style="none"> <! 10 -->
-    <div id="B9" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
         <a style="none"><! 11 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 13 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
    <a  style="none"> <! 14 -->
-    <div id="B3" class="grid_1 blank"><style></style>
+    <div id="" class="grid_1 blank"><style></style>
       <p><script></script></p>
     </div></a>
      <a style="none"><! 15 -->
-    <div id="K1" class="grid_1 blank"> <p>BLANK</p>
+    <div id="" class="grid_1 blank"> <p>BLANK</p>
     </div>
     </a> 
     <a style="none"><! 12 -->
@@ -1952,7 +1954,7 @@ var grades = GetGrades();
     </a>
     
      <a onclick=""  style="none"><! 2>
-    <div id="A2" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A2', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A2', studentsArray);
     </script> 
@@ -1961,7 +1963,7 @@ var grades = GetGrades();
    </a>
    
     <a onclick=""  style="none"><! 3>
-    <div id="A3" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A3', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A3', studentsArray);
     </script> 
@@ -1970,7 +1972,7 @@ var grades = GetGrades();
   </a>
   
     <a onclick=""  style="none"><! 4>
-    <div id="A4" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('A4', studentsArray);
     </script> 
@@ -1997,25 +1999,25 @@ var grades = GetGrades();
    </a>
    
     <a onclick=""  style="none"><! 7>
-    <div id="H8" class="grid_1 blank"><style onload="seatcolor('H8', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('H8', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('H8', studentsArray);</script></p>
     </div>
   </a>
   
     <a onclick=""  style="none"><! 8>
-    <div id="A7" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A7', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A7', studentsArray);</script></p>
     </div>
   </a>
   
       <a onclick=""  style="none"><! 9>
-    <div id="A8" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A8', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A8', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"><! 10>
-    <div id="H4" class="grid_1"><style onload="seatcolor('H4', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1"><style onload="seatcolor('H4', studentsArray, grades, calculatedGrades);"></style>
         <script>
 	    makeCheckbox('H4', studentsArray);
     </script> 
@@ -2024,7 +2026,7 @@ var grades = GetGrades();
    </a>
    
       <a onclick=""  style="none"><! 11>
-    <div id="H4" class="grid_1 blank"><style onload="seatcolor('H4', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('H4', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('H4', studentsArray);</script></p>
     </div>
     </a>
@@ -2039,19 +2041,19 @@ var grades = GetGrades();
   </a>
   
      <a onclick=""  style="none"><! 13>
-    <div id="I8" class="grid_1 blank"><style onload="seatcolor('I8', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('I8', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('I8', studentsArray);</script></p>
     </div>
    </a>
   
       <a onclick=""  style="none"><! 14>
-    <div id="A12" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A12', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A12', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"><! 15>
-    <div id="A13" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A13', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A13', studentsArray);</script></p>
     </div>
    </a>
@@ -2070,7 +2072,7 @@ var grades = GetGrades();
    <div class="row">
   
       <a onclick=""  style="none"> <! 1>
-    <div id="A1" class="grid_1 blank"><style onload="seatcolor('A1', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A1', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A1', studentsArray);</script></p>
     </div>
     </a>
@@ -2103,13 +2105,13 @@ var grades = GetGrades();
   </a>
   
      <a onclick=""  style="none"> <! 5>
-    <div id="A5" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A5', studentsArray);</script></p>
     </div>
    </a>
     
      <a onclick=""  style="none"><! 6>
-    <div id="A5" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A5', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A5', studentsArray);</script></p>
     </div>
    </a>
@@ -2142,19 +2144,19 @@ var grades = GetGrades();
     </a>
     
      <a onclick=""  style="none"><! 10>
-    <div id="A9" class="grid_1 blank"><style onload="seatcolor('A9', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A9', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A9', studentsArray);</script></p>
     </div>
    </a>
    
       <a onclick=""  style="none"><! 11>
-    <div id="A10" class="grid_1 blank"><style onload="seatcolor('A10', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A10', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A10', studentsArray);</script></p>
     </div>
     </a>
     
      <a onclick=""  style="none"><! 12>
-    <div id="A11" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 blank"><style onload="seatcolor('A11', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A11', studentsArray);</script></p>
     </div>
    </a>
@@ -2187,14 +2189,14 @@ var grades = GetGrades();
    </a>
    
        <a onclick=""  style="none">
-    <div id="A14" class="grid_1 omega blank"><style onload="seatcolor('A14', studentsArray, grades, calculatedGrades);"></style>
+    <div id="" class="grid_1 omega blank"><style onload="seatcolor('A14', studentsArray, grades, calculatedGrades);"></style>
       <p><script>seatName('A14', studentsArray);</script></p>
     </div>
      </a>
     
   </div><!-- end .row -->
   
-<center><img src="highcharts/key.png"></center>
+<center><img src="highcharts/newkey.jpg"></center>
   
 
 

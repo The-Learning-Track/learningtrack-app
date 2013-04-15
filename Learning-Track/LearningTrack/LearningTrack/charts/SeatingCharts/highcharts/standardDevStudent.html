@@ -2,7 +2,7 @@
 <html>
 	<head>
 	<form id="somform">
-	<select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	<select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
 </form>
 
@@ -145,6 +145,7 @@ $(function () {
 	});
 });	
 
+/*
 if (categoryname != 'Overall'){
 	
 $(function () {
@@ -226,6 +227,7 @@ function End(studentGrades)
 	return (slope*(studentGrades.length-1)) + studentGrades[0];
 }
 }
+*/
 		</script>
 	</head>
 	<body>
@@ -237,9 +239,7 @@ function End(studentGrades)
 	//myselect.add(new Option("Homework", "Homework"));
 	//myselect
 </script>
-<div id="container" style="width: 700px; height: 400px; margin: 0 auto; border-bottom: solid gray 1px"></div>
-	<br /> <br />
-<div id="container2" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+<div id="container" style="width: 900px; height: 600px; margin: 0 auto; border-bottom: solid gray 1px"></div>
 
 	</body>
 </html>

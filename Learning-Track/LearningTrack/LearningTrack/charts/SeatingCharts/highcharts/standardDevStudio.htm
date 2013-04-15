@@ -3,9 +3,9 @@
 	<head>
 	<!-- <button onclick="updateGraph();">Update</button> -->
 	<form id="somform">
-	<select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	<select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-	<a href="..\studio.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: small; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
+	<a href="..\studio.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: large; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
 </form>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -168,99 +168,16 @@ $(function () {
 	});
 });	
 
-if (categoryname != 'Overall'){
-	
-$(function () {
-    var studGrades = new Array();
-    studGrades=GetGrades();
-   var seatnumbers = new Array();
-   seatnumbers = GetSeats();
-   var studentID = FindSeat(seatnum, seatnumbers);
-   var homeworkArray = new Array();
-   homeworkArray = FilterGrades(studentID, categoryname, studGrades);
-   var numberarray = getNumbers(homeworkArray);
-   assignmentsArray = GetAssignment();
-	var assignmentnames = AssignmentsNames(assignmentsArray, categoryname);
-	var length1 = assignmentnames.length;
-
-
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container2'
-            },
-            xAxis: {
-                categories: assignmentnames,
-            	title: {text: 'Assignment Names'},
-            	max: length1-1
-                //min: 0
-                //max: 5.5
-            },
-            yAxis: {
-                min: 0,
-                title: {text: 'Grades by points earned'}
-            },
-            title: {
-                text: 'Grade Trend in ' + categoryname
-            },
-            series: [{
-                type: 'line',
-                name: 'Grade Trend',
-                data: [[0,Start(numberarray)], [numberarray.length,End(numberarray)]],
-                marker: {
-                    enabled: false
-                },
-                states: {
-                    hover: {
-                        lineWidth: 0
-                    }
-                },
-                enableMouseTracking: false
-            }, {
-                type: 'scatter',
-                name: 'Grade Average',
-                data: numberarray,
-                marker: {
-                    radius: 4
-                }
-            }]
-        });
-    });
-    
-});
-
-function Start(studentGrades)
-{	
-	var sum = 0;
-	for (var ii = 0; ii < studentGrades.length; ii++){
-		sum += studentGrades[ii];
-	}
-	var average = sum/studentGrades.length;
-	return average;
-}
-
-function End(studentGrades)
-{
-	//y = mx+ b, m is slope, x is studentGrades.length, b is initial value, return y	
-	var slope = (studentGrades[studentGrades.length-1] - studentGrades[0])/(studentGrades.length - 0);
-	
-	return (slope*(studentGrades.length-1)) + studentGrades[0];
-}
-}
 		</script>
 	</head>
 	<body>
 <script src="highcharts.js"></script>
 <script src="highcharts-more.js"></script>
 <script type="text/javascript">
-	//var name = categoryArray[0].name;
-	//alert(name);
-	//myselect.add(new Option("Homework", "Homework"));
-	//myselect
+
 </script>
-<div id="container" style="width: 700px; height: 400px; margin: 0 auto; border-bottom: solid gray 1px"></div>
-	<br /> <br />
-<div id="container2" style="width: 700px; height: 400px; margin: 0 auto;"></div>
+<div id="container" style="width: 900px; height: 600px; margin: 0 auto; border-bottom: solid gray 1px"></div>
+
 
 	</body>
 </html>

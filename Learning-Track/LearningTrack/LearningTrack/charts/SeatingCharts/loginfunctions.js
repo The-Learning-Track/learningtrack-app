@@ -114,11 +114,16 @@ x=document.getElementById(id);  //Find the element
 function seatTakenName(id, array){
 	var seatnumber = studentSeatfromURL();
 	var taken = currentStudentID(studentsArray);
+	var notEmpty = getSeatIndex(id, array);
 	if (taken == id)
 	{
 		x=document.getElementById(id);  //Find the element 
 		x.style.background="green";
 		document.write("You");
+	}
+	else if (notEmpty != null)
+	{
+		document.write("Taken");
 	}
 	else
 	{

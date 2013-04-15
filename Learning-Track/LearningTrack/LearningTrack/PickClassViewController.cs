@@ -112,7 +112,7 @@ namespace LearningTrack
 
 		public void WaitThenDismiss()
 		{
-			pause.Interval = 3000;
+			pause.Interval = 5000;
 			pause.AutoReset = false;
 			pause.Elapsed += new ElapsedEventHandler(pause_Elapsed);
 			pause.Start();
@@ -170,8 +170,43 @@ namespace LearningTrack
 
 		protected void CreateTableItems ()
 		{
-			//Add table items from list to table
-			classTable.Source = new PickClassTableSource(myCourses.courseNames.ToArray(), this);
+			try{
+				//Add table items from list to table
+				classTable.Source = new PickClassTableSource(myCourses.courseNames.ToArray(), this);
+			}
+			catch (Exception){
+				getCourses();
+				//Add table items from list to table
+				classTable.Source = new PickClassTableSource(myCourses.courseNames.ToArray(), this);
+			}
+		}
+
+		public void getCourses(){
+			//BU WEBLOGIN - ASYNCHRONOUS CALL
+			var webloginConnection = new BUWebloginConnection ();
+			//var url = new NSUrl ("http://www.bu.edu/phpbin/test/protected/stops.json");
+			var url = new NSUrl ("http://www-devl.bu.edu/link/bin/uiscgi_the_learning_track_cbr.pl?operation=getCourses");
+			var request = new NSUrlRequest (url);
+			
+			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
+				if (data == null){
+					//display error alert message
+					using (var alert = new UIAlertView("Login Error Message", "Authentication Fail.\nPlease try again.", null, "OK", null)){
+						myLabel.Text = "";
+						alert.Show();
+					}
+				}
+				else if (data.Length > 0) {
+					try{
+						//Upon successful authentication PARSE DATA
+						myCourses = JsonConvert.DeserializeObject<ClassList>(data.ToString());
+					}
+					catch (Exception){
+						//keep on trying until you get it
+						getCourses();
+					}
+				}
+			});
 		}
 
 		public string getSelectedCourseID (int selectedRow)
@@ -183,6 +218,7 @@ namespace LearningTrack
 
 		// selectedRow determines the seating chart to be displayed
 		public void setSelectedRow (int row){
+			//This is set from PickClassTableSource.cs
 			selectedRow = row;	
 		}
 
@@ -404,6 +440,7 @@ namespace LearningTrack
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
 						LogoutButton.Enabled = true;
+						myLabel.Text = "Please try again.";
 						alert.Show();
 					}
 				}
@@ -446,6 +483,7 @@ namespace LearningTrack
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
 						LogoutButton.Enabled = true;
+						myLabel.Text = "Please try again.";
 						alert.Show();
 					}
 				}
@@ -488,6 +526,7 @@ namespace LearningTrack
 						LoadingIndicator.Hidden = true;
 						ContinueButton.Enabled = true;
 						LogoutButton.Enabled = true;
+						myLabel.Text = "Please try again.";
 						alert.Show();
 					}
 				}

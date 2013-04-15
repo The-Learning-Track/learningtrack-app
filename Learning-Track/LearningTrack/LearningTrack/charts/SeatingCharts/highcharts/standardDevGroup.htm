@@ -2,35 +2,27 @@
 <html>
 	<head>
 	<form id="somform">
-	<select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	<select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-	<select id="students" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	<select id="students" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-	<a href="..\morse_group.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: small; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
+	<a href="..\morse_group.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: large; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
 </form>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="graphFunctions.js"></script>
 		<script type="text/javascript">	
-		//alert('Welcome to your shitty graphing page');
 	/* ===== QUERY THE GRADE SHEET AND GET ALL STUDENTS GRADES ======= */	
-	//alert('Next, it should query for grades');
 	var getGrades = GetGrades();
-	//alert('Congrats!! You queried grades!!');
-	//alert('Next, you should query assignments!');
 	var getAssignments = GetAssignment();
-	//alert('CONGRATS!!!!!!!!!!!!! YOU QUERIED ASSIGNMENTS!!!!!!');
 	/* ===== END OF QUERYING ==========================================*/
 	
 	/* ========= GET ALL THE CATEGORIES TO MAKE INTO THE MENU ============ */
 	var myselect = document.getElementById("sample");
 	var studentselect = document.getElementById("students");
 	var categoryArray = new Array();
-	//alert('it gets here, next it should query for categories');
 	categoryArray = GetCategory();
-	//alert('if it queried here, it should be getting categories');
-	//alert(categoryArray);
 	/* ===================================================================== */
 	
 	/* ========= GET THE PATH NAME ============ */
@@ -43,9 +35,7 @@
 	var newarray = document.URL;
 	var array1=newarray.split('group=');
 	var temp = array1[1];
-	//alert(temp);
 	var studentIDarray = temp.split(',');
-	//alert(studentIDarray[1]);
 	/* ===== END OF SPLIT ARRAY ===== */
 
 /* ===== END OF SPLIT ARRAY ===== */
@@ -60,17 +50,13 @@
 	}
 	
 	/* ====== CALCULATE GROUPS ====== */
-	//var plotit = calculateGroups(studentIDarray, categoryname, getGrades, getAssignments);
-	//alert(plotit.nameArray);
 	
 	student_URL = document.URL;
 	student_URL_2 = student_URL.split("?student=");
 	
 	for (i = 0; i < categoryArray.length; i++) //will create the drop down based on the amount of categories that there are
 	{
-		//alert(catID);
 		if (i == category){ //if it's the category that's selected in the URL
-			//var url='standardDev.htm?cat=' + i;
 			url = path + '?cat=' + i;
 			myselect.add(new Option(categoryArray[i].name, url, true, true));	}
 		else
@@ -227,91 +213,6 @@ $(function () {
 });	
 
 
-if (categoryname != 'Overall'){
-$(function () {
-    //store grades in array
-    var newarray = document.URL;
-	var array1=newarray.split('group=');
-	var temp = array1[1];
-	var studentIDarray = temp.split(',');
-	
-	student_u_id = getStudentID();
-	var student_ID = studentIDarray[student_u_id];
-
-    var studGrades = new Array();
-    studGrades=GetGrades();
-    var assignmentsArray = new Array();
-	assignmentsArray = GetAssignment();
-	var assignmentnames = AssignmentsNames(assignmentsArray, categoryname);
-	var length1 = assignmentnames.length;
-	var homeworkArray = new Array();
-   homeworkArray = FilterGrades(student_ID, categoryname, studGrades);
-   var numberarray = getNumbers(homeworkArray);
-
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container2'
-            },
-            xAxis: {
-            	
-            categories: assignmentnames,
-            	title: {text: 'Assignment names'},
-            	max: length1-1
-                //min: 0
-                //max: 5.5
-            },
-            yAxis: {
-                min: 0,
-                title: {text: 'Grades'}
-            },
-            title: {
-                text: categoryname + ' Grade Trend'
-            },
-            series: [{
-                type: 'line',
-                name: 'Grade Trend',
-                data: [[0,Start(numberarray)], [numberarray.length,End(numberarray)]],
-                marker: {
-                    enabled: false
-                },
-                states: {
-                    hover: {
-                        lineWidth: 0
-                    }
-                },
-                enableMouseTracking: false
-            }, {
-                type: 'scatter',
-                name: 'Grade Average',
-                data: numberarray,
-                marker: {
-                    radius: 4
-                }
-            }]
-        });
-    });
-    
-});
-
-function Start(studentGrades)
-{	
-	var sum = 0;
-	for (var ii = 0; ii < studentGrades.length; ii++){
-		sum += studentGrades[ii];
-	}
-	var average = sum/studentGrades.length;
-	return average;
-}
-
-function End(studentGrades)
-{
-	//y = mx+ b, m is slope, x is studentGrades.length, b is initial value, return y	
-	var slope = (studentGrades[studentGrades.length-1] - studentGrades[0])/(studentGrades.length - 0);
-	
-	return (slope*(studentGrades.length-1)) + studentGrades[0];
-}
-}
 		</script>
 	</head>
 	<body>
@@ -323,10 +224,7 @@ function End(studentGrades)
 	//myselect.add(new Option("Homework", "Homework"));
 	//myselect
 </script>
-<div id="container" style="width: 700px; height: 400px; margin: 0 auto; border-bottom: solid gray 1px"></div>
-	<br /> <br />
-
-<div id="container2" style="width: 700px; height: 400px; margin: 0 auto; border: none"></div>
+<div id="container" style="width: 900px; height: 600px; margin: 0 auto; border-bottom: solid gray 1px"></div>
 
 	</body>
 </html>

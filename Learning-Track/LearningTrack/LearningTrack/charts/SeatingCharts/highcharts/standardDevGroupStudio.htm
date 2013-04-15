@@ -2,18 +2,17 @@
 <html>
 	<head>
 	<form id="somform">
-	<select id="sample" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	<select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-	<select id="students" onchange="javascript:location.href=this.value"> <!--will update the graph -->
+	<select id="students" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-	<a href="..\studio_group.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: small; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
+	<a href="..\studio_group.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: large; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
 </form>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript" src="graphFunctions.js"></script>
 		<script type="text/javascript">	
-		//alert('Welcome to your shitty graphing page');
 	/* ===== QUERY THE GRADE SHEET AND GET ALL STUDENTS GRADES ======= */	
 	//alert('Next, it should query for grades');
 	var getGrades = GetGrades();
@@ -226,7 +225,7 @@ $(function () {
 	});
 });	
 
-
+/*
 if (categoryname != 'Overall'){
 $(function () {
     //store grades in array
@@ -312,6 +311,7 @@ function End(studentGrades)
 	return (slope*(studentGrades.length-1)) + studentGrades[0];
 }
 }
+*/
 		</script>
 	</head>
 	<body>
@@ -323,10 +323,8 @@ function End(studentGrades)
 	//myselect.add(new Option("Homework", "Homework"));
 	//myselect
 </script>
-<div id="container" style="width: 700px; height: 400px; margin: 0 auto; border-bottom: solid gray 1px"></div>
-	<br /> <br />
+<div id="container" style="width: 900px; height: 600px; margin: 0 auto; border-bottom: solid gray 1px"></div>
 
-<div id="container2" style="width: 700px; height: 400px; margin: 0 auto; border: none"></div>
 
 	</body>
 </html>

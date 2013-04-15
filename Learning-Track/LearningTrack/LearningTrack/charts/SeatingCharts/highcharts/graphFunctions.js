@@ -40,6 +40,7 @@ function standardDev(array)
         }
         var mean = calculateAverage(squares);
         var squareroot = Math.sqrt(mean);
+        squareroot = squareroot.toFixed(2);
         return squareroot;
 }
 /*===============================================================================================================*/
@@ -52,6 +53,7 @@ function calculateAverage(array)
                 sum = sum + array[i];
         }
         average = sum / array.length;
+        average = average.toFixed(2);
         return average;
 }
 /*===============================================================================================================*/
@@ -323,22 +325,7 @@ function PlotObject(cat, grades, names, ttl, x, y, sub) //this will be the objec
 
 function createPlotObject(assignmentArray, category, studArray, studID)//was studID
 {
-/*
-	seats = GetSeats();
-	for (i = 0; i < seats.length; i++)
-	{
-		if (seats[i].seatnumber == seatnum)
-		{
-			studID = seats[i].idnumber;
-			break;
-		}
-	}
-*/	
-	//var seats = new Array();
-	//seats = GetSeats();
-	//studID = FindSeat(seatnum, seats);
-	//alert('in function');
-	//alert(studID);
+
 	var cat = category;
 	var dataArray = new Array();
 	var namesArray = new Array();
@@ -364,14 +351,12 @@ function createPlotObject(assignmentArray, category, studArray, studID)//was stu
 			var temp = new Array(); //temporary array to push onto the dataArray()
 			namesArray.push(assignmentArray[i].name); //add the name of the assignment to the namesArray
 			var std = parseFloat(assignmentArray[i].std);
-			//std = std.toFixed(2);
 			var avg = parseFloat(assignmentArray[i].average);
-			//avg = avg.toFixed(2);
 			var min = parseFloat(assignmentArray[i].min);
-			//min = min.toFixed(2);
 			var max = parseFloat(assignmentArray[i].max);
-			//max = max.toFixed(2);
-			temp = [min, avg-std, studentGrade, avg+std, max, avg];
+			var neg = avg - std;
+			var pos = avg + std;
+			temp = [min, neg.toFixed(2), studentGrade, pos.toFixed(2), max, avg.toFixed(2)];
 			dataArray.push(temp);
 		}
 	}
@@ -729,6 +714,7 @@ function overallGroupStats(student_ID, student_ID_array)
 				{
 					conversion_factor = 100 / parseFloat(all_grades[k].totalPoints);
 					temp_sum_1 = temp_sum_1 + (parseFloat(all_grades[k].grade) * conversion_factor);
+					alert('total points: ' + all_grades[k].totalPoints + 'student grade: ' + all_grades[k].grade + 'conversion factor: ' + conversion_factor);
 					temp_count++;
 				}
 			}
@@ -801,7 +787,9 @@ function overallGroupStats(student_ID, student_ID_array)
 		neg_temp = neg_temp.toFixed(2);
 		var pos_temp = averages[i] + standard_dev[i];
 		pos_temp = pos_temp.toFixed(2);
-		var temparray = [categoryMin[i], neg_temp, student_Averages[i], pos_temp, categoryMax[i], averages[i]];
+		stud_avg_temp = student_Averages[i];
+		all_avgs_temp = averages[i];
+		var temparray = [categoryMin[i], neg_temp, stud_avg_temp.toFixed(2), pos_temp, categoryMax[i], all_avgs_temp.toFixed(2)];
 		dataArray.push(temparray);
 	}
 	var title = 'Overall';
@@ -988,7 +976,7 @@ function overallGroupStatsStudent(student_ID, student_ID_array)
 		neg_temp = neg_temp.toFixed(2);
 		var pos_temp = averages[i] + standard_dev[i];
 		pos_temp = pos_temp.toFixed(2);
-		var temparray = [categoryMin[i], neg_temp, student_Averages[i], pos_temp, categoryMax[i], averages[i]];
+		var temparray = [categoryMin[i], neg_temp, student_Averages[i].toFixed(2), pos_temp, categoryMax[i], averages[i].toFixed(2)];
 		dataArray.push(temparray);
 	}
 	var title = 'Overall';

@@ -202,6 +202,8 @@
     <BundleResource Include="Resources\Logo_2.png" />
     <BundleResource Include="Resources\Icon-72%402x.png" />
     <BundleResource Include="Resources\refresh_button.png" />
+    <BundleResource Include="Resources\newkey.jpg" />
+    <BundleResource Include="charts\SeatingCharts\highcharts\newkey.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="charts\highcharts.js" />
