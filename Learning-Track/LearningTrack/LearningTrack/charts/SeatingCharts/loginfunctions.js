@@ -196,6 +196,3 @@ function takeStudioSeat(id, array)
 
 
 }
-
-
-function printAlert(){alert("Hello World");}

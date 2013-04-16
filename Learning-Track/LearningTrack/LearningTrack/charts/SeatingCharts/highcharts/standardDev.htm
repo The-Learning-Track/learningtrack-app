@@ -4,8 +4,9 @@
 	<form id="somform">
 	<select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-		<a href="..\morse.html" style='border: 1px solid black; background:#C0C0C0; font-family:Arial,Helvetica,sans-serif; font-size: large; padding: 2px; color: black; text-decoration: none;'>Go Back</a>
+		<a href="..\morse.html" style='border:2px solid #a1a1a1; padding:5px 10px; text-align: center; width: 100px; background:#dddddd; border-radius:25px; text-decoration: none; color: black;  font-family:Arial,Helvetica,sans-serif;'>Go Back</a>
 	<!-- <button onclick="updateGraph();">Update</button> -->
+	<br />
 </form>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,7 +19,6 @@
 	categoryArray = GetCategory();
 	
 	var category = getCategoryID();	 //get the category ID from the URL
-	//var categoryname = categoryArray[category].name; //get the name of the category from the URL
 	if (category > categoryArray.length)
 	{
 		categoryname = 'Overall';
@@ -28,18 +28,13 @@
 	}
 	
 	/* ========= GET THE PATH NAME ============ */
-	//var url1 = document.URL;
-	//var path_pre = url1.split("?id="); //remove the category from the url
-	//var path = path_pre[0]; //this is for the category
 	
 	var pathArray = document.URL;
 	var index = pathArray.indexOf('?id=');
 	seatnum = getStudentID2();
-	//alert(seatnum);
 	
 	for (i = 0; i < categoryArray.length; i++) //will create the drop down based on the amount of categories that there are
 	{
-		//alert(catID);
 		if (i == category){ //if it's the category that's selected in the URL
 			var url='standardDev.htm?id='+seatnum+'?cat=' + i;
 			myselect.add(new Option(categoryArray[i].name, url, true, true));	}
@@ -114,9 +109,6 @@ $(function () {
 	
 	}
 	 
-	 //alert(plotObject.dataArray);
-	 
-	 //plotObject=createPlotObject(assignmentsArray, 'Homework', randomarray);
 	            
     $('#container').highcharts({
 
@@ -138,7 +130,6 @@ $(function () {
 	
 	    xAxis: {
 	        categories: plotObject.nameArray, 
-	        //['Hi', '2', '3'], //changes
 	        title: {
 	            text: plotObject.xAxis
 	        }
@@ -154,13 +145,6 @@ $(function () {
 	    series: [{
 	        name: 'Scores',
 	        data: plotObject.dataArray,
-	         //arrayofarray, 
-	        	//[
-                //MIN,-σ,STUDENTSCORE,+σ,MAX,AVERAGE
-	           //[76, 80, 88, 89, 96, 88],
-	           //[73, 85, 93, 98, 100, 88],
-	            //[71, 76, 81, 87, 91, 72]
-	        //],
 	        tooltip: {
 	            headerFormat: ''
 	        }

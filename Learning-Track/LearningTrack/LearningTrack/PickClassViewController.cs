@@ -176,8 +176,6 @@ namespace LearningTrack
 			}
 			catch (Exception){
 				getCourses();
-				//Add table items from list to table
-				classTable.Source = new PickClassTableSource(myCourses.courseNames.ToArray(), this);
 			}
 		}
 
@@ -200,6 +198,12 @@ namespace LearningTrack
 					try{
 						//Upon successful authentication PARSE DATA
 						myCourses = JsonConvert.DeserializeObject<ClassList>(data.ToString());
+
+						BeginInvokeOnMainThread(delegate {						
+							//Add table items from list to table
+							classTable.Source = new PickClassTableSource(myCourses.courseNames.ToArray(), this);
+						});	
+
 					}
 					catch (Exception){
 						//keep on trying until you get it

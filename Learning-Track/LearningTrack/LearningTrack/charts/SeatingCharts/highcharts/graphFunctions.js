@@ -59,7 +59,7 @@ function calculateAverage(array)
 /*===============================================================================================================*/
 function GetGrades() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
-	//alert("getting to the graph Functions")
+	
 	var studArray = new Array(); //initiat;e the array for it to return
 	if (window.XMLHttpRequest)
 		{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -93,10 +93,10 @@ function GetGrades() //this function will query the appropriate XML file and ret
 					
 		}
 
-			//alert("Grade 1: " + studArray[0].grade + " Student ID: " + studArray[0].studentID);
+
 
 	return studArray;
-		//alert(y);
+	
 		
 }//end function parenthesis
 /*===============================================================================================================*/
@@ -133,11 +133,10 @@ function GetSeats() //this function will query the appropriate XML file and retu
 				);
 					
 		}
-		//alert("seat " + studArray[1].seatnumber);
-			//alert("Grade 1: " + studArray[3].grade + " Student ID: " + studArray[2].studentID);
+		
 
 	return studArray;
-		//alert(y);
+	
 		
 }//end function parenthesis
 
@@ -252,10 +251,10 @@ function GetCategory() //this function will query the appropriate XML file and r
 					
 		}
 
-			//alert("Grade 1: " + categoryArray[0].name + " Student ID: " + categoryArray[0].std);
+			
 
 	return categoryArray;
-		//alert(y);
+		
 		
 }//end function parenthesis
 
@@ -263,7 +262,7 @@ function GetCategory() //this function will query the appropriate XML file and r
 
 function GetAssignment() //this function will query the appropriate XML file and return the array of JavaScript objects
 { //begin function
-	//alert("welcome to the get assignment function!");
+
 	var assignmentArray = new Array(); //initiate the array for it to return
 	if (window.XMLHttpRequest)
 		{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -282,11 +281,8 @@ function GetAssignment() //this function will query the appropriate XML file and
 		xmlhttp.send();
 		xmlDoc=xmlhttp.responseXML; 
 		var x=xmlDoc.getElementsByTagName("ASSIGNMENT");
-		//alert("you are here.");
-		//var y=xmlDoc.getElementsByTagName("seatLocation")[1].childNodes[0].nodeValue;
 		for (i=0;i<x.length;i++)
 		{ 	
-			//alert("in for loop");
 			//constructor for the objects that represent whether a seat is taken
 				assignmentArray[i]=new Assignments(
 				x[i].getElementsByTagName("assignmentName")[0].childNodes[0].nodeValue,
@@ -301,7 +297,6 @@ function GetAssignment() //this function will query the appropriate XML file and
 		}
 
 	return assignmentArray;
-		//alert(y);
 		
 }//end function parenthesis
 
@@ -340,7 +335,7 @@ function createPlotObject(assignmentArray, category, studArray, studID)//was stu
 				if ((studArray[j].assignmentName == assignmentArray[i].name) && (studArray[j].studentID == studID))
 				{
 					studentGrade = parseFloat(studArray[j].grade);
-					//alert(studentGrade);
+					
 					break;
 				}
 				else
@@ -409,14 +404,13 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 	for (j = 0; j < assignmentNames.length; j++)
 	{
 		tempname = assignmentNames[j];
-		//alert(tempname);
 		for (i = 0; i < gradeArray.length; i++)
 		{
-			//alert(gradeArray[i].assigmentName);
+			//
 			if ((gradeArray[i].assignmentName == tempname) && (gradeArray[i].studentID == studentID))
 			{
 				individGradeArray.push(gradeArray[i].grade);
-				//alert(gradeArray[i].grade);
+				
 			}
 		}
 	}
@@ -441,11 +435,9 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 				//loop through grade Array
 					for (l = 0; l < gradeArray.length; l++)
 					{
-						//alert(gradeArray[l].studentID);
 						if ((gradeArray[l].studentID == temp_id) && gradeArray[l].assignmentName == temp_assignment)
 						{
 							temp_grade_array.push(gradeArray[l].grade);	
-							//alert(gradeArray[l].grade);
 						}
 					}
 				
@@ -471,7 +463,7 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 		var temp_average = sum / temp_length;
 		average.push(temp_average);
 	}
-	//alert(average);
+
 	
 	/* ====== CALCULATE THE STANDARD DEVIATION ======== */
 	var standard_dev = new Array();
@@ -484,10 +476,7 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 		var tempsqrt;
 		for (j = 0; j < groupassignment[i].length; j++)
 		{
-			//alert(temp_avg);
-			//alert(groupassignment[i][j]);
 			var temp = parseFloat(groupassignment[i][j]) - temp_avg;
-			//alert(groupassignment[i][j] + '- ' + temp_avg + ' =' + temp);
 			var pow = Math.pow(temp, 2);
 			temp_new_avg.push(pow);
 			
@@ -495,12 +484,9 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 		for (k = 0; k < temp_new_avg.length; k++)
 		{
 			temp_sum = temp_sum + temp_new_avg[k];
-			//alert('Sum of:' temp_sum);
 		}
-		temp_sum = temp_sum / groupassignment[i].length;
-		//alert(groupassignment[i].length);
+		temp_sum = temp_sum / groupassignment[i].length;;
 		tempsqrt = Math.sqrt(temp_sum);
-		//alert(tempsqrt);
 		standard_dev.push(tempsqrt);
 	}
 
@@ -508,9 +494,7 @@ function calculateGroups(id_array, category, gradeArray, getAssignments, student
 	for (i = 0; i < groupassignment.length; i++)
 	{
 		var neg_temp = average[i] - standard_dev[i];
-		//neg_temp = parseFloat(neg_temp);
 		neg_temp = neg_temp.toFixed(2);
-		//alert(neg_temp);
 		var pos_temp = average[i] + standard_dev[i];
 
 		pos_temp = pos_temp.toFixed(2);
@@ -602,7 +586,6 @@ function changeCategory()
 {
 		var myselect = document.getElementById("sample");
 		var category = myselect.options.selectedIndex;
-		//alert(category);
 		return category;
 }	
 
@@ -614,7 +597,6 @@ function goBack()
 
 /*===============================================================================================================*/
 
-//================================================================================
 //================================================================================
 function overallGroupStats(student_ID, student_ID_array)
 {
@@ -714,7 +696,7 @@ function overallGroupStats(student_ID, student_ID_array)
 				{
 					conversion_factor = 100 / parseFloat(all_grades[k].totalPoints);
 					temp_sum_1 = temp_sum_1 + (parseFloat(all_grades[k].grade) * conversion_factor);
-					alert('total points: ' + all_grades[k].totalPoints + 'student grade: ' + all_grades[k].grade + 'conversion factor: ' + conversion_factor);
+					//alert('total points: ' + all_grades[k].totalPoints + 'student grade: ' + all_grades[k].grade + 'conversion factor: ' + conversion_factor);
 					temp_count++;
 				}
 			}
@@ -766,12 +748,13 @@ function overallGroupStats(student_ID, student_ID_array)
 				var multiplier = 100 / parseFloat(all_grades[ii].totalPoints);
 				//alert(multiplier);
 				temp_stud_average = temp_stud_average + (parseFloat(all_grades[ii].grade)*multiplier);
+				//alert('total points: ' + all_grades[ii].totalPoints + 'student grade: ' + all_grades[ii].grade + 'conversion factor: ' + multiplier);
 				temp_avg_count++;
 				}
 		}
 		var finalstudentavg = temp_stud_average / temp_avg_count;
 		student_Averages.push(finalstudentavg);
-		//alert(student_Averages);
+		
 	}//end of jj loop
 	//var finalstudentavg = temp_stud_average / temp_avg_count;
 	//=====================CREATE OVERALL PERCENTAGE================================
@@ -955,6 +938,7 @@ function overallGroupStatsStudent(student_ID, student_ID_array)
 			{
 				var multiplier = 100 / parseFloat(all_grades_pre[ii].totalPoints);
 				temp_stud_average = temp_stud_average + (parseFloat(all_grades_pre[ii].grade)*multiplier);
+				//alert('assignment name: ' + all_grades_pre[ii].assignmentName + ' total points: ' + all_grades_pre[ii].totalPoints + ' student grade: ' + all_grades_pre[ii].grade + ' conversion factor: ' + multiplier);
 				temp_avg_count++;
 				}
 		}
@@ -987,4 +971,32 @@ function overallGroupStatsStudent(student_ID, student_ID_array)
 	plotobject = new PlotObject(title, dataArray, category_Names, title2, xaxis, yaxis, subtitle);
 	return plotobject;
 	
+}
+
+//====================================================================
+
+function getGroupFromURL(theURL)
+{
+    var URL2=theURL.split('?group=');
+    URL2=URL2[1].split('?cat=');
+    return URL2[0];
+}
+//====================================================================
+function getCatFromURL(theURL)
+{
+    var URL2 = theURL.split('?cat=');
+    var URL2 = URL2[1].split('?student=');
+    return URL2[0];
+}
+//====================================================================
+function getRawURL(theURL)
+{
+    URL2=theURL.split('?');
+    return URL2[0];
+}
+//====================================================================
+function getStudentIDURL(theURL)
+{
+    URL2 = theURL.split('?student=');
+    return URL2[1];
 }

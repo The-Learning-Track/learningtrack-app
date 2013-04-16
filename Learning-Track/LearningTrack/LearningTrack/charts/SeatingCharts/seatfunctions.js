@@ -346,7 +346,7 @@ function studentSeatfromURL()
 
 
 /*===============================================================================================================*/
-function checkboxSubmit(studentsArray)
+function checkboxSubmit(studentsArray) //morse classroom
 {
         var checked_array = new Array();
         var string = "?group="
@@ -358,6 +358,7 @@ function checkboxSubmit(studentsArray)
         {
                 if (chkbx[i].checked == true) //if a student seat is selected
                 {
+                		chkcount++;
                         temp = chkbx[i].value; //take the seat number and make it into a temporary variable
                         for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
                         {
@@ -368,25 +369,32 @@ function checkboxSubmit(studentsArray)
                         }
                 }
         }
-
+     if (chkcount < 2)
+     {
+     	var txtmsg = document.getElementById("error_msg");
+     	txtmsg.innerHTML="Please select 2 or more students.";
+     }
+	else{
         preurl = 'highcharts/standardDevGroup.htm'
-        url = preurl + string;
+        url = preurl + string + '?cat=0?student=0';
         window.location.href = url;
+     }
 }
 
 /*===============================================================================================================*/
 
-function checkboxSubmitGroup(studentsArray)
+function checkboxSubmitGroup(studentsArray) //this is for studio classroom
 {
 
         var checked_array = new Array();
         var string = "?group="
         var chkbx = document.getElementsByName("group");
         var category = document.getElementsByName("category");
+        var chkcount = 0;
         for (i = 0; i < chkbx.length; i++) //loop through --> THIS WILL IGNORE EMPTY SEATS
         {
                 if (chkbx[i].checked == true) //if a student seat is selected
-                {		
+                {		chkcount++;
                         temp = chkbx[i].value; //take the seat number and make it into a temporary variable
                         for (j = 0; j < studentsArray.length; j++) //go through each of the students in the Array of students in the classroom
                         {
@@ -397,10 +405,17 @@ function checkboxSubmitGroup(studentsArray)
                         }
                 }
         }
-
+	if (chkcount < 2)
+	{
+		var txtmsg = document.getElementById("error_msg");
+     	txtmsg.innerHTML="Please select 2 or more students.";
+	}
+	else
+	{
         preurl = 'highcharts/standardDevGroupStudio.htm';
-        url = preurl + string;
+        url = preurl + string + '?cat=0?student=0';
         window.location.href = url;
+    }
        
 }
 

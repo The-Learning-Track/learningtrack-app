@@ -40,7 +40,6 @@ var grades = GetGrades();
         var return1 = isTaken(seatNum, studentsArray);
     	if (return1 == true)
     	{
-    		//alert('true');
     		var checkbox = "<center><input type='checkbox' name = 'group' value='" + seatNum +"' /></center>";
     		document.write(checkbox);
 
@@ -89,6 +88,7 @@ var calculatedGrades = calculateGrades(grades, categoryArray);
     <!-- START INTRO -->
   <div class="row">
    <center><input style="font-size: 16px;" onclick="checkboxSubmit(studentsArray);" type="submit" value="Compare Groups">
+   <div id="error_msg" style="font-size: 16px; color: red;"> </div>
    </center>
   </div>
       <!---
