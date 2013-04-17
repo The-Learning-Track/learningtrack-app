@@ -3,9 +3,9 @@
 	<head>
 	<!-- <button onclick="updateGraph();">Update</button> -->
 	<form id="somform">
+	<a href="..\studio.html" style='border:2px solid #a1a1a1; padding:5px 10px; text-align: center; width: 100px; background:#dddddd; border-radius:25px; text-decoration: none; color: black;  font-family:Arial,Helvetica,sans-serif;'>Go Back</a>
 	<select id="sample" style="font-size: medium;" onchange="javascript:location.href=this.value"> <!--will update the graph -->
 	</select>
-	<a href="..\studio.html" style='border:2px solid #a1a1a1; padding:5px 10px; text-align: center; width: 100px; background:#dddddd; border-radius:25px; text-decoration: none; color: black;  font-family:Arial,Helvetica,sans-serif;'>Go Back</a>
 </form>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -40,17 +40,17 @@
 	{
 		//alert(catID);
 		if (i == category){ //if it's the category that's selected in the URL
-			var url='standardDev.htm?id='+seatnum+'?cat=' + i;
+			var url='standardDevStudio.htm?id='+seatnum+'?cat=' + i;
 			myselect.add(new Option(categoryArray[i].name, url, true, true));	}
 		else
 		{
-			var url='standardDev.htm?id='+seatnum+'?cat=' + i;
+			var url='standardDevStudio.htm?id='+seatnum+'?cat=' + i;
 			myselect.add(new Option(categoryArray[i].name, url));
 		}
 	}
 	
 	var nextoption = categoryArray.length + 1;
-	url = 'standardDev.htm?id='+seatnum+'?cat=' + nextoption;
+	url = 'standardDevStudio.htm?id='+seatnum+'?cat=' + nextoption;
 	//======= ADDS THE OVERALL OPTION TO THE MENU AND DEFAULTS IT IF THE CATEGORY MENU IS THAT OF OVERALL
 	if (category == nextoption){
 	myselect.add(new Option('Overall', url, true, true));
