@@ -22,6 +22,9 @@ namespace LearningTrack
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel myLabel { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel attendanceLabel { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -43,6 +46,11 @@ namespace LearningTrack
 			if (myLabel != null) {
 				myLabel.Dispose ();
 				myLabel = null;
+			}
+
+			if (attendanceLabel != null) {
+				attendanceLabel.Dispose ();
+				attendanceLabel = null;
 			}
 		}
 	}

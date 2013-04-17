@@ -19,6 +19,7 @@ namespace LearningTrack
 		public string userID;
 		public gradeINFO myGradeINFO;
 		public string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+		public string previousSeat = "";
 
 		public StudentSeatingChartViewController (IntPtr handle) : base (handle)
 		{
@@ -53,7 +54,10 @@ namespace LearningTrack
 					LoadingIndicator.Hidden = false;
 					LoadingIndicator.StartAnimating();
 
-					sendSeatLocationToBackend(selectedSeat);
+					if (previousSeat != selectedSeat){
+						previousSeat = selectedSeat;
+						sendSeatLocationToBackend(selectedSeat);
+					}
 				});	
 			});
 
@@ -68,7 +72,10 @@ namespace LearningTrack
 					LoadingIndicator.Hidden = false;
 					LoadingIndicator.StartAnimating();
 					
-					sendSeatLocationToBackend(selectedSeat);
+					if (previousSeat != selectedSeat){
+						previousSeat = selectedSeat;
+						sendSeatLocationToBackend(selectedSeat);
+					}
 				});	
 			});
 		}
@@ -82,9 +89,10 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Lost Connection", "Please try again.", null, "OK", null)){	
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Lost Connection", "Please try again.", null, "OK", null)){	
+					//	alert.Show();
+					//}
+					sendSeatLocationToBackend (seatLocation);
 				}
 				else if (data.Length > 0) {
 					try{
@@ -92,33 +100,37 @@ namespace LearningTrack
 						SEAT_SELECTION_RESPONSE seatSelectResponse = JsonConvert.DeserializeObject<SEAT_SELECTION_RESPONSE>(data.ToString());
 						
 						/* Update UI on main thread */
-						BeginInvokeOnMainThread(delegate {						
+						//BeginInvokeOnMainThread(delegate {						
 							if (seatSelectResponse.success == true){
 								//display error alert message
-								using (var alert = new UIAlertView("Successful Attendance", "You are seated at: " + seatLocation, null, "OK", null)){	
-									alert.Show();
-								}
+								//using (var alert = new UIAlertView("Successful Attendance", "You are seated at: " + seatLocation, null, "OK", null)){	
+								//	alert.Show();
+								//}
 								myLabel.Text = "";
+								attendanceLabel.Text = "Successful Attendance At " + seatLocation + ".";
 							}
 							else if (seatSelectResponse.success == false){
 								//display error alert message
-								using (var alert = new UIAlertView("Unsuccessful Attendance", "Please try another seat.", null, "OK", null)){	
-									alert.Show();
-								}
+								//using (var alert = new UIAlertView("Unsuccessful Attendance", "Please try another seat.", null, "OK", null)){	
+								//	alert.Show();
+								//}
 								myLabel.Text = "";
+								attendanceLabel.Text = "This Seat Is Taken. Please Try Again.";
 							}
 							//GET UPDATE ON ALL SEATS
 							//             "<------MAXIMUM----------LENGTH------>"   For label
 							myLabel.Text = "Step 1 of 3: Logging attendance...";
 							getAllSeats();
-						});
+						//});
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 1/3: logging attendance. Please try again.";
-						RefreshButton.Enabled = true;
+						//myLabel.Text = "Parsing error at step 1/3: logging attendance. Please try again.";
+						//RefreshButton.Enabled = true;
+						myLabel.Text = "Retrying Step 1 of 3: Logging attendance...";
+						sendSeatLocationToBackend (seatLocation);
 					}
 				}
 			});
@@ -135,12 +147,13 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
-						LoadingIndicator.Hidden = true;
-						LoadingIndicator.StopAnimating();
-						RefreshButton.Enabled = true;
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
+					//	LoadingIndicator.Hidden = true;
+					//	LoadingIndicator.StopAnimating();
+					//	RefreshButton.Enabled = true;
+					//	alert.Show();
+					//}
+					getAllSeats();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -155,11 +168,13 @@ namespace LearningTrack
 						});
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 2/3: seating update. Please try again.";
-						RefreshButton.Enabled = true;
+						//myLabel.Text = "Parsing error at step 2/3: seating update. Please try again.";
+						//RefreshButton.Enabled = true;
+						myLabel.Text = "Retrying Step 2 of 3: Updating seating chart...";
+						getAllSeats();
 					}
 				}
 			});
@@ -233,12 +248,13 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
-						LoadingIndicator.Hidden = true;
-						LoadingIndicator.StopAnimating();
-						RefreshButton.Enabled = true;
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
+					//	LoadingIndicator.Hidden = true;
+					//	LoadingIndicator.StopAnimating();
+					//	RefreshButton.Enabled = true;
+					//	alert.Show();
+					//}
+					updateXMLPart1();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -252,11 +268,13 @@ namespace LearningTrack
 						});
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 3/3: matching students. Please try again.";
-						RefreshButton.Enabled = true;
+						//myLabel.Text = "Parsing error at step 3/3: matching students. Please try again.";
+						//RefreshButton.Enabled = true;
+						myLabel.Text = "Retrying Step 3 of 3: Matching up students...";
+						updateXMLPart1();
 					}
 				}
 			});

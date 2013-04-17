@@ -439,14 +439,15 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
-						ContinueButton.Enabled = true;
-						LogoutButton.Enabled = true;
-						myLabel.Text = "Please try again.";
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
+					//	LoadingIndicator.StopAnimating();
+					//	LoadingIndicator.Hidden = true;
+					//	ContinueButton.Enabled = true;
+					//	LogoutButton.Enabled = true;
+					//	myLabel.Text = "Please try again.";
+					//	alert.Show();
+					//}
+					getGrades();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -460,12 +461,14 @@ namespace LearningTrack
 						});	
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
-						ContinueButton.Enabled = true;
-						LogoutButton.Enabled = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
+						//ContinueButton.Enabled = true;
+						//LogoutButton.Enabled = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 2. Try again.";
+						//myLabel.Text = "Parsing error at step 2. Try again.";
+						myLabel.Text = "Retrying Step 2 of 5: Getting Course Info...";
+						getGrades();
 					}
 				}
 			});
@@ -482,14 +485,15 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get Course INFO.", null, "OK", null)){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
-						ContinueButton.Enabled = true;
-						LogoutButton.Enabled = true;
-						myLabel.Text = "Please try again.";
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get Course INFO.", null, "OK", null)){
+					//	LoadingIndicator.StopAnimating();
+					//	LoadingIndicator.Hidden = true;
+					//	ContinueButton.Enabled = true;
+					//	LogoutButton.Enabled = true;
+					//	myLabel.Text = "Please try again.";
+					//	alert.Show();
+					//}
+					getCourseInfo();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -503,12 +507,14 @@ namespace LearningTrack
 						});	
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
-						ContinueButton.Enabled = true;
-						LogoutButton.Enabled = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
+						//ContinueButton.Enabled = true;
+						//LogoutButton.Enabled = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 3. Try again.";
+						//myLabel.Text = "Parsing error at step 3. Try again.";
+						myLabel.Text = "Retrying Step 3 of 5: Getting Seating Info...";
+						getCourseInfo();
 					}
 				}
 			});
@@ -525,14 +531,15 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
-						ContinueButton.Enabled = true;
-						LogoutButton.Enabled = true;
-						myLabel.Text = "Please try again.";
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
+					//	LoadingIndicator.StopAnimating();
+					//	LoadingIndicator.Hidden = true;
+					//	ContinueButton.Enabled = true;
+					//	LogoutButton.Enabled = true;
+					//	myLabel.Text = "Please try again.";
+					//	alert.Show();
+					//}
+					getSeats();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -546,12 +553,14 @@ namespace LearningTrack
 						});
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
-						ContinueButton.Enabled = true;
-						LogoutButton.Enabled = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
+						//ContinueButton.Enabled = true;
+						//LogoutButton.Enabled = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 4. Try again.";
+						//myLabel.Text = "Parsing error at step 4. Try again.";
+						myLabel.Text = "Retrying Step 4 of 5: Parsing data...";			
+						getSeats();
 					}
 				}
 			});

@@ -54,12 +54,13 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
-						LoadingIndicator.Hidden = true;
-						LoadingIndicator.StopAnimating();
-						RefreshButton.Enabled = true;
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get seat INFO.", null, "OK", null)){
+					//	LoadingIndicator.Hidden = true;
+					//	LoadingIndicator.StopAnimating();
+					//	RefreshButton.Enabled = true;
+					//	alert.Show();
+					//}
+					getAllSeats();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -74,11 +75,13 @@ namespace LearningTrack
 						});
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 1/3: seating update. Please try again.";
-						RefreshButton.Enabled = true;
+						//myLabel.Text = "Parsing error at step 1/3: seating update. Please try again.";
+						//RefreshButton.Enabled = true;
+						myLabel.Text = "Retrying Step 1 of 3: Updating seating chart...";
+						getAllSeats();
 					}
 				}
 			});
@@ -154,12 +157,13 @@ namespace LearningTrack
 			webloginConnection.SendAsynchronousRequest (request, NSOperationQueue.CurrentQueue, (response, data, error) => {
 				if (data == null){
 					//display error alert message
-					using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
-						LoadingIndicator.Hidden = true;
-						LoadingIndicator.StopAnimating();
-						RefreshButton.Enabled = true;
-						alert.Show();
-					}
+					//using (var alert = new UIAlertView("Error Message", "Could not get grade INFO.", null, "OK", null)){
+					//	LoadingIndicator.Hidden = true;
+					//	LoadingIndicator.StopAnimating();
+					//	RefreshButton.Enabled = true;
+					//	alert.Show();
+					//}
+					updateXMLPart1();
 				}
 				else if (data.Length > 0) {
 					try{
@@ -173,11 +177,13 @@ namespace LearningTrack
 						});
 					}
 					catch (Exception){
-						LoadingIndicator.StopAnimating();
-						LoadingIndicator.Hidden = true;
+						//LoadingIndicator.StopAnimating();
+						//LoadingIndicator.Hidden = true;
 						//             "<------MAXIMUM----------LENGTH------>"   For label
-						myLabel.Text = "Parsing error at step 2/3: matching students. Please try again.";
-						RefreshButton.Enabled = true;
+						//myLabel.Text = "Parsing error at step 2/3: matching students. Please try again.";
+						//RefreshButton.Enabled = true;
+						myLabel.Text = "Retrying Step 2 of 3: Matching up students...";
+						updateXMLPart1();
 					}
 				}
 			});

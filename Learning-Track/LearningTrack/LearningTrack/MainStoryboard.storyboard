@@ -293,6 +293,12 @@
                                 <attributedString key="attributedText"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="voI-6D-fun">
+                                <rect key="frame" x="20" y="39" width="395" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -302,6 +308,7 @@
                         <outlet property="LoadingIndicator" destination="4yd-Vr-GAt" id="bZ7-l4-EnJ"/>
                         <outlet property="RefreshButton" destination="9xQ-l7-5cg" id="s7v-Sx-DCV"/>
                         <outlet property="SeatWebView" destination="lnu-4l-hU2" id="1z3-jN-6I6"/>
+                        <outlet property="attendanceLabel" destination="voI-6D-fun" id="Yri-Qn-p5i"/>
                         <outlet property="myLabel" destination="elm-Zo-MMs" id="5Cf-ts-GPW"/>
                     </connections>
                 </viewController>
@@ -565,6 +572,7 @@
                 <relationship kind="outlet" name="LoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="RefreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="SeatWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="attendanceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="myLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
