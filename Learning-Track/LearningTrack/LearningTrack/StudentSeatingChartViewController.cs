@@ -31,8 +31,11 @@ namespace LearningTrack
 			LoadingIndicator.Hidden = true;
 			RefreshButton.Enabled = true;
 
+			//Get Updated seats
+			getAllSeats();
+			myLabel.Text = "Please wait while the seating chart is updated...";
 			//Load the first plot, for now
-			LoadSeatingChart(chartType);
+			//LoadSeatingChart(chartType);
 
 			RefreshButton.TouchUpInside += (sender, e) => {
 				LoadingIndicator.Hidden = false;
@@ -231,6 +234,7 @@ namespace LearningTrack
 
 			//Refresh Page
 			myLabel.Text = "";
+			attendanceLabel.Text = "";
 			LoadingIndicator.Hidden = true;
 			LoadingIndicator.StopAnimating();
 			RefreshButton.Enabled = true;
@@ -282,6 +286,8 @@ namespace LearningTrack
 
 		public void LoadSeatingChart (int chart)
 		{
+			myLabel.Text = "";
+
 			//link local filename to become a local HTML URL
 			string  fileName;
 			
