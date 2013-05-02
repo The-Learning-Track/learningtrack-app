@@ -162,6 +162,10 @@
     <Compile Include="InstructorGroupStatisticsViewController.designer.cs">
       <DependentUpon>InstructorGroupStatisticsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstructorOneViewController.cs" />
+    <Compile Include="InstructorOneViewController.designer.cs">
+      <DependentUpon>InstructorOneViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
