@@ -209,7 +209,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="One View" id="6Kl-FB-QV7"/>
+                    <tabBarItem key="tabBarItem" title="One View" image="glyphicons_114_list.png" id="6Kl-FB-QV7"/>
                     <connections>
                         <outlet property="BottomLeftWebView" destination="vsv-wf-PGi" id="0T8-cN-A0s"/>
                         <outlet property="BottomRightWebView" destination="uCl-iq-1K0" id="HC3-Dl-bgR"/>
